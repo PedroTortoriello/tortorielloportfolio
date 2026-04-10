@@ -58,9 +58,9 @@ export const projects = [
     status: "live",
   },
   {
-    slug: "aurea-link",
+    slug: "orion-leads",
     type: "system",
-    title: "Aurea Link",
+    title: "Orion Leads",
     category: "B2B Prospecting Platform",
     description:
       "Plataforma de prospecção B2B com automação comercial e posicionamento voltado para aumento de vendas com IA.",
@@ -80,7 +80,7 @@ export const projects = [
       "Narrativa clara de automacao comercial",
       "Percepcao de produto mais maduro e escalavel",
     ],
-    url: "https://aurea-link.exocompany.com.br/login",
+    url: "https://orion-leads.vercel.app/",
     status: "live",
   },
   {
