@@ -1,7 +1,7 @@
 ﻿export const differentiators = [
-  "Transformo interface em percepcao de valor imediato.",
-  "Projeto jornadas que combinam clareza, autoridade e conversao.",
-  "Uno direcao visual, performance e execucao tecnica no mesmo padrao.",
+  "Transformo interface em percepção de valor imediato.",
+  "Projeto jornadas que combinam clareza, autoridade e conversão.",
+  "Uno direção visual, performance e execução técnica no mesmo padrão.",
 ] as const;
 
 export const projects = [
@@ -11,9 +11,9 @@ export const projects = [
     title: "Exo Clinic",
     category: "SaaS & Healthcare",
     description:
-      "SaaS para clinicas e consultorios com agenda, pacientes, equipe, procedimentos e financeiro em uma operacao unificada.",
+      "SaaS para clínicas e consultórios com agenda, pacientes, equipe, procedimentos e financeiro em uma operação unificada.",
     summary:
-      "Uma operacao clinica centralizada em uma interface mais confiavel, limpa e preparada para reduzir friccao no dia a dia da equipe.",
+      "Uma operação clínica centralizada em uma interface mais confiável, limpa e preparada para reduzir fricção no dia a dia da equipe.",
     metrics: ["Agenda", "Pacientes", "Financeiro"],
     tags: ["Next.js", "Node.js", "Arquitetura SaaS", "Dashboards"],
     accent:
@@ -37,9 +37,9 @@ export const projects = [
     title: "Exo Barber Dashboard",
     category: "Barbershop Management",
     description:
-      "Dashboard de gestao para barbearias com foco em operacao, leitura rapida de desempenho e acompanhamento centralizado do negocio.",
+      "Dashboard de gestão para barbearias com foco em operação, leitura rápida de desempenho e acompanhamento centralizado do negócio.",
     summary:
-      "Um painel operacional pensado para acompanhar fluxo de caixa, performance da equipe e indicadores do negocio com leitura direta.",
+      "Um painel operacional pensado para acompanhar fluxo de caixa, performance da equipe e indicadores do negócio com leitura direta.",
     metrics: ["Gestao", "Equipe", "Indicadores"],
     tags: ["React", "Supabase", "Analytics", "SaaS"],
     accent:
@@ -63,9 +63,9 @@ export const projects = [
     title: "Aurea Link",
     category: "B2B Prospecting Platform",
     description:
-      "Plataforma de prospeccao B2B com automacao comercial e posicionamento voltado para aumento de vendas com IA.",
+      "Plataforma de prospecção B2B com automação comercial e posicionamento voltado para aumento de vendas com IA.",
     summary:
-      "Uma ferramenta comercial desenhada para colocar a prospeccao em piloto automatico e escalar fechamentos com mais previsibilidade.",
+      "Uma ferramenta comercial desenhada para colocar a prospecção em piloto automático e escalar fechamentos com mais previsibilidade.",
     metrics: ["Prospeccao", "Automacao", "Escala"],
     tags: ["React", "Automation", "B2B", "Sales Ops"],
     accent:
@@ -114,7 +114,7 @@ export const projects = [
     title: "BC Distributor",
     category: "Wholesale Beauty Website",
     description:
-      "Plataforma wholesale para distribuicao de beauty supply, orientada a catalogo, navegacao comercial e conversao em contexto B2B.",
+      "Plataforma wholesale para distribuição de beauty supply, orientada a catálogo, navegação comercial e conversão em contexto B2B.",
     summary:
       "Uma experiencia de atacado digital criada para sustentar catalogo, navegacao comercial e percepcao de marca mais forte no segmento de beleza.",
     metrics: ["Catalogo", "B2B", "Performance"],
@@ -140,7 +140,7 @@ export const projects = [
     title: "Achei Studios",
     category: "Audiovisual Marketplace",
     description:
-      "Marketplace do audiovisual para encontrar equipamentos, estudios de fotografia, sets, podcasts e outros recursos de producao.",
+      "Marketplace do audiovisual para encontrar equipamentos, estúdios de fotografia, sets, podcasts e outros recursos de produção.",
     summary:
       "Uma plataforma de descoberta para o mercado audiovisual, conectando estrutura, espaco e recursos de producao em uma unica experiencia digital.",
     metrics: ["Marketplace", "Descoberta", "Branding"],
@@ -166,7 +166,7 @@ export const projects = [
     title: "Experts Marketing",
     category: "Community Landing Page",
     description:
-      "Landing page para comunidade de marketing digital, IA e crescimento, com proposta de entrada simples, troca real e direcao pratica.",
+      "Landing page para comunidade de marketing digital, IA e crescimento, com proposta de entrada simples, troca real e direção prática.",
     summary:
       "Uma pagina construida para tornar o aprendizado no digital mais leve, confiavel e organizado desde o primeiro contato.",
     metrics: ["Comunidade", "Conversao", "Mobile"],
@@ -192,7 +192,7 @@ export const projects = [
     title: "Dr. Jefferson Neves",
     category: "Medical Authority Website",
     description:
-      "Presenca digital para odontologia com foco em cuidado, estetica, confianca e captacao de pacientes em Joinville/SC.",
+      "Presença digital para odontologia com foco em cuidado, estética, confiança e captação de pacientes em Joinville/SC.",
     summary:
       "Uma experiencia que traduz cuidado clinico, exigencia estetica e confianca em uma jornada digital mais humana e convincente.",
     metrics: ["Autoridade", "SEO local", "Confianca"],
@@ -263,3 +263,4 @@ export const technologies = [
     detail: "Sistemas visuais e prototipacao de alta fidelidade.",
   },
 ] as const;
+
