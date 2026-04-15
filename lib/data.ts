@@ -54,7 +54,7 @@ export const projects = [
       "Otimizacao no controle de agendas dos profissionais",
       "Interface fluida que reduz a curva de aprendizado",
     ],
-    url: "https://exo-barber.vercel.app/dashboard",
+    url: "https://exo-barber.exocompany.com.br/",
     status: "live",
   },
   {
