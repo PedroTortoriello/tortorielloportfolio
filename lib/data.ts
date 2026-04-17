@@ -186,30 +186,56 @@ export const projects = [
     url: "https://expertsmarketingdigital-landingpage.vercel.app/",
     status: "live",
   },
+  // {
+  //   slug: "dr-jefferson-neves",
+  //   type: "website",
+  //   title: "Dr. Jefferson Neves",
+  //   category: "Medical Authority Website",
+  //   description:
+  //     "Presença digital para odontologia com foco em cuidado, estética, confiança e captação de pacientes em Joinville/SC.",
+  //   summary:
+  //     "Uma experiencia que traduz cuidado clinico, exigencia estetica e confianca em uma jornada digital mais humana e convincente.",
+  //   metrics: ["Autoridade", "SEO local", "Confianca"],
+  //   tags: ["Next.js", "Healthcare", "SEO", "UI/UX"],
+  //   accent:
+  //     "from-[rgba(212,175,55,0.16)] via-[rgba(0,194,122,0.08)] to-transparent",
+  //   challenge:
+  //     "Transmitir excelencia medica no ambiente digital, superando templates genericos que nao geram autoridade.",
+  //   solution:
+  //     "Desenvolvi uma interface sobria e elegante, focada em prova social, tratamento estético e facilidade de agendamento.",
+  //   stack: ["Next.js", "TypeScript", "Tailwind CSS"],
+  //   impact: [
+  //     "Posicionamento digital premium em saude",
+  //     "Estrutura otimizada para buscas locais",
+  //   ],
+  //   url: "https://drjeffersoneves.vercel.app/",
+  //   status: "development",
+  // },
   {
-    slug: "dr-jefferson-neves",
+    slug: "lucinei-m-campos",
     type: "website",
-    title: "Dr. Jefferson Neves",
-    category: "Medical Authority Website",
+    title: "Lucinei M. Campos",
+    category: "Literary Authority Website",
     description:
-      "Presença digital para odontologia com foco em cuidado, estética, confiança e captação de pacientes em Joinville/SC.",
+      "Site oficial para escritor e professor, com foco em livros, trajetoria autoral, eventos escolares, blog e contato institucional.",
     summary:
-      "Uma experiencia que traduz cuidado clinico, exigencia estetica e confianca em uma jornada digital mais humana e convincente.",
-    metrics: ["Autoridade", "SEO local", "Confianca"],
-    tags: ["Next.js", "Healthcare", "SEO", "UI/UX"],
+      "Uma presenca digital literaria criada para conectar obra, autoridade pedagogica e convites para escolas, feiras e projetos culturais.",
+    metrics: ["Livros", "Eventos", "Blog"],
+    tags: ["Website Institucional", "SEO", "Content Strategy", "Vercel"],
     accent:
-      "from-[rgba(212,175,55,0.16)] via-[rgba(0,194,122,0.08)] to-transparent",
+      "from-[rgba(212,175,55,0.2)] via-[rgba(0,194,122,0.08)] to-transparent",
     challenge:
-      "Transmitir excelencia medica no ambiente digital, superando templates genericos que nao geram autoridade.",
+      "Organizar a presenca publica de um autor independente sem reduzir sua trajetoria a uma pagina estatica ou a um catalogo simples de livros.",
     solution:
-      "Desenvolvi uma interface sobria e elegante, focada em prova social, tratamento estético e facilidade de agendamento.",
-    stack: ["Next.js", "TypeScript", "Tailwind CSS"],
+      "Estruturei uma experiencia editorial com navegacao clara, destaque para obras, eventos, blog e pontos de contato para aproximar leitores, escolas e organizadores.",
+    stack: ["HTML", "CSS", "JavaScript", "Vercel"],
     impact: [
-      "Posicionamento digital premium em saude",
-      "Estrutura otimizada para buscas locais",
+      "Narrativa autoral mais clara para leitores e instituicoes",
+      "Fluxo direto para conhecer livros, eventos e visitas escolares",
+      "Base institucional preparada para SEO e conteudo recorrente",
     ],
-    url: "https://drjeffersoneves.vercel.app/",
-    status: "development",
+    url: "https://lucineimcampos.vercel.app/",
+    status: "live",
   },
 ] as const;
 
@@ -263,4 +289,3 @@ export const technologies = [
     detail: "Sistemas visuais e prototipacao de alta fidelidade.",
   },
 ] as const;
-
