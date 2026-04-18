@@ -1,21 +1,10 @@
 import type { Metadata } from "next";
-import { Manrope, Sora } from "next/font/google";
 import "./globals.css";
-
-const manrope = Manrope({
-  variable: "--font-manrope",
-  subsets: ["latin"],
-});
-
-const sora = Sora({
-  variable: "--font-sora",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Pedro Tortoriello | Engenheiro de Software Full Stack",
   description:
-    "Portfolio de Pedro Tortoriello, engenheiro de software full stack focado em SaaS, sistemas sob medida, automacao e produtos digitais de alta performance.",
+    "Portfolio profissional de Pedro Tortoriello, engenheiro de software full stack focado em SaaS, sistemas sob medida, automacao e produtos digitais em producao.",
   keywords: [
     "engenheiro de software",
     "desenvolvedor full stack",
@@ -29,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Pedro Tortoriello | Engenheiro de Software Full Stack",
     description:
-      "SaaS, sistemas sob medida, automacao e produtos digitais de alta performance.",
+      "SaaS, sistemas sob medida, automacao e produtos digitais em producao.",
     type: "website",
   },
   robots: {
@@ -45,9 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className="scroll-smooth">
-      <body className={`${manrope.variable} ${sora.variable} antialiased`}>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
