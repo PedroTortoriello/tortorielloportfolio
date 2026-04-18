@@ -1,291 +1,235 @@
-﻿export const differentiators = [
-  "Transformo interface em percepção de valor imediato.",
-  "Projeto jornadas que combinam clareza, autoridade e conversão.",
-  "Uno direção visual, performance e execução técnica no mesmo padrão.",
+export const profile = {
+  name: "Pedro Tortoriello",
+  initials: "PT",
+  role: "Engenheiro de Software Full Stack",
+  location: "Sao Paulo, Brasil",
+  email: "pedrooofreitas@gmail.com",
+  whatsapp: "https://wa.me/5511942716215",
+  availability: "Projetos seletivos, SaaS e sistemas sob medida",
+  headline: "Construo produtos digitais que parecem premium e operam como software serio.",
+  summary:
+    "Atuo do posicionamento ao deploy: interface, arquitetura, automacao, APIs e performance. O foco e transformar ideias em sistemas claros, escalaveis e prontos para vender.",
+  heroImage:
+    "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1800&q=85",
+  aboutImage:
+    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=85",
+  stats: [
+    { value: "5 anos", label: "entregando produtos digitais" },
+    { value: "8+", label: "projetos publicados" },
+    { value: "Full stack", label: "produto, API e automacao" },
+  ],
+  proof: [
+    "Sistemas com agenda, financeiro, dashboards e operacao diaria",
+    "Landing pages e sites pensados para captacao e autoridade",
+    "Integrações com APIs, automacoes e bases prontas para escala",
+  ],
+} as const;
+
+export const differentiators = [
+  {
+    title: "Produto antes de tela",
+    text: "Cada decisao visual precisa sustentar conversao, confianca e clareza operacional.",
+  },
+  {
+    title: "Arquitetura que aguenta evolucao",
+    text: "Estruturo front-end, back-end e dados para crescer sem virar retrabalho a cada nova feature.",
+  },
+  {
+    title: "Execucao com acabamento",
+    text: "Entrego interfaces rapidas, responsivas e consistentes, com movimento usado apenas onde aumenta percepcao de valor.",
+  },
 ] as const;
 
 export const projects = [
   {
     slug: "exo-clinic",
-    type: "system",
+    group: "Sistemas",
     title: "Exo Clinic",
-    category: "SaaS & Healthcare",
+    category: "SaaS para saude",
+    year: "2026",
+    outcome: "Agenda, pacientes e financeiro em uma unica operacao",
     description:
-      "SaaS para clínicas e consultórios com agenda, pacientes, equipe, procedimentos e financeiro em uma operação unificada.",
-    summary:
-      "Uma operação clínica centralizada em uma interface mais confiável, limpa e preparada para reduzir fricção no dia a dia da equipe.",
-    metrics: ["Agenda", "Pacientes", "Financeiro"],
-    tags: ["Next.js", "Node.js", "Arquitetura SaaS", "Dashboards"],
-    accent:
-      "from-[rgba(0,194,122,0.22)] via-[rgba(212,175,55,0.08)] to-transparent",
-    challenge:
-      "Clinicas sofriam com processos manuais fragmentados, risco de perda de dados e sistemas legados que deixavam a operacao lenta.",
-    solution:
-      "Desenvolvi uma arquitetura moderna focada em UX rapida para medicos e recepcionistas, com leitura de dados em tempo real e fluxos protegidos.",
-    stack: ["Next.js", "Node.js", "Tailwind", "PostgreSQL"],
-    impact: [
-      "Reducao drastica no tempo de agendamento e onboarding",
-      "Gestao de dados de pacientes unificada e segura",
-      "Percepcao de alto valor tecnologico pelos usuarios da clinica",
-    ],
+      "Plataforma para clinicas e consultorios com gestao de agenda, pacientes, equipe, procedimentos e financeiro.",
+    details:
+      "O produto reduz processos manuais e concentra a rotina da clinica em uma experiencia rapida para recepcao, medicos e administradores.",
+    tags: ["Next.js", "Node.js", "PostgreSQL", "Dashboards"],
+    image:
+      "https://image.thum.io/get/width/900/crop/600/noanimate/https://exo-clinic.exocompany.com.br/login",
+    icon: "https://www.google.com/s2/favicons?domain=exo-clinic.exocompany.com.br&sz=128",
     url: "https://exo-clinic.exocompany.com.br/login",
-    status: "live",
   },
   {
     slug: "exo-barber",
-    type: "system",
-    title: "Exo Barber Dashboard",
-    category: "Barbershop Management",
+    group: "Sistemas",
+    title: "Exo Barber",
+    category: "Gestao para barbearias",
+    year: "2026",
+    outcome: "Leitura rapida de caixa, equipe e indicadores",
     description:
-      "Dashboard de gestão para barbearias com foco em operação, leitura rápida de desempenho e acompanhamento centralizado do negócio.",
-    summary:
-      "Um painel operacional pensado para acompanhar fluxo de caixa, performance da equipe e indicadores do negócio com leitura direta.",
-    metrics: ["Gestao", "Equipe", "Indicadores"],
-    tags: ["React", "Supabase", "Analytics", "SaaS"],
-    accent:
-      "from-[rgba(212,175,55,0.18)] via-[rgba(0,194,122,0.08)] to-transparent",
-    challenge:
-      "A falta de visibilidade sobre as metricas diarias impedia donos de barbearias de tomarem decisoes taticas baseadas em dados reais.",
-    solution:
-      "Criei paineis interativos de leitura rapida, destacando gargalos na operacao, picos de atendimento e faturamento de forma instantanea.",
-    stack: ["React", "TypeScript", "Supabase", "Tailwind"],
-    impact: [
-      "Leitura de margem de lucro acelerada",
-      "Otimizacao no controle de agendas dos profissionais",
-      "Interface fluida que reduz a curva de aprendizado",
-    ],
+      "Dashboard de gestao para barbearias com acompanhamento centralizado do negocio, profissionais e desempenho.",
+    details:
+      "A solucao ajuda donos de barbearia a entender rotina, agenda e margem com menos planilhas e mais visibilidade.",
+    tags: ["React", "TypeScript", "Supabase", "Analytics"],
+    image:
+      "https://image.thum.io/get/width/900/crop/600/noanimate/https://exo-barber.exocompany.com.br",
+    icon: "https://www.google.com/s2/favicons?domain=exo-barber.exocompany.com.br&sz=128",
     url: "https://exo-barber.exocompany.com.br/",
-    status: "live",
   },
   {
     slug: "orion-leads",
-    type: "system",
+    group: "Sistemas",
     title: "Orion Leads",
-    category: "B2B Prospecting Platform",
+    category: "Prospeccao B2B",
+    year: "2026",
+    outcome: "Automacao comercial com posicionamento de produto",
     description:
-      "Plataforma de prospecção B2B com automação comercial e posicionamento voltado para aumento de vendas com IA.",
-    summary:
-      "Uma ferramenta comercial desenhada para colocar a prospecção em piloto automático e escalar fechamentos com mais previsibilidade.",
-    metrics: ["Prospeccao", "Automacao", "Escala"],
+      "Ferramenta para prospeccao B2B com foco em escala comercial, leitura de funil e acao rapida.",
+    details:
+      "O projeto comunica velocidade, confianca e ganho operacional para empresas que precisam vender com mais previsibilidade.",
     tags: ["React", "Automation", "B2B", "Sales Ops"],
-    accent:
-      "from-[rgba(212,175,55,0.22)] via-[rgba(241,209,122,0.08)] to-transparent",
-    challenge:
-      "O produto precisava transmitir velocidade comercial e confianca operacional sem parecer uma ferramenta genérica.",
-    solution:
-      "A interface foi desenhada para reforcar foco em performance comercial, clareza de acao e leitura mais objetiva do processo de prospeccao.",
-    stack: ["React", "Automation", "API Integration", "Motion"],
-    impact: [
-      "Posicionamento mais forte para vendas B2B",
-      "Narrativa clara de automacao comercial",
-      "Percepcao de produto mais maduro e escalavel",
-    ],
+    image:
+      "https://image.thum.io/get/width/900/crop/600/noanimate/https://orion-leads.vercel.app",
+    icon: "https://www.google.com/s2/favicons?domain=orion-leads.vercel.app&sz=128",
     url: "https://orion-leads.vercel.app/",
-    status: "live",
-  },
-  {
-    slug: "synfau",
-    type: "system",
-    title: "Synfau",
-    category: "Web Application",
-    description:
-      "Aplicacao web em construcao com base pensada para crescimento, modularidade e novas integracoes.",
-    summary:
-      "Uma fundacao de produto desenhada para crescer com consistencia, mantendo espaco para evolucao funcional e expansao tecnica.",
-    metrics: ["Arquitetura", "Escala", "Em dev"],
-    tags: ["Next.js", "Full Stack", "Arquitetura", "Vercel"],
-    accent:
-      "from-[rgba(0,194,122,0.16)] via-[rgba(212,175,55,0.08)] to-transparent",
-    challenge:
-      "Projetar a base de um sistema robusto que precisa ser rapido agora e flexivel para os requisitos do futuro.",
-    solution:
-      "Aplicacao de padroes de engenharia de software rigorosos, preparando o terreno com Next.js para renderizacao hibrida.",
-    stack: ["Next.js", "TypeScript", "Frontend Engineering", "Vercel"],
-    impact: [
-      "Reducao de debito tecnico antes mesmo do lancamento",
-      "Ambiente preparado para iteracoes ageis",
-    ],
-    url: "https://synfau.vercel.app/",
-    status: "development",
   },
   {
     slug: "bc-distributor",
-    type: "website",
+    group: "Sites",
     title: "BC Distributor",
-    category: "Wholesale Beauty Website",
+    category: "Wholesale beauty",
+    year: "2026",
+    outcome: "Catalogo B2B com navegacao mais comercial",
     description:
-      "Plataforma wholesale para distribuição de beauty supply, orientada a catálogo, navegação comercial e conversão em contexto B2B.",
-    summary:
-      "Uma experiencia de atacado digital criada para sustentar catalogo, navegacao comercial e percepcao de marca mais forte no segmento de beleza.",
-    metrics: ["Catalogo", "B2B", "Performance"],
-    tags: ["Next.js", "E-commerce", "API", "Performance"],
-    accent:
-      "from-[rgba(0,194,122,0.18)] via-[rgba(212,175,55,0.1)] to-transparent",
-    challenge:
-      "O catalogo antigo era pesado e nao transmitia o posicionamento premium exigido para compras em grande volume.",
-    solution:
-      "Refiz o ecossistema focando em carregamento rapido e interfaces sofisticadas, otimizando o fluxo de pedido atacadista.",
-    stack: ["Next.js", "TypeScript", "Tailwind", "Payment Integration"],
-    impact: [
-      "Aumento significativo na taxa de conversao",
-      "Navegacao fluida mesmo em dispositivos moveis",
-      "Estetica alinhada ao alto padrao do nicho de beleza",
-    ],
+      "Presenca digital para distribuidora de beauty supply, orientada a catalogo, atacado e conversao.",
+    details:
+      "O site organiza descoberta, produtos e contato comercial com uma experiencia mais forte para compras em volume.",
+    tags: ["Next.js", "E-commerce", "Performance", "B2B"],
+    image:
+      "https://image.thum.io/get/width/900/crop/600/noanimate/https://bcdistributor.vercel.app",
+    icon: "https://www.google.com/s2/favicons?domain=bcdistributor.vercel.app&sz=128",
     url: "https://bcdistributor.vercel.app/",
-    status: "live",
   },
   {
     slug: "achei-studios",
-    type: "website",
+    group: "Sites",
     title: "Achei Studios",
-    category: "Audiovisual Marketplace",
+    category: "Marketplace audiovisual",
+    year: "2026",
+    outcome: "Descoberta de estudios, sets e recursos de producao",
     description:
-      "Marketplace do audiovisual para encontrar equipamentos, estúdios de fotografia, sets, podcasts e outros recursos de produção.",
-    summary:
-      "Uma plataforma de descoberta para o mercado audiovisual, conectando estrutura, espaco e recursos de producao em uma unica experiencia digital.",
-    metrics: ["Marketplace", "Descoberta", "Branding"],
+      "Marketplace para encontrar equipamentos, estudios de fotografia, sets, podcasts e recursos audiovisuais.",
+    details:
+      "A experiencia foi pensada para descoberta rapida, leitura clara do inventario e expansao futura de categorias.",
     tags: ["Frontend", "Motion", "Marketplace", "Branding"],
-    accent:
-      "from-[rgba(212,175,55,0.18)] via-[rgba(0,194,122,0.1)] to-transparent",
-    challenge:
-      "A proposta precisava comunicar variedade e posicionamento sem perder clareza de navegacao.",
-    solution:
-      "Estruturei a experiencia para priorizar descoberta, percepcao de marca e leitura limpa dos recursos disponiveis.",
-    stack: ["React", "Motion", "Tailwind", "Frontend Architecture"],
-    impact: [
-      "Posicionamento mais forte para o mercado audiovisual",
-      "Experiencia de exploracao mais fluida",
-      "Base visual preparada para expansao de inventario",
-    ],
+    image:
+      "https://image.thum.io/get/width/900/crop/600/noanimate/https://acheistudios.com",
+    icon: "https://www.google.com/s2/favicons?domain=acheistudios.com&sz=128",
     url: "https://acheistudios.com",
-    status: "live",
   },
   {
     slug: "experts-marketing",
-    type: "website",
+    group: "Sites",
     title: "Experts Marketing",
-    category: "Community Landing Page",
+    category: "Landing page",
+    year: "2026",
+    outcome: "Entrada clara para comunidade e conteudo pratico",
     description:
-      "Landing page para comunidade de marketing digital, IA e crescimento, com proposta de entrada simples, troca real e direção prática.",
-    summary:
-      "Uma pagina construida para tornar o aprendizado no digital mais leve, confiavel e organizado desde o primeiro contato.",
-    metrics: ["Comunidade", "Conversao", "Mobile"],
-    tags: ["Landing Page", "CRO", "Performance", "React"],
-    accent:
-      "from-[rgba(0,194,122,0.22)] via-[rgba(241,209,122,0.08)] to-transparent",
-    challenge:
-      "A pagina precisava acolher, organizar a proposta e ainda converter com rapidez em trafego frio.",
-    solution:
-      "Trabalhei copy, ritmo e interface para criar uma experiencia simples de entrar, clara de entender e forte na proposta de valor.",
-    stack: ["React", "Tailwind CSS", "Optimization", "Vercel"],
-    impact: [
-      "Leitura de proposta de valor clara e sem distracoes",
-      "Performance consistente para campanhas",
-      "Experiencia mais confiavel do começo ao fim",
-    ],
+      "Landing page para comunidade de marketing digital, IA e crescimento com jornada simples de conversao.",
+    details:
+      "A pagina organiza proposta, ritmo de leitura e chamada para acao para trafego frio e mobile.",
+    tags: ["Landing Page", "CRO", "React", "Performance"],
+    image:
+      "https://image.thum.io/get/width/900/crop/600/noanimate/https://expertsmarketingdigital-landingpage.vercel.app",
+    icon: "https://www.google.com/s2/favicons?domain=expertsmarketingdigital-landingpage.vercel.app&sz=128",
     url: "https://expertsmarketingdigital-landingpage.vercel.app/",
-    status: "live",
   },
-  // {
-  //   slug: "dr-jefferson-neves",
-  //   type: "website",
-  //   title: "Dr. Jefferson Neves",
-  //   category: "Medical Authority Website",
-  //   description:
-  //     "Presença digital para odontologia com foco em cuidado, estética, confiança e captação de pacientes em Joinville/SC.",
-  //   summary:
-  //     "Uma experiencia que traduz cuidado clinico, exigencia estetica e confianca em uma jornada digital mais humana e convincente.",
-  //   metrics: ["Autoridade", "SEO local", "Confianca"],
-  //   tags: ["Next.js", "Healthcare", "SEO", "UI/UX"],
-  //   accent:
-  //     "from-[rgba(212,175,55,0.16)] via-[rgba(0,194,122,0.08)] to-transparent",
-  //   challenge:
-  //     "Transmitir excelencia medica no ambiente digital, superando templates genericos que nao geram autoridade.",
-  //   solution:
-  //     "Desenvolvi uma interface sobria e elegante, focada em prova social, tratamento estético e facilidade de agendamento.",
-  //   stack: ["Next.js", "TypeScript", "Tailwind CSS"],
-  //   impact: [
-  //     "Posicionamento digital premium em saude",
-  //     "Estrutura otimizada para buscas locais",
-  //   ],
-  //   url: "https://drjeffersoneves.vercel.app/",
-  //   status: "development",
-  // },
   {
     slug: "lucinei-m-campos",
-    type: "website",
+    group: "Sites",
     title: "Lucinei M. Campos",
-    category: "Literary Authority Website",
+    category: "Autoridade literaria",
+    year: "2026",
+    outcome: "Livros, eventos, blog e contato institucional",
     description:
-      "Site oficial para escritor e professor, com foco em livros, trajetoria autoral, eventos escolares, blog e contato institucional.",
-    summary:
-      "Uma presenca digital literaria criada para conectar obra, autoridade pedagogica e convites para escolas, feiras e projetos culturais.",
-    metrics: ["Livros", "Eventos", "Blog"],
-    tags: ["Website Institucional", "SEO", "Content Strategy", "Vercel"],
-    accent:
-      "from-[rgba(212,175,55,0.2)] via-[rgba(0,194,122,0.08)] to-transparent",
-    challenge:
-      "Organizar a presenca publica de um autor independente sem reduzir sua trajetoria a uma pagina estatica ou a um catalogo simples de livros.",
-    solution:
-      "Estruturei uma experiencia editorial com navegacao clara, destaque para obras, eventos, blog e pontos de contato para aproximar leitores, escolas e organizadores.",
-    stack: ["HTML", "CSS", "JavaScript", "Vercel"],
-    impact: [
-      "Narrativa autoral mais clara para leitores e instituicoes",
-      "Fluxo direto para conhecer livros, eventos e visitas escolares",
-      "Base institucional preparada para SEO e conteudo recorrente",
-    ],
+      "Site oficial para escritor e professor, com foco em obra, eventos escolares, blog e relacionamento institucional.",
+    details:
+      "A presenca digital conecta leitores, escolas e organizadores com uma narrativa editorial mais organizada.",
+    tags: ["Website", "SEO", "Conteudo", "Vercel"],
+    image:
+      "https://image.thum.io/get/width/900/crop/600/noanimate/https://lucineimcampos.vercel.app",
+    icon: "https://www.google.com/s2/favicons?domain=lucineimcampos.vercel.app&sz=128",
     url: "https://lucineimcampos.vercel.app/",
-    status: "live",
   },
 ] as const;
 
 export const technologies = [
   {
     name: "Next.js",
-    category: "Core",
-    level: 95,
-    detail: "Arquitetura moderna, App Router e performance real.",
+    category: "Frontend",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
+    detail: "App Router, performance, SSR e arquitetura de produto.",
   },
   {
     name: "React",
-    category: "Core",
-    level: 94,
-    detail: "Interfaces complexas com alto controle de estado e fluidez.",
+    category: "Frontend",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+    detail: "Interfaces ricas, estados complexos e componentes reutilizaveis.",
   },
   {
     name: "TypeScript",
-    category: "Production",
-    level: 92,
-    detail: "Base segura para produtos serios e evolutivos.",
+    category: "Frontend",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+    detail: "Base mais segura para times, features e manutencao.",
   },
   {
-    name: "Tailwind",
-    category: "Advanced",
-    level: 90,
-    detail: "Velocidade visual sem perder acabamento de alto padrao.",
-  },
-  {
-    name: "Motion",
-    category: "Interaction",
-    level: 88,
-    detail: "Microinteracoes, storytelling e ritmo cinematografico.",
+    name: "Tailwind CSS",
+    category: "Frontend",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+    detail: "Design system rapido sem abrir mao de consistencia.",
   },
   {
     name: "Node.js",
-    category: "Production",
-    level: 86,
-    detail: "Backends e integracoes preparados para escala.",
+    category: "Backend",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
+    detail: "APIs, integracoes e regras de negocio prontas para escala.",
+  },
+  {
+    name: "PostgreSQL",
+    category: "Backend",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
+    detail: "Modelagem de dados confiavel para SaaS e dashboards.",
+  },
+  {
+    name: "Supabase",
+    category: "Backend",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg",
+    detail: "Autenticacao, dados em tempo real e backoffice rapido.",
   },
   {
     name: "Automation",
-    category: "Automation",
-    level: 84,
-    detail: "Fluxos inteligentes com foco em ganho operacional.",
+    category: "Operacao",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg",
+    detail: "Fluxos com APIs, dados e IA para reduzir trabalho manual.",
   },
   {
     name: "Figma",
-    category: "Interface",
-    level: 89,
-    detail: "Sistemas visuais e prototipacao de alta fidelidade.",
+    category: "Design",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg",
+    detail: "Prototipacao, direcao visual e sistemas de componentes.",
+  },
+] as const;
+
+export const process = [
+  {
+    title: "Diagnostico",
+    text: "Mapeio oferta, publico, operacao e pontos de atrito antes de propor qualquer tela.",
+  },
+  {
+    title: "Arquitetura",
+    text: "Defino fluxos, dados, componentes e integracoes para evitar retrabalho no meio do projeto.",
+  },
+  {
+    title: "Entrega",
+    text: "Implemento, valido responsividade, performance, SEO tecnico e caminho de conversao.",
   },
 ] as const;

@@ -21,8 +21,8 @@ export function MagneticButton({
 
   const classes =
     variant === "primary"
-      ? "border-[rgba(212,175,55,0.22)] bg-[linear-gradient(135deg,rgba(241,209,122,0.96),rgba(212,175,55,0.9))] text-[#11110d] shadow-[0_10px_40px_rgba(212,175,55,0.22)]"
-      : "border-[rgba(255,255,255,0.12)] bg-white/[0.03] text-[var(--text-primary)] shadow-[0_10px_40px_rgba(0,0,0,0.18)]";
+      ? "border-[var(--accent)] bg-[var(--accent)] text-black shadow-[0_12px_28px_rgba(38,245,162,0.18)]"
+      : "border-[rgba(255,255,255,0.14)] bg-black/20 text-[var(--text-primary)] shadow-[0_12px_28px_rgba(0,0,0,0.16)]";
 
   return (
     <motion.div
@@ -41,9 +41,9 @@ export function MagneticButton({
     >
       <Link
         href={href}
-        className={`group relative inline-flex items-center gap-3 overflow-hidden rounded-full border px-6 py-3 text-sm font-semibold transition-transform duration-300 hover:scale-[1.015] active:scale-[0.985] ${classes}`}
+        className={`group relative inline-flex items-center gap-3 overflow-hidden rounded-lg border px-6 py-3 text-sm font-semibold transition-transform duration-300 hover:scale-[1.015] active:scale-[0.985] ${classes}`}
       >
-        <span className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.34),transparent_70%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+        <span className="absolute inset-0 bg-[linear-gradient(120deg,rgba(255,255,255,0.24),transparent_42%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         <span className="relative">{children}</span>
         <motion.span
           className="relative text-base"
@@ -51,7 +51,7 @@ export function MagneticButton({
           whileHover={{ x: 3 }}
           transition={{ duration: 0.2 }}
         >
-          →
+          -&gt;
         </motion.span>
       </Link>
     </motion.div>
