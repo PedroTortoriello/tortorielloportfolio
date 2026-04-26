@@ -1,12 +1,5 @@
-﻿"use client";
+﻿import Link from "next/link";
 
-import Link from "next/link";
-import Image from "next/image";
-import { useMemo, useState } from "react";
-import { motion } from "motion/react";
-
-import { MagneticButton } from "@/components/magnetic-button";
-import { Reveal } from "@/components/reveal";
 import {
   differentiators,
   process as deliveryProcess,
@@ -18,407 +11,340 @@ import {
 type Project = (typeof projects)[number];
 type Technology = (typeof technologies)[number];
 
-const navItems = [
-  { label: "Sobre", href: "#sobre" },
-  { label: "Projetos", href: "#projetos" },
-  { label: "Stack", href: "#stack" },
-  { label: "Contato", href: "#contato" },
-] as const;
+const heroStats = [
+  { value: profile.stats[0].value, label: "experiência aplicada" },
+  { value: profile.stats[1].value, label: "projetos publicados" },
+  { value: profile.stats[2].value, label: "produto, dados e automação" },
+  { value: "SP / BR", label: "base operacional" },
+];
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
+const marqueeItems = [
+  "Next.js",
+  "React",
+  "TypeScript",
+  "Node.js",
+  "SaaS",
+  "IA & Automação",
+  "Scraping",
+  "Supabase",
+  "Tailwind CSS",
+  "B2B Leads",
+  "Performance",
+  "Arquitetura",
+];
+
+const groupedTechnologies = technologies.reduce<Record<string, Technology[]>>(
+  (accumulator, technology) => {
+    if (!accumulator[technology.category]) {
+      accumulator[technology.category] = [];
+    }
+
+    accumulator[technology.category].push(technology);
+    return accumulator;
+  },
+  {},
+);
+
+const featuredProject = projects[0];
+const secondaryProjects = projects.slice(1, 7);
+
+const proofHighlights = [
+  {
+    title: "Produtos em operação real",
+    text: profile.proof[0],
+  },
+  {
+    title: "Presença digital com intenção comercial",
+    text: profile.proof[1],
+  },
+  {
+    title: "Integrações e evolução contínua",
+    text: profile.proof[2],
+  },
+  {
+    title: "Entrega ponta a ponta",
+    text: profile.summary,
+  },
+];
+
+const projectAccents = [
+  "from-sky-500/20 via-sky-500/10 to-transparent",
+  "from-violet-500/20 via-violet-500/10 to-transparent",
+  "from-cyan-500/20 via-cyan-500/10 to-transparent",
+  "from-fuchsia-500/20 via-fuchsia-500/10 to-transparent",
+  "from-indigo-500/20 via-indigo-500/10 to-transparent",
+  "from-blue-500/20 via-blue-500/10 to-transparent",
+];
+
+function SectionEyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <p className="mb-4 text-xs font-semibold uppercase text-[var(--accent)]">
+    <div className="inline-flex items-center gap-3 rounded-full border border-[var(--border)] bg-white/5 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--muted-foreground)] shadow-[0_10px_30px_rgba(0,0,0,0.3)] backdrop-blur">
+      <span className="h-2 w-2 rounded-full bg-[image:var(--brand-gradient)]" />
       {children}
-    </p>
+    </div>
   );
 }
 
 function Header() {
-  const [open, setOpen] = useState(false);
-
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--border-soft)] bg-[rgba(4,6,6,0.84)] backdrop-blur-xl">
-      <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-5 md:px-8">
-        <Link
-          href="#home"
-          className="text-sm font-bold text-[var(--text-primary)]"
-          aria-label="Voltar ao início"
-        >
-          {profile.initials}
-        </Link>
+    <header className="fixed inset-x-0 top-0 z-50">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+        <div className="flex w-full items-center justify-between rounded-full border border-white/10 bg-black/40 px-4 py-3 shadow-[0_14px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl">
+          <Link
+            href="#hero"
+            className="group flex items-center gap-2 text-sm font-extrabold tracking-[-0.05em] text-[var(--foreground)]"
+          >
+            <span className="transition-colors duration-200 group-hover:text-[var(--muted-foreground)]">
+              PT
+            </span>
+            <span className="h-1.5 w-1.5 rounded-full bg-[image:var(--brand-gradient)]" />
+          </Link>
 
-        <nav className="hidden items-center gap-2 md:flex" aria-label="Principal">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-lg px-3 py-2 text-sm text-[var(--text-secondary)] transition-colors hover:bg-white/[0.06] hover:text-[var(--text-primary)]"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
-        <Link
-          href={profile.whatsapp}
-          target="_blank"
-          rel="noreferrer"
-          className="hidden rounded-lg border border-[var(--border-strong)] px-4 py-2 text-sm font-semibold text-[var(--text-primary)] transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)] md:inline-flex"
-        >
-          WhatsApp
-        </Link>
-
-        <button
-          type="button"
-          onClick={() => setOpen((current) => !current)}
-          className="rounded-lg border border-[var(--border-soft)] px-3 py-2 text-sm text-[var(--text-primary)] md:hidden"
-          aria-expanded={open}
-          aria-controls="mobile-navigation"
-          aria-label="Abrir menu"
-        >
-          Menu
-        </button>
-      </div>
-
-      {open ? (
-        <nav
-          id="mobile-navigation"
-          className="border-t border-[var(--border-soft)] bg-[rgba(4,6,6,0.96)] px-5 py-4 md:hidden"
-          aria-label="Principal mobile"
-        >
-          <div className="mx-auto grid max-w-7xl gap-2">
-            {navItems.map((item) => (
+          <nav className="hidden items-center gap-1 text-sm text-[var(--muted-foreground)] md:flex">
+            {[
+              { href: "#experiencia", label: "Experiência" },
+              { href: "#projetos", label: "Projetos" },
+              { href: "#stack", label: "Skills" },
+              { href: "#contato", label: "Contato" },
+            ].map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-3 text-sm text-[var(--text-secondary)] transition-colors hover:bg-white/[0.06] hover:text-[var(--text-primary)]"
+                className="rounded-full px-3 py-2 transition-colors duration-200 hover:bg-[var(--surface-strong)] hover:text-[var(--foreground)]"
               >
                 {item.label}
               </Link>
             ))}
-          </div>
-        </nav>
-      ) : null}
+          </nav>
+
+          <Link
+            href="#contato"
+            className="hidden rounded-full bg-[image:var(--brand-gradient)] px-4 py-2 text-sm font-semibold text-white shadow-[0_16px_34px_rgba(56,189,248,0.2)] transition-transform duration-200 hover:scale-[1.02] md:inline-flex"
+          >
+            Fale comigo
+          </Link>
+        </div>
+      </div>
     </header>
   );
 }
 
-function Hero() {
+function HeroSection() {
   return (
     <section
-      id="home"
-      className="relative min-h-[74svh] overflow-hidden border-b border-[var(--border-soft)]"
+      id="hero"
+      className="relative flex min-h-screen items-center overflow-hidden px-6 pt-28 pb-20"
     >
-      <Image
-        src={profile.heroImage}
-        alt="Ambiente de trabalho com código em tela"
-        fill
-        priority
-        unoptimized
-        sizes="100vw"
-        className="absolute inset-0 h-full w-full object-cover"
-      />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(4,6,6,0.94)_0%,rgba(4,6,6,0.8)_48%,rgba(4,6,6,0.34)_100%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(4,6,6,0.16),rgba(4,6,6,0.92))]" />
+      <div className="hero-orb hero-orb-left" />
+      <div className="hero-orb hero-orb-right" />
+      <div className="hero-grid absolute inset-0 opacity-60" />
 
-      <div className="relative z-10 mx-auto flex min-h-[74svh] w-full max-w-7xl items-center px-5 py-16 md:px-8">
-        <div className="max-w-4xl">
-          <Reveal>
-            <SectionLabel>Portfólio profissional</SectionLabel>
-          </Reveal>
-
-          <Reveal delay={0.06}>
-            <h1 className="font-heading text-4xl font-semibold leading-tight text-[var(--text-primary)] md:text-6xl lg:text-7xl">
-              {profile.headline}
-            </h1>
-          </Reveal>
-
-          <Reveal delay={0.12}>
-            <p className="mt-6 max-w-2xl text-base leading-8 text-[var(--text-secondary)] md:text-lg">
-              {profile.summary}
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.18} className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <MagneticButton href="#projetos">Conhecer projetos</MagneticButton>
-            <MagneticButton href="#contato" variant="secondary">
-              Solicitar avaliação
-            </MagneticButton>
-          </Reveal>
+      <div className="relative mx-auto w-full max-w-5xl text-center">
+        <div className="animate-fade-up">
+          <SectionEyebrow>Engenharia de Software & Automação</SectionEyebrow>
         </div>
-      </div>
-    </section>
-  );
-}
 
-function ProofStrip() {
-  return (
-    <section className="border-b border-[var(--border-soft)] bg-[var(--bg-secondary)]">
-      <div className="mx-auto grid max-w-7xl gap-px px-5 py-6 md:grid-cols-3 md:px-8">
-        {profile.stats.map((item) => (
-          <Reveal key={item.label}>
-            <div className="rounded-lg border border-[var(--border-soft)] bg-[var(--surface)] p-5">
-              <p className="font-heading text-2xl font-semibold text-[var(--text-primary)]">
+        <div className="mt-8 animate-fade-up [animation-delay:120ms]">
+          <h1 className="text-[clamp(3.2rem,8vw,6.1rem)] font-extrabold leading-[0.98] tracking-[-0.06em] text-[var(--foreground)]">
+            Pedro{" "}
+            <span className="bg-[image:var(--brand-gradient)] bg-clip-text text-transparent">
+              Tortoriello
+            </span>
+          </h1>
+        </div>
+
+        <p className="mt-5 animate-fade-up text-sm font-semibold uppercase tracking-[0.22em] text-[var(--muted-foreground)] [animation-delay:220ms]">
+          {profile.role}
+        </p>
+
+        <p className="mx-auto mt-8 max-w-3xl animate-fade-up text-lg leading-8 text-[var(--muted-foreground)] [animation-delay:320ms] md:text-xl">
+          {profile.summary} <span className="text-[var(--foreground)]">Não é o código. São as decisões.</span>
+        </p>
+
+        <div className="mt-10 flex animate-fade-up flex-wrap items-center justify-center gap-3 [animation-delay:420ms]">
+          <Link
+            href="#projetos"
+            className="group inline-flex items-center gap-2 rounded-full bg-[image:var(--brand-gradient)] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_20px_40px_rgba(56,189,248,0.2)] transition-transform duration-200 hover:scale-[1.02]"
+          >
+            Ver projetos
+            <span className="transition-transform duration-200 group-hover:translate-x-0.5">
+              →
+            </span>
+          </Link>
+
+          <Link
+            href="#contato"
+            className="inline-flex items-center gap-2 rounded-full border border-[var(--border-strong)] bg-white/5 px-6 py-3.5 text-sm font-medium text-[var(--foreground)] shadow-[0_14px_34px_rgba(0,0,0,0.4)] transition-colors duration-200 hover:bg-white/10"
+          >
+            Conversar no WhatsApp
+          </Link>
+        </div>
+
+        <div className="mx-auto mt-16 grid max-w-4xl animate-fade-up grid-cols-2 gap-6 [animation-delay:520ms] md:grid-cols-4">
+          {heroStats.map((item) => (
+            <div key={item.label} className="space-y-2">
+              <div className="text-2xl font-extrabold tracking-[-0.05em] text-[var(--foreground)]">
                 {item.value}
-              </p>
-              <p className="mt-2 text-sm leading-6 text-[var(--text-secondary)]">
-                {item.label}
-              </p>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function AboutSection() {
-  return (
-    <section id="sobre" className="border-b border-[var(--border-soft)] py-20 md:py-28">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 md:grid-cols-[0.9fr_1.1fr] md:px-8">
-        <Reveal>
-          <div className="relative h-80 overflow-hidden rounded-lg border border-[var(--border-soft)] bg-[var(--surface)] md:h-[520px]">
-            <Image
-              src={profile.aboutImage}
-              alt="Código sendo desenvolvido em notebook"
-              fill
-              unoptimized
-              sizes="(min-width: 768px) 42vw, 100vw"
-              className="object-cover"
-            />
-          </div>
-        </Reveal>
-
-        <div>
-          <Reveal>
-            <SectionLabel>Sobre</SectionLabel>
-            <h2 className="font-heading text-3xl font-semibold leading-tight text-[var(--text-primary)] md:text-5xl">
-              Engenharia de software com clareza técnica, consistência visual e
-              foco operacional.
-            </h2>
-          </Reveal>
-
-          <Reveal delay={0.08}>
-            <p className="mt-6 text-base leading-8 text-[var(--text-secondary)]">
-              Meu trabalho combina desenvolvimento full stack, design de produto
-              e automação para criar ativos digitais estáveis, objetivos e
-              preparados para demandas reais de operação.
-            </p>
-          </Reveal>
-
-          <div className="mt-8 grid gap-4">
-            {differentiators.map((item, index) => (
-              <Reveal key={item.title} delay={0.12 + index * 0.06}>
-                <div className="rounded-lg border border-[var(--border-soft)] bg-[var(--surface)] p-5">
-                  <h3 className="text-base font-semibold text-[var(--text-primary)]">
-                    {item.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-7 text-[var(--text-secondary)]">
-                    {item.text}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal delay={0.26}>
-            <div className="mt-8 grid gap-3 sm:grid-cols-3">
-              {profile.proof.map((item) => (
-                <p
-                  key={item}
-                  className="rounded-lg border border-[var(--border-soft)] bg-black/20 p-4 text-sm leading-7 text-[var(--text-secondary)]"
-                >
-                  {item}
-                </p>
-              ))}
-            </div>
-          </Reveal>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-const projectAccents = ["#26f5a2", "#56d8ff", "#ff5f6d", "#f2c94c"] as const;
-
-function getProjectAccent(index: number) {
-  return projectAccents[index % projectAccents.length];
-}
-
-function getProjectCode(project: Project) {
-  return project.title
-    .split(" ")
-    .map((word) => word[0])
-    .join("")
-    .slice(0, 3)
-    .toUpperCase();
-}
-
-function ProjectPreview({ project, index }: { project: Project; index: number }) {
-  const accent = getProjectAccent(index);
-  const code = getProjectCode(project);
-
-  return (
-    <div
-      className="relative min-h-[360px] overflow-hidden border-t border-[var(--border-soft)] bg-black/20 p-5 lg:border-l lg:border-t-0"
-      style={{
-        background: `linear-gradient(135deg, ${accent}18, rgba(255,255,255,0.035))`,
-      }}
-    >
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(180deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px] opacity-35" />
-
-      <div className="relative flex h-full min-h-[320px] flex-col rounded-lg border border-white/12 bg-[rgba(4,6,6,0.62)]">
-        <div className="flex items-center justify-between border-b border-white/10 px-4 py-3">
-          <div className="flex gap-2">
-            <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f6d]" />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#f2c94c]" />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#26f5a2]" />
-          </div>
-          <span className="text-xs font-semibold text-[var(--text-muted)]">
-            {project.year}
-          </span>
-        </div>
-
-        <div className="flex flex-1 flex-col justify-between p-5">
-          <div>
-            <p
-              className="font-heading text-6xl font-semibold leading-none md:text-7xl"
-              style={{ color: accent }}
-            >
-              {code}
-            </p>
-            <p className="mt-4 text-sm font-semibold uppercase text-[var(--text-secondary)]">
-              {project.group} / {project.category}
-            </p>
-          </div>
-
-          <div className="mt-10 grid gap-3">
-            {project.tags.slice(0, 4).map((tag, tagIndex) => (
-              <div key={tag} className="grid grid-cols-[6.5rem_1fr] items-center gap-3">
-                <span className="truncate text-xs text-[var(--text-muted)]">{tag}</span>
-                <span className="h-2 overflow-hidden rounded-md bg-white/10">
-                  <span
-                    className="block h-full rounded-md"
-                    style={{
-                      width: `${82 - tagIndex * 10}%`,
-                      backgroundColor: accent,
-                    }}
-                  />
-                </span>
               </div>
-            ))}
-          </div>
+              <p className="text-sm text-[var(--muted-foreground)]">{item.label}</p>
+            </div>
+          ))}
         </div>
+
+        <div className="absolute bottom-[-3rem] left-1/2 hidden -translate-x-1/2 md:block">
+          <div className="scroll-indicator h-12 w-px bg-[linear-gradient(to_bottom,transparent,var(--primary),transparent)]" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function MarqueeSection() {
+  const items = [...marqueeItems, ...marqueeItems];
+
+  return (
+    <div className="relative overflow-hidden border-y border-[var(--border)] bg-black/20 py-5 backdrop-blur">
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[var(--background)] to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[var(--background)] to-transparent" />
+
+      <div className="marquee-track flex min-w-max items-center gap-10">
+        {items.map((item, index) => (
+          <span
+            key={`${item}-${index}`}
+            className="flex shrink-0 items-center gap-3 text-sm text-[var(--muted-foreground)]"
+          >
+            <span className="h-1.5 w-1.5 rounded-full bg-[var(--border-strong)]" />
+            {item}
+          </span>
+        ))}
       </div>
     </div>
   );
 }
 
-function FeaturedProject({ project, index }: { project: Project; index: number }) {
-  const accent = getProjectAccent(index);
-
+function AboutSection() {
   return (
-    <Reveal className="mt-12">
-      <article className="overflow-hidden rounded-lg border border-[var(--border-soft)] bg-[rgba(255,255,255,0.035)]">
-        <div className="grid lg:grid-cols-[1.08fr_0.92fr]">
-          <div className="flex min-h-[360px] flex-col justify-between p-6 md:p-8">
-            <div>
-              <div className="flex flex-wrap items-center gap-3">
-                <span
-                  className="rounded-lg border px-3 py-1.5 text-xs font-semibold uppercase"
-                  style={{ borderColor: `${accent}66`, color: accent }}
+    <section id="experiencia" className="px-6 py-24 md:py-28">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr]">
+          <div className="section-card p-8 md:p-10">
+            <SectionEyebrow>Experiência</SectionEyebrow>
+
+            <h2 className="mt-6 max-w-2xl text-3xl font-extrabold tracking-[-0.05em] text-[var(--foreground)] md:text-5xl">
+              Arquitetura sólida, automação inteligente e foco em conversão B2B.
+            </h2>
+
+            <p className="mt-6 max-w-2xl text-base leading-8 text-[var(--muted-foreground)] md:text-lg">
+              {profile.headline} Com vivência profunda nos ecossistemas React e Node.js, construo sistemas que não apenas funcionam, mas escalam. O objetivo final é sempre resolver problemas complexos com eficiência: seja estruturando dados, integrando fluxos operacionais ou desenhando interfaces de alta performance.
+            </p>
+
+            <div className="mt-10 grid gap-4 md:grid-cols-2">
+              {proofHighlights.map((item, index) => (
+                <article
+                  key={item.title}
+                  className="rounded-[1.75rem] border border-[var(--border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))] p-6 shadow-[0_16px_34px_rgba(0,0,0,0.3)]"
                 >
-                  Case em destaque
-                </span>
-                <span className="text-sm text-[var(--text-muted)]">
-                  {project.year} / {project.category}
-                </span>
-              </div>
-
-              <h3 className="mt-8 max-w-3xl font-heading text-3xl font-semibold leading-tight text-[var(--text-primary)] md:text-5xl">
-                {project.title}
-              </h3>
-              <p className="mt-5 max-w-2xl text-base font-semibold leading-7 text-[var(--text-primary)]">
-                {project.outcome}
-              </p>
-              <p className="mt-5 max-w-2xl text-sm leading-7 text-[var(--text-secondary)] md:text-base md:leading-8">
-                {project.description}
-              </p>
-              <p className="mt-4 max-w-2xl text-sm leading-7 text-[var(--text-muted)]">
-                {project.details}
-              </p>
-            </div>
-
-            <div className="mt-8">
-              <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-md border border-[var(--border-soft)] bg-black/20 px-2.5 py-1 text-xs text-[var(--text-secondary)]"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <Link
-                href={project.url}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-7 inline-flex rounded-lg bg-[var(--accent)] px-5 py-3 text-sm font-bold text-black transition-colors hover:bg-[var(--accent-strong)]"
-                aria-label={`Acessar ${project.title}`}
-              >
-                Acessar projeto
-              </Link>
+                  <div className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted-foreground)]">
+                    0{index + 1}
+                  </div>
+                  <h3 className="mt-4 text-lg font-semibold tracking-[-0.03em] text-[var(--foreground)]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-[var(--muted-foreground)]">
+                    {item.text}
+                  </p>
+                </article>
+              ))}
             </div>
           </div>
 
-          <ProjectPreview project={project} index={index} />
+          <div className="space-y-6">
+            <article className="section-card p-8">
+              <SectionEyebrow>Como eu trabalho</SectionEyebrow>
+
+              <div className="mt-6 space-y-5">
+                {deliveryProcess.map((step, index) => (
+                  <div
+                    key={step.title}
+                    className="rounded-[1.5rem] border border-[var(--border)] bg-white/5 p-5"
+                  >
+                    <div className="flex items-center gap-4">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--surface-strong)] text-sm font-semibold text-[var(--primary)]">
+                        0{index + 1}
+                      </span>
+                      <div>
+                        <h3 className="text-lg font-semibold tracking-[-0.03em] text-[var(--foreground)]">
+                          {step.title}
+                        </h3>
+                        <p className="mt-2 text-sm leading-7 text-[var(--muted-foreground)]">
+                          {step.text}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </article>
+
+            <article className="section-card relative overflow-hidden p-8">
+              <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-br from-sky-500/20 via-violet-500/10 to-transparent" />
+              <SectionEyebrow>Diferenciais</SectionEyebrow>
+
+              <div className="mt-6 space-y-5">
+                {differentiators.map((item) => (
+                  <div key={item.title} className="rounded-[1.5rem] border border-[var(--border)] bg-white/5 p-5">
+                    <h3 className="text-base font-semibold tracking-[-0.03em] text-[var(--foreground)]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-7 text-[var(--muted-foreground)]">
+                      {item.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </article>
+          </div>
         </div>
-      </article>
-    </Reveal>
+      </div>
+    </section>
   );
 }
 
-function ProjectListItem({ project, index }: { project: Project; index: number }) {
-  const accent = getProjectAccent(index);
-
+function FeaturedProject({ project }: { project: Project }) {
   return (
-    <Reveal delay={index * 0.04}>
-      <Link
-        href={project.url}
-        target="_blank"
-        rel="noreferrer"
-        className={`group grid gap-5 py-6 transition-colors md:grid-cols-[4rem_1fr_auto] md:items-center ${
-          index === 1 ? "" : "border-t border-[var(--border-soft)]"
-        }`}
-        aria-label={`Acessar ${project.title}`}
-      >
-        <span
-          className="flex h-12 w-12 items-center justify-center rounded-lg border text-xs font-semibold"
-          style={{ borderColor: `${accent}66`, color: accent }}
-        >
-          0{index + 1}
-        </span>
+    <article className="section-card relative overflow-hidden p-8 md:p-10">
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-br from-sky-500/20 via-violet-500/15 to-transparent" />
 
+      <div className="relative grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
         <div>
-          <div className="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase text-[var(--text-muted)]">
-            <span>{project.group}</span>
-            <span className="text-[var(--border-strong)]">/</span>
+          <SectionEyebrow>Projeto em Destaque</SectionEyebrow>
+
+          <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-[var(--muted-foreground)]">
+            <span className="rounded-full border border-[var(--border)] bg-white/5 px-3 py-1">
+              {project.group}
+            </span>
             <span>{project.category}</span>
+            <span className="h-1 w-1 rounded-full bg-[var(--border-strong)]" />
+            <span>{project.year}</span>
           </div>
-          <h3 className="mt-2 font-heading text-2xl font-semibold leading-tight text-[var(--text-primary)]">
+
+          <h3 className="mt-5 text-3xl font-extrabold tracking-[-0.05em] text-[var(--foreground)] md:text-4xl">
             {project.title}
           </h3>
-          <p className="mt-2 max-w-2xl text-sm leading-7 text-[var(--text-secondary)]">
-            {project.outcome}
+
+          <p className="mt-5 max-w-2xl text-base leading-8 text-[var(--muted-foreground)] md:text-lg">
+            {project.description}
           </p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {project.tags.slice(0, 3).map((tag) => (
+
+          <p className="mt-4 max-w-2xl text-sm leading-7 text-[var(--muted-foreground)]">
+            {project.details}
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-2">
+            {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-md border border-[var(--border-soft)] px-2.5 py-1 text-xs text-[var(--text-muted)]"
+                className="rounded-full border border-[var(--border)] bg-white/5 px-3 py-1.5 text-xs font-medium text-[var(--muted-foreground)]"
               >
                 {tag}
               </span>
@@ -426,180 +352,117 @@ function ProjectListItem({ project, index }: { project: Project; index: number }
           </div>
         </div>
 
-        <span className="inline-flex text-sm font-semibold text-[var(--accent)] transition-transform group-hover:translate-x-1">
-          Acessar
-        </span>
-      </Link>
-    </Reveal>
+        <div className="rounded-[1.8rem] border border-[var(--border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02))] p-6 shadow-[0_20px_44px_rgba(0,0,0,0.4)]">
+          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted-foreground)]">
+            Impacto
+          </div>
+          <p className="mt-4 text-xl font-semibold tracking-[-0.04em] text-[var(--foreground)]">
+            {project.outcome}
+          </p>
+
+          <div className="mt-8 space-y-3">
+            {project.modules.map((moduleName) => (
+              <div
+                key={moduleName}
+                className="flex items-center gap-3 rounded-full border border-[var(--border)] bg-white/5 px-4 py-3 text-sm text-[var(--muted-foreground)]"
+              >
+                <span className="h-2 w-2 rounded-full bg-[image:var(--brand-gradient)]" />
+                {moduleName}
+              </div>
+            ))}
+          </div>
+
+          <Link
+            href={project.url}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-[image:var(--brand-gradient)] px-5 py-3 text-sm font-semibold text-white shadow-[0_18px_36px_rgba(56,189,248,0.2)] transition-transform duration-200 hover:scale-[1.02]"
+          >
+            Acessar projeto
+            <span>↗</span>
+          </Link>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function ProjectCard({
+  project,
+  accent,
+}: {
+  project: Project;
+  accent: string;
+}) {
+  return (
+    <Link
+      href={project.url}
+      target="_blank"
+      rel="noreferrer"
+      className="section-card group relative overflow-hidden p-7 transition-transform duration-300 hover:-translate-y-1"
+    >
+      <div className={`absolute inset-x-0 top-0 h-32 bg-gradient-to-br ${accent}`} />
+
+      <div className="relative">
+        <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--muted-foreground)]">
+          <span>{project.group}</span>
+          <span className="h-1 w-1 rounded-full bg-[var(--border-strong)]" />
+          <span>{project.year}</span>
+        </div>
+
+        <h3 className="mt-5 text-2xl font-bold tracking-[-0.04em] text-[var(--foreground)]">
+          {project.title}
+        </h3>
+
+        <p className="mt-3 text-sm leading-7 text-[var(--muted-foreground)]">
+          {project.outcome}
+        </p>
+
+        <div className="mt-6 flex flex-wrap gap-2">
+          {project.tags.slice(0, 3).map((tag) => (
+            <span
+              key={tag}
+              className="rounded-full border border-[var(--border)] bg-white/5 px-3 py-1 text-xs text-[var(--muted-foreground)]"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <div className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[var(--foreground)]">
+          Ver detalhes
+          <span className="transition-transform duration-200 group-hover:translate-x-0.5">
+            →
+          </span>
+        </div>
+      </div>
+    </Link>
   );
 }
 
 function ProjectsSection() {
-  const [activeGroup, setActiveGroup] = useState<"Todos" | Project["group"]>(
-    "Todos",
-  );
-
-  const groups = useMemo<Array<"Todos" | Project["group"]>>(
-    () => ["Todos", ...Array.from(new Set(projects.map((project) => project.group)))],
-    [],
-  );
-
-  const visibleProjects = useMemo(
-    () =>
-      activeGroup === "Todos"
-        ? projects
-        : projects.filter((project) => project.group === activeGroup),
-    [activeGroup],
-  );
-
-  const featuredProject = visibleProjects[0];
-  const secondaryProjects = visibleProjects.slice(1);
-
   return (
-    <section id="projetos" className="border-b border-[var(--border-soft)] py-20 md:py-28">
-      <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <Reveal>
-          <SectionLabel>Projetos selecionados</SectionLabel>
-          <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-            <div>
-              <h2 className="max-w-3xl font-heading text-3xl font-semibold leading-tight text-[var(--text-primary)] md:text-5xl">
-                Cases organizados por escopo, entrega e impacto operacional.
-              </h2>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-[var(--text-secondary)]">
-                Uma leitura mais direta sobre o que foi construído, qual
-                problema o projeto resolve e quais tecnologias sustentam a
-                entrega em produção.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap gap-2">
-              {groups.map((group) => (
-                <button
-                  key={group}
-                  type="button"
-                  onClick={() => setActiveGroup(group)}
-                  className={`rounded-lg border px-4 py-2 text-sm font-semibold transition-colors ${
-                    activeGroup === group
-                      ? "border-[var(--accent)] bg-[var(--accent)] text-black"
-                      : "border-[var(--border-soft)] text-[var(--text-secondary)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
-                  }`}
-                >
-                  {group}
-                  <span className="ml-2 opacity-70">
-                    {group === "Todos"
-                      ? projects.length
-                      : projects.filter((project) => project.group === group).length}
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
-        </Reveal>
-
-        {featuredProject ? (
-          <>
-            <FeaturedProject project={featuredProject} index={0} />
-
-            {secondaryProjects.length > 0 ? (
-              <div className="mt-6 rounded-lg border border-[var(--border-soft)] bg-[rgba(255,255,255,0.03)] px-5 md:px-6">
-                {secondaryProjects.map((project, index) => (
-                  <ProjectListItem
-                    key={project.slug}
-                    project={project}
-                    index={index + 1}
-                  />
-                ))}
-              </div>
-            ) : null}
-          </>
-        ) : null}
-      </div>
-    </section>
-  );
-}
-
-function TechnologyCard({ item }: { item: Technology }) {
-  return (
-    <Reveal className="h-full">
-      <div className="h-full rounded-lg border border-[var(--border-soft)] bg-[var(--surface)] p-5 transition-colors hover:border-[var(--accent-2)]">
-        <div className="flex items-center gap-4">
-          <span className="flex h-12 w-12 items-center justify-center rounded-lg border border-[var(--border-soft)] bg-white p-2">
-            <Image
-              src={item.logo}
-              alt={item.name}
-              width={40}
-              height={40}
-              unoptimized
-              className="h-full w-full object-contain"
-            />
-          </span>
-          <div>
-            <h3 className="font-semibold text-[var(--text-primary)]">{item.name}</h3>
-            <p className="text-xs text-[var(--accent-2)]">{item.category}</p>
-          </div>
+    <section id="projetos" className="px-6 py-24 md:py-28">
+      <div className="mx-auto max-w-6xl space-y-8">
+        <div className="max-w-3xl">
+          <SectionEyebrow>Projetos</SectionEyebrow>
+          <h2 className="mt-6 text-3xl font-extrabold tracking-[-0.05em] text-[var(--foreground)] md:text-5xl">
+            Sistemas modulares, produtos SaaS e automações em operação.
+          </h2>
+          <p className="mt-5 text-base leading-8 text-[var(--muted-foreground)] md:text-lg">
+            Do desenvolvimento de plataformas de emissão fiscal à engenharia de agentes de IA para atendimento corporativo, o foco do meu trabalho é estruturar soluções técnicas que destravam o crescimento do negócio.
+          </p>
         </div>
-        <p className="mt-4 text-sm leading-7 text-[var(--text-secondary)]">
-          {item.detail}
-        </p>
-      </div>
-    </Reveal>
-  );
-}
 
-function StackSection() {
-  const [activeCategory, setActiveCategory] = useState("Todos");
+        <FeaturedProject project={featuredProject} />
 
-  const categories = useMemo(
-    () => ["Todos", ...Array.from(new Set(technologies.map((item) => item.category)))],
-    [],
-  );
-
-  const visibleTechnologies = useMemo(
-    () =>
-      activeCategory === "Todos"
-        ? technologies
-        : technologies.filter((item) => item.category === activeCategory),
-    [activeCategory],
-  );
-
-  return (
-    <section id="stack" className="border-b border-[var(--border-soft)] py-20 md:py-28">
-      <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <Reveal>
-          <SectionLabel>Stack</SectionLabel>
-          <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
-            <div>
-              <h2 className="max-w-3xl font-heading text-3xl font-semibold leading-tight text-[var(--text-primary)] md:text-5xl">
-                Tecnologias escolhidas para estabilidade, desempenho e evolução.
-              </h2>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-[var(--text-secondary)]">
-                A stack combina front-end moderno, dados, APIs e automação para
-                sustentar produtos digitais em ambiente de produção.
-              </p>
-            </div>
-
-            <div className="flex max-w-full gap-2 overflow-x-auto pb-1">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  type="button"
-                  onClick={() => setActiveCategory(category)}
-                  className={`whitespace-nowrap rounded-lg border px-4 py-2 text-sm font-semibold transition-colors ${
-                    activeCategory === category
-                      ? "border-[var(--accent-2)] bg-[var(--accent-2)] text-black"
-                      : "border-[var(--border-soft)] text-[var(--text-secondary)] hover:border-[var(--accent-2)] hover:text-[var(--accent-2)]"
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
-          </div>
-        </Reveal>
-
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {visibleTechnologies.map((item) => (
-            <TechnologyCard key={item.name} item={item} />
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {secondaryProjects.map((project, index) => (
+            <ProjectCard
+              key={project.slug}
+              project={project}
+              accent={projectAccents[index % projectAccents.length]}
+            />
           ))}
         </div>
       </div>
@@ -607,32 +470,44 @@ function StackSection() {
   );
 }
 
-function ProcessSection() {
+function StackSection() {
   return (
-    <section className="border-b border-[var(--border-soft)] bg-[var(--bg-secondary)] py-20 md:py-24">
-      <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <Reveal>
-          <SectionLabel>Processo</SectionLabel>
-          <h2 className="max-w-3xl font-heading text-3xl font-semibold leading-tight text-[var(--text-primary)] md:text-5xl">
-            Diagnóstico, arquitetura e validação antes da publicação.
+    <section id="stack" className="px-6 py-24 md:py-28">
+      <div className="mx-auto max-w-6xl">
+        <div className="max-w-3xl">
+          <SectionEyebrow>Skills</SectionEyebrow>
+          <h2 className="mt-6 text-3xl font-extrabold tracking-[-0.05em] text-[var(--foreground)] md:text-5xl">
+            Tecnologias orientadas a performance, escala e integração.
           </h2>
-        </Reveal>
+          <p className="mt-5 text-base leading-8 text-[var(--muted-foreground)] md:text-lg">
+            Utilizo ferramentas modernas para garantir entregas ponta a ponta. Desde a construção de interfaces fluídas com Next.js até a estruturação de fluxos de scraping e automação para prospecção B2B de alto volume.
+          </p>
+        </div>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
-          {deliveryProcess.map((item, index) => (
-            <Reveal key={item.title} delay={index * 0.06}>
-              <div className="h-full rounded-lg border border-[var(--border-soft)] bg-[var(--surface)] p-6">
-                <p className="font-heading text-4xl font-semibold text-[var(--accent)]">
-                  0{index + 1}
-                </p>
-                <h3 className="mt-5 text-lg font-semibold text-[var(--text-primary)]">
-                  {item.title}
+        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {Object.entries(groupedTechnologies).map(([category, items]) => (
+            <article key={category} className="section-card p-7">
+              <div className="flex items-center justify-between gap-4">
+                <h3 className="text-xl font-bold tracking-[-0.04em] text-[var(--foreground)]">
+                  {category}
                 </h3>
-                <p className="mt-3 text-sm leading-7 text-[var(--text-secondary)]">
-                  {item.text}
-                </p>
+                <span className="rounded-full bg-[var(--surface-strong)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-[var(--primary)]">
+                  {items.length} itens
+                </span>
               </div>
-            </Reveal>
+
+              <div className="mt-6 flex flex-wrap gap-2.5">
+                {items.map((item) => (
+                  <span
+                    key={item.name}
+                    className="rounded-full border border-[var(--border)] bg-white/5 px-3 py-2 text-sm text-[var(--muted-foreground)]"
+                    title={item.detail}
+                  >
+                    {item.name}
+                  </span>
+                ))}
+              </div>
+            </article>
           ))}
         </div>
       </div>
@@ -642,33 +517,52 @@ function ProcessSection() {
 
 function ContactSection() {
   return (
-    <section id="contato" className="py-20 md:py-28">
-      <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <Reveal>
-          <div className="grid gap-8 border-y border-[var(--border-soft)] py-12 md:grid-cols-[1fr_auto] md:items-end">
-            <div>
-              <SectionLabel>Contato</SectionLabel>
-              <h2 className="max-w-3xl font-heading text-3xl font-semibold leading-tight text-[var(--text-primary)] md:text-5xl">
-                Vamos avaliar o seu projeto com clareza técnica e escopo definido.
-              </h2>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-[var(--text-secondary)]">
-                {profile.availability}. Envie contexto, objetivo e prazo para uma
-                análise inicial do melhor caminho de desenvolvimento.
-              </p>
-            </div>
+    <section id="contato" className="px-6 pt-10 pb-24 md:pb-28">
+      <div className="mx-auto max-w-5xl">
+        <div className="section-card relative overflow-hidden p-8 text-center md:p-12">
+          <div className="absolute left-[-4rem] top-[-3rem] h-48 w-48 rounded-full bg-sky-500/20 blur-3xl" />
+          <div className="absolute bottom-[-5rem] right-[-3rem] h-56 w-56 rounded-full bg-violet-500/20 blur-3xl" />
 
-            <div className="grid min-w-[240px] gap-3">
+          <div className="relative">
+            <SectionEyebrow>Contato</SectionEyebrow>
+
+            <h2 className="mx-auto mt-6 max-w-3xl text-3xl font-extrabold tracking-[-0.05em] text-[var(--foreground)] md:text-5xl">
+              Pronto para escalar a operação técnica do seu negócio?
+            </h2>
+
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-[var(--muted-foreground)] md:text-lg">
+              Seja para estruturar uma nova arquitetura de software, desenvolver um SaaS do zero, ou automatizar a operação e a captação de leads da sua empresa, vamos conversar sobre como posso agregar valor ao seu projeto.
+            </p>
+
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
               <Link
                 href={profile.whatsapp}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-lg bg-[var(--accent)] px-5 py-3 text-center text-sm font-bold text-black transition-colors hover:bg-[var(--accent-strong)]"
+                className="inline-flex items-center gap-2 rounded-full bg-[image:var(--brand-gradient)] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_18px_36px_rgba(56,189,248,0.2)] transition-transform duration-200 hover:scale-[1.02]"
               >
-                Iniciar contato
+                Iniciar conversa no WhatsApp
+                <span>↗</span>
+              </Link>
+
+              <Link
+                href="#hero"
+                className="inline-flex items-center gap-2 rounded-full border border-[var(--border-strong)] bg-white/5 px-6 py-3.5 text-sm font-medium text-[var(--foreground)] shadow-[0_14px_34px_rgba(0,0,0,0.4)] transition-colors duration-200 hover:bg-white/10"
+              >
+                Voltar ao topo
               </Link>
             </div>
+
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-sm text-[var(--muted-foreground)]">
+              <span className="rounded-full border border-[var(--border)] bg-white/5 px-4 py-2">
+                {profile.location}
+              </span>
+              <span className="rounded-full border border-[var(--border)] bg-white/5 px-4 py-2">
+                {profile.availability}
+              </span>
+            </div>
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );
@@ -676,29 +570,27 @@ function ContactSection() {
 
 export function PortfolioExperience() {
   return (
-    <main className="min-h-screen bg-[var(--bg-primary)] text-[var(--text-primary)]">
-      <Header />
-      <Hero />
-      <ProofStrip />
-      <AboutSection />
-      <ProjectsSection />
-      <StackSection />
-      <ProcessSection />
-      <ContactSection />
+    <main className="relative min-h-screen overflow-hidden text-[var(--foreground)]">
+      <div className="pointer-events-none fixed left-[-8rem] top-[-8rem] z-0 h-72 w-72 rounded-full bg-sky-500/10 blur-3xl" />
+      <div className="pointer-events-none fixed bottom-[-10rem] right-[-8rem] z-0 h-80 w-80 rounded-full bg-violet-500/10 blur-3xl" />
 
-      <motion.footer
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="border-t border-[var(--border-soft)] px-5 py-8 md:px-8"
-      >
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 text-sm text-[var(--text-muted)] md:flex-row md:items-center md:justify-between">
-          <p>
-            {profile.name} | {profile.role}
-          </p>
-          <p>{profile.location}</p>
-        </div>
-      </motion.footer>
+      <Header />
+
+      <div className="relative z-10">
+        <HeroSection />
+        <MarqueeSection />
+        <AboutSection />
+        <ProjectsSection />
+        <StackSection />
+        <ContactSection />
+
+        <footer className="border-t border-[var(--border)] px-6 py-8">
+          <div className="mx-auto flex max-w-6xl flex-col gap-3 text-sm text-[var(--muted-foreground)] md:flex-row md:items-center md:justify-between">
+            <p>{profile.name} • Portfólio</p>
+            <p>{profile.location}</p>
+          </div>
+        </footer>
+      </div>
     </main>
   );
 }

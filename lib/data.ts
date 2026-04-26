@@ -7,10 +7,10 @@
   availability: "Disponível para novos projetos sob avaliação técnica e escopo definido",
 
   headline:
-    "Desenvolvimento de sistemas e SaaS com foco em performance, automação e crescimento real.",
+    "Sistemas, SaaS e automações para negócios que precisam operar com mais controle.",
 
   summary:
-    "Projeto e desenvolvo sistemas, APIs, interfaces e automações com foco em clareza operacional, estabilidade e evolução contínua do produto. Minha atuação vai além da implementação técnica: estruturo soluções que organizam processos, reduzem fricção e suportam o crescimento do negócio.",
+    "Atuo do diagnóstico à publicação: desenho fluxos, modelo dados, desenvolvo interfaces, APIs e automações para transformar processos dispersos em produtos digitais estáveis, mensuráveis e prontos para crescer.",
 
   heroImage:
     "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1800&q=85",
@@ -18,10 +18,10 @@
   aboutImage:
     "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=85",
 
-  stats: [
-    { value: "5 anos", label: "de experiência em produtos digitais" },
-    { value: "8+", label: "projetos publicados em produção" },
-    { value: "Full stack", label: "arquitetura, APIs e automação" },
+stats: [
+    { value: "5 anos", label: "engenharia de produtos digitais" },
+    { value: "20+", label: "sistemas e SaaS em produção" },
+    { value: "End-to-end", label: "arquitetura, APIs e automação" }
   ],
 
   proof: [
@@ -50,102 +50,109 @@ export const differentiators = [
 ] as const;
 
 export const projects = [
-   {
+  {
     slug: "orion-leads",
     group: "Sistemas",
-    title: "Orion Leads",
-    category: "Prospecção B2B",
+    title: "OrionLeads",
+    category: "Prospecção B2B com IA",
     year: "2026",
-    outcome: "Processo comercial estruturado e previsível",
+    outcome: "Motor comercial com CRM, automações e WhatsApp para geração de pipeline",
     description:
-      "Ferramenta de prospecção B2B focada em padronização comercial, leitura de funil e priorização de oportunidades.",
+      "Plataforma de prospecção B2B criada para estruturar captação recorrente, organizar cadências e dar visibilidade real ao pipeline comercial.",
     details:
-      "Ajuda equipes comerciais a qualificar leads, acompanhar etapas e atuar com maior previsibilidade.",
-    tags: ["React", "Automation", "B2B", "Sales Ops"],
+      "O produto concentra base de leads, campanhas, automações e acompanhamento operacional em uma interface pensada para times que precisam escalar sem perder controle.",
+    modules: ["Cadências", "Pipeline CRM", "WhatsApp", "Campanhas"],
+    tags: ["B2B Sales", "CRM", "Automação", "WhatsApp"],
     url: "https://orion-leads.vercel.app/",
   },
   {
     slug: "exo-clinic",
     group: "Sistemas",
     title: "Exo Clinic",
-    category: "SaaS para saúde",
+    category: "SaaS para clínicas e consultórios",
     year: "2026",
-    outcome: "Agenda, pacientes e financeiro centralizados em um único fluxo",
+    outcome: "Agenda, pacientes, financeiro e rotina clínica centralizados em um único sistema",
     description:
-      "Plataforma para clínicas e consultórios com gestão completa de agenda, pacientes, equipe, procedimentos e financeiro.",
+      "SaaS para clínicas e consultórios com operação unificada de agendamentos, pacientes, equipe, procedimentos e financeiro.",
     details:
-      "A solução centraliza a operação administrativa e oferece uma experiência objetiva para recepção, profissionais e gestores.",
-    tags: ["Next.js", "Node.js", "PostgreSQL", "Dashboards"],
+      "A solução reduz dependência de controles dispersos e entrega uma experiência mais confiável para recepção, profissionais e gestão, com apoio de automações e IA no atendimento.",
+    modules: ["Agenda clínica", "CRM de pacientes", "Financeiro", "Agente de IA"],
+    tags: ["Saúde", "Agenda", "Financeiro", "WhatsApp"],
     url: "https://exo-clinic.exocompany.com.br/login",
   },
   {
     slug: "exo-barber",
     group: "Sistemas",
-    title: "Exo Barber",
-    category: "Gestão para barbearias",
+    title: "BarberFlow",
+    category: "SaaS para barbearias",
     year: "2026",
-    outcome: "Controle completo de agenda, caixa e equipe",
+    outcome: "Agenda, clientes, caixa e recorrência organizados em um fluxo único",
     description:
-      "Sistema de gestão para barbearias com acompanhamento centralizado da operação e desempenho.",
+      "SaaS para barbearias desenhado para centralizar agendamentos, relacionamento com clientes, serviços, comissões e fechamento diário.",
     details:
-      "Organiza indicadores essenciais e elimina a dependência de controles manuais ou planilhas.",
-    tags: ["React", "TypeScript", "Supabase", "Analytics"],
+      "A plataforma combina agenda online, CRM, financeiro e automações via WhatsApp para profissionalizar a operação e reduzir falhas no dia a dia.",
+    modules: ["Agenda online", "CRM de clientes", "Financeiro", "Agente de IA"],
+    tags: ["Barbearia", "Agenda", "Financeiro", "WhatsApp"],
     url: "https://exo-barber.exocompany.com.br/",
   },
   {
     slug: "bc-distributor",
     group: "Sites",
-    title: "BC Distributor",
-    category: "Distribuição B2B",
+    title: "B&C Distribution Center",
+    category: "Distribuição atacadista de cosméticos",
     year: "2026",
-    outcome: "Presença digital orientada a vendas em volume",
+    outcome: "Presença institucional orientada a catálogo atacadista e contato comercial direto",
     description:
-      "Site institucional com foco em catálogo, atacado e contato comercial.",
+      "Website para distribuidora de beauty supply e body care com apresentação de marcas, posicionamento internacional e caminho claro para contato comercial.",
     details:
-      "Organiza produtos e facilita consultas comerciais para compras em volume.",
-    tags: ["Next.js", "E-commerce", "Performance", "B2B"],
+      "A estrutura reforça credibilidade B2B, organiza o portfólio de marcas e aproxima revendedores e compradores por meio de navegação objetiva e mensagem comercial direta.",
+    modules: ["Portfólio", "Atacado", "Contato", "Presença B2B"],
+    tags: ["React", "Vite", "B2B", "Wholesale"],
     url: "https://bcdistributor.vercel.app/",
   },
   {
     slug: "achei-studios",
-    group: "Sites",
+    group: "Aplicativos",
     title: "Achei Studios",
-    category: "Marketplace audiovisual",
+    category: "Marketplace para locação audiovisual",
     year: "2026",
-    outcome: "Busca estruturada de estúdios e recursos",
+    outcome: "Descoberta e locação de estúdios, equipamentos e serviços criativos em uma única plataforma",
     description:
-      "Marketplace para encontrar estúdios, equipamentos e espaços audiovisuais.",
+      "Marketplace voltado ao setor audiovisual para conectar demanda a estúdios, equipamentos e serviços criativos com uma experiência de busca mais direta.",
     details:
-      "Experiência focada em descoberta rápida, organização de inventário e expansão futura.",
-    tags: ["Frontend", "Marketplace", "UX", "Branding"],
+      "O projeto organiza a oferta, reduz fricção na descoberta e prepara a plataforma para crescimento de inventário, geolocalização e operação multi-perfil.",
+    modules: ["Busca", "Estúdios", "Equipamentos", "Perfis"],
+    tags: ["Marketplace", "Audiovisual", "Locação", "Geolocalização"],
     url: "https://acheistudios.com",
   },
-  {
-    slug: "experts-marketing",
-    group: "Sites",
-    title: "Experts Marketing",
-    category: "Landing page",
-    year: "2026",
-    outcome: "Apresentação clara e geração de contato",
-    description:
-      "Landing page para comunidade de marketing digital e IA.",
-    details:
-      "Estrutura direta com foco em leitura rápida, entendimento e ação.",
-    tags: ["Landing Page", "CRO", "React", "Performance"],
-    url: "https://expertsmarketingdigital-landingpage.vercel.app/",
-  },
+  // {
+  //   slug: "experts-marketing",
+  //   group: "Sites",
+  //   title: "Comunidade de Experts",
+  //   category: "Comunidade de marketing e IA",
+  //   year: "2026",
+  //   outcome: "Landing page com proposta clara, prova de valor e CTA direto para entrada na comunidade",
+  //   description:
+  //     "Página de captação para uma comunidade gratuita de marketing digital e inteligência artificial, com narrativa orientada a clareza, pertencimento e conversão.",
+  //   details:
+  //     "A estrutura organiza promessa, diferenciais, dinâmica da comunidade e perguntas frequentes para reduzir ruído e conduzir o usuário à ação com mais confiança.",
+  //   modules: ["Proposta de valor", "Benefícios", "FAQ", "Captação"],
+  //   tags: ["Landing Page", "Comunidade", "CRO", "Conversão"],
+  //   url: "https://expertsmarketingdigital-landingpage.vercel.app/",
+  // },
   {
     slug: "lucinei-m-campos",
     group: "Sites",
     title: "Lucinei M. Campos",
-    category: "Autoridade literária",
+    category: "Autoridade literária e agenda escolar",
     year: "2026",
-    outcome: "Organização de obra, eventos e contato",
+    outcome: "Presença autoral que organiza obra, agenda de visitas e relacionamento com leitores e escolas",
     description:
-      "Site institucional para escritor com foco em conteúdo e relacionamento.",
+      "Site oficial para escritor e professor com foco em consolidar autoridade, apresentar livros e facilitar convites para eventos, palestras e visitas escolares.",
     details:
-      "Facilita o contato com escolas, leitores e organizadores.",
-    tags: ["Website", "SEO", "Conteúdo", "Vercel"],
+      "A experiência equilibra posicionamento pessoal, catálogo editorial e contato institucional para aproximar leitores, escolas e organizadores com mais clareza.",
+    modules: ["Livros", "Eventos", "Blog", "Contato"],
+    tags: ["Autoridade", "Livros", "Eventos", "SEO"],
     url: "https://lucineimcampos.vercel.app/",
   },
 ] as const;
@@ -196,6 +203,18 @@ export const technologies = [
 
   // Backend
   {
+    name: "TypeScript",
+    category: "Backend",
+    logo: technologyIcon("typescript", "3178C6"),
+    detail: "Tipagem estática que traz segurança, previsibilidade e escalabilidade ao código.",
+  },
+  {
+    name: "JavaScript",
+    category: "Backend",
+    logo: technologyIcon("javascript", "F7DF1E"),
+    detail: "Linguagem base para toda a lógica dinâmica, do servidor à interface.",
+  },
+  {
     name: "Node.js",
     category: "Backend",
     logo: technologyIcon("nodedotjs", "5FA04E"),
@@ -204,7 +223,7 @@ export const technologies = [
   {
     name: "Express",
     category: "Backend",
-    logo: technologyIcon("express", "000000"),
+    logo: technologyIcon("express", "ffffff"), // No dark mode, o logo do Express fica melhor branco
     detail: "Framework minimalista para APIs e serviços backend.",
   },
   {
@@ -213,8 +232,7 @@ export const technologies = [
     logo: technologyIcon("openapiinitiative", "6BA539"),
     detail: "Desenvolvimento de APIs robustas e integrações entre sistemas.",
   },
-
-  // Database
+// Database
   {
     name: "PostgreSQL",
     category: "Database",
@@ -226,6 +244,36 @@ export const technologies = [
     category: "Database",
     logo: technologyIcon("supabase", "3FCF8E"),
     detail: "Backend completo com autenticação, storage e realtime.",
+  },  
+  {
+    name: "MongoDB",
+    category: "Database",
+    logo: technologyIcon("mongodb", "47A248"),
+    detail: "Banco de dados NoSQL flexível e orientado a documentos.",
+  },
+  {
+    name: "Redis",
+    category: "Database",
+    logo: technologyIcon("redis", "DC382D"),
+    detail: "Armazenamento em memória para cache estruturado e filas de automação.",
+  },
+  {
+    name: "MySQL",
+    category: "Database",
+    logo: technologyIcon("mysql", "4479A1"),
+    detail: "Banco de dados relacional clássico, rápido e de alta compatibilidade.",
+  },
+  {
+    name: "Prisma ORM",
+    category: "Database",
+    logo: technologyIcon("prisma", "2D3748"),
+    detail: "Comunicação com o banco de dados baseada em tipagem forte com TypeScript.",
+  },
+  {
+    name: "Firebase",
+    category: "Database",
+    logo: technologyIcon("firebase", "FFCA28"),
+    detail: "Ecossistema Google com banco NoSQL e sincronização em tempo real.",
   },
 
   // Automation
@@ -247,14 +295,28 @@ export const technologies = [
     logo: technologyIcon("postman", "FF6C37"),
     detail: "Integração entre sistemas, SaaS e serviços externos.",
   },
+  {
+    name: "Make",
+    category: "Automation",
+    logo: technologyIcon("make", "ffffff"), // Ajustado para branco para destacar no dark mode
+    detail: "Integração visual de sistemas e automação de fluxos de trabalho.",
+  },
 
-  // Cloud
+  // Infra & DevOps
+  {
+    name: "Docker",
+    category: "Infra & DevOps",
+    logo: technologyIcon("docker", "2496ED"),
+    detail: "Containerização para garantir consistência e isolamento entre ambientes.",
+  },
   {
     name: "Vercel",
-    category: "Cloud",
-    logo: technologyIcon("vercel", "000000"),
-    detail: "Deploy e infraestrutura para aplicações modernas.",
+    category: "Infra & DevOps",
+    logo: technologyIcon("vercel", "ffffff"),
+    detail: "Deploy contínuo e infraestrutura de borda (edge) otimizada para Next.js.",
   },
+
+  // Cloud
   {
     name: "AWS",
     category: "Cloud",
@@ -274,6 +336,12 @@ export const technologies = [
     category: "Tools",
     logo: technologyIcon("github", "181717"),
     detail: "Gerenciamento de código e colaboração em projetos.",
+  },
+  {
+    name: "Postman",
+    category: "Tools",
+    logo: technologyIcon("postman", "FF6C37"),
+    detail: "Desenvolvimento, teste e documentação de rotas de APIs REST.",
   },
   {
     name: "Figma",
