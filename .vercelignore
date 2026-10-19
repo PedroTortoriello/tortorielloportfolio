@@ -3,3 +3,4 @@
 .next
 node_modules
 *.log
+public/**/*.webp.json

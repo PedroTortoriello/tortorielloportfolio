@@ -11,7 +11,8 @@ type TechLogoProps = {
 
 // SVG brand logos (CDN + local). Plain <img>: SVGs need no optimization and
 // next/image blocks remote SVGs by default. Whitened so a wall of colored
-// brand marks doesn't break the near-monochrome palette.
+// brand marks doesn't break the near-monochrome palette; callers dim it with
+// opacity. It is an instrument label, so it never drags or gets selected.
 export function TechLogo({ src, alt, className = "", eager = false, mono = true }: TechLogoProps) {
   return (
     <img
@@ -20,9 +21,10 @@ export function TechLogo({ src, alt, className = "", eager = false, mono = true 
       loading={eager ? "eager" : "lazy"}
       fetchPriority={eager ? "high" : undefined}
       decoding="async"
+      draggable={false}
       width={28}
       height={28}
-      className={`${mono ? "[filter:brightness(0)_invert(1)]" : ""} ${className}`}
+      className={`shrink-0 select-none object-contain ${mono ? "[filter:brightness(0)_invert(1)]" : ""} ${className}`}
     />
   );
 }

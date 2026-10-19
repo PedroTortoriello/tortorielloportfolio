@@ -24,9 +24,10 @@ export const profile = {
 
 export const nav = [
   { id: "projetos", href: "/#projetos", label: "Projetos" },
-  { id: "jornada", href: "/#jornada", label: "Jornada" },
+  { id: "jornada", href: "/#jornada", label: "Experiência" },
+  { id: "metodo", href: "/#metodo", label: "Processo" },
+  { id: "principios", href: "/#principios", label: "Princípios" },
   { id: "stack", href: "/#stack", label: "Stack" },
-  { id: "metodo", href: "/#metodo", label: "Método" },
   { id: "landing-pages", href: "/#landing-pages", label: "LPs" },
   { id: "contato", href: "/#contato", label: "Contato" },
 ] as const;
@@ -52,19 +53,6 @@ export const specialties = [
     title: "SaaS Development",
     note: "Multi-tenant, planos, cobrança e permissões",
   },
-] as const;
-
-// Hero terminal: a short, honest session. It types; it does not execute anything.
-export const terminalScript = [
-  { kind: "cmd", text: "whoami" },
-  { kind: "out", text: "Pedro Tortoriello — Software Engineer" },
-  { kind: "cmd", text: "cat focus.json" },
-  { kind: "json", text: "{" },
-  { kind: "json", text: '  "role": "Full Stack Development & Automation",' },
-  { kind: "json", text: '  "stack": ["TypeScript", "React", "Next.js", "Node.js"],' },
-  { kind: "json", text: '  "builds": ["SaaS", "APIs", "integrações", "automações"],' },
-  { kind: "json", text: '  "since": 2021' },
-  { kind: "json", text: "}" },
 ] as const;
 
 export type Experience = {
@@ -259,8 +247,10 @@ export const stack: StackDomain[] = [
   },
 ];
 
+// Three phases over the five stages: the go / no-go points of the process.
 export type MethodStep = {
   id: string;
+  phase: "Diagnóstico" | "Arquitetura" | "Entrega";
   title: string;
   verb: string;
   text: string;
@@ -271,6 +261,7 @@ export type MethodStep = {
 export const method: MethodStep[] = [
   {
     id: "understand",
+    phase: "Diagnóstico",
     title: "Understand",
     verb: "Entender",
     text: "Começo pelo problema de negócio: quem usa, qual fluxo dói e o que precisa ser verdade em produção. Isso vira escopo e documentação que o time consegue adotar.",
@@ -282,6 +273,7 @@ export const method: MethodStep[] = [
   },
   {
     id: "architect",
+    phase: "Arquitetura",
     title: "Architect",
     verb: "Arquitetar",
     text: "Separo responsabilidades e fixo contratos antes de implementar: camadas claras, schemas compartilhados e fronteiras explícitas entre serviços.",
@@ -293,6 +285,7 @@ export const method: MethodStep[] = [
   },
   {
     id: "build",
+    phase: "Entrega",
     title: "Build",
     verb: "Construir",
     text: "Coloco as regras críticas onde ninguém consegue contorná-las: no servidor e no banco, não só na interface.",
@@ -304,6 +297,7 @@ export const method: MethodStep[] = [
   },
   {
     id: "integrate",
+    phase: "Entrega",
     title: "Integrate",
     verb: "Integrar",
     text: "Integração é onde sistemas quebram. Valido a origem, trato reentregas e falhas, e centralizo os pontos de saída.",
@@ -315,24 +309,26 @@ export const method: MethodStep[] = [
   },
   {
     id: "deliver",
+    phase: "Entrega",
     title: "Deliver",
     verb: "Entregar",
     text: "Entrego com rede de segurança: typecheck e checks no CI, deploy reversível e sustentação guiada por logs.",
     evidence: {
       project: "CadenceFlow",
-      text: "Rollback do build em segundos e portão de saúde no staging com rollback automático.",
+      text: "Rollback do build em segundos e portão de saúde no staging.",
     },
     concepts: ["Automação de processos", "Performance e escala quando aplicável"],
   },
 ];
 
-// Illustrative only: rendered with an explicit "demonstração" label.
-export const buildDemo = [
-  { kind: "cmd", text: "npm run build" },
-  { kind: "dim", text: "> next build" },
-  { kind: "ok", text: "Compiled successfully" },
-  { kind: "ok", text: "Linting and checking validity of types" },
-  { kind: "ok", text: "Collecting page data" },
-  { kind: "ok", text: "Generating static pages" },
-  { kind: "dim", text: "○ (Static)  prerendered as static content" },
+// Principles ("flight rules"): decided before the pressure arrives. `where`
+// names only a case (lib/projects.ts) or a CV entry above whose text shows the rule.
+export const principles = [
+  { id: "camadas", title: "Separação de responsabilidades", rule: "Cada camada com um motivo para mudar.", where: "Núcleo: Repository → Service → Controller" },
+  { id: "contratos", title: "APIs e contratos bem definidos", rule: "O mesmo schema para quem chama e para quem responde.", where: "Núcleo: contratos Zod entre API e front" },
+  { id: "integracao", title: "Integração entre serviços", rule: "Origem validada, reentrega tratada, saída centralizada.", where: "Agente SDR: token em tempo constante, dedup, roteador único" },
+  { id: "automacao", title: "Automação de processos", rule: "Workers, crons e eventos no lugar de tarefas manuais.", where: "Núcleo: pg_cron + outbox · 1 Call Closers: n8n, Zapier, Make" },
+  { id: "erros", title: "Tratamento de erros", rule: "Backoff, dead letter queue, idempotência. Nada de falso sucesso.", where: "Núcleo: DLQ após cinco tentativas" },
+  { id: "manutencao", title: "Manutenibilidade", rule: "Refatoração contínua, code review e limites documentados.", where: "Addon Software: refatoração contínua e code review" },
+  { id: "escala", title: "Performance e escala", rule: "Quando o problema pede: SKIP LOCKED, balanceamento, pré-renderização.", where: "Núcleo: claim com FOR UPDATE SKIP LOCKED · CadenceFlow: três instâncias atrás do Nginx" },
 ] as const;

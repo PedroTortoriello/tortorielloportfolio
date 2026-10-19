@@ -69,4 +69,6 @@ export const shotTones: Record<string, [string, string]> = {
   "/lps/wmt-advogados-mobile.jpg": ["#11263f", "#2d3646"],
   "/lps/zeene-mobile.jpg": ["#f1ffff", "#607da8"],
   "/projects/noivar/pix-modal-mobile.jpg": ["#858479", "#4d5045"],
+  "/projects/cadenceflow/home-mobile.jpg": ["#ff7b1f", "#e8f2f5"],
+  "/projects/nucleo/home-mobile.jpg": ["#0b0b0b", "#0e0e0e"],
 };

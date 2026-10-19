@@ -1,43 +1,48 @@
 @import "tailwindcss";
 
 /* ----------------------------------------------------------------------------
-   Technical Elegance — tokens.
-   Deep field, layered surfaces, one electric blue. Cyan only on live data
-   flow, green only on success. See DESIGN.md.
+   V2 · Control Room — tokens.
+   #080B10 field, #111925 consoles, #244561 structure, #5E9EFF the only light
+   (live states included), #E8EDF4 ink. Green only marks a success result
+   inside code instruments. See DESIGN.md.
 ---------------------------------------------------------------------------- */
 @theme {
-  --color-bg: #07090d;
-  --color-surface: #0d1118;
-  --color-elevated: #121925;
-  --color-raised: #182131;
+  --color-bg: #080b10;
+  --color-surface: #111925;
+  --color-elevated: #15202f;
+  --color-raised: #1b2939;
+  --color-structure: #244561;
 
-  --color-line: rgb(148 163 184 / 0.16);
-  --color-line-strong: rgb(148 163 184 / 0.28);
-  --color-line-faint: rgb(148 163 184 / 0.08);
+  /* hairlines are structural blue, not grey */
+  --color-line: rgb(53 92 126 / 0.42);
+  --color-line-strong: rgb(74 120 160 / 0.62);
+  --color-line-faint: rgb(36 69 97 / 0.34);
 
-  --color-ink: #f2f5fa;
-  --color-ink-muted: #929dad;
-  --color-ink-faint: #7a8596;
+  --color-ink: #e8edf4;
+  --color-ink-muted: #a3afbf;
+  --color-ink-faint: #7c8aa0;
 
-  --color-blue: #4388ff;
-  --color-blue-fill: #2d6cea;
-  --color-blue-deep: #1d4fb8;
-  --color-cyan: #46d9ff;
-  --color-green: #65e6a5;
+  --color-blue: #5e9eff;
+  --color-blue-bright: #8dbaff;
+  --color-on-blue: #06101f;
+  /* moving data used to be cyan; V2 keeps one light, so it is a lighter blue */
+  --color-cyan: #8dbaff;
+  --color-green: #6ee7b0;
   --color-amber: #e6c07b;
 
   /* syntax */
-  --color-sx-kw: #82aaff;
-  --color-sx-fn: #46d9ff;
+  --color-sx-kw: #8db8ff;
+  --color-sx-fn: #7fc8ff;
   --color-sx-str: #e6c07b;
-  --color-sx-num: #f4a97c;
-  --color-sx-type: #a9c8ff;
-  --color-sx-com: #7a8798;
-  --color-sx-punct: #8a96a8;
-  --color-sx-id: #d6deeb;
+  --color-sx-num: #f0a988;
+  --color-sx-type: #b9d3ff;
+  --color-sx-com: #7484a0;
+  --color-sx-punct: #8a9ab0;
+  --color-sx-id: #d9e2ee;
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-display: var(--font-hubot), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
@@ -51,13 +56,12 @@
   }
 }
 
-/* Base: inside @layer base so every Tailwind utility can override it. */
 @layer base {
   html {
     scroll-behavior: smooth;
     color-scheme: dark;
     background: var(--color-bg);
-    scrollbar-color: rgb(148 163 184 / 0.22) var(--color-bg);
+    scrollbar-color: rgb(74 120 160 / 0.5) var(--color-bg);
     interpolate-size: allow-keywords;
   }
 
@@ -74,20 +78,8 @@
     caret-color: var(--color-blue);
   }
 
-  /* Almost-imperceptible technical texture across the whole page. */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    background-image: radial-gradient(rgb(148 163 184 / 0.07) 1px, transparent 1px);
-    background-size: 28px 28px;
-    mask-image: linear-gradient(to bottom, black, transparent 85%);
-  }
-
   ::selection {
-    background: rgb(67 136 255 / 0.35);
+    background: rgb(94 158 255 / 0.32);
     color: #fff;
   }
 
@@ -99,16 +91,21 @@
     background: var(--color-bg);
   }
   ::-webkit-scrollbar-thumb {
-    background: rgb(148 163 184 / 0.18);
+    background: rgb(53 92 126 / 0.55);
     border: 2px solid var(--color-bg);
     border-radius: 999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgb(67 136 255 / 0.5);
+    background: rgb(94 158 255 / 0.7);
+  }
+
+  a {
+    text-underline-offset: 0.22em;
+    text-decoration-thickness: 1px;
   }
 
   section[id] {
-    scroll-margin-top: 80px;
+    scroll-margin-top: 72px;
   }
 }
 
@@ -116,22 +113,34 @@
 :focus-visible {
   outline: 2px solid var(--color-blue);
   outline-offset: 3px;
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 @layer components {
   .container-x {
     width: 100%;
-    max-width: 1240px;
+    max-width: 1320px;
     margin-inline: auto;
-    padding-inline: clamp(1rem, 4vw, 2.5rem);
+    padding-inline: clamp(1.25rem, 4vw, 3rem);
   }
 
   .section-y {
-    padding-block: clamp(5rem, 10vw, 8.5rem);
+    padding-block: clamp(6rem, 12vw, 10rem);
   }
 
-  /* Content label (Problema, Solução…): sans, small, tracked. */
+  /* Wall titles: Hubot Sans opened up. --wdth tunes the width per use. */
+  .display {
+    font-family: var(--font-display);
+    font-variation-settings: "wdth" var(--wdth, 112);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    /* wide face + negative tracking closes word gaps; give them back */
+    word-spacing: 0.08em;
+    line-height: 0.94;
+    text-wrap: balance;
+  }
+
+  /* Content label (Problema, Decisão…): sans, small, tracked. */
   .label {
     font-family: var(--font-sans);
     font-size: 0.6875rem;
@@ -142,11 +151,11 @@
     color: var(--color-ink-faint);
   }
 
-  /* HUD label: names a system part, path or measurement, so it is mono. */
+  /* HUD / readout label: names a system part, path or value, so it is mono. */
   .hud {
     font-family: var(--font-mono);
     font-size: 0.6875rem;
-    line-height: 1;
+    line-height: 1.1;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--color-ink-faint);
@@ -156,18 +165,78 @@
     font-variant-numeric: tabular-nums;
   }
 
-  /* Floating interface window: layered depth, hairline edge, faint top light. */
+  /* Console: a hairline frame with blue registration ticks on its corners. */
+  .console {
+    position: relative;
+    border: 1px solid var(--color-line);
+    border-radius: 6px;
+    background: rgb(17 25 37 / 0.72);
+  }
+  .ticks {
+    position: relative;
+  }
+  .ticks::before {
+    --t: 11px;
+    --c: rgb(94 158 255 / 0.85);
+    content: "";
+    position: absolute;
+    inset: -1px;
+    pointer-events: none;
+    z-index: 2;
+    border-radius: inherit;
+    background:
+      linear-gradient(var(--c), var(--c)) top left / var(--t) 1px no-repeat,
+      linear-gradient(var(--c), var(--c)) top left / 1px var(--t) no-repeat,
+      linear-gradient(var(--c), var(--c)) top right / var(--t) 1px no-repeat,
+      linear-gradient(var(--c), var(--c)) top right / 1px var(--t) no-repeat,
+      linear-gradient(var(--c), var(--c)) bottom left / var(--t) 1px no-repeat,
+      linear-gradient(var(--c), var(--c)) bottom left / 1px var(--t) no-repeat,
+      linear-gradient(var(--c), var(--c)) bottom right / var(--t) 1px no-repeat,
+      linear-gradient(var(--c), var(--c)) bottom right / 1px var(--t) no-repeat;
+  }
+  .console-head {
+    display: flex;
+    min-height: 2.5rem;
+    align-items: center;
+    gap: 0.75rem;
+    border-bottom: 1px solid var(--color-line);
+    padding-inline: 0.875rem;
+  }
+
+  /* Drafting grid: minor 24px, major 120px, in structural blue. */
+  .drafting-grid {
+    background-image:
+      linear-gradient(to right, rgb(36 69 97 / 0.32) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(36 69 97 / 0.32) 1px, transparent 1px),
+      linear-gradient(to right, rgb(36 69 97 / 0.13) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(36 69 97 / 0.13) 1px, transparent 1px);
+    background-size:
+      120px 120px,
+      120px 120px,
+      24px 24px,
+      24px 24px;
+  }
+  /* A ruler: hairline with a tick every 24px and a major tick every 120px. */
+  .ruler {
+    height: 9px;
+    background:
+      linear-gradient(var(--color-line), var(--color-line)) bottom / 100% 1px no-repeat,
+      repeating-linear-gradient(to right, rgb(74 120 160 / 0.55) 0 1px, transparent 1px 120px) bottom / 100% 9px no-repeat,
+      repeating-linear-gradient(to right, rgb(53 92 126 / 0.42) 0 1px, transparent 1px 24px) bottom / 100% 4px no-repeat;
+  }
+
+  /* Floating instrument (windows, device frames): the only things with a drop. */
   .window {
     position: relative;
     background:
-      linear-gradient(180deg, rgb(255 255 255 / 0.025), transparent 120px),
+      linear-gradient(180deg, rgb(94 158 255 / 0.035), transparent 120px),
       var(--color-surface);
     border: 1px solid var(--color-line);
-    border-radius: 12px;
+    border-radius: 8px;
     box-shadow:
       0 1px 0 rgb(255 255 255 / 0.04) inset,
-      0 24px 48px -12px rgb(0 0 0 / 0.6),
-      0 48px 96px -24px rgb(4 10 24 / 0.7);
+      0 24px 48px -16px rgb(0 0 0 / 0.65),
+      0 56px 110px -30px rgb(3 8 20 / 0.8);
   }
 
   /* Pointer-tracked edge light (set --mx/--my from JS). */
@@ -181,7 +250,7 @@
     inset: -1px;
     border-radius: inherit;
     padding: 1px;
-    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgb(67 136 255 / 0.55), transparent 60%);
+    background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 0%), rgb(94 158 255 / 0.6), transparent 62%);
     -webkit-mask:
       linear-gradient(#000 0 0) content-box,
       linear-gradient(#000 0 0);
@@ -197,14 +266,6 @@
     opacity: 1;
   }
 
-  /* Technical grid used by hero and route headers (pinned by the brief). */
-  .tech-grid {
-    background-image:
-      linear-gradient(to right, rgb(148 163 184 / 0.06) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(148 163 184 / 0.06) 1px, transparent 1px);
-    background-size: 56px 56px;
-  }
-
   /* Diagram line vocabulary: solid = sync · dashed = async/queue · dotted = external */
   .edge-sync {
     stroke-dasharray: none;
@@ -217,6 +278,7 @@
     stroke-linecap: round;
   }
 
+  /* Front-wall boot (CSS, no JS needed): staggered by --d. */
   .enter {
     animation: rise 900ms var(--ease-out) both;
     animation-delay: var(--d, 0ms);
@@ -232,16 +294,41 @@
   .mask-line {
     display: block;
     overflow: hidden;
-    padding-bottom: 0.08em;
-    margin-bottom: -0.08em;
+    padding-bottom: 0.1em;
+    margin-bottom: -0.1em;
   }
   .mask-line > span {
     display: block;
     animation: mask-up 1000ms var(--ease-out) both;
     animation-delay: var(--d, 0ms);
   }
+  /* SVG strokes that draw themselves once (pathLength="1" on the element). */
+  .boot-draw {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+    animation: boot-draw 1600ms var(--ease-in-out) both;
+    animation-delay: var(--d, 0ms);
+  }
 
-  /* Packets travelling on rails and stack connectors. They only run in view. */
+  /* A track that draws from the left on first paint. */
+  .rail-draw {
+    transform-origin: 0 50%;
+    animation: rail-draw 1400ms var(--ease-in-out) both;
+    animation-delay: var(--d, 0ms);
+  }
+
+  /* A screen that powers on: opens from a centre band, overexposed for a beat. */
+  .power-on {
+    animation: power-on 1100ms var(--ease-out) both;
+    animation-delay: var(--d, 0ms);
+  }
+
+  /* A log line that just landed: brief bloom, then it settles. */
+  .bloom {
+    animation: bloom 1100ms var(--ease-out) both;
+  }
+
+  /* Packets travelling on rails and connectors. They only run in view. */
   .flow-pulse {
     animation: flow 3.4s var(--ease-in-out) infinite;
     animation-play-state: paused;
@@ -252,17 +339,10 @@
     animation: conn-h 2.6s var(--ease-in-out) infinite;
     animation-play-state: paused;
   }
-  .conn-v {
-    left: 50%;
-    margin-left: -2px;
-    animation: conn-v 2.6s var(--ease-in-out) infinite;
-    animation-play-state: paused;
-  }
 
   /* iPhone mockup: brushed-titanium band and the keys that stand proud of it. */
   .iphone-band {
-    background:
-      linear-gradient(145deg, #6b6e73 0%, #34363a 14%, #1d1e21 46%, #2c2e32 78%, #6f7277 100%);
+    background: linear-gradient(145deg, #6b6e73 0%, #34363a 14%, #1d1e21 46%, #2c2e32 78%, #6f7277 100%);
     box-shadow:
       inset 0 0 0 0.25cqw rgb(255 255 255 / 0.16),
       inset 0 0 1.4cqw rgb(0 0 0 / 0.55),
@@ -301,7 +381,7 @@
 }
 @keyframes mask-up {
   from {
-    transform: translate3d(0, 105%, 0);
+    transform: translate3d(0, 106%, 0);
   }
 }
 @keyframes fade {
@@ -313,6 +393,33 @@
   from {
     opacity: 0;
     transform: translate3d(0, 24px, 0) scale(0.985);
+  }
+}
+@keyframes boot-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+@keyframes rail-draw {
+  from {
+    transform: scaleX(0);
+  }
+}
+@keyframes power-on {
+  from {
+    clip-path: inset(47% 0 47% 0);
+    filter: brightness(1.9) saturate(0.4);
+  }
+  60% {
+    filter: brightness(1.15);
+  }
+}
+@keyframes bloom {
+  from {
+    color: #fff;
+    text-shadow:
+      0 0 14px rgb(94 158 255 / 0.85),
+      0 0 2px rgb(141 186 255 / 0.9);
   }
 }
 @keyframes flow {
@@ -343,98 +450,23 @@
     opacity: 0;
   }
 }
-@keyframes conn-v {
-  0% {
-    top: 0;
-    opacity: 0;
-  }
-  20%,
-  80% {
-    opacity: 1;
-  }
+@keyframes ping-soft {
+  75%,
   100% {
-    top: calc(100% - 4px);
+    transform: scale(2.4);
     opacity: 0;
-  }
-}
-@keyframes t-show {
-  to {
-    opacity: 1;
   }
 }
 
 /* ----------------------------------------------------------------------------
-   Motion states driven by ClientEffects. Unlayered on purpose: they must win.
-   Content is visible by default; JS opts it into motion.
+   Motion states. Unlayered on purpose: they must win.
+   Content is visible by default; MotionRoot (GSAP) opts it into motion.
 ---------------------------------------------------------------------------- */
 .in-view .flow-pulse,
 .in-view .conn-dot,
-html:not(.reveal-ready) .flow-pulse,
-html:not(.reveal-ready) .conn-dot {
+html:not(.motion-ready) .flow-pulse,
+html:not(.motion-ready) .conn-dot {
   animation-play-state: running;
-}
-.stack-grid:has(.stack-panel:hover) .conn-line {
-  background-color: rgb(67 136 255 / 0.55);
-}
-
-html.reveal-ready [data-reveal]:not(.is-in) {
-  opacity: 0;
-  transform: translate3d(0, 20px, 0);
-}
-html.reveal-ready [data-reveal] {
-  transition:
-    opacity 800ms var(--ease-out),
-    transform 900ms var(--ease-out);
-  transition-delay: var(--d, 0ms);
-}
-html.reveal-ready [data-reveal="rule"]:not(.is-in) {
-  opacity: 1;
-  transform: scaleX(0);
-}
-html.reveal-ready [data-reveal="rule"] {
-  transform-origin: left center;
-  transition: transform 1200ms var(--ease-out);
-}
-
-/* Diagram edges draw in when their figure is revealed. */
-.draw {
-  stroke-dasharray: var(--len, 600);
-  stroke-dashoffset: 0;
-}
-html.reveal-ready [data-reveal]:not(.is-in) .draw {
-  stroke-dashoffset: var(--len, 600);
-}
-html.reveal-ready [data-reveal] .draw {
-  transition: stroke-dashoffset 1400ms var(--ease-in-out);
-  transition-delay: calc(var(--d, 0ms) + var(--dd, 0ms));
-}
-html.reveal-ready [data-reveal]:not(.is-in) .fade-edge {
-  opacity: 0;
-}
-html.reveal-ready [data-reveal] .fade-edge {
-  transition: opacity 900ms var(--ease-out);
-  transition-delay: calc(var(--d, 0ms) + var(--dd, 0ms) + 300ms);
-}
-
-/* Build console lines print one after another once revealed. */
-html.reveal-ready [data-reveal]:not(.is-in) .build-line {
-  opacity: 0;
-}
-html.reveal-ready [data-reveal] .build-line {
-  transition: opacity 200ms linear;
-  transition-delay: var(--d, 0ms);
-}
-
-/* Terminal lines (typed by JS; shown by fallback if JS never takes over). */
-html.js .term:not(.is-live) .t-pending {
-  opacity: 0;
-  animation: t-show 1ms 2600ms forwards;
-}
-
-/* Tooltips dismissed with Escape stay hidden until the pointer leaves. */
-[data-tip-dismissed] [role="tooltip"] {
-  opacity: 0 !important;
-  visibility: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -450,36 +482,25 @@ html.js .term:not(.is-live) .t-pending {
     transition-duration: 1ms !important;
     transition-delay: 0ms !important;
   }
-  html.reveal-ready [data-reveal]:not(.is-in) {
-    opacity: 1;
-    transform: none;
-  }
-  html.reveal-ready [data-reveal]:not(.is-in) .draw {
-    stroke-dashoffset: 0;
-  }
-  html.reveal-ready [data-reveal]:not(.is-in) :is(.fade-edge, .build-line) {
-    opacity: 1;
-  }
   .flow-pulse,
-  .conn-dot {
+  .conn-dot,
+  .motion-only {
     display: none;
   }
 }
 
-/* Printing (or "Save as PDF") must never leave unrevealed blocks blank. */
+/* Printing (or "Save as PDF") must never leave hidden blocks blank. */
 @media print {
-  html.reveal-ready [data-reveal]:not(.is-in) {
-    opacity: 1;
-    transform: none;
+  [data-reveal],
+  [data-anim],
+  [data-title] {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    clip-path: none !important;
   }
-  html.reveal-ready [data-reveal]:not(.is-in) .draw {
-    stroke-dashoffset: 0;
-  }
-  html.reveal-ready [data-reveal]:not(.is-in) :is(.fade-edge, .build-line) {
-    opacity: 1;
-  }
-  html.js .term .t-pending {
-    opacity: 1;
-    animation: none;
+  .motion-only,
+  .mission-rail {
+    display: none !important;
   }
 }

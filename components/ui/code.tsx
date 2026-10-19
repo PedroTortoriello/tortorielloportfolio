@@ -100,7 +100,7 @@ export function CodeLines({
     }
   }
   return (
-    <pre className={`overflow-x-auto py-4 font-mono ${size === "xs" ? "text-[0.7rem] leading-[1.6]" : size === "sm" ? "text-[0.74rem] leading-[1.65]" : "text-[0.78rem] leading-[1.7]"} ${className}`}>
+    <pre className={`overflow-x-auto py-4 font-mono ${size === "xs" ? "text-[0.6875rem] leading-[1.6]" : size === "sm" ? "text-[0.75rem] leading-[1.65]" : "text-[0.75rem] leading-[1.7]"} ${className}`}>
       <code className="grid min-w-max">
         {lines.map((_, i) => {
           const n = start + i;

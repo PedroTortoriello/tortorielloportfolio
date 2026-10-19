@@ -32,6 +32,13 @@ export type Graph = {
 
 export type ProjectLink = { label: string; href: string; kind: "live" | "code" };
 
+// A console readout: a parameter written in the project's code or docs.
+// Never a live metric.
+export type Readout = { k: string; v: string };
+
+// A real capture of the live product (public pages only).
+export type Shot = { desktop: string; mobile?: string; url: string; alt: string; caption: string };
+
 export type Project = {
   slug: string;
   index: string;
@@ -45,6 +52,8 @@ export type Project = {
   contribution: string[];
   stack: string[];
   links: ProjectLink[];
+  readouts: Readout[];
+  shot?: Shot;
   note?: string;
 };
 
@@ -70,6 +79,19 @@ export const cadenceflow: Project & { graph: Graph } = {
   note: "Produto feito em dupla: ele foi iniciado por outro engenheiro da agência, e eu entrei como co-desenvolvedor em junho de 2026.",
   stack: ["Next.js 16", "React 19", "TypeScript", "Prisma", "PostgreSQL", "Nginx · PM2", "Meta Cloud API", "Stripe · Asaas", "LLMs"],
   links: [{ label: "cadenceflow.pro", href: "https://cadenceflow.pro", kind: "live" }],
+  readouts: [
+    { k: "instâncias", v: "3 × PM2 · Nginx least_conn" },
+    { k: "filas", v: "no próprio Postgres" },
+    { k: "webhook Meta", v: "X-Hub-Signature-256" },
+    { k: "deploy", v: "rollback do build em segundos" },
+  ],
+  shot: {
+    desktop: "/projects/cadenceflow/home-desktop.webp",
+    mobile: "/projects/cadenceflow/home-mobile.jpg",
+    url: "cadenceflow.pro",
+    alt: "Página pública do CadenceFlow: prospecção B2B multicanal, com o painel do produto num notebook",
+    caption: "cadenceflow.pro · página pública do produto, capturada em out/2026",
+  },
   graph: {
     width: 1000,
     height: 420,
@@ -127,6 +149,19 @@ export const noivar: Project = {
     { label: "noivar.vercel.app", href: "https://noivar.vercel.app", kind: "live" },
     { label: "Código · protótipo inicial", href: "https://github.com/PedroFTortoriello/wedding-invitations-saas", kind: "code" },
   ],
+  readouts: [
+    { k: "pix", v: "BR Code/EMV · CRC16-CCITT" },
+    { k: "migrations", v: "18 versionadas" },
+    { k: "isolamento", v: "RLS por casal" },
+    { k: "tokens MP", v: "AES-256-GCM" },
+  ],
+  shot: {
+    desktop: "/projects/noivar/jardim-romantico-desktop.webp",
+    mobile: "/projects/noivar/pix-modal-mobile.jpg",
+    url: "noivar.vercel.app/modelo/jardim-romantico/helena-e-lucas",
+    alt: "Modelo Jardim Romântico do Noivar: site de casamento de demonstração com o casal fictício Helena e Lucas",
+    caption: "Demo pública do produto, com casal fictício.",
+  },
 };
 
 export const nucleo: Project = {
@@ -149,6 +184,19 @@ export const nucleo: Project = {
   ],
   stack: ["TypeScript", "Node.js", "Express", "Prisma", "PostgreSQL", "Zod", "React + Vite", "Mercado Pago", "GitHub Actions", "Vercel"],
   links: [{ label: "nucleoaut.vercel.app", href: "https://nucleoaut.vercel.app", kind: "live" }],
+  readouts: [
+    { k: "outbox", v: "FOR UPDATE SKIP LOCKED" },
+    { k: "falhas", v: "backoff · DLQ após 5" },
+    { k: "acesso", v: "RBAC · 5 papéis" },
+    { k: "cron", v: "pg_cron → /api/cron/tick" },
+  ],
+  shot: {
+    desktop: "/projects/nucleo/home-desktop.webp",
+    mobile: "/projects/nucleo/home-mobile.jpg",
+    url: "nucleoaut.vercel.app",
+    alt: "Página pública do Núcleo: proposta, contrato e cobrança num fluxo só, com a tela de um processo de demonstração",
+    caption: "nucleoaut.vercel.app · página pública do produto, capturada em out/2026",
+  },
 };
 
 export const sdr: Project & { graph: Graph } = {
@@ -172,6 +220,12 @@ export const sdr: Project & { graph: Graph } = {
   note: "Produto feito em dupla: a base em produção e a maior parte do código (motor de conversa original, motor de IA, triador, campanhas e deploy) são de outro engenheiro. Minha parte está listada acima.",
   stack: ["Next.js 15", "TypeScript", "Prisma", "PostgreSQL", "OpenAI · Anthropic", "Google Calendar API", "WhatsApp Cloud API", "node:test", "Nginx · PM2"],
   links: [{ label: "sdr.cadenceflow.pro", href: "https://sdr.cadenceflow.pro", kind: "live" }],
+  readouts: [
+    { k: "entrada", v: "200 imediato · dedup 60s" },
+    { k: "saída", v: "roteador único · janela 24h" },
+    { k: "handoff", v: "fila com SLA" },
+    { k: "canais", v: "WhatsApp · e-mail · LinkedIn" },
+  ],
   graph: {
     width: 1000,
     height: 380,

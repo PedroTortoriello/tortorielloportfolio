@@ -10,22 +10,19 @@ type WindowProps = {
   label?: string;
 };
 
-// A development-tool window: traffic lights, file tab, optional status bar.
+// A code/instrument window: floats above the page (the only panels with a
+// drop), mono file path in the header strip, optional status bar.
 export function Window({ title, meta, status, children, className = "", bodyClassName = "", label }: WindowProps) {
   return (
-    <figure className={`window overflow-hidden ${className}`} aria-label={label}>
-      <div className="flex h-10 items-center gap-3 border-b border-line bg-elevated/70 px-3.5">
-        <div className="flex gap-1.5" aria-hidden>
-          <span className="size-2.5 rounded-full bg-[#ff5f57]/85" />
-          <span className="size-2.5 rounded-full bg-[#febc2e]/85" />
-          <span className="size-2.5 rounded-full bg-[#28c840]/85" />
-        </div>
+    <figure className={`window ticks overflow-hidden ${className}`} aria-label={label}>
+      <div className="console-head bg-elevated/60">
+        <span aria-hidden className="size-[7px] shrink-0 rounded-[1px] border border-blue/70" />
         <div className="min-w-0 flex-1 truncate font-mono text-[0.72rem] text-ink-muted">{title}</div>
-        {meta ? <div className="shrink-0 font-mono text-[0.68rem] text-ink-faint">{meta}</div> : null}
+        {meta ? <div className="shrink-0 font-mono text-[0.6875rem] text-ink-faint">{meta}</div> : null}
       </div>
       <div className={bodyClassName}>{children}</div>
       {status ? (
-        <div className="flex h-7 items-center gap-4 border-t border-line bg-elevated/50 px-3.5 font-mono text-[0.66rem] text-ink-faint">
+        <div className="flex h-7 items-center gap-4 border-t border-line bg-elevated/40 px-3.5 font-mono text-[0.625rem] text-ink-faint">
           {status}
         </div>
       ) : null}
