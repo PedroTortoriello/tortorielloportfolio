@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Info } from "lucide-react";
-import { BrowserFrame, PhoneFrame } from "@/components/ui/browser-frame";
+import { BrowserFrame } from "@/components/ui/browser-frame";
+import { IPhone } from "@/components/ui/iphone";
 import { nichesByCount, shot, type LandingPage } from "@/lib/landing-pages";
 
 const host = (url: string) => url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
@@ -34,9 +35,7 @@ export function LpShowcase({
             />
           </BrowserFrame>
         </a>
-        <PhoneFrame className="absolute bottom-0 right-0 w-[26%] min-w-[6.5rem] max-w-[10rem]">
-          <Image src={shot(lp.slug, "mobile")} alt="" width={780} height={1688} sizes="160px" className="h-auto w-full" />
-        </PhoneFrame>
+        <IPhone src={shot(lp.slug, "mobile")} url={lp.url} sizes="170px" className="absolute bottom-0 right-0 w-[27%] min-w-[7rem] max-w-[10.5rem]" />
       </div>
 
       <div data-reveal style={d(100)} className={`lg:col-span-5 ${flip ? "lg:order-1" : ""}`}>

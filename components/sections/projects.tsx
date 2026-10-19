@@ -2,7 +2,8 @@ import Image from "next/image";
 import { ArrowUpRight, Info } from "lucide-react";
 import { SectionHeader } from "@/components/ui/section-header";
 import { TextLink } from "@/components/ui/button";
-import { BrowserFrame, PhoneFrame } from "@/components/ui/browser-frame";
+import { BrowserFrame } from "@/components/ui/browser-frame";
+import { IPhone } from "@/components/ui/iphone";
 import { CodeLines } from "@/components/ui/code";
 import { Window } from "@/components/ui/window";
 import { GithubIcon } from "@/components/ui/icons";
@@ -162,16 +163,13 @@ function CaseNoivar() {
               className="h-auto w-full"
             />
           </BrowserFrame>
-          <PhoneFrame className="absolute -bottom-10 -right-2 hidden w-[11.5rem] rotate-0 sm:block lg:-right-8">
-            <Image
-              src="/projects/noivar/presentes-pix.webp"
-              alt="Tela de presente em dinheiro do Noivar, com valor e botão Gerar Pix"
-              width={704}
-              height={1070}
-              sizes="184px"
-              className="h-auto w-full"
-            />
-          </PhoneFrame>
+          <IPhone
+            src="/projects/noivar/pix-modal-mobile.jpg"
+            url="https://noivar.vercel.app"
+            alt="Noivar no celular: modal de presente em dinheiro com valor e botão Gerar Pix"
+            sizes="192px"
+            className="absolute -bottom-12 -right-2 hidden w-[12rem] sm:block lg:-right-3"
+          />
           <p className="mt-4 text-[0.75rem] text-ink-faint sm:mt-14">Demo pública do produto, com casal fictício.</p>
         </div>
 

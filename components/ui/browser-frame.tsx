@@ -20,13 +20,3 @@ export function BrowserFrame({ url, children, className = "" }: { url: string; c
     </figure>
   );
 }
-
-export function PhoneFrame({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return (
-    <figure
-      className={`overflow-hidden rounded-[1.6rem] border border-line-strong bg-elevated p-1.5 shadow-[0_30px_60px_-20px_rgb(0_0_0/0.8),0_0_0_1px_rgb(255_255_255/0.03)_inset] ${className}`}
-    >
-      <div className="overflow-hidden rounded-[1.2rem]">{children}</div>
-    </figure>
-  );
-}

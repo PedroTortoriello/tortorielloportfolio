@@ -251,13 +251,6 @@ export const moreProjects: IndexEntry[] = [
     links: [{ label: "Código", href: "https://github.com/PedroFTortoriello/speakermatch", kind: "code" }],
   },
   {
-    title: "OrionLeads",
-    kind: "SaaS · coautoria",
-    text: "Prospecção B2B: desenvolvi a cobrança por assinatura, o motor de campanhas por e-mail e WhatsApp e as automações agendadas de captação.",
-    stack: "Next.js · TypeScript · Prisma · PostgreSQL",
-    links: [{ label: "orion-leads.vercel.app", href: "https://orion-leads.vercel.app/login", kind: "live" }],
-  },
-  {
     title: "Virei chefe na logística",
     kind: "PWA · treinamento",
     text: "Jogo de avaliação de um treinamento de liderança: funciona offline e retoma a sessão no ponto exato, com painel do instrutor, QR Code em modo projeção e certificado desenhado em Canvas.",
