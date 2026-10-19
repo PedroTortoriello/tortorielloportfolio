@@ -1,129 +1,62 @@
-# Portfolio Pedro Tortoriello
+# Portfolio · Pedro Tortoriello
 
-Portfolio profissional desenvolvido para apresentar a atuação de Pedro Tortoriello como Engenheiro de Software Full Stack, com foco em sistemas SaaS, automações, integrações, produtos digitais e soluções web sob medida.
+Portfólio de **Pedro Tortoriello — Software Engineer | Full Stack Development & Automation**.
+Direção visual "Technical Elegance": o site é um ambiente de engenharia em sessão (terminal, editor,
+grafos de arquitetura, ciclo de requisição, linha do tempo em formato de git graph, pipeline de CI),
+mostrando trabalho real.
 
-O projeto foi construído com Next.js, React, TypeScript e Tailwind CSS, trazendo uma experiência visual moderna, responsiva e orientada à conversão, com seções para posicionamento profissional, diferenciais, projetos, stack técnica e contato direto via WhatsApp.
+## Stack
 
-## Visão geral
+Next.js 16 (App Router, tudo estático) · React 19 · TypeScript · Tailwind CSS 4 · Motion · Geist.
+Sem bibliotecas de gráficos: diagramas em SVG, fundo do hero em `<canvas>`, highlight de código próprio
+(server-side, zero JS).
 
-Este portfolio funciona como uma vitrine comercial e técnica. A proposta é comunicar experiência, especialidades e projetos de forma clara para empresas, clientes e parceiros que buscam desenvolvimento de sistemas, SaaS, automações e aplicações web.
+## Rotas
 
-Entre os destaques estão:
+| Rota | Conteúdo |
+| --- | --- |
+| `/` | Hero, cases de engenharia, jornada, stack, método, landing pages, contato |
+| `/landing-pages` | Índice de todas as LPs por nicho |
+| `/landing-pages/[nicho]` | Página estática por nicho (`generateStaticParams`), com metadata e JSON-LD próprios |
+| `/opengraph-image`, `/sitemap.xml`, `/robots.txt`, `/icon.svg` | SEO técnico |
 
-- Hero section com posicionamento profissional e chamadas para ação.
-- Navegação fixa com links internos para as principais seções.
-- Marquee animado com tecnologias e áreas de atuação.
-- Seção de experiência com prova de valor e diferenciais.
-- Lista de projetos com cards, tags, resultados e links externos.
-- Stack técnica agrupada por categoria.
-- CTA final para contato via WhatsApp.
-- Layout responsivo com identidade visual dark, gradientes e animações sutis.
+## Onde editar o conteúdo
 
-## Tecnologias
+Todo o conteúdo vem de arquivos de dados. **Regra:** nada além do que o currículo e os repositórios confirmam.
 
-- [Next.js](https://nextjs.org/)
-- [React](https://react.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Motion](https://motion.dev/)
-- [ESLint](https://eslint.org/)
+- `lib/data.ts`: perfil, navegação, especialidades, script do terminal, experiência (do CV), formação,
+  stack por domínio (com o uso confirmado e onde aparece) e o método.
+- `lib/projects.ts`: os quatro cases (com grafos de arquitetura) e a lista "Também construí".
+  Trabalho feito em dupla fica marcado em `role` e `note`.
+- `lib/landing-pages.ts`: nichos e LPs. Para adicionar uma LP: inclua o item com `niche` igual ao `slug`
+  de um nicho e salve os prints em `public/lps/<slug>-desktop.jpg` (1440×900) e
+  `public/lps/<slug>-mobile.jpg` (390×844 @2x). Um nicho novo gera a rota sozinho no próximo build.
+- `public/cv-pedro-tortoriello.pdf`: currículo aberto pelo botão "Ver currículo".
 
-## Estrutura do projeto
-
-```txt
-.
-├── app/
-│   ├── globals.css
-│   ├── layout.tsx
-│   └── page.tsx
-├── components/
-│   ├── magnetic-button.tsx
-│   ├── portfolio-experience.tsx
-│   └── reveal.tsx
-├── lib/
-│   └── data.ts
-├── next.config.ts
-├── package.json
-└── tsconfig.json
-```
-
-## Como rodar localmente
-
-Clone o repositório e instale as dependências:
+## Rodar
 
 ```bash
 npm install
-```
-
-Inicie o servidor de desenvolvimento:
-
-```bash
 npm run dev
 ```
 
-Acesse no navegador:
-
-```txt
-http://localhost:3000
-```
-
-## Scripts disponíveis
+## Scripts
 
 ```bash
-npm run dev
+npm run build   # build de produção (gera as rotas estáticas)
+npm run lint    # ESLint
+npx tsc --noEmit
+node scripts/check-pix.ts   # self-check do gerador BR Code usado no case Noivar
 ```
-
-Executa o projeto em modo de desenvolvimento.
-
-```bash
-npm run build
-```
-
-Gera a versão de produção.
-
-```bash
-npm run start
-```
-
-Executa a aplicação após o build.
-
-```bash
-npm run lint
-```
-
-Executa a verificação de lint do projeto.
-
-## Personalização
-
-As principais informações do portfolio ficam centralizadas em:
-
-```txt
-lib/data.ts
-```
-
-Nesse arquivo é possível alterar:
-
-- Nome, cargo, localização e link de contato.
-- Headline e resumo profissional.
-- Estatísticas exibidas na hero section.
-- Diferenciais e processo de trabalho.
-- Projetos, categorias, resultados, módulos, tags e URLs.
-- Tecnologias exibidas na seção de stack.
 
 ## Deploy
 
-O projeto pode ser publicado facilmente na [Vercel](https://vercel.com/), plataforma recomendada para aplicações Next.js.
+Defina `NEXT_PUBLIC_SITE_URL` com o domínio final (usado em canonical, Open Graph, sitemap e JSON-LD).
+Na Vercel, sem a variável, usa a URL de produção do projeto; fora dela o build avisa e cai em
+`http://localhost:3000`. O domínio `pedrotortoriello.com` ainda não está registrado.
 
-Fluxo sugerido:
+## Acessibilidade e movimento
 
-1. Subir o projeto para um repositório no GitHub.
-2. Importar o repositório na Vercel.
-3. Manter o framework como Next.js.
-4. Executar o deploy.
-
-## Autor
-
-Desenvolvido por Pedro Tortoriello.
-
-- LinkedIn: [pedro-tortoriello](https://www.linkedin.com/in/pedro-tortoriello/)
-- Portfolio: projeto pessoal de apresentação profissional
+Conteúdo visível sem JavaScript (o movimento só é ativado quando o JS roda), navegação por teclado
+nos diagramas e tooltips, e `prefers-reduced-motion` respeitado em todas as animações (canvas, pulsos,
+terminal e revelações).

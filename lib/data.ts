@@ -1,426 +1,338 @@
-﻿export const profile = {
+﻿// Everything on the page comes from Pedro's CV or from the project repositories.
+// Nothing here is a metric or claim that cannot be traced back to one of them.
+
+export const profile = {
   name: "Pedro Tortoriello",
+  fullName: "Pedro Gabriel de Freitas Tortoriello",
   initials: "PT",
-  role: "AI & Automation Specialist · Full Stack Developer",
-  roles: [
-    "Full Stack Developer",
-    "AI & Automation Specialist",
-    "SaaS Builder",
-    "Consultor de Automação",
-  ],
-  location: "São Paulo, Brasil",
+  role: "Software Engineer",
+  focus: "Full Stack Development & Automation",
+  location: "Salto, SP · Brasil",
+  availability: "Disponível para atuação 100% remota",
+  since: 2021,
+  email: "pedrooofreitas@gmail.com",
+  linkedin: "https://www.linkedin.com/in/pedro-tortoriello/",
+  github: "https://github.com/PedroFTortoriello",
+  githubHandle: "PedroFTortoriello",
   whatsapp: "https://wa.me/5511942716215",
   whatsappLabel: "+55 11 94271-6215",
-  availability: "Disponível para novos projetos",
-
-  headline: "Automações inteligentes e sistemas que escalam o seu negócio.",
-  subheadline:
-    "Especialista em IA aplicada, automação de processos e desenvolvimento full stack. Tiro o trabalho manual do caminho e entrego produtos digitais que rodam sozinhos.",
-
-  summary:
-    "Atuo do diagnóstico à publicação: desenho fluxos, modelo dados, desenvolvo interfaces, APIs e automações, e conecto IA onde ela gera resultado real. O foco nunca é o código pelo código, é a operação que passa a funcionar com mais controle.",
-
-  heroImage:
-    "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1800&q=85",
-  aboutImage:
-    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=85",
+  cv: "/cv-pedro-tortoriello.pdf",
+  headline: ["Engenharia de software.", "Sistemas que resolvem problemas reais."],
+  description:
+    "Desenvolvo aplicações web, APIs e automações que conectam tecnologia, processos e resultados.",
 } as const;
 
-export const metrics = [
-  { value: "20+", label: "sistemas e websites em produção" },
-  { value: "5 anos", label: "construindo produtos digitais" },
-] as const;
-
-// Qualitative differentiators shown beside the metrics (not faux-numbers).
-export const qualities = [
-  "Comunicação direta",
-  "IA e automação no núcleo",
-] as const;
-
 export const nav = [
-  { href: "#servicos", label: "Serviços" },
-  { href: "#projetos", label: "Projetos" },
-  { href: "#processo", label: "Processo" },
-  { href: "#stack", label: "Stack" },
+  { id: "projetos", href: "/#projetos", label: "Projetos" },
+  { id: "jornada", href: "/#jornada", label: "Jornada" },
+  { id: "stack", href: "/#stack", label: "Stack" },
+  { id: "metodo", href: "/#metodo", label: "Método" },
+  { id: "landing-pages", href: "/#landing-pages", label: "LPs" },
+  { id: "contato", href: "/#contato", label: "Contato" },
 ] as const;
 
-export const services = [
+export const specialties = [
   {
-    icon: "Brain",
-    title: "Inteligência Artificial",
-    summary:
-      "Agentes e atendimento com IA que respondem, qualificam e executam tarefas dentro da sua operação, integrados aos seus dados e canais.",
-    capabilities: [
-      "Agentes de IA sob medida",
-      "Atendimento e suporte automatizado",
-      "Chatbots integrados ao WhatsApp",
-      "IA aplicada a processos de negócio",
-    ],
+    icon: "layers",
+    title: "Full Stack Development",
+    note: "Interface, API e banco no mesmo raciocínio",
   },
   {
-    icon: "Workflow",
-    title: "Automação de Processos",
-    summary:
-      "Fluxos que conectam suas ferramentas e eliminam trabalho manual repetitivo, do lead ao faturamento, sem planilha no meio do caminho.",
-    capabilities: [
-      "Workflows em n8n, Make e Zapier",
-      "Integrações entre sistemas e APIs",
-      "Sincronização de dados e CRMs",
-      "Disparos e rotinas automáticas",
-    ],
+    icon: "plug",
+    title: "APIs & Integrations",
+    note: "Contratos, webhooks e serviços de terceiros",
   },
   {
-    icon: "Boxes",
-    title: "Desenvolvimento de Software",
-    summary:
-      "SaaS, sistemas web e APIs construídos para durar: arquitetura limpa, performance e interfaces que as pessoas conseguem usar de verdade.",
-    capabilities: [
-      "Plataformas SaaS do zero",
-      "Sistemas web sob medida",
-      "APIs e integrações robustas",
-      "Dashboards e painéis operacionais",
-    ],
+    icon: "workflow",
+    title: "Automation Engineering",
+    note: "Workers, crons, filas e agentes de IA",
   },
   {
-    icon: "LayoutTemplate",
-    title: "Websites e Landing Pages",
-    summary:
-      "Sites institucionais e landing pages de alta conversão: rápidos, responsivos e construídos para posicionar a marca e gerar contato qualificado.",
-    capabilities: [
-      "Sites institucionais sob medida",
-      "Landing pages focadas em conversão",
-      "SEO técnico e performance",
-      "Design responsivo e acessível",
-    ],
+    icon: "boxes",
+    title: "SaaS Development",
+    note: "Multi-tenant, planos, cobrança e permissões",
   },
 ] as const;
 
-export const differentiators = [
-  {
-    title: "Diagnóstico antes da execução",
-    text: "Cada decisão técnica parte do negócio, do fluxo operacional e do objetivo real. Não desenvolvo no escuro.",
-  },
-  {
-    title: "Arquitetura preparada para evolução",
-    text: "Front-end, back-end e dados estruturados para reduzir retrabalho, facilitar manutenção e crescer sem reescrever tudo.",
-  },
-  {
-    title: "Entrega ponta a ponta",
-    text: "Do diagnóstico ao deploy: interfaces responsivas, APIs consistentes, automações e IA funcionando em produção.",
-  },
+// Hero terminal: a short, honest session. It types; it does not execute anything.
+export const terminalScript = [
+  { kind: "cmd", text: "whoami" },
+  { kind: "out", text: "Pedro Tortoriello — Software Engineer" },
+  { kind: "cmd", text: "cat focus.json" },
+  { kind: "json", text: "{" },
+  { kind: "json", text: '  "role": "Full Stack Development & Automation",' },
+  { kind: "json", text: '  "stack": ["TypeScript", "React", "Next.js", "Node.js"],' },
+  { kind: "json", text: '  "builds": ["SaaS", "APIs", "integrações", "automações"],' },
+  { kind: "json", text: '  "since": 2021' },
+  { kind: "json", text: "}" },
 ] as const;
 
-export const projects = [
-  {
-    slug: "orion-leads",
-    group: "SaaS",
-    title: "OrionLeads",
-    category: "Prospecção B2B com IA",
-    year: "2026",
-    outcome: "Motor comercial com CRM, automações e WhatsApp para gerar pipeline previsível.",
-    description:
-      "Plataforma de prospecção B2B criada para estruturar captação recorrente, organizar cadências e dar visibilidade real ao pipeline comercial.",
-    details:
-      "Concentra base de leads, campanhas, automações e acompanhamento operacional em uma interface pensada para times que precisam escalar sem perder controle.",
-    modules: ["Cadências", "Pipeline CRM", "WhatsApp", "Campanhas"],
-    tags: ["B2B Sales", "CRM", "Automação", "WhatsApp"],
-    url: "https://orion-leads.vercel.app/",
-  },
-  {
-    slug: "exo-clinic",
-    group: "SaaS",
-    title: "Exo Clinic",
-    category: "SaaS para clínicas e consultórios",
-    year: "2026",
-    outcome: "Agenda, pacientes, financeiro e rotina clínica unificados, com IA no atendimento.",
-    description:
-      "SaaS para clínicas e consultórios com operação unificada de agendamentos, pacientes, equipe, procedimentos e financeiro.",
-    details:
-      "Reduz a dependência de controles dispersos e entrega uma experiência mais confiável para recepção, profissionais e gestão, com apoio de automações e IA.",
-    modules: ["Agenda clínica", "CRM de pacientes", "Financeiro", "Agente de IA"],
-    tags: ["Saúde", "Agenda", "Financeiro", "WhatsApp"],
-    url: "https://exo-clinic.exocompany.com.br/login",
-  },
-  {
-    slug: "exo-barber",
-    group: "SaaS",
-    title: "BarberFlow",
-    category: "SaaS para barbearias",
-    year: "2026",
-    outcome: "Agenda, clientes, caixa e recorrência organizados em um fluxo único.",
-    description:
-      "SaaS para barbearias desenhado para centralizar agendamentos, relacionamento com clientes, serviços, comissões e fechamento diário.",
-    details:
-      "Combina agenda online, CRM, financeiro e automações via WhatsApp para profissionalizar a operação e reduzir falhas no dia a dia.",
-    modules: ["Agenda online", "CRM de clientes", "Financeiro", "Agente de IA"],
-    tags: ["Barbearia", "Agenda", "Financeiro", "WhatsApp"],
-    url: "https://exo-barber.exocompany.com.br/",
-  },
-  {
-    slug: "bc-distributor",
-    group: "Site",
-    title: "B&C Distribution Center",
-    category: "Distribuição atacadista de cosméticos",
-    year: "2026",
-    outcome: "Presença institucional B2B orientada a catálogo atacadista e contato comercial direto.",
-    description:
-      "Website para distribuidora de beauty supply e body care com apresentação de marcas, posicionamento internacional e caminho claro para contato comercial.",
-    details:
-      "Reforça credibilidade B2B, organiza o portfólio de marcas e aproxima revendedores e compradores com navegação objetiva e mensagem comercial direta.",
-    modules: ["Portfólio", "Atacado", "Contato", "Presença B2B"],
-    tags: ["React", "Vite", "B2B", "Wholesale"],
-    url: "https://bcdistributor.vercel.app/",
-  },
-  {
-    slug: "achei-studios",
-    group: "Marketplace",
-    title: "Achei Studios",
-    category: "Marketplace para locação audiovisual",
-    year: "2026",
-    outcome: "Descoberta e locação de estúdios, equipamentos e serviços criativos em uma só plataforma.",
-    description:
-      "Marketplace do setor audiovisual para conectar demanda a estúdios, equipamentos e serviços criativos com uma busca mais direta.",
-    details:
-      "Organiza a oferta, reduz fricção na descoberta e prepara a plataforma para crescimento de inventário, geolocalização e operação multi-perfil.",
-    modules: ["Busca", "Estúdios", "Equipamentos", "Perfis"],
-    tags: ["Marketplace", "Audiovisual", "Locação", "Geolocalização"],
-    url: "https://acheistudios.com",
-  },
-  {
-    slug: "lucinei-m-campos",
-    group: "Site",
-    title: "Lucinei M. Campos",
-    category: "Autoridade literária e agenda escolar",
-    year: "2026",
-    outcome: "Presença autoral que organiza obra, agenda de visitas e relacionamento com leitores e escolas.",
-    description:
-      "Site oficial para escritor e professor com foco em consolidar autoridade, apresentar livros e facilitar convites para eventos e visitas escolares.",
-    details:
-      "Equilibra posicionamento pessoal, catálogo editorial e contato institucional para aproximar leitores, escolas e organizadores com mais clareza.",
-    modules: ["Livros", "Eventos", "Blog", "Contato"],
-    tags: ["Autoridade", "Livros", "Eventos", "SEO"],
-    url: "https://lucineimcampos.vercel.app/",
-  },
-] as const;
-
-export const results = [
-  {
-    metric: "3 SaaS",
-    label: "em produção e uso real",
-    text: "OrionLeads, Exo Clinic e BarberFlow: plataformas completas com agenda, CRM, financeiro e IA operando no dia a dia de empresas reais.",
-  },
-  {
-    metric: "1 sistema",
-    label: "no lugar de planilhas e apps soltos",
-    text: "Processos que viviam espalhados em WhatsApp, planilhas e cadernos passam a rodar dentro de um único sistema com automação e visibilidade.",
-  },
-  {
-    metric: "24/7",
-    label: "atendimento com IA que qualifica e responde",
-    text: "Agentes de IA integrados ao WhatsApp respondem, qualificam e encaminham, reduzindo trabalho manual da equipe sem perder o tom do negócio.",
-  },
-] as const;
-
-const technologyIcon = (slug: string, color = "ffffff") =>
-  `https://cdn.simpleicons.org/${slug}/${color}`;
-
-export type Technology = {
-  name: string;
-  category: string;
-  logo: string;
-  detail: string;
+export type Experience = {
+  id: string;
+  lane: "products" | "company";
+  period: string;
+  company: string;
+  role: string;
+  place: string;
+  summary: string;
+  details: string[];
+  systems: string[];
+  tech: string[];
+  current?: boolean;
 };
 
-export const technologies: Technology[] = [
-  // IA & Automação (em destaque para o posicionamento)
+export const experience: Experience[] = [
   {
-    name: "OpenAI",
-    category: "IA & Automação",
-    logo: "/logos/openai.svg",
-    detail: "Modelos de linguagem para agentes, atendimento e geração de conteúdo.",
+    id: "freelance",
+    lane: "products",
+    period: "2021 — atual",
+    company: "Freelance e produtos próprios",
+    role: "Desenvolvedor Full Stack",
+    place: "Autônomo · Remoto",
+    current: true,
+    summary:
+      "Aplicações web sob demanda para clientes e produtos próprios, do levantamento de requisitos e do desenho da arquitetura até a publicação, a documentação e o suporte pós-entrega.",
+    details: [
+      "Produtos próprios em React, Next.js e TypeScript: backoffice e SaaS com controle de acesso por perfil na interface e na API, pagamentos (Pix, Stripe) e IA aplicada.",
+      "Biblioteca de componentes compartilhados em React e TypeScript (Tailwind CSS e Radix UI), reutilizada entre os produtos para padronizar a interface.",
+      "Testes automatizados dos fluxos críticos com Jest e React Testing Library (unidade e componentes) e Cypress (ponta a ponta).",
+      "Código e documentação técnica no GitHub, com escopo, estágio de maturidade e limitações de cada sistema descritos de forma explícita.",
+    ],
+    systems: ["SaaS multi-tenant", "Backoffice", "Pagamentos", "IA aplicada"],
+    tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Radix UI", "Jest", "Cypress"],
   },
   {
-    name: "Claude",
-    category: "IA & Automação",
-    logo: technologyIcon("claude"),
-    detail: "IA da Anthropic aplicada a raciocínio, agentes e automações complexas.",
+    id: "addon",
+    lane: "company",
+    period: "set/2025 — fev/2026",
+    company: "Addon Software",
+    role: "Desenvolvedor de Software",
+    place: "Remoto · Brasil",
+    summary:
+      "Funcionalidades end-to-end da plataforma com TypeScript, Node.js e APIs REST, em um time altamente colaborativo.",
+    details: [
+      "Desenvolvi e mantive funcionalidades end-to-end da plataforma com TypeScript, Node.js e APIs REST.",
+      "Traduzi, com stakeholders e o time, requisitos de negócio e de produto em soluções técnicas, com documentação de escopo e das entregas.",
+      "Sustentei o produto em produção: análise de logs, troubleshooting e correção de incidentes, priorizados por criticidade e impacto no usuário.",
+      "Elevei a manutenibilidade da arquitetura com refatoração contínua e code review em Git/GitHub.",
+    ],
+    systems: ["Plataforma web", "Sustentação em produção"],
+    tech: ["TypeScript", "Node.js", "APIs REST", "Git"],
   },
   {
-    name: "n8n",
-    category: "IA & Automação",
-    logo: technologyIcon("n8n", "EA4B71"),
-    detail: "Orquestração de automações e integração entre sistemas e IA.",
+    id: "1callclosers",
+    lane: "company",
+    period: "jan/2025 — set/2025",
+    company: "1 Call Closers",
+    role: "Desenvolvedor de Software",
+    place: "Califórnia, EUA · Remoto",
+    summary:
+      "Aplicações web e automações entre plataformas para uma empresa da Califórnia, em time 100% remoto e distribuído.",
+    details: [
+      "Desenvolvi aplicações web com Next.js, React, TypeScript e Node.js, consumindo APIs REST integradas a sistemas de terceiros.",
+      "Projetei e implementei automações e integrações (n8n, Zapier e Make) via APIs REST, eliminando tarefas manuais em vendas, agendamento e apuração de métricas operacionais.",
+      "Comunicação escrita e reuniões em inglês, com rotina ágil de entregas.",
+    ],
+    systems: ["Aplicações web", "Automação de vendas e agenda"],
+    tech: ["Next.js", "React", "TypeScript", "Node.js", "n8n", "Zapier", "Make"],
   },
   {
-    name: "Make",
-    category: "IA & Automação",
-    logo: technologyIcon("make"),
-    detail: "Automação visual de fluxos de trabalho entre plataformas.",
+    id: "four",
+    lane: "company",
+    period: "dez/2023 — dez/2024",
+    company: "Four Tecnologia",
+    role: "Estagiário de Desenvolvimento",
+    place: "Indaiatuba, SP",
+    summary:
+      "Interfaces web responsivas e serviços de back-end, com integrações entre sistemas corporativos.",
+    details: [
+      "Desenvolvi interfaces responsivas com React, Next.js e Tailwind CSS, e serviços de back-end com Node.js, MongoDB e APIs REST.",
+      "Implementei integrações entre sistemas corporativos, participando da validação, dos testes e da sustentação.",
+      "Cerimônias e fluxo ágil (Scrum/Kanban), com versionamento e code review no GitHub.",
+    ],
+    systems: ["Sistemas corporativos", "Integrações"],
+    tech: ["React", "Next.js", "Tailwind CSS", "Node.js", "MongoDB"],
   },
-  {
-    name: "Zapier",
-    category: "IA & Automação",
-    logo: technologyIcon("zapier", "FF4A00"),
-    detail: "Integração rápida entre centenas de ferramentas SaaS.",
-  },
+];
 
-  // Frontend
-  {
-    name: "Next.js",
-    category: "Frontend",
-    logo: technologyIcon("nextdotjs"),
-    detail: "Aplicações React com SSR, rotas e performance de borda.",
-  },
-  {
-    name: "React",
-    category: "Frontend",
-    logo: technologyIcon("react", "61DAFB"),
-    detail: "Interfaces modernas com componentes reutilizáveis.",
-  },
-  {
-    name: "TypeScript",
-    category: "Frontend",
-    logo: technologyIcon("typescript", "3178C6"),
-    detail: "Tipagem estática para código seguro e escalável.",
-  },
-  {
-    name: "Tailwind CSS",
-    category: "Frontend",
-    logo: technologyIcon("tailwindcss", "06B6D4"),
-    detail: "Estilização consistente para interfaces modernas.",
-  },
+export const education = {
+  course: "Tecnólogo em Análise e Desenvolvimento de Sistemas",
+  school: "FACENS — Centro Universitário Facens",
+  place: "Sorocaba, SP",
+  status: "Concluído",
+  languages: "Português nativo · Inglês intermediário · Espanhol básico",
+} as const;
 
-  // Backend
-  {
-    name: "Node.js",
-    category: "Backend",
-    logo: technologyIcon("nodedotjs", "5FA04E"),
-    detail: "APIs e serviços escaláveis em JavaScript/TypeScript.",
-  },
-  {
-    name: "Express",
-    category: "Backend",
-    logo: technologyIcon("express"),
-    detail: "Framework minimalista para APIs e serviços backend.",
-  },
-  {
-    name: "REST APIs",
-    category: "Backend",
-    logo: technologyIcon("openapiinitiative", "6BA539"),
-    detail: "APIs robustas e integrações entre sistemas.",
-  },
-  {
-    name: "Prisma",
-    category: "Backend",
-    logo: technologyIcon("prisma"),
-    detail: "ORM com tipagem forte sobre TypeScript.",
-  },
+// Stack: grouped by the role each area plays in a running system.
+// `use` is only written when a project or the CV confirms it.
+export type Tech = {
+  name: string;
+  icon?: string; // simpleicons slug or local path
+  glyph?: "webhook" | "rest" | "cron" | "key" | "cloud" | "test";
+  use: string;
+  where: string[];
+};
 
-  // Dados
-  {
-    name: "PostgreSQL",
-    category: "Dados",
-    logo: technologyIcon("postgresql", "4169E1"),
-    detail: "Banco relacional robusto para sistemas e SaaS.",
-  },
-  {
-    name: "Supabase",
-    category: "Dados",
-    logo: technologyIcon("supabase", "3FCF8E"),
-    detail: "Backend com auth, storage e realtime.",
-  },
-  {
-    name: "MongoDB",
-    category: "Dados",
-    logo: technologyIcon("mongodb", "47A248"),
-    detail: "Banco NoSQL flexível, orientado a documentos.",
-  },
-  {
-    name: "Redis",
-    category: "Dados",
-    logo: technologyIcon("redis", "FF4438"),
-    detail: "Cache em memória e filas para automação.",
-  },
-  {
-    name: "Firebase",
-    category: "Dados",
-    logo: technologyIcon("firebase", "FFCA28"),
-    detail: "Banco NoSQL e sincronização em tempo real.",
-  },
+export type StackDomain = {
+  id: string;
+  title: string;
+  role: string;
+  items: Tech[];
+};
 
-  // Infra & Cloud
-  {
-    name: "AWS",
-    category: "Infra & Cloud",
-    logo: "/logos/aws.svg",
-    detail: "Infraestrutura escalável e serviços em nuvem.",
-  },
-  {
-    name: "Vercel",
-    category: "Infra & Cloud",
-    logo: technologyIcon("vercel"),
-    detail: "Deploy contínuo e edge otimizado para Next.js.",
-  },
-  {
-    name: "Docker",
-    category: "Infra & Cloud",
-    logo: technologyIcon("docker", "2496ED"),
-    detail: "Containerização para ambientes consistentes.",
-  },
-  {
-    name: "Git",
-    category: "Infra & Cloud",
-    logo: technologyIcon("git", "F05032"),
-    detail: "Versionamento e colaboração.",
-  },
-] as const;
+const si = (slug: string) => `https://cdn.simpleicons.org/${slug}/ffffff`;
 
-export const process = [
+export const stack: StackDomain[] = [
   {
-    title: "Descoberta",
-    text: "Entendo o negócio, a operação e onde está o gargalo real antes de propor qualquer solução.",
+    id: "frontend",
+    title: "Frontend",
+    role: "onde a pessoa usa o sistema",
+    items: [
+      { name: "React", icon: si("react"), use: "Base das interfaces web dos projetos, próprios e em dupla.", where: ["Noivar", "Núcleo", "CadenceFlow"] },
+      { name: "Next.js", icon: si("nextdotjs"), use: "App Router com Server Components, Server Actions e render por slug com SEO.", where: ["Noivar", "CadenceFlow", "Agente SDR"] },
+      { name: "TypeScript", icon: si("typescript"), use: "Tipagem de ponta a ponta, do schema ao componente.", where: ["Todos os projetos"] },
+      { name: "Tailwind CSS", icon: si("tailwindcss"), use: "Design tokens e interfaces responsivas.", where: ["Noivar", "CadenceFlow", "Núcleo"] },
+      { name: "Radix UI", icon: si("radixui"), use: "Primitivos acessíveis da minha biblioteca de componentes.", where: ["Núcleo", "Freelance"] },
+      { name: "React Native", icon: si("expo"), use: "Um código-base Expo para iOS, Android e web.", where: ["My Grace Journey"] },
+    ],
   },
   {
-    title: "Planejamento",
-    text: "Defino escopo, fluxos e arquitetura de dados, com prioridades claras e entregáveis mensuráveis.",
+    id: "apis",
+    title: "APIs & Integrations",
+    role: "como os sistemas conversam",
+    items: [
+      { name: "REST APIs", glyph: "rest", use: "Rotas validadas por schema, com autenticação e papel por rota (Núcleo); funcionalidades end-to-end com Node.js e APIs REST (Addon).", where: ["Núcleo", "Addon Software"] },
+      { name: "Webhooks", glyph: "webhook", use: "Assinatura HMAC, comparação em tempo constante e idempotência.", where: ["Noivar", "Núcleo", "Agente SDR"] },
+      { name: "WhatsApp Cloud API", icon: si("whatsapp"), use: "Prova de origem no webhook de entrada da Meta (CadenceFlow), entrada via CadenceFlow com token interno (Agente SDR) e envio por organização (Núcleo).", where: ["CadenceFlow", "Agente SDR", "Núcleo"] },
+      { name: "Mercado Pago", icon: si("mercadopago"), use: "PIX, boleto e assinatura com reconciliação de pendentes (Núcleo); cartão via OAuth na conta do próprio casal (Noivar).", where: ["Núcleo", "Noivar"] },
+      { name: "Stripe", icon: si("stripe"), use: "Checkout e webhooks de assinatura verificados.", where: ["My Grace Journey", "CadenceFlow"] },
+      { name: "Pix BR Code", icon: si("pix"), use: "Payload EMV montado no próprio app, com CRC16.", where: ["Noivar"] },
+    ],
   },
   {
-    title: "Desenvolvimento",
-    text: "Construo interfaces, APIs e a base do sistema com código limpo, tipado e preparado para crescer.",
+    id: "backend",
+    title: "Backend",
+    role: "onde a regra de negócio vive",
+    items: [
+      { name: "Node.js", icon: si("nodedotjs"), use: "APIs, workers e rotas de cron.", where: ["Núcleo", "CadenceFlow", "Agente SDR"] },
+      { name: "Express", icon: si("express"), use: "API em camadas Repository → Service → Controller.", where: ["Núcleo"] },
+      { name: "Prisma", icon: si("prisma"), use: "ORM tipado com queries escopadas por tenant: organização no Núcleo, usuário no JobHunter AI.", where: ["Núcleo", "CadenceFlow", "JobHunter AI"] },
+      { name: "Zod", icon: si("zod"), use: "Contratos compartilhados entre API e front; validação da saída da IA.", where: ["Núcleo", "JobHunter AI"] },
+      { name: "JWT", icon: si("jsonwebtokens"), use: "Access token com papel e organização e refresh opaco rotacionado (Núcleo); JWT em cookie httpOnly (JobHunter AI).", where: ["Núcleo", "JobHunter AI"] },
+    ],
   },
   {
-    title: "Automação & IA",
-    text: "Conecto ferramentas, automatizo o trabalho repetitivo e aplico IA onde ela gera resultado direto.",
+    id: "data",
+    title: "Databases",
+    role: "onde o estado é garantido",
+    items: [
+      { name: "PostgreSQL", icon: si("postgresql"), use: "Constraints, triggers e filas com FOR UPDATE SKIP LOCKED.", where: ["Núcleo", "Noivar", "CadenceFlow"] },
+      { name: "Supabase", icon: si("supabase"), use: "Auth, Storage, RLS e Edge Functions.", where: ["Noivar", "My Grace Journey"] },
+      { name: "MongoDB", icon: si("mongodb"), use: "Serviços de back-end com Node.js.", where: ["Four Tecnologia"] },
+    ],
   },
   {
-    title: "Entrega",
-    text: "Valido em produção, ajusto com base no uso real e publico com performance e responsividade.",
+    id: "automation",
+    title: "Automation",
+    role: "o que roda sem ninguém clicar",
+    items: [
+      { name: "Workers & crons", glyph: "cron", use: "Outbox transacional, pg_cron e trava de execução única.", where: ["Núcleo", "Agente SDR"] },
+      { name: "n8n", icon: si("n8n"), use: "Automações entre plataformas via APIs REST.", where: ["1 Call Closers"] },
+      { name: "Zapier · Make", icon: si("zapier"), use: "Integrações em vendas, agendamento e métricas operacionais.", where: ["1 Call Closers"] },
+      { name: "Claude API", icon: si("anthropic"), use: "Saída estruturada com JSON Schema e prompt caching.", where: ["Noivar", "JobHunter AI"] },
+      { name: "OpenAI", icon: "/logos/openai.svg", use: "Redação e revisão de cláusulas de contrato.", where: ["Núcleo"] },
+      { name: "Gemini", icon: si("googlegemini"), use: "Mentor e devocionais gerados em modo JSON.", where: ["My Grace Journey"] },
+    ],
   },
   {
-    title: "Escala",
-    text: "Acompanho a evolução: novos módulos, otimizações e ajustes conforme a operação cresce.",
+    id: "infra",
+    title: "Infrastructure & Deployment",
+    role: "onde tudo isso roda",
+    items: [
+      { name: "Vercel", icon: si("vercel"), use: "Deploy, Cron e funções serverless.", where: ["Noivar", "Núcleo", "My Grace Journey"] },
+      { name: "Nginx · PM2", icon: si("nginx"), use: "Três instâncias PM2 atrás do Nginx; deploy com rollback de build.", where: ["CadenceFlow"] },
+      { name: "Docker", icon: si("docker"), use: "Build multi-stage e compose com Postgres, app e worker.", where: ["JobHunter AI"] },
+      { name: "GitHub Actions", icon: si("githubactions"), use: "Typecheck, self-checks e build no CI.", where: ["Núcleo"] },
+      { name: "AWS · GCP", glyph: "cloud", use: "Execução em nuvem de serviços distribuídos.", where: ["Experiência (CV)"] },
+      { name: "Testes", glyph: "test", use: "Vitest, Jest, React Testing Library e Cypress nos fluxos críticos.", where: ["Noivar", "JobHunter AI", "Freelance"] },
+    ],
   },
-] as const;
+];
 
-export const faq = [
+export type MethodStep = {
+  id: string;
+  title: string;
+  verb: string;
+  text: string;
+  evidence: { project: string; text: string };
+  concepts: string[];
+};
+
+export const method: MethodStep[] = [
   {
-    q: "Você atende projetos do zero ou também melhora sistemas que já existem?",
-    a: "Os dois. Construo produtos do zero (SaaS, sistemas, automações) e também entro em sistemas existentes para corrigir gargalos, integrar IA e preparar a arquitetura para escalar.",
+    id: "understand",
+    title: "Understand",
+    verb: "Entender",
+    text: "Começo pelo problema de negócio: quem usa, qual fluxo dói e o que precisa ser verdade em produção. Isso vira escopo e documentação que o time consegue adotar.",
+    evidence: {
+      project: "Addon Software",
+      text: "Requisitos de negócio e de produto traduzidos em soluções técnicas, com documentação de escopo e entregas.",
+    },
+    concepts: ["Requisitos → escopo", "Documentação técnica"],
   },
   {
-    q: "Que tipo de automação você costuma implementar?",
-    a: "Desde atendimento com IA no WhatsApp e qualificação de leads até integrações entre CRM, financeiro e ferramentas internas usando n8n, Make, Zapier e APIs sob medida. O objetivo é tirar o trabalho manual repetitivo da equipe.",
+    id: "architect",
+    title: "Architect",
+    verb: "Arquitetar",
+    text: "Separo responsabilidades e fixo contratos antes de implementar: camadas claras, schemas compartilhados e fronteiras explícitas entre serviços.",
+    evidence: {
+      project: "Núcleo",
+      text: "Repository → Service → Controller, com schemas Zod compartilhados entre a API e o front.",
+    },
+    concepts: ["Separação de responsabilidades", "Contratos bem definidos"],
   },
   {
-    q: "Como a IA entra nos projetos, na prática?",
-    a: "Sempre conectada a um resultado: um agente que responde e qualifica clientes, um fluxo que classifica e encaminha demandas, ou geração de conteúdo e relatórios. Tudo integrado aos seus dados e canais, com um objetivo claro.",
+    id: "build",
+    title: "Build",
+    verb: "Construir",
+    text: "Coloco as regras críticas onde ninguém consegue contorná-las: no servidor e no banco, não só na interface.",
+    evidence: {
+      project: "Noivar",
+      text: "Um trigger no Postgres impede publicar sem pagamento confirmado; RLS isola os dados de cada casal.",
+    },
+    concepts: ["Regras no servidor", "Manutenibilidade"],
   },
   {
-    q: "Trabalha com empresas de fora de São Paulo?",
-    a: "Sim. O trabalho é remoto e a comunicação acontece por WhatsApp e reuniões online, do diagnóstico à entrega.",
+    id: "integrate",
+    title: "Integrate",
+    verb: "Integrar",
+    text: "Integração é onde sistemas quebram. Valido a origem, trato reentregas e falhas, e centralizo os pontos de saída.",
+    evidence: {
+      project: "Núcleo",
+      text: "Outbox transacional com backoff exponencial, dead letter queue e idempotência por evento e por passo.",
+    },
+    concepts: ["Integração entre serviços", "Tratamento de erros"],
   },
   {
-    q: "Como começa um projeto?",
-    a: "Com uma conversa curta para entender o cenário. A partir daí eu monto um diagnóstico, proponho escopo e seguimos para o planejamento. É só chamar no WhatsApp.",
+    id: "deliver",
+    title: "Deliver",
+    verb: "Entregar",
+    text: "Entrego com rede de segurança: typecheck e checks no CI, deploy reversível e sustentação guiada por logs.",
+    evidence: {
+      project: "CadenceFlow",
+      text: "Rollback do build em segundos e portão de saúde no staging com rollback automático.",
+    },
+    concepts: ["Automação de processos", "Performance e escala quando aplicável"],
   },
+];
+
+// Illustrative only: rendered with an explicit "demonstração" label.
+export const buildDemo = [
+  { kind: "cmd", text: "npm run build" },
+  { kind: "dim", text: "> next build" },
+  { kind: "ok", text: "Compiled successfully" },
+  { kind: "ok", text: "Linting and checking validity of types" },
+  { kind: "ok", text: "Collecting page data" },
+  { kind: "ok", text: "Generating static pages" },
+  { kind: "dim", text: "○ (Static)  prerendered as static content" },
 ] as const;

@@ -2,109 +2,87 @@ import type { Metadata, Viewport } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Providers } from "@/components/ui/providers";
+import { ClientEffects } from "@/components/ui/client-effects";
+import { SiteHeader } from "@/components/sections/site-header";
+import { SiteFooter } from "@/components/sections/site-footer";
+import { profile } from "@/lib/data";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
-// Update to the production domain before deploy.
-const SITE_URL = "https://pedrotortoriello.com";
+const title = "Pedro Tortoriello | Software Engineer · Full Stack Development & Automation";
+const description =
+  "Software Engineer full stack: aplicações web, APIs, integrações e automações com TypeScript, React, Next.js e Node.js. Cases de engenharia, experiência e stack.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: {
-    default: "Pedro Tortoriello | IA, Automação e Desenvolvimento de Software",
-    template: "%s | Pedro Tortoriello",
-  },
-  description:
-    "Especialista em IA aplicada, automação de processos e desenvolvimento full stack. Construo SaaS, sistemas sob medida e automações que escalam negócios.",
+  title: { default: title, template: "%s | Pedro Tortoriello" },
+  description,
   keywords: [
-    "inteligência artificial",
-    "automação de processos",
-    "agentes de IA",
-    "n8n",
-    "make",
-    "zapier",
-    "desenvolvedor full stack",
-    "saas",
-    "next.js",
-    "react",
-    "consultor de automação",
     "Pedro Tortoriello",
+    "software engineer",
+    "desenvolvedor full stack",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "APIs",
+    "integrações",
+    "automação",
+    "SaaS",
+    "landing pages",
   ],
-  authors: [{ name: "Pedro Tortoriello" }],
-  creator: "Pedro Tortoriello",
+  authors: [{ name: profile.name, url: SITE_URL }],
+  creator: profile.name,
   alternates: { canonical: "/" },
-  openGraph: {
-    type: "website",
-    locale: "pt_BR",
-    url: SITE_URL,
-    siteName: "Pedro Tortoriello",
-    title: "Pedro Tortoriello | IA, Automação e Desenvolvimento de Software",
-    description:
-      "Automações inteligentes e sistemas que escalam o seu negócio. IA aplicada, automação de processos e desenvolvimento full stack.",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Pedro Tortoriello | IA, Automação e Software",
-    description:
-      "Automações inteligentes e sistemas que escalam o seu negócio.",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large" },
-  },
+  // No title/description/url here: Next fills them per route from each page's own metadata.
+  openGraph: { type: "website", locale: "pt_BR", siteName: profile.name },
+  twitter: { card: "summary_large_image" },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0e1011",
+  themeColor: "#07090d",
   colorScheme: "dark",
 };
 
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Pedro Tortoriello",
-  jobTitle: "AI & Automation Specialist · Full Stack Developer",
+  name: profile.name,
+  alternateName: profile.fullName,
+  jobTitle: `${profile.role} · ${profile.focus}`,
   url: SITE_URL,
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "São Paulo",
-    addressCountry: "BR",
-  },
-  knowsAbout: [
-    "Inteligência Artificial",
-    "Automação de Processos",
-    "Desenvolvimento de Software",
-    "SaaS",
-    "Next.js",
-    "n8n",
-  ],
-  sameAs: ["https://wa.me/5511942716215"],
+  email: `mailto:${profile.email}`,
+  address: { "@type": "PostalAddress", addressLocality: "Salto", addressRegion: "SP", addressCountry: "BR" },
+  alumniOf: { "@type": "CollegeOrUniversity", name: "Centro Universitário Facens" },
+  knowsAbout: ["TypeScript", "React", "Next.js", "Node.js", "APIs REST", "PostgreSQL", "Automação de processos", "SaaS"],
+  sameAs: [profile.linkedin, profile.github],
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="pt-BR"
-      className={`${GeistSans.variable} ${GeistMono.variable}`}
-    >
+    <html lang="pt-BR" className={`${GeistSans.variable} ${GeistMono.variable}`} suppressHydrationWarning>
       <head>
+        {/* Opt into motion only when JS runs: without it, everything stays visible. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
         <link rel="preconnect" href="https://cdn.simpleicons.org" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://images.unsplash.com" />
       </head>
       <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
         <a
           href="#conteudo"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-70 focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-accent-ink"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-lg focus:bg-blue-fill focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white"
         >
           Pular para o conteúdo
         </a>
-        <Providers>{children}</Providers>
+        <Providers>
+          <SiteHeader />
+          <main id="conteudo" tabIndex={-1} className="outline-none">
+            {children}
+          </main>
+          <SiteFooter />
+        </Providers>
+        <ClientEffects />
       </body>
     </html>
   );
