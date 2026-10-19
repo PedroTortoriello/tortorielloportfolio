@@ -8,7 +8,7 @@ const subscribe = (cb: () => void) => {
   return () => window.clearInterval(id);
 };
 
-// Real local time in Salto, SP. "--:--" on the server, the clock after hydration.
+// Real local time in São Paulo (America/Sao_Paulo). "--:--" on the server, the clock after hydration.
 export function LocalTime() {
   const t = useSyncExternalStore(subscribe, () => fmt.format(Date.now()), () => "--:--");
   return <span className="tabular">{t}</span>;

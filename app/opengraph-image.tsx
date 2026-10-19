@@ -92,7 +92,7 @@ export default async function OpengraphImage() {
           >
             PT
           </div>
-          <span>SALTO, SP · BRASIL</span>
+          <span>SÃO PAULO · BRASIL</span>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", maxWidth: 880 }}>

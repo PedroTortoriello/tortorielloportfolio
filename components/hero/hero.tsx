@@ -81,7 +81,7 @@ export function Hero() {
       <div className="container-x hidden pt-[5.5rem] lg:block">
         <p className="hud enter-fade flex flex-wrap items-center justify-end gap-x-5 gap-y-1" style={d(900)}>
           <span>
-            Salto, SP · <LocalTime /> BRT
+            São Paulo · <LocalTime /> BRT
           </span>
           <span className="hidden sm:inline">desde {profile.since}</span>
           <span className="hidden sm:inline">
@@ -130,8 +130,8 @@ export function Hero() {
             <div className="lg:transition-transform lg:duration-700 lg:ease-out lg:[transform:translate3d(calc(var(--px,0)*9px),calc(var(--py,0)*7px),0)]">
               <figure className="console ticks overflow-hidden shadow-[0_30px_70px_-24px_rgb(0_0_0/0.85),0_0_0_1px_rgb(94_158_255/0.04)_inset]">
                 <div className="console-head bg-elevated/60">
-                  <span className="hud">operador</span>
-                  <span className="hud ml-auto">Salto, SP</span>
+                  <span className="hud">desenvolvedor</span>
+                  <span className="hud ml-auto">São Paulo</span>
                 </div>
                 <div className="flex lg:block">
                 <div className="power-on relative aspect-[4/5] w-[7.25rem] shrink-0 bg-surface sm:w-[8.5rem] lg:w-auto" style={d(520)}>

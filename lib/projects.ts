@@ -147,7 +147,7 @@ export const noivar: Project = {
   stack: ["Next.js 16", "React 19", "TypeScript", "Supabase", "PostgreSQL · RLS", "Claude API", "Mercado Pago", "Vitest", "Vercel"],
   links: [
     { label: "noivar.vercel.app", href: "https://noivar.vercel.app", kind: "live" },
-    { label: "Código · protótipo inicial", href: "https://github.com/PedroFTortoriello/wedding-invitations-saas", kind: "code" },
+    { label: "Código · protótipo inicial", href: "https://github.com/PedroTortoriello/wedding-invitations-saas", kind: "code" },
   ],
   readouts: [
     { k: "pix", v: "BR Code/EMV · CRC16-CCITT" },
@@ -272,7 +272,7 @@ export const moreProjects: IndexEntry[] = [
     stack: "React Native · Expo · Supabase Edge Functions · Gemini · Stripe · Asaas",
     links: [
       { label: "Web", href: "https://mygracejourney.vercel.app", kind: "live" },
-      { label: "Código", href: "https://github.com/PedroFTortoriello/my-grace-journey", kind: "code" },
+      { label: "Código", href: "https://github.com/PedroTortoriello/my-grace-journey", kind: "code" },
     ],
   },
   {
@@ -280,7 +280,7 @@ export const moreProjects: IndexEntry[] = [
     kind: "Backoffice multiempresa",
     text: "Backoffice para comércio exterior com domínios Financeiro e Operacional separados, RBAC, trilha de auditoria e NFS-e no ambiente nacional de homologação.",
     stack: "Next.js 16 · Node.js · Supabase · PostgreSQL",
-    links: [{ label: "Código", href: "https://github.com/PedroFTortoriello/case-sistema", kind: "code" }],
+    links: [{ label: "Código", href: "https://github.com/PedroTortoriello/case-sistema", kind: "code" }],
   },
   {
     title: "OneContabil",
@@ -302,7 +302,7 @@ export const moreProjects: IndexEntry[] = [
     kind: "Marketplace B2B",
     text: "Marketplace de palestrantes corporativos com áreas para empresa, palestrante e admin, e mensagens em tempo real.",
     stack: "Next.js 16 · Supabase Realtime · Tailwind CSS v4",
-    links: [{ label: "Código", href: "https://github.com/PedroFTortoriello/speakermatch", kind: "code" }],
+    links: [{ label: "Código", href: "https://github.com/PedroTortoriello/speakermatch", kind: "code" }],
   },
   {
     title: "Virei chefe na logística",

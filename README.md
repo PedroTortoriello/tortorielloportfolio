@@ -54,7 +54,7 @@ Todo o conteúdo vem de arquivos de dados. **Regra:** nada além do que o currí
   só em cor e contraste, sem retoque).
 - `public/cv-pedro-tortoriello.pdf`: currículo aberto pelo botão "Ver currículo".
 
-Os indicadores da primeira dobra só mostram valores reais: a hora local de Salto, o ano de início e o commit do build
+Os indicadores da primeira dobra só mostram valores reais: a hora local de São Paulo, o ano de início e o commit do build
 (`VERCEL_GIT_COMMIT_SHA` na Vercel, `git rev-parse` localmente).
 
 ## Rodar

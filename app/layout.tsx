@@ -59,7 +59,7 @@ const personJsonLd = {
   jobTitle: `${profile.role} · ${profile.focus}`,
   url: SITE_URL,
   email: `mailto:${profile.email}`,
-  address: { "@type": "PostalAddress", addressLocality: "Salto", addressRegion: "SP", addressCountry: "BR" },
+  address: { "@type": "PostalAddress", addressRegion: "SP", addressCountry: "BR" },
   alumniOf: { "@type": "CollegeOrUniversity", name: "Centro Universitário Facens" },
   knowsAbout: ["TypeScript", "React", "Next.js", "Node.js", "APIs REST", "PostgreSQL", "Automação de processos", "SaaS"],
   sameAs: [profile.linkedin, profile.github],
