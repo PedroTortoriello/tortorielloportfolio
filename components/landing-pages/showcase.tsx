@@ -48,6 +48,11 @@ export function LpShowcase({
         </Heading>
         <p className="mt-3 text-[0.82rem] leading-6 text-ink-faint">
           <span className="font-medium text-ink-muted">{lp.kind}</span>
+          {lp.featured ? (
+            <span className="ml-2 inline-block rounded-full border border-blue/50 px-2 py-px align-[1px] text-[0.7rem] text-blue">
+              destaque
+            </span>
+          ) : null}
           {lp.preview ? (
             <span className="ml-2 inline-block rounded-full border border-amber/40 px-2 py-px align-[1px] text-[0.7rem] text-amber">
               versão em aprovação

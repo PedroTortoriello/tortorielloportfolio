@@ -25,6 +25,8 @@ export type LandingPage = {
   shared?: boolean;
   /** Approval preview or test environment, not the client's final domain yet. */
   preview?: boolean;
+  /** Leads its niche: shown first, on the home tile and with a badge. */
+  featured?: boolean;
 };
 
 export const niches: Niche[] = [
@@ -128,6 +130,45 @@ export const niches: Niche[] = [
 
 export const landingPages: LandingPage[] = [
   {
+    slug: "wmt-advogados",
+    name: "WMT Advogados",
+    niche: "advocacia",
+    kind: "Redesign",
+    city: "Rio de Janeiro, RJ",
+    url: "https://redesign-advocacia-rj.vercel.app/",
+    summary:
+      "Redesign do site de um escritório no Rio de Janeiro conduzido por três sócias: cada uma aparece na primeira tela com a sua área, e o contato vai direto ao WhatsApp.",
+    highlights: [
+      "Diagnóstico do site antigo antes do redesign: e-mail de contato errado, blog vazio, loja de demonstração esquecida e descrições trocadas no Google",
+      "Sem depoimentos de clientes, em linha com o Provimento 205/2021 da OAB; a credibilidade vem da formação e das publicações das sócias",
+      "11 páginas geradas por um build em Python, com título e descrição próprios por área",
+      "JSON-LD e tipografia auto-hospedada",
+    ],
+    stack: "HTML · CSS · JavaScript · gerador em Python",
+    note: "Proposta de redesign; o domínio do escritório ainda serve o site antigo.",
+    featured: true,
+  },
+  {
+    slug: "julie-pesseti-advocacia",
+    name: "Julie Pesseti Advocacia",
+    niche: "advocacia",
+    kind: "Site institucional",
+    city: "São Paulo, SP",
+    url: "https://pesseti-advocacia.vercel.app/",
+    summary:
+      "Site da marca pessoal de uma advogada, em página única: em segundos o visitante entende quem ela é e em que atua, e fala com ela pelo WhatsApp.",
+    highlights: [
+      "Next.js sem biblioteca de animação nem script de terceiros: fontes auto-hospedadas e animações em CSS",
+      "Conteúdo centralizado em arquivos de dados: mudar o telefone atualiza capa, contato, rodapé, links e dados estruturados",
+      "O build falha de propósito se o site for publicado sem o número da OAB",
+      "Aviso de privacidade próprio e item ativo do menu por IntersectionObserver",
+    ],
+    stack: "Next.js 16 · React 19 · TypeScript · Tailwind CSS 4",
+    note: "Prévia para a cliente: parte do conteúdo ainda é texto de exemplo até ela enviar as informações.",
+    preview: true,
+    featured: true,
+  },
+  {
     slug: "farchi-advocacia",
     name: "Farchi Advocacia",
     niche: "advocacia",
@@ -142,21 +183,7 @@ export const landingPages: LandingPage[] = [
       "JSON-LD LegalService, sitemap e imagem OG dinâmica",
     ],
     stack: "Next.js 15 · React 19 · Three.js · PostgreSQL",
-  },
-  {
-    slug: "ferraz-leao",
-    name: "Ferraz Leão Advocacia Empresarial",
-    niche: "advocacia",
-    kind: "Site institucional",
-    city: "São Paulo, SP",
-    url: "https://ferraz-leao.vercel.app/",
-    summary: "Site reconstruído para advocacia empresarial e tributária, com o acervo editorial migrado do WordPress antigo.",
-    highlights: [
-      "Cerca de 90 artigos migrados da API do WordPress, com redirects 301",
-      "Sitemap gerado do conteúdo e schema LegalService e BlogPosting",
-      "Formulário via server action e Resend, sem falso sucesso",
-    ],
-    stack: "Next.js 15 · TypeScript · Tailwind CSS 4 · GSAP",
+    featured: true,
   },
   {
     slug: "guilherme-pretto-advocacia",
@@ -187,6 +214,21 @@ export const landingPages: LandingPage[] = [
       "Animações de entrada com IntersectionObserver em JS puro",
     ],
     stack: "HTML · CSS · JavaScript",
+  },
+  {
+    slug: "ferraz-leao",
+    name: "Ferraz Leão Advocacia Empresarial",
+    niche: "advocacia",
+    kind: "Site institucional",
+    city: "São Paulo, SP",
+    url: "https://ferraz-leao.vercel.app/",
+    summary: "Site reconstruído para advocacia empresarial e tributária, com o acervo editorial migrado do WordPress antigo.",
+    highlights: [
+      "Cerca de 90 artigos migrados da API do WordPress, com redirects 301",
+      "Sitemap gerado do conteúdo e schema LegalService e BlogPosting",
+      "Formulário via server action e Resend, sem falso sucesso",
+    ],
+    stack: "Next.js 15 · TypeScript · Tailwind CSS 4 · GSAP",
   },
   {
     slug: "albaroz-cerimonial",
@@ -1181,7 +1223,8 @@ export const landingPages: LandingPage[] = [
 ];
 
 export const nicheBySlug = (slug: string) => niches.find((n) => n.slug === slug);
-export const pagesInNiche = (slug: string) => landingPages.filter((p) => p.niche === slug);
+export const pagesInNiche = (slug: string) =>
+  landingPages.filter((p) => p.niche === slug).sort((a, b) => Number(!!b.featured) - Number(!!a.featured));
 /** Niches ordered by how many pages they hold (largest first). */
 export const nichesByCount = () => [...niches].sort((a, b) => pagesInNiche(b.slug).length - pagesInNiche(a.slug).length);
 export const pageBySlug = (niche: string, slug: string) => landingPages.find((p) => p.niche === niche && p.slug === slug);

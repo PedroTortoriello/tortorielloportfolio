@@ -82,7 +82,10 @@ export default function LandingPagesIndex() {
                         </div>
                         <div className="flex items-start justify-between gap-3 p-4">
                           <div className="min-w-0">
-                            <p className="truncate text-[0.95rem] font-medium text-ink">{p.name}</p>
+                            <p className="truncate text-[0.95rem] font-medium text-ink">
+                              {p.name}
+                              {p.featured ? <span className="ml-2 align-[1px] text-[0.68rem] font-normal text-blue">destaque</span> : null}
+                            </p>
                             <p className="mt-1 text-[0.75rem] text-ink-faint">
                               {p.kind}
                               {p.city ? ` · ${p.city}` : ""}
