@@ -216,21 +216,6 @@ export const landingPages: LandingPage[] = [
     stack: "HTML · CSS · JavaScript",
   },
   {
-    slug: "ferraz-leao",
-    name: "Ferraz Leão Advocacia Empresarial",
-    niche: "advocacia",
-    kind: "Site institucional",
-    city: "São Paulo, SP",
-    url: "https://ferraz-leao.vercel.app/",
-    summary: "Site reconstruído para advocacia empresarial e tributária, com o acervo editorial migrado do WordPress antigo.",
-    highlights: [
-      "Cerca de 90 artigos migrados da API do WordPress, com redirects 301",
-      "Sitemap gerado do conteúdo e schema LegalService e BlogPosting",
-      "Formulário via server action e Resend, sem falso sucesso",
-    ],
-    stack: "Next.js 15 · TypeScript · Tailwind CSS 4 · GSAP",
-  },
-  {
     slug: "albaroz-cerimonial",
     name: "Albaroz Cerimonial",
     niche: "eventos-e-casamentos",
