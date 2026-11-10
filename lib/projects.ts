@@ -266,6 +266,27 @@ export type IndexEntry = {
 
 export const moreProjects: IndexEntry[] = [
   {
+    title: "RitoTech",
+    kind: "SaaS jurídico com IA",
+    text: "Lê todo dia o DJEN pelas OABs do escritório, busca os andamentos no Escavador e entrega uma folha diária com cada movimentação explicada por IA, sem inventar prazo nem decisão, com orçamento de consultas e alertas de custo.",
+    stack: "Next.js 16 · Supabase · fila em Postgres · Claude API · Docker",
+    links: [{ label: "ritotech.vercel.app", href: "https://ritotech.vercel.app", kind: "live" }],
+  },
+  {
+    title: "Sócrates",
+    kind: "Diagnóstico conversacional",
+    text: "Assistente do Espaço Maiêutica: oito perguntas em forma de conversa, dicas pelo caminho e um combo de soluções com plano de 7 dias. Motor de regras determinístico, sem IA generativa, e testes que conferem cada texto da tela com o documento do cliente.",
+    stack: "Vite · React 19 · TypeScript · Postgres · Playwright",
+    links: [{ label: "Web", href: "https://socrates-espaco-maieutica.vercel.app", kind: "live" }],
+  },
+  {
+    title: "Entrelinhas",
+    kind: "Prova em forma de jogo",
+    text: "Prova final de Planejamento e Gestão Estratégica da Fatec Indaiatuba: 24 itens em 4 blocos, prazo controlado no servidor e gabarito que nunca chega ao navegador (o build falha se chegar). Painel do professor com lista da turma, tempo extra e exportação em CSV.",
+    stack: "Vite · React 19 · TypeScript · Vercel Functions · Postgres",
+    links: [{ label: "Web", href: "https://entrelinhas-avaliacao.vercel.app", kind: "live" }],
+  },
+  {
     title: "My Grace Journey",
     kind: "App multiplataforma",
     text: "App devocional com mentor de IA: iOS, Android e web a partir de um código-base, limites por plano aplicados no servidor e webhooks de pagamento idempotentes.",

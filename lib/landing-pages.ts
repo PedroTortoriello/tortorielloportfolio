@@ -1,7 +1,7 @@
 // Landing pages and institutional sites that are published, grouped by niche.
 // Only URLs that answered 200 and matched the client's brand are listed
-// (verified 2026-10-19); paused deploys, approval previews on the agency
-// subdomain and personal pages were left out. Caveats go in `note`.
+// (verified 2026-10-19, new entries 2026-11-10); paused deploys and personal
+// pages are left out, approval previews carry `preview`. Caveats go in `note`.
 
 export type Niche = {
   slug: string;
@@ -216,6 +216,138 @@ export const landingPages: LandingPage[] = [
     stack: "HTML · CSS · JavaScript",
   },
   {
+    slug: "noel-nunes-advogados",
+    name: "Noel Nunes Advogados",
+    niche: "advocacia",
+    kind: "Site institucional",
+    city: "Curitiba, PR",
+    url: "https://noel-nunes-advogados.vercel.app/",
+    summary:
+      "Site, identidade visual e sistema de um escritório de Direito Empresarial e Imobiliário. Foi o primeiro do modelo “site e sistema”: além do site, o escritório ganha um painel que lê as intimações do dia pela OAB e uma Área do Cliente.",
+    highlights: [
+      "Identidade visual completa (monograma NN, paleta, tipografia, ícones e posts) gerada por script, com apresentação da proposta em mockups",
+      "Painel do escritório com intimações do DJEN e andamentos do DataJud, só de fontes públicas e gratuitas, e agenda lida do texto das intimações",
+      "Área do Cliente sem banco de dados: o link enviado pelo WhatsApp leva os processos cifrados e o acesso é confirmado pelo CPF ou CNPJ",
+      "Todo o texto num arquivo de conteúdo: campo ainda não confirmado fica vazio e some do site",
+    ],
+    stack: "Next.js 16 · React 19 · TypeScript · Tailwind CSS 4",
+    note: "Site contratado, publicado no ambiente de aprovação; ainda não está no domínio do escritório.",
+    preview: true,
+  },
+  {
+    slug: "jorge-fernandes-advocacia",
+    name: "Jorge Fernandes Advocacia",
+    niche: "advocacia",
+    kind: "Site institucional",
+    city: "Votorantim, SP",
+    url: "https://jorge-fernandes-advocacia.vercel.app/",
+    summary:
+      "Site e sistema do escritório de uma advogada, com o nome dela em destaque na primeira tela. O conteúdo saiu de fonte pública (Receita, OpenStreetMap e as 344 publicações do DJEN em nome dela), sem dado inventado.",
+    highlights: [
+      "Abertura em que o nome é escrito letra a letra: SVG com os contornos da própria fonte, gerado por script, e o texto real no h1 para leitor de tela e buscadores",
+      "Fotos com mapa de gradiente da marca aplicado no build e animações de rolagem só em CSS; sem suporte, a página fica no estado final",
+      "Agenda do painel conferida com as 344 publicações reais (audiências, júri, sessões virtuais) e rotina diária às 6h",
+      "Contraste WCAG medido par a par na paleta",
+    ],
+    stack: "Next.js 16 · React 19 · TypeScript · Tailwind CSS 4",
+    note: "Prévia enviada ao escritório para aprovação; ainda não está num domínio próprio.",
+    preview: true,
+  },
+  {
+    slug: "helberte-sena-advocacia",
+    name: "Helberte Sena Advocacia",
+    niche: "advocacia",
+    kind: "Site institucional",
+    city: "Belo Horizonte, MG",
+    url: "https://helberte-sena-advocacia.vercel.app/",
+    summary:
+      "Site e sistema de um escritório de Direito Civil, Família e Penal. A direção de arte “Azulejo” vem dos painéis de azulejo e das abóbadas parabólicas do conjunto modernista da Pampulha.",
+    highlights: [
+      "Parede de azulejos que viram em onda na abertura e na rolagem, com arcos que revelam as fotos; tudo em CSS e desligado com redução de movimento",
+      "Celular refeito depois de revisão no telefone: página cerca de 20% mais curta, faixa fixa de contato e mapa como imagem para não prender o polegar",
+      "Contraste medido no pixel do texto sobre a parede, de 360 a 1920 px, e LCP medido com 4G lenta",
+      "Painel do escritório com as intimações do DJEN pela OAB/MG e Área do Cliente com acesso por link",
+    ],
+    stack: "Next.js 16 · React 19 · TypeScript · Tailwind CSS 4",
+    note: "Prévia enviada ao escritório para aprovação; ainda não está no domínio dele.",
+    preview: true,
+  },
+  {
+    slug: "guimaraes-pereira-advocacia",
+    name: "Guimarães Pereira Advocacia",
+    niche: "advocacia",
+    kind: "Redesign",
+    city: "Belo Horizonte, MG",
+    url: "https://guimaraes-pereira-advocacia.vercel.app/",
+    summary:
+      "Proposta de site e sistema para um escritório de Direito Empresarial e Internacional na Savassi. A direção “Meridiano” põe Belo Horizonte como um ponto no mapa: o retrato do advogado num círculo de latão, com o anel das coordenadas girando em volta.",
+    highlights: [
+      "Textos do site atual reescritos em tom informativo, sem promessa, mais uma área nova tirada dos 96 processos do DJEN",
+      "Abertura com o retrato abrindo por íris e o anel de latão se traçando; frases que acendem palavra por palavra na rolagem; tudo em CSS",
+      "Marca gerada por script (símbolo, assinaturas, ícones e imagem de compartilhamento) e duotone nas fotos",
+      "Painel testado com os dados reais da OAB: 28 clientes detectados nas intimações dos últimos 180 dias",
+    ],
+    stack: "Next.js 16 · React 19 · TypeScript · Tailwind CSS 4",
+    note: "Proposta de redesign; o domínio do escritório ainda serve o site antigo.",
+    preview: true,
+  },
+  {
+    slug: "martins-domingos-advocacia",
+    name: "Martins Domingos Advocacia",
+    niche: "advocacia",
+    kind: "Site institucional",
+    city: "Gurupi, TO",
+    url: "https://martins-domingos-advocacia.vercel.app/",
+    summary:
+      "Site e sistema de um escritório de Direito do Consumidor e Civil. A direção “Território” é o cerrado visto da chapada: céu claro, uma linha de horizonte e a terra de laterita, com o nome cortado pelo horizonte.",
+    highlights: [
+      "Assinatura da marca gerada por script, com o nome cortado pelo horizonte e favicon de 16 px desenhado na grade de pixels",
+      "Abertura de amanhecer, panorama preso nas áreas e poente no contato, em CSS e desligados com redução de movimento",
+      "Endereço residencial do CNPJ fora do site: a seção de localização volta sozinha quando o endereço de atendimento for preenchido",
+      "Agenda do painel lê também o fuso de Roraima, onde correm os processos do advogado",
+    ],
+    stack: "Next.js 16 · React 19 · TypeScript · Tailwind CSS 4",
+    note: "Prévia enviada ao escritório para aprovação; ainda não está no domínio dele.",
+    preview: true,
+  },
+  {
+    slug: "julio-lessa-advocacia",
+    name: "Júlio Lessa Advocacia",
+    niche: "advocacia",
+    kind: "Site institucional",
+    city: "Suzano, SP",
+    url: "https://julio-lessa-advocacia.vercel.app/",
+    summary:
+      "Site e sistema de um advogado previdenciário, com pedidos no INSS e ações na Justiça Federal e atendimento online em todo o Brasil. O monograma JL foi redesenhado a partir do logo que o cliente já usava.",
+    highlights: [
+      "Abertura com o monograma escrito à pena, gerado em contornos a partir da fonte do site",
+      "Painel do escritório e Área do Cliente no mesmo projeto do site, com rotina às 6h que manda por e-mail o resumo das intimações do dia anterior",
+      "Campos não confirmados ficam vazios e não aparecem; o endereço residencial do CNPJ fica fora do site",
+    ],
+    stack: "Next.js 16 · React 19 · TypeScript · Tailwind CSS 4",
+    note: "Prévia enviada ao cliente para aprovação; ainda não está no domínio dele.",
+    preview: true,
+  },
+  {
+    slug: "viviane-braga-advocacia",
+    name: "Viviane Braga Advocacia",
+    niche: "advocacia",
+    kind: "Landing page",
+    city: "Mesquita, RJ",
+    url: "https://viviane-braga-advocacia.vercel.app/",
+    summary:
+      "Landing page de uma advogada em estilo de revista: capa em azul-marinho com o retrato dela numa moldura em arco de contorno dourado e títulos em Bodoni Moda com palavras em itálico dourado.",
+    highlights: [
+      "HTML pré-renderizado no build e hidratado no navegador: conteúdo e metadados já vêm na página",
+      "Contato que nunca aponta para destino inválido: sem WhatsApp confirmado, o botão abre o e-mail com assunto e mensagem prontos",
+      "Política de Privacidade e Termos de Uso; o build testa os links de contato e lista o que falta a cliente enviar",
+      "Sem biblioteca de UI ou de animação",
+    ],
+    stack: "React 19 · TypeScript · Vite 8",
+    note: "Prévia para a cliente; ainda não está num domínio próprio.",
+    preview: true,
+  },
+  {
     slug: "albaroz-cerimonial",
     name: "Albaroz Cerimonial",
     niche: "eventos-e-casamentos",
@@ -232,18 +364,20 @@ export const landingPages: LandingPage[] = [
   },
   {
     slug: "kyrios-decor",
-    name: "Kýrios Decor",
+    name: "Kýrios",
     niche: "eventos-e-casamentos",
-    kind: "Site institucional",
+    kind: "Redesign",
     city: "Salto, SP",
-    url: "https://kyrios-decor.vercel.app/",
-    summary: "Showroom digital de decoração e locação para eventos: o cliente monta uma seleção de peças e pede orçamento pelo WhatsApp.",
+    url: "https://kyriosdecor.com.br/",
+    summary:
+      "Site novo, no domínio da cliente, de uma locadora de materiais para festas em Salto desde 2004: mostra as peças com fotos reais e leva a um pedido de orçamento pelo WhatsApp, com o catálogo completo a um clique.",
     highlights: [
-      "Catálogo real de peças com busca e paginação",
-      "“Monte seu evento”: seleção salva e enviada pronta pelo WhatsApp",
-      "Schema LocalBusiness, Product e ItemList",
+      "Formulário de orçamento que pede data e local do evento e mostra a mensagem antes de abrir o WhatsApp",
+      "Links diretos para cada uma das 13 categorias do catálogo online da loja",
+      "Páginas do site antigo redirecionadas por .htaccess para as seções equivalentes",
+      "Só fotos reais da loja, sem banco de imagens; paleta definida com o dono",
     ],
-    stack: "Next.js 15 · React 19 · Tailwind CSS 4 · shadcn/ui",
+    stack: "HTML · CSS · JavaScript",
   },
   {
     slug: "carlos-queiroz-celebrante",
@@ -289,6 +423,25 @@ export const landingPages: LandingPage[] = [
       "Animações com alternativa para movimento reduzido",
     ],
     stack: "Next.js 15 · TypeScript · Tailwind CSS · Framer Motion",
+  },
+  {
+    slug: "beercicleta",
+    name: "Beercicleta",
+    niche: "eventos-e-casamentos",
+    kind: "Site institucional",
+    city: "Indaiatuba, SP",
+    url: "https://beercicleta.vercel.app/",
+    summary:
+      "Site de página única de chopp para casamentos, aniversários e eventos corporativos, feito para gerar pedidos de orçamento no WhatsApp, com fotos reais do Instagram e avaliações reais do Google.",
+    highlights: [
+      "Calculadora “Quanto chopp eu preciso?” que já monta o pedido no WhatsApp",
+      "Evento generate_lead no GA4 em todo clique de WhatsApp e de ligar, com a origem do clique (topo, calculadora, formulário, botão flutuante)",
+      "Confirmação de idade e aviso de cookies; fotos em WebP em três tamanhos e fontes auto-hospedadas",
+      "Sem framework, sem build e sem back-end",
+    ],
+    stack: "HTML · CSS · JavaScript",
+    note: "Versão de apresentação ao cliente, fora do Google até as autorizações de fotos e avaliações.",
+    preview: true,
   },
   {
     slug: "costa-rocha-imoveis",
