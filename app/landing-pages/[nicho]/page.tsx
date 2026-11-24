@@ -11,8 +11,9 @@ const d = (ms: number) => ({ "--d": `${ms}ms` }) as React.CSSProperties;
 
 export const dynamicParams = false;
 
+// advocacia has its own route (app/landing-pages/advocacia), which wins over this template.
 export function generateStaticParams() {
-  return niches.map((n) => ({ nicho: n.slug }));
+  return niches.filter((n) => n.slug !== "advocacia").map((n) => ({ nicho: n.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

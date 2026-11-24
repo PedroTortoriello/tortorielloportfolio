@@ -11,7 +11,7 @@ export function BrowserFrame({ url, children, className = "" }: { url: string; c
           <span className="size-2 rounded-full bg-line-strong" />
           <span className="size-2 rounded-full bg-line-strong" />
         </div>
-        <div className="mx-auto flex h-6 min-w-0 max-w-[80%] items-center gap-1.5 rounded-[4px] border border-line bg-bg/70 px-2.5 font-mono text-[0.6875rem] text-ink-faint">
+        <div className="mx-auto flex h-6 min-w-0 max-w-[80%] items-center gap-1.5 rounded-[2px] border border-line bg-bg/70 px-2.5 font-mono text-[0.6875rem] text-ink-faint">
           <Lock aria-hidden className="size-3 shrink-0" />
           <span className="truncate">{url}</span>
         </div>

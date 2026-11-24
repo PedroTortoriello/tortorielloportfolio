@@ -6,8 +6,9 @@ import type { PixSegment } from "@/lib/pix";
 
 // Code palette (sx-*), ordered so neighbouring fields never share a hue (nor two
 // near blues side by side). The checksum is the one green: it makes the payload valid.
-const hues = ["#d9e2ee", "#8db8ff", "#e6c07b", "#f0a988", "#7fc8ff", "#d9e2ee", "#e6c07b", "#8db8ff", "#f0a988"];
-const hue = (s: PixSegment, i: number) => (s.id === "63" ? "#6ee7b0" : hues[i % hues.length]);
+// The listing's inks on paper (same as the syntax tokens); the CRC result is cédula green.
+const hues = ["#141a22", "#7a1424", "#8a5a12", "#9b3d1f", "#1f4f7a", "#141a22", "#8a5a12", "#7a1424", "#9b3d1f"];
+const hue = (s: PixSegment, i: number) => (s.id === "63" ? "#1f6b5e" : hues[i % hues.length]);
 
 // The BR Code payload, field by field. Hover a field in the string, or hover /
 // focus / tap a row, to see where it lives.
@@ -21,7 +22,7 @@ export function PixAnatomy({ segments }: { segments: PixSegment[] }) {
           <Check aria-hidden className="size-3" strokeWidth={2.5} /> CRC16 válido
         </span>
       </p>
-      <p className="mt-3 break-all rounded-[6px] border border-line bg-bg/70 p-3.5 font-mono text-[0.8125rem] leading-[1.85]">
+      <p className="mt-3 break-all rounded-[2px] border border-line bg-bg/70 p-3.5 font-mono text-[0.8125rem] leading-[1.85]">
         <span className="sr-only">Payload: </span>
         {segments.map((s, i) => (
           <span
@@ -31,7 +32,7 @@ export function PixAnatomy({ segments }: { segments: PixSegment[] }) {
             className="rounded-[3px] transition-[background-color,opacity] duration-200"
             style={{
               color: hue(s, i),
-              backgroundColor: active === s.id ? "rgb(94 158 255 / 0.18)" : "transparent",
+              backgroundColor: active === s.id ? "rgb(122 20 36 / 0.18)" : "transparent",
               opacity: active && active !== s.id ? 0.3 : 1,
             }}
           >

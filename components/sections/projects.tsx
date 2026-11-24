@@ -38,7 +38,7 @@ function Slate({ p }: { p: Project }) {
   return (
     <div className="console ticks flex min-h-11 flex-wrap items-center gap-x-6 gap-y-1.5 px-4 py-3 sm:px-5">
       <p className="hud text-ink-muted">
-        <span className="text-blue tabular">Case {p.index}</span> · {p.title}
+        <span className="text-accent tabular">Case {p.index}</span> · {p.title}
       </p>
       <span aria-hidden className="ruler hidden h-[7px] min-w-8 flex-1 opacity-60 md:block" />
       {live ? (
@@ -70,7 +70,7 @@ function Lede({ p, className = "" }: { p: Project; className?: string }) {
       <p className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2.5 text-[0.875rem] text-ink-muted">
         <span>{p.kind}</span>
         <span className="inline-flex min-w-0 items-center gap-3">
-          <span className="rounded-[5px] border border-line-strong bg-surface/70 px-2.5 py-1 leading-5 text-ink">{p.role}</span>
+          <span className="rounded-[2px] border border-line-strong bg-surface/70 px-2.5 py-1 leading-5 text-ink">{p.role}</span>
           <span aria-hidden className="text-line-strong">
             ·
           </span>
@@ -105,7 +105,7 @@ function AuthorNote({ note }: { note: string }) {
   return (
     <div role="note" className="console mt-8 px-4 py-4 sm:px-5">
       <p className="label flex items-center gap-2 text-ink-muted">
-        <Info aria-hidden className="size-3.5 text-blue" strokeWidth={1.75} />
+        <Info aria-hidden className="size-3.5 text-accent" strokeWidth={1.75} />
         Autoria
       </p>
       <p className="mt-2.5 text-pretty text-[0.9375rem] leading-7 text-ink">{note}</p>
@@ -120,7 +120,7 @@ function Contribution({ p, className = "" }: { p: Project; className?: string })
       <ol className="mt-4 border-t border-line">
         {p.contribution.map((c, i) => (
           <li key={c} className="grid grid-cols-[2rem_minmax(0,1fr)] gap-2 border-b border-line-faint py-4 text-pretty text-[0.9375rem] leading-7 text-ink">
-            <span aria-hidden className="pt-[0.2rem] font-mono text-[0.72rem] text-blue tabular">
+            <span aria-hidden className="pt-[0.2rem] font-mono text-[0.72rem] text-accent tabular">
               {String(i + 1).padStart(2, "0")}
             </span>
             <span className="max-w-2xl">{c}</span>
@@ -138,7 +138,7 @@ function StackAndLinks({ p, className = "" }: { p: Project; className?: string }
     <div className={className}>
       <ul aria-label="Stack" className="flex flex-wrap gap-1.5">
         {p.stack.map((s) => (
-          <li key={s} className="rounded-[5px] border border-line bg-surface/60 px-2 py-1 font-mono text-[0.72rem] text-ink-muted">
+          <li key={s} className="rounded-[2px] border border-line bg-surface/60 px-2 py-1 font-mono text-[0.72rem] text-ink-muted">
             {s}
           </li>
         ))}
@@ -509,7 +509,7 @@ function MoreProjects() {
                   href={l.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex min-h-10 items-center gap-1.5 text-sm text-ink-muted transition-colors hover:text-blue md:min-h-8"
+                  className="inline-flex min-h-10 items-center gap-1.5 text-sm text-ink-muted transition-colors hover:text-accent md:min-h-8"
                 >
                   {l.kind === "code" ? <GithubIcon className="size-3.5" /> : null}
                   {l.label}

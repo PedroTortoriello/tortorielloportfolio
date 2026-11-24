@@ -67,7 +67,7 @@ export function LayerPicker({ title, items, cols = "" }: { title: string; items:
               setFocus(i);
             }}
             onMouseEnter={() => setHover(i)}
-            className={`flex min-h-10 min-w-0 items-center gap-2.5 rounded-[5px] px-2.5 py-2 text-left text-[0.875rem] leading-snug transition-colors duration-200 sm:gap-3 ${
+            className={`flex min-h-10 min-w-0 items-center gap-2.5 rounded-[2px] px-2.5 py-2 text-left text-[0.875rem] leading-snug transition-colors duration-200 sm:gap-3 ${
               i === shown ? "bg-elevated text-ink" : "text-ink-muted"
             }`}
           >
@@ -84,7 +84,7 @@ export function LayerPicker({ title, items, cols = "" }: { title: string; items:
             <span
               aria-hidden
               className={`hidden size-1.5 shrink-0 rounded-full transition-[background-color,box-shadow] duration-200 sm:block ${
-                i === pinned ? "bg-blue shadow-[0_0_8px_rgb(94_158_255/0.8)]" : "ring-1 ring-inset ring-line-strong"
+                i === pinned ? "bg-accent" : "ring-1 ring-inset ring-line-strong"
               }`}
             />
           </button>

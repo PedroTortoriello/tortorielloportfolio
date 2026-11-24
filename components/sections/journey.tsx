@@ -17,11 +17,11 @@ const languages = education.languages.split(" · ").map((l) => [l.slice(0, l.ind
 // The 4px ring of field colour cuts the mission line around each node.
 function Node({ lane }: { lane: Experience["lane"] }) {
   return lane === "products" ? (
-    <span className="relative grid size-[13px] place-items-center rounded-full border border-blue bg-bg shadow-[0_0_0_4px_var(--color-bg)]">
-      <span className="size-[5px] rounded-full bg-blue" />
+    <span className="relative grid size-[13px] place-items-center rounded-full border border-accent bg-bg shadow-[0_0_0_4px_var(--color-bg)]">
+      <span className="size-[5px] rounded-full bg-accent" />
     </span>
   ) : (
-    <span className="relative block size-[11px] rounded-[2px] border border-ink-muted bg-bg shadow-[0_0_0_4px_var(--color-bg)] transition-colors duration-300 group-has-[details[open]]/entry:border-blue group-has-[details[open]]/entry:bg-blue/25" />
+    <span className="relative block size-[11px] rounded-[2px] border border-ink-muted bg-bg shadow-[0_0_0_4px_var(--color-bg)] transition-colors duration-300 group-has-[details[open]]/entry:border-accent group-has-[details[open]]/entry:bg-accent/25" />
   );
 }
 
@@ -33,7 +33,7 @@ function Period({ e }: { e: Experience }) {
     <>
       {from} —{" "}
       <LiveDot>
-        <span className="text-blue">{to}</span>
+        <span className="text-accent">{to}</span>
       </LiveDot>
     </>
   );
@@ -88,9 +88,9 @@ export function Journey() {
                   <svg viewBox="0 0 1 100" preserveAspectRatio="none" className="block size-full">
                     <defs>
                       <linearGradient id="journey-line" x1="0" y1="0" x2="0" y2="100" gradientUnits="userSpaceOnUse">
-                        <stop offset="0" style={{ stopColor: "var(--color-blue-bright)" }} />
-                        <stop offset="0.3" style={{ stopColor: "var(--color-blue)" }} />
-                        <stop offset="1" style={{ stopColor: "var(--color-blue)", stopOpacity: 0.55 }} />
+                        <stop offset="0" style={{ stopColor: "var(--color-accent-deep)" }} />
+                        <stop offset="0.3" style={{ stopColor: "var(--color-accent)" }} />
+                        <stop offset="1" style={{ stopColor: "var(--color-accent)", stopOpacity: 0.55 }} />
                       </linearGradient>
                     </defs>
                     <line className="draw" x1="0.5" y1="0" x2="0.5" y2="100" stroke="url(#journey-line)" strokeWidth="1" />
@@ -106,7 +106,7 @@ export function Journey() {
                       {/* node: on the period line on mobile, on the company line from md */}
                       <span aria-hidden className="absolute left-[6px] top-[3.5px] grid size-[13px] place-items-center md:top-[10.75px]">
                         {e.current ? (
-                          <span className="motion-only absolute inset-0 rounded-full bg-blue/50 animate-[ping-soft_2.6s_ease-out_infinite]" />
+                          <span className="motion-only absolute inset-0 rounded-full bg-accent/50 animate-[ping-soft_2.6s_ease-out_infinite]" />
                         ) : null}
                         <Node lane={e.lane} />
                       </span>
@@ -126,7 +126,7 @@ export function Journey() {
                         <p className="mt-4 max-w-[40rem] text-pretty text-base leading-7 text-ink-muted">{e.summary}</p>
 
                         <details name="journey" open={i === 0} className="journey group mt-3">
-                          <summary className="-ml-2 inline-flex min-h-10 cursor-pointer list-none items-center gap-2 rounded-[5px] px-2 text-[0.875rem] font-medium text-ink-muted transition-colors hover:text-ink [&::-webkit-details-marker]:hidden [&:hover>svg]:text-blue">
+                          <summary className="-ml-2 inline-flex min-h-10 cursor-pointer list-none items-center gap-2 rounded-[2px] px-2 text-[0.875rem] font-medium text-ink-muted transition-colors hover:text-ink [&::-webkit-details-marker]:hidden [&:hover>svg]:text-accent">
                             Detalhes técnicos
                             <span className="sr-only"> — {e.company}</span>
                             <ChevronDown
@@ -139,7 +139,7 @@ export function Journey() {
                             <ul className="grid max-w-[40rem] gap-3">
                               {e.details.map((t) => (
                                 <li key={t} className="grid grid-cols-[1.25rem_minmax(0,1fr)] text-[0.9375rem] leading-6 text-ink">
-                                  <span aria-hidden className="mt-3 h-px w-2.5 bg-blue" />
+                                  <span aria-hidden className="mt-3 h-px w-2.5 bg-accent" />
                                   {t}
                                 </li>
                               ))}
@@ -156,7 +156,7 @@ export function Journey() {
                                     {e.tech.map((t) => (
                                       <li
                                         key={t}
-                                        className="rounded-[5px] border border-line px-2 py-0.5 font-mono text-[0.8125rem] leading-5 text-ink-muted"
+                                        className="rounded-[2px] border border-line px-2 py-0.5 font-mono text-[0.8125rem] leading-5 text-ink-muted"
                                       >
                                         {t}
                                       </li>
@@ -175,7 +175,7 @@ export function Journey() {
 
               {/* mission start: the line ends on this mark (centre 10px from the top) */}
               <div className="relative grid grid-cols-1 gap-y-1 pl-10 md:grid-cols-[10rem_minmax(0,1fr)] md:gap-x-8 md:pl-14">
-                <span aria-hidden className="absolute left-[8px] top-[5.5px] size-[9px] rotate-45 border border-blue bg-bg shadow-[0_0_0_4px_var(--color-bg)]" />
+                <span aria-hidden className="absolute left-[8px] top-[5.5px] size-[9px] rotate-45 border border-accent bg-bg shadow-[0_0_0_4px_var(--color-bg)]" />
                 <p className="font-mono text-[0.8125rem] leading-5 text-ink-muted tabular">{profile.since}</p>
                 <p className="text-[0.9375rem] leading-5 text-ink-muted">início da atuação como desenvolvedor</p>
               </div>
@@ -194,7 +194,7 @@ export function Journey() {
                   <p className="mt-1.5 text-sm leading-6 text-ink-muted">
                     {education.school} · {education.place}
                   </p>
-                  <p className="mt-3 inline-flex items-center gap-1.5 font-mono text-[0.8125rem] text-blue">
+                  <p className="mt-3 inline-flex items-center gap-1.5 font-mono text-[0.8125rem] text-accent">
                     <Check aria-hidden className="size-3.5" strokeWidth={2} /> {education.status.toLowerCase()}
                   </p>
                 </div>
@@ -221,7 +221,7 @@ export function Journey() {
                   </h3>
                   <ul className="mt-4 flex flex-wrap gap-2">
                     {practices.map((p) => (
-                      <li key={p} className="rounded-[5px] border border-line px-2.5 py-1 text-[0.8125rem] leading-5 text-ink-muted">
+                      <li key={p} className="rounded-[2px] border border-line px-2.5 py-1 text-[0.8125rem] leading-5 text-ink-muted">
                         {p}
                       </li>
                     ))}

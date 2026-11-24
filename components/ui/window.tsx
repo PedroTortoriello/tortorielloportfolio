@@ -16,7 +16,7 @@ export function Window({ title, meta, status, children, className = "", bodyClas
   return (
     <figure className={`window ticks overflow-hidden ${className}`} aria-label={label}>
       <div className="console-head bg-elevated/60">
-        <span aria-hidden className="size-[7px] shrink-0 rounded-[1px] border border-blue/70" />
+        <span aria-hidden className="size-[7px] shrink-0 rounded-[1px] border border-accent/70" />
         <div className="min-w-0 flex-1 truncate font-mono text-[0.72rem] text-ink-muted">{title}</div>
         {meta ? <div className="shrink-0 font-mono text-[0.6875rem] text-ink-faint">{meta}</div> : null}
       </div>

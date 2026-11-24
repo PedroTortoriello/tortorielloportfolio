@@ -1,78 +1,74 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-19T00:00:00Z",
+  "generatedAt": "2026-11-23T00:00:00Z",
   "title": "Design System: Pedro Tortoriello",
   "extensions": {
     "colorMeta": {
-      "field": { "role": "neutral", "displayName": "Night Field", "canonical": "#080b10", "tonalRamp": ["#080b10", "#111925", "#15202f", "#1b2939", "#244561", "#4a78a0", "#7c8aa0", "#e8edf4"] },
-      "surface": { "role": "neutral", "displayName": "Console Surface", "canonical": "#111925" },
-      "elevated": { "role": "neutral", "displayName": "Elevated", "canonical": "#15202f" },
-      "raised": { "role": "neutral", "displayName": "Raised", "canonical": "#1b2939" },
-      "structure": { "role": "neutral", "displayName": "Structural Blue", "canonical": "#244561", "tonalRamp": ["#0d1a26", "#16293b", "#1d374e", "#244561", "#355c7e", "#4a78a0", "#7fa3c4", "#c7d8e8"] },
-      "line": { "role": "neutral", "displayName": "Hairline", "canonical": "rgb(53 92 126 / 0.42)" },
-      "line-strong": { "role": "neutral", "displayName": "Strong Hairline", "canonical": "rgb(74 120 160 / 0.62)" },
-      "line-faint": { "role": "neutral", "displayName": "Faint Hairline", "canonical": "rgb(36 69 97 / 0.34)" },
-      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#e8edf4" },
-      "ink-muted": { "role": "neutral", "displayName": "Muted Ink", "canonical": "#a3afbf" },
-      "ink-faint": { "role": "neutral", "displayName": "Faint Ink", "canonical": "#7c8aa0" },
-      "blue": { "role": "primary", "displayName": "Luminous Blue", "canonical": "#5e9eff", "tonalRamp": ["#06101f", "#0f2549", "#2b5fb0", "#3f7fe0", "#5e9eff", "#8dbaff", "#b9d3ff", "#e3eeff"] },
-      "blue-bright": { "role": "primary", "displayName": "Bright Blue", "canonical": "#8dbaff" },
-      "on-blue": { "role": "primary", "displayName": "On-Blue Ink", "canonical": "#06101f" },
-      "green": { "role": "tertiary", "displayName": "Success Green (code only)", "canonical": "#6ee7b0" },
-      "amber": { "role": "neutral", "displayName": "Syntax Amber (code only)", "canonical": "#e6c07b" },
-      "sx-kw": { "role": "neutral", "displayName": "Syntax Keyword", "canonical": "#8db8ff" },
-      "sx-fn": { "role": "neutral", "displayName": "Syntax Function", "canonical": "#7fc8ff" },
-      "sx-str": { "role": "neutral", "displayName": "Syntax String", "canonical": "#e6c07b" },
-      "sx-num": { "role": "neutral", "displayName": "Syntax Number", "canonical": "#f0a988" },
-      "sx-type": { "role": "neutral", "displayName": "Syntax Type", "canonical": "#b9d3ff" },
-      "sx-com": { "role": "neutral", "displayName": "Syntax Comment", "canonical": "#7484a0" },
-      "sx-punct": { "role": "neutral", "displayName": "Syntax Punctuation", "canonical": "#8a9ab0" },
-      "sx-id": { "role": "neutral", "displayName": "Syntax Identifier", "canonical": "#d9e2ee" }
+      "bg": { "role": "neutral", "displayName": "Security Paper", "canonical": "#e4ebe5", "tonalRamp": ["#1b221d", "#36403a", "#56615a", "#7b877f", "#a4afa7", "#c9d3cc", "#e4ebe5", "#f4f7f4"] },
+      "surface": { "role": "neutral", "displayName": "Plate", "canonical": "#eef3ef" },
+      "elevated": { "role": "neutral", "displayName": "Elevated", "canonical": "#dfe7e1" },
+      "raised": { "role": "neutral", "displayName": "Raised", "canonical": "#d4ded6" },
+      "structure": { "role": "secondary", "displayName": "Cédula Green", "canonical": "#1f6b5e", "tonalRamp": ["#0a2621", "#123f37", "#1f6b5e", "#2f8676", "#4f7f76", "#7fb0a5", "#b8d6ce", "#e3efeb"] },
+      "line": { "role": "neutral", "displayName": "Ink Hairline", "canonical": "rgb(20 26 34 / 0.16)" },
+      "line-strong": { "role": "neutral", "displayName": "Strong Hairline", "canonical": "rgb(20 26 34 / 0.32)" },
+      "line-faint": { "role": "neutral", "displayName": "Faint Hairline", "canonical": "rgb(20 26 34 / 0.09)" },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#141a22", "tonalRamp": ["#141a22", "#2a333d", "#3c4750", "#5b6670", "#7c8690", "#a1aab2", "#c8cfd4", "#eceff1"] },
+      "ink-muted": { "role": "neutral", "displayName": "Muted Ink", "canonical": "#3c4750" },
+      "ink-faint": { "role": "neutral", "displayName": "Faint Ink", "canonical": "#5b6670" },
+      "accent": { "role": "primary", "displayName": "Intaglio Bordô", "canonical": "#7a1424", "tonalRamp": ["#2e070d", "#5c0e1a", "#7a1424", "#a3243a", "#c4505f", "#dc8a93", "#efc3c8", "#f9e9eb"] },
+      "accent-deep": { "role": "primary", "displayName": "Deep Bordô", "canonical": "#5c0e1a" },
+      "on-accent": { "role": "primary", "displayName": "Paper White", "canonical": "#f6f8f6" },
+      "green": { "role": "tertiary", "displayName": "Result Green (code only)", "canonical": "#1f6b5e" },
+      "amber": { "role": "neutral", "displayName": "Syntax Amber (code only)", "canonical": "#8a5a12" },
+      "sx-kw": { "role": "neutral", "displayName": "Syntax Keyword", "canonical": "#7a1424" },
+      "sx-fn": { "role": "neutral", "displayName": "Syntax Function", "canonical": "#1f6b5e" },
+      "sx-str": { "role": "neutral", "displayName": "Syntax String", "canonical": "#8a5a12" },
+      "sx-num": { "role": "neutral", "displayName": "Syntax Number", "canonical": "#9b3d1f" },
+      "sx-type": { "role": "neutral", "displayName": "Syntax Type", "canonical": "#1f4f7a" },
+      "sx-com": { "role": "neutral", "displayName": "Syntax Comment", "canonical": "#66717b" },
+      "sx-punct": { "role": "neutral", "displayName": "Syntax Punctuation", "canonical": "#4b5560" },
+      "sx-id": { "role": "neutral", "displayName": "Syntax Identifier", "canonical": "#141a22" }
     },
     "typographyMeta": {
-      "display": { "displayName": "Wall Title", "purpose": "Hero name only, two mask-revealed lines, Hubot Sans wdth 125." },
+      "display": { "displayName": "Document Name", "purpose": "Hero name only, two mask-revealed lines, Archivo wdth 125." },
       "headline": { "displayName": "Section Statement", "purpose": "Every section statement (wdth 104, max 19ch); case titles run wider (wdth 118 to 125)." },
-      "title": { "displayName": "Title", "purpose": "Principle, niche and secondary case titles (wdth 100 to 112)." },
-      "lead": { "displayName": "Lead", "purpose": "Hero proposal at 17px; route leads and case taglines at 18px." },
+      "title": { "displayName": "Title", "purpose": "Sub-section, niche and document titles (wdth 106 to 112)." },
+      "ui": { "displayName": "Form Sans", "purpose": "Buttons, role line, specialty names, header name and nav links (Archivo, wdth 104 to 106)." },
+      "lead": { "displayName": "Lead", "purpose": "Hero proposal and case taglines, Source Serif 4." },
       "body": { "displayName": "Body", "purpose": "Section leads, problem/solution, journey summaries." },
-      "body-sm": { "displayName": "Body Small", "purpose": "Contribution lists, author notes, station titles." },
-      "label": { "displayName": "Content Label", "purpose": "Sans uppercase label naming content (Problema, Solução, Autoria)." },
-      "hud": { "displayName": "HUD", "purpose": "Mono uppercase label naming a system part, path, place or value; console heads, readout keys." },
-      "readout": { "displayName": "Readout", "purpose": "Mono values printed in readouts and the operator dossier." },
-      "code": { "displayName": "Code", "purpose": "Code blocks; window titles at 11.5px, status bars at 10px." }
+      "body-sm": { "displayName": "Body Small", "purpose": "Contribution lists, field values, notes." },
+      "label": { "displayName": "Field Label", "purpose": "Archivo caps naming a document field or content (Nome, Função, Problema, Autoria)." },
+      "hud": { "displayName": "HUD", "purpose": "Mono caps naming a part, path, place or value; plate heads, readout keys, slates." },
+      "readout": { "displayName": "Readout", "purpose": "Mono values in readouts and request flows." },
+      "code": { "displayName": "Code", "purpose": "Printed listings; window titles 11.5px, status bars 10px. MRZ and microtext use the same face." }
     },
     "shadows": [
-      { "name": "window-float", "value": "0 1px 0 rgb(255 255 255 / 0.04) inset, 0 24px 48px -16px rgb(0 0 0 / 0.65), 0 56px 110px -30px rgb(3 8 20 / 0.8)", "purpose": "Code windows and browser frames, with a 120px blue top sheen." },
-      { "name": "operator-float", "value": "0 30px 70px -24px rgb(0 0 0 / 0.85), 0 0 0 1px rgb(94 158 255 / 0.04) inset", "purpose": "The operator portrait console on the front wall." },
-      { "name": "device-float", "value": "inset 0 0 0 0.25cqw rgb(255 255 255 / 0.16), inset 0 0 1.4cqw rgb(0 0 0 / 0.55), 0 3cqw 6cqw -1.5cqw rgb(0 0 0 / 0.75), 0 12cqw 22cqw -8cqw rgb(3 8 20 / 0.8)", "purpose": "iPhone titanium band." },
-      { "name": "primary-lit", "value": "inset 0 1px 0 rgb(255 255 255 / 0.4), 0 0 0 1px rgb(141 186 255 / 0.5), 0 12px 32px -12px rgb(94 158 255 / 0.75)", "purpose": "Primary button at rest." },
-      { "name": "primary-lit-hover", "value": "inset 0 1px 0 rgb(255 255 255 / 0.5), 0 0 0 1px rgb(141 186 255 / 0.8), 0 16px 40px -12px rgb(94 158 255 / 0.9)", "purpose": "Primary button hover." },
-      { "name": "node-glow", "value": "0 0 12px rgb(94 158 255 / 0.75)", "purpose": "Station nodes, active rail node, live dots (8 to 12px, 0.75 to 0.9)." },
-      { "name": "bloom", "value": "color #fff; text-shadow 0 0 14px rgb(94 158 255 / 0.85), 0 0 2px rgb(141 186 255 / 0.9) -> settles in 1100ms", "purpose": "A readout value that just landed." },
-      { "name": "focus-ring", "value": "outline: 2px solid #5e9eff; outline-offset: 3px; border-radius: 3px", "purpose": "Global :focus-visible, unlayered so no utility removes it." }
+      { "name": "floating-plate", "value": "0 1px 0 rgb(255 255 255 / 0.7) inset, 0 22px 44px -24px rgb(20 26 34 / 0.38), 0 48px 90px -40px rgb(20 26 34 / 0.3)", "purpose": "Code listings and browser frames (.window)." },
+      { "name": "capture-plate", "value": "0 1px 0 rgb(255 255 255 / 0.6) inset, 0 28px 56px -30px rgb(20 26 34 / 0.45)", "purpose": "Advocacia document captures; translateY(-3px) on hover." },
+      { "name": "pressed-ink", "value": "inset 0 0 0 1px rgb(255 255 255 / 0.12), 0 10px 24px -14px rgb(92 14 26 / 0.9)", "purpose": "Primary button." },
+      { "name": "device", "value": "inset 0 0 0 0.25cqw rgb(255 255 255 / 0.16), inset 0 0 1.4cqw rgb(0 0 0 / 0.55), 0 3cqw 6cqw -1.5cqw rgb(0 0 0 / 0.75), 0 12cqw 22cqw -8cqw rgb(3 8 20 / 0.8)", "purpose": "iPhone titanium band." },
+      { "name": "knockout", "value": "0 0 0 4px var(--color-bg)", "purpose": "Paper ring around markers sitting on rules and threads; not elevation." },
+      { "name": "focus-ring", "value": "outline: 2px solid #7a1424; outline-offset: 3px; border-radius: 3px", "purpose": "Global :focus-visible, unlayered so no utility removes it." }
     ],
     "motion": [
-      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1) / GSAP expo.out", "purpose": "Entrances, reveals, title cuts, power-on, hover." },
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1) / GSAP expo.out", "purpose": "Entrances, reveals, title cuts, power-on, latent image, hover." },
       { "name": "ease-in-out", "value": "cubic-bezier(0.65, 0, 0.35, 1) / GSAP power3.inOut", "purpose": "Travel: line draws, rail draw, packets." },
-      { "name": "durations", "value": "fast 0.18s, base 0.32s, slow 0.6s, focal 0.9s, cine 1.2s", "purpose": "lib/motion.ts DUR; GSAP default is slow + expo.out." },
-      { "name": "boot (CSS)", "value": "enter 900ms rise 18px; enter-fade 1200ms; enter-window 1100ms; mask-up 1000ms; boot-draw 1600ms; rail-draw 1400ms; power-on 1100ms from inset(47% 0)", "purpose": "Front-wall boot, no JS, staggered by --d." },
-      { "name": "data-reveal / data-stagger", "value": "autoAlpha 0, y 28 (22 per child), 0.9s, stagger <= 0.08s; rule: scaleX from left 1.2s", "purpose": "Scroll reveals via MotionRoot." },
-      { "name": "data-title", "value": "SplitText lines, masked, yPercent 112 -> 0, 1.2s, stagger 0.09s", "purpose": "Title-frame cut." },
-      { "name": "data-draw", "value": "drawSVG 0 -> 100%, 1.4s inOut; scrub: tied to scroll (scrub 0.6)", "purpose": "Graph edges, mission line, arrival lines." },
-      { "name": "data-print", "value": "[data-line] children every 0.14s, then .bloom", "purpose": "Readouts land." },
-      { "name": "data-power", "value": "clip-path inset(48% 0) -> 0, autoAlpha 0.25 -> 1, 1.2s", "purpose": "Console power-on." },
-      { "name": "data-parallax / data-exit", "value": "scrubbed yPercent drift; exit lifts and fades to 0.15 from 1024px only", "purpose": "Front-wall depth and departure." },
-      { "name": "data-loop", "value": "toggles .in-view; flow 3.4s, conn-h 2.6s paused off screen", "purpose": "Packets run only in view." },
-      { "name": "component state", "value": "motion/react, EASE_OUT [0.16, 1, 0.3, 1]", "purpose": "Nav underline (layoutId), menu, copy feedback." },
-      { "name": "reduced-motion", "value": "durations 1ms, one iteration, packets and .motion-only hidden; MotionRoot arms nothing", "purpose": "prefers-reduced-motion: reduce shows the finished state." },
-      { "name": "print", "value": "revealed blocks forced visible, rail and motion-only hidden", "purpose": "@media print." }
+      { "name": "boot (CSS)", "value": "enter 900ms rise 18px; enter-fade 1200ms; enter-window 1100ms; mask-up 1000ms; rail-draw 1400ms; power-on 1100ms from inset(47% 0) pale until the ink takes", "purpose": "Hero boot without JS, staggered by --d." },
+      { "name": "ink-press", "value": "from color #7a1424, blur 0.6px -> ink in 1100ms", "purpose": "A readout value that just landed (.bloom)." },
+      { "name": "rosette-draw", "value": "stroke-dashoffset 1 -> 0; hero 2.6s on load; documents scroll-driven, animation-timeline view(), range entry 0% to cover 42%", "purpose": "Guilloché engraves itself; JS and no-preference only." },
+      { "name": "latent-image", "value": "outer weave rotate(180deg / n1) over 1.1s ease-out on document :hover / :focus-within", "purpose": "Tilting the document." },
+      { "name": "denomination-press", "value": "clip-path inset(100% 0 0 0) -> 0, 1.2s", "purpose": "Advocacia numeral printed from the bottom." },
+      { "name": "scroll (GSAP)", "value": "data-reveal, data-stagger, data-title (masked lines), data-draw (scrub for the thread), data-print, data-power, data-exit (lg+), data-loop", "purpose": "MotionRoot, lazy-loaded after hydration." },
+      { "name": "component state", "value": "motion/react, EASE_OUT [0.16, 1, 0.3, 1]; nav underline 0.45s layoutId", "purpose": "Nav underline, menu, copy feedback." },
+      { "name": "reduced-motion", "value": "durations 1ms, one iteration, packets and .motion-only hidden; rosettes shown drawn", "purpose": "prefers-reduced-motion: reduce shows the finished document." },
+      { "name": "print", "value": "revealed blocks forced visible; rail and motion-only hidden", "purpose": "@media print." }
     ],
     "breakpoints": [
       { "name": "sm", "value": "640px" },
-      { "name": "md", "value": "768px" },
-      { "name": "lg", "value": "1024px", "purpose": "12-col front wall, gutter mission line, data-exit" },
-      { "name": "xl", "value": "1280px" },
-      { "name": "rail", "value": "1400px", "purpose": "Fixed index rail" }
+      { "name": "md", "value": "768px", "purpose": "Advocacia phone bar hides" },
+      { "name": "lg", "value": "1024px", "purpose": "12-col hero, gutter security thread, data-exit, desktop nav" },
+      { "name": "xl", "value": "1280px", "purpose": "Header crumb, 4-col readouts" },
+      { "name": "thread", "value": "1400px", "purpose": "Fixed windowed thread index" }
     ]
   },
   "components": [
@@ -80,110 +76,110 @@
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "The page's one light: luminous blue, dark ink, lit from inside, sheen on hover.",
+      "description": "The one ink: bordô plate, paper-white Archivo, a short pressed-ink drop; deepens on hover.",
       "html": "<a class=\"ds-btn-primary\" href=\"#\"><span>Explorar projetos</span><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 5v14\"/><path d=\"m19 12-7 7-7-7\"/></svg></a>",
-      "css": ".ds-btn-primary { position: relative; overflow: hidden; display: inline-flex; align-items: center; gap: 8px; height: 48px; padding: 0 24px; border-radius: 6px; background: var(--color-blue, #5e9eff); color: var(--color-on-blue, #06101f); font: 500 14px/1 var(--font-sans, Geist, system-ui, sans-serif); text-decoration: none; box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.4), 0 0 0 1px rgb(141 186 255 / 0.5), 0 12px 32px -12px rgb(94 158 255 / 0.75); transition: background-color 200ms cubic-bezier(0.16,1,0.3,1), box-shadow 200ms, transform 200ms; } .ds-btn-primary::before { content: \"\"; position: absolute; inset: 0 auto 0 0; width: 33%; background: rgb(255 255 255 / 0.35); transform: translateX(-180%) skewX(-18deg); transition: transform 700ms cubic-bezier(0.16,1,0.3,1); pointer-events: none; } .ds-btn-primary:hover { background: var(--color-blue-bright, #8dbaff); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.5), 0 0 0 1px rgb(141 186 255 / 0.8), 0 16px 40px -12px rgb(94 158 255 / 0.9); } .ds-btn-primary:hover::before { transform: translateX(420%) skewX(-18deg); } .ds-btn-primary:active { transform: scale(0.98); } .ds-btn-primary:focus-visible { outline: 2px solid #5e9eff; outline-offset: 3px; }"
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; height: 48px; padding: 0 24px; border-radius: 2px; background: var(--color-accent, #7a1424); color: var(--color-on-accent, #f6f8f6); font-family: var(--font-ui, Archivo, system-ui, sans-serif); font-size: 15px; font-weight: 620; font-variation-settings: 'wdth' 104; text-decoration: none; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.12), 0 10px 24px -14px rgb(92 14 26 / 0.9); transition: background-color 200ms cubic-bezier(0.16,1,0.3,1), transform 200ms; } .ds-btn-primary svg { transition: transform 300ms cubic-bezier(0.16,1,0.3,1); } .ds-btn-primary:hover { background: var(--color-accent-deep, #5c0e1a); } .ds-btn-primary:hover svg { transform: translateY(2px); } .ds-btn-primary:active { transform: scale(0.98); } .ds-btn-primary:focus-visible { outline: 2px solid #7a1424; outline-offset: 3px; }"
     },
     {
       "name": "Secondary Button",
       "kind": "button",
       "refersTo": "button-secondary",
-      "description": "Strong structural hairline over translucent surface; border turns blue on hover.",
+      "description": "The same ink as an outline; fills bordô on hover.",
       "html": "<a class=\"ds-btn-secondary\" href=\"#\">Ver currículo</a>",
-      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; gap: 8px; height: 48px; padding: 0 24px; border-radius: 6px; border: 1px solid var(--color-line-strong, rgb(74 120 160 / 0.62)); background: rgb(17 25 37 / 0.6); color: var(--color-ink, #e8edf4); font: 500 14px/1 var(--font-sans, Geist, system-ui, sans-serif); text-decoration: none; transition: background-color 200ms, border-color 200ms, transform 200ms; } .ds-btn-secondary:hover { border-color: rgb(94 158 255 / 0.7); background: var(--color-elevated, #15202f); } .ds-btn-secondary:active { transform: scale(0.98); } .ds-btn-secondary:focus-visible { outline: 2px solid #5e9eff; outline-offset: 3px; }"
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; gap: 8px; height: 48px; padding: 0 24px; border-radius: 2px; border: 1px solid var(--color-accent, #7a1424); background: transparent; color: var(--color-accent, #7a1424); font-family: var(--font-ui, Archivo, system-ui, sans-serif); font-size: 15px; font-weight: 620; font-variation-settings: 'wdth' 104; text-decoration: none; transition: background-color 200ms, color 200ms, transform 200ms; } .ds-btn-secondary:hover { background: var(--color-accent, #7a1424); color: var(--color-on-accent, #f6f8f6); } .ds-btn-secondary:active { transform: scale(0.98); } .ds-btn-secondary:focus-visible { outline: 2px solid #7a1424; outline-offset: 3px; }"
     },
     {
       "name": "Navigation",
       "kind": "nav",
       "refersTo": "nav-header",
-      "description": "64px header; muted links, active link in ink with a blue underline that travels between links.",
+      "description": "64px paper header; muted Archivo links, the active one bordô with a 2px bordô underline.",
       "html": "<nav class=\"ds-nav\"><a href=\"#\" aria-current=\"location\">Projetos</a><a href=\"#\">Experiência</a><a href=\"#\">Processo</a><a href=\"#\">Princípios</a><a href=\"#\">Stack</a><a href=\"#\">Contato</a></nav>",
-      "css": ".ds-nav { display: flex; gap: 4px; height: 64px; align-items: center; padding: 0 16px; background: rgb(8 11 16 / 0.8); backdrop-filter: blur(24px); border-bottom: 1px solid rgb(53 92 126 / 0.42); } .ds-nav a { position: relative; padding: 8px 12px; color: #a3afbf; font: 400 14px/1 var(--font-sans, Geist, system-ui, sans-serif); text-decoration: none; transition: color 200ms; } .ds-nav a:hover, .ds-nav a[aria-current] { color: #e8edf4; } .ds-nav a[aria-current]::after { content: \"\"; position: absolute; left: 12px; right: 12px; bottom: -13px; height: 1px; background: #5e9eff; box-shadow: 0 0 8px rgb(94 158 255 / 0.8); } .ds-nav a:focus-visible { outline: 2px solid #5e9eff; outline-offset: 3px; }"
+      "css": ".ds-nav { display: flex; align-items: center; height: 64px; padding: 0 16px; background: rgb(228 235 229 / 0.8); backdrop-filter: blur(24px); border-bottom: 1px solid rgb(20 26 34 / 0.16); } .ds-nav a { position: relative; padding: 8px 12px; color: #3c4750; font-family: var(--font-ui, Archivo, system-ui, sans-serif); font-size: 14px; font-weight: 560; text-decoration: none; transition: color 200ms; } .ds-nav a:hover { color: #141a22; } .ds-nav a[aria-current] { color: #7a1424; } .ds-nav a[aria-current]::after { content: \"\"; position: absolute; left: 12px; right: 12px; bottom: -13px; height: 2px; background: #7a1424; } .ds-nav a:focus-visible { outline: 2px solid #7a1424; outline-offset: 3px; }"
     },
     {
       "name": "Role Chip",
       "kind": "chip",
       "refersTo": "chip-role",
-      "description": "Case role tag: strong hairline, 5px corners, ink.",
-      "html": "<span class=\"ds-chip\">Desenvolvimento full stack</span>",
-      "css": ".ds-chip { display: inline-block; padding: 4px 10px; border-radius: 5px; border: 1px solid rgb(74 120 160 / 0.62); background: rgb(17 25 37 / 0.7); color: #e8edf4; font: 400 14px/20px var(--font-sans, Geist, system-ui, sans-serif); }"
+      "description": "Case role tag: strong ink hairline, square corners, serif ink.",
+      "html": "<span class=\"ds-chip\">Projeto próprio · arquitetura e desenvolvimento</span>",
+      "css": ".ds-chip { display: inline-block; padding: 4px 10px; border-radius: 2px; border: 1px solid rgb(20 26 34 / 0.32); background: rgb(238 243 239 / 0.7); color: #141a22; font: 400 14px/20px var(--font-sans, 'Source Serif 4', Georgia, serif); }"
     },
     {
-      "name": "Console",
+      "name": "Document Plate",
       "kind": "card",
-      "refersTo": "console",
-      "description": "Signature container: hairline frame, blue corner registration ticks, HUD head strip. Flat.",
-      "html": "<div class=\"ds-console\"><div class=\"ds-console-head\"><span>parâmetros</span><span class=\"ds-live\"><i></i>no ar</span></div><div class=\"ds-console-body\">Readouts, notes or a portrait sit here.</div></div>",
-      "css": ".ds-console { position: relative; border: 1px solid rgb(53 92 126 / 0.42); border-radius: 6px; background: rgb(17 25 37 / 0.72); color: #a3afbf; font: 400 15px/1.75 var(--font-sans, Geist, sans-serif); } .ds-console::before { --t: 11px; --c: rgb(94 158 255 / 0.85); content: \"\"; position: absolute; inset: -1px; border-radius: inherit; pointer-events: none; background: linear-gradient(var(--c),var(--c)) top left / var(--t) 1px no-repeat, linear-gradient(var(--c),var(--c)) top left / 1px var(--t) no-repeat, linear-gradient(var(--c),var(--c)) top right / var(--t) 1px no-repeat, linear-gradient(var(--c),var(--c)) top right / 1px var(--t) no-repeat, linear-gradient(var(--c),var(--c)) bottom left / var(--t) 1px no-repeat, linear-gradient(var(--c),var(--c)) bottom left / 1px var(--t) no-repeat, linear-gradient(var(--c),var(--c)) bottom right / var(--t) 1px no-repeat, linear-gradient(var(--c),var(--c)) bottom right / 1px var(--t) no-repeat; } .ds-console-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 40px; padding: 0 14px; border-bottom: 1px solid rgb(53 92 126 / 0.42); font: 400 11px/1.1 var(--font-mono, 'Geist Mono', monospace); letter-spacing: 0.12em; text-transform: uppercase; color: #7c8aa0; } .ds-live { display: inline-flex; align-items: center; gap: 8px; } .ds-live i { width: 6px; height: 6px; border-radius: 50%; background: #5e9eff; box-shadow: 0 0 8px rgb(94 158 255 / 0.9); } .ds-console-body { padding: 16px 14px; }"
+      "refersTo": "plate",
+      "description": "Signature container: flat paper plate, ink hairline, bordô registration marks, HUD head strip.",
+      "html": "<div class=\"ds-plate\"><div class=\"ds-plate-head\"><span>canais diretos</span><span class=\"ds-live\"><i></i>no ar</span></div><div class=\"ds-plate-body\">Readouts, fields or a graph sit here.</div></div>",
+      "css": ".ds-plate { position: relative; border: 1px solid rgb(20 26 34 / 0.32); border-radius: 2px; background: rgb(238 243 239 / 0.88); color: #3c4750; font: 400 15px/1.75 var(--font-sans, 'Source Serif 4', Georgia, serif); } .ds-plate::before { --t: 12px; --c: rgb(122 20 36 / 0.9); content: \"\"; position: absolute; inset: -1px; pointer-events: none; background: linear-gradient(var(--c),var(--c)) top left / var(--t) 1px no-repeat, linear-gradient(var(--c),var(--c)) top left / 1px var(--t) no-repeat, linear-gradient(var(--c),var(--c)) top right / var(--t) 1px no-repeat, linear-gradient(var(--c),var(--c)) top right / 1px var(--t) no-repeat, linear-gradient(var(--c),var(--c)) bottom left / var(--t) 1px no-repeat, linear-gradient(var(--c),var(--c)) bottom left / 1px var(--t) no-repeat, linear-gradient(var(--c),var(--c)) bottom right / var(--t) 1px no-repeat, linear-gradient(var(--c),var(--c)) bottom right / 1px var(--t) no-repeat; } .ds-plate-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 40px; padding: 0 14px; border-bottom: 1px solid rgb(20 26 34 / 0.16); font: 400 11px/1.1 var(--font-mono, 'Geist Mono', monospace); letter-spacing: 0.12em; text-transform: uppercase; color: #5b6670; } .ds-live { display: inline-flex; align-items: center; gap: 8px; } .ds-live i { width: 6px; height: 6px; border-radius: 50%; background: #7a1424; } .ds-plate-body { padding: 16px 14px; }"
     },
     {
       "name": "Readouts",
       "kind": "custom",
       "refersTo": "readout",
-      "description": "Parameters read from a project's code; each value lands with a bloom.",
+      "description": "Parameters read from a project's code; each value lands with an ink press.",
       "html": "<dl class=\"ds-readouts\"><div><dt>auth</dt><dd>JWT · RLS por tenant</dd></div><div><dt>fila</dt><dd>outbox · backoff · DLQ após 5</dd></div></dl>",
-      "css": ".ds-readouts { display: grid; grid-template-columns: 1fr 1fr; margin: 0; border-block: 1px solid rgb(53 92 126 / 0.42); } .ds-readouts div { padding: 16px; } .ds-readouts div + div { border-left: 1px solid rgb(53 92 126 / 0.42); } .ds-readouts dt { font: 400 11px/1.1 var(--font-mono, 'Geist Mono', monospace); letter-spacing: 0.12em; text-transform: uppercase; color: #7c8aa0; } .ds-readouts dd { margin: 8px 0 0; font: 400 13px/1.375 var(--font-mono, 'Geist Mono', monospace); color: #e8edf4; animation: ds-bloom 1100ms cubic-bezier(0.16,1,0.3,1) both; } @keyframes ds-bloom { from { color: #fff; text-shadow: 0 0 14px rgb(94 158 255 / 0.85), 0 0 2px rgb(141 186 255 / 0.9); } } @media (prefers-reduced-motion: reduce) { .ds-readouts dd { animation: none; } }"
+      "css": ".ds-readouts { display: grid; grid-template-columns: 1fr 1fr; margin: 0; border-block: 1px solid rgb(20 26 34 / 0.16); } .ds-readouts div { padding: 16px; } .ds-readouts div + div { border-left: 1px solid rgb(20 26 34 / 0.16); } .ds-readouts dt { font: 400 11px/1.1 var(--font-mono, 'Geist Mono', monospace); letter-spacing: 0.12em; text-transform: uppercase; color: #5b6670; } .ds-readouts dd { margin: 8px 0 0; font: 400 13px/1.375 var(--font-mono, 'Geist Mono', monospace); color: #141a22; animation: ds-press 1100ms cubic-bezier(0.16,1,0.3,1) both; } @keyframes ds-press { from { color: #7a1424; filter: blur(0.6px); } } @media (prefers-reduced-motion: reduce) { .ds-readouts dd { animation: none; } }"
     },
     {
-      "name": "Code Window",
+      "name": "Printed Listing",
       "kind": "custom",
       "refersTo": "window",
-      "description": "Floating instrument: ticks, mono file path, highlighted line, status bar, drop shadow.",
-      "html": "<figure class=\"ds-window\"><div class=\"ds-window-head\"><i></i><span>saas/src/lib/tracking-bot.ts</span></div><pre class=\"ds-window-body\"><span class=\"n\">121</span><span class=\"k\">export function</span> <span class=\"f\">isScannerHit</span>(ua: <span class=\"t\">string</span>)\n<span class=\"hl\"><span class=\"n\">122</span>  <span class=\"k\">return</span> <span class=\"s\">\"bot\"</span></span></pre><div class=\"ds-window-status\">linhas 121–129</div></figure>",
-      "css": ".ds-window { margin: 0; overflow: hidden; border-radius: 8px; border: 1px solid rgb(53 92 126 / 0.42); background: linear-gradient(180deg, rgb(94 158 255 / 0.035), transparent 120px), #111925; box-shadow: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 24px 48px -16px rgb(0 0 0 / 0.65), 0 56px 110px -30px rgb(3 8 20 / 0.8); } .ds-window-head { display: flex; align-items: center; gap: 12px; min-height: 40px; padding: 0 14px; border-bottom: 1px solid rgb(53 92 126 / 0.42); background: rgb(21 32 47 / 0.6); } .ds-window-head i { width: 7px; height: 7px; border-radius: 1px; border: 1px solid rgb(94 158 255 / 0.7); } .ds-window-head span { font: 400 11.5px/1 var(--font-mono, 'Geist Mono', monospace); color: #a3afbf; } .ds-window-body { margin: 0; padding: 16px 20px 16px 0; color: #d9e2ee; font: 400 12px/1.7 var(--font-mono, 'Geist Mono', monospace); } .ds-window-body .n { display: inline-block; width: 44px; padding-right: 16px; text-align: right; color: rgb(124 138 160 / 0.6); } .ds-window-body .hl { display: block; background: rgb(94 158 255 / 0.08); box-shadow: inset 2px 0 0 #5e9eff; } .ds-window-body .k { color: #8db8ff; } .ds-window-body .f { color: #7fc8ff; } .ds-window-body .t { color: #b9d3ff; } .ds-window-body .s { color: #e6c07b; } .ds-window-status { display: flex; align-items: center; height: 28px; padding: 0 14px; border-top: 1px solid rgb(53 92 126 / 0.42); background: rgb(21 32 47 / 0.4); color: #7c8aa0; font: 400 10px/1 var(--font-mono, 'Geist Mono', monospace); }"
+      "description": "Floating plate: registration marks, mono path, highlighted line in bordô, status bar, ink-tinted drop.",
+      "html": "<figure class=\"ds-window\"><div class=\"ds-window-head\"><i></i><span>apps › api › automations › worker.ts</span></div><pre class=\"ds-window-body\"><span class=\"n\">1</span><span class=\"k\">async function</span> <span class=\"f\">claimBatch</span>(): <span class=\"t\">Promise</span>\n<span class=\"hl\"><span class=\"n\">2</span>  <span class=\"k\">return</span> <span class=\"s\">\"FOR UPDATE SKIP LOCKED\"</span></span></pre><div class=\"ds-window-status\">trecho real · Núcleo</div></figure>",
+      "css": ".ds-window { margin: 0; overflow: hidden; border-radius: 2px; border: 1px solid rgb(20 26 34 / 0.32); background: #eef3ef; box-shadow: 0 1px 0 rgb(255 255 255 / 0.7) inset, 0 22px 44px -24px rgb(20 26 34 / 0.38), 0 48px 90px -40px rgb(20 26 34 / 0.3); } .ds-window-head { display: flex; align-items: center; gap: 12px; min-height: 40px; padding: 0 14px; border-bottom: 1px solid rgb(20 26 34 / 0.16); background: rgb(223 231 225 / 0.6); } .ds-window-head i { width: 7px; height: 7px; border-radius: 1px; border: 1px solid rgb(122 20 36 / 0.7); } .ds-window-head span { font: 400 11.5px/1 var(--font-mono, 'Geist Mono', monospace); color: #3c4750; } .ds-window-body { margin: 0; padding: 16px 20px 16px 0; color: #141a22; font: 400 12px/1.7 var(--font-mono, 'Geist Mono', monospace); } .ds-window-body .n { display: inline-block; width: 44px; padding-right: 16px; text-align: right; color: #66717b; } .ds-window-body .hl { display: block; background: rgb(122 20 36 / 0.08); box-shadow: inset 2px 0 0 #7a1424; } .ds-window-body .k { color: #7a1424; } .ds-window-body .f { color: #1f6b5e; } .ds-window-body .t { color: #1f4f7a; } .ds-window-body .s { color: #8a5a12; } .ds-window-status { display: flex; align-items: center; height: 28px; padding: 0 14px; border-top: 1px solid rgb(20 26 34 / 0.16); background: rgb(223 231 225 / 0.4); color: #5b6670; font: 400 10px/1 var(--font-mono, 'Geist Mono', monospace); }"
     },
     {
-      "name": "Section Title Frame",
+      "name": "Section Header",
       "kind": "custom",
-      "description": "Station node on the mission line, ruler, wide statement, index beside it.",
-      "html": "<header class=\"ds-sh\"><div class=\"ds-sh-top\"><span class=\"ds-sh-node\"></span><span class=\"ds-sh-ruler\"></span></div><div class=\"ds-sh-grid\"><h2>Sistemas reais, lidos por dentro.</h2><p><span>01</span><b>  —  </b>PROJETOS</p></div></header>",
-      "css": ".ds-sh-top { position: relative; } .ds-sh-ruler { display: block; height: 9px; background: linear-gradient(rgb(53 92 126 / 0.42), rgb(53 92 126 / 0.42)) bottom / 100% 1px no-repeat, repeating-linear-gradient(to right, rgb(74 120 160 / 0.55) 0 1px, transparent 1px 120px) bottom / 100% 9px no-repeat, repeating-linear-gradient(to right, rgb(53 92 126 / 0.42) 0 1px, transparent 1px 24px) bottom / 100% 4px no-repeat; } .ds-sh-node { position: absolute; left: -4px; bottom: -4px; width: 9px; height: 9px; border-radius: 50%; border: 1px solid #5e9eff; background: #080b10; box-shadow: 0 0 12px rgb(94 158 255 / 0.75); } .ds-sh-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; align-items: end; gap: 64px; margin-top: 56px; } .ds-sh h2 { margin: 0; max-width: 19ch; color: #e8edf4; font-family: var(--font-display, 'Hubot Sans', Geist, sans-serif); font-variation-settings: 'wdth' 104; font-weight: 700; font-size: clamp(2.25rem, 5vw, 4.4rem); line-height: 0.94; letter-spacing: -0.03em; word-spacing: 0.08em; text-wrap: balance; } .ds-sh p { margin: 0; justify-self: end; font: 400 11px/1 var(--font-mono, 'Geist Mono', monospace); letter-spacing: 0.16em; text-transform: uppercase; color: #a3afbf; } .ds-sh p span { color: #5e9eff; } .ds-sh p b { font-weight: 400; white-space: pre; color: rgb(74 120 160 / 0.62); }"
+      "description": "Bordô thread window, interlaced wave rule, wide Archivo statement, serial beside it.",
+      "html": "<header class=\"ds-sh\"><div class=\"ds-sh-top\"><span class=\"ds-sh-win\"></span><span class=\"ds-sh-rule\"></span></div><div class=\"ds-sh-grid\"><h2>Sistemas que resolvem problemas reais, e estão no ar.</h2><p><span>01</span><b>  —  </b>PROJETOS</p></div></header>",
+      "css": ".ds-sh-top { position: relative; } .ds-sh-rule { display: block; height: 9px; background: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='9'%3E%3Cpath d='M0 4.5C7 0 7 0 14 4.5S21 9 28 4.5' fill='none' stroke='%231f6b5e' stroke-width='.8'/%3E%3Cpath d='M0 4.5C7 9 7 9 14 4.5S21 0 28 4.5' fill='none' stroke='%237a1424' stroke-width='.8'/%3E%3C/svg%3E\") left center / 28px 9px repeat-x; } .ds-sh-win { position: absolute; left: -4px; top: -2px; width: 9px; height: 13px; border-radius: 1px; background: #7a1424; } .ds-sh-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; align-items: end; gap: 64px; margin-top: 56px; } .ds-sh h2 { margin: 0; max-width: 19ch; color: #141a22; font-family: var(--font-display, Archivo, system-ui, sans-serif); font-variation-settings: 'wdth' 104; font-weight: 720; font-size: clamp(2.25rem, 5vw, 4.4rem); line-height: 0.97; letter-spacing: -0.028em; word-spacing: 0.03em; text-wrap: balance; } .ds-sh p { margin: 0; justify-self: end; font: 400 11px/1 var(--font-mono, 'Geist Mono', monospace); letter-spacing: 0.16em; text-transform: uppercase; color: #3c4750; } .ds-sh p span { color: #7a1424; } .ds-sh p b { font-weight: 400; white-space: pre; color: rgb(20 26 34 / 0.32); }"
     },
     {
-      "name": "Diagram Legend",
-      "kind": "custom",
-      "description": "The graph line vocabulary: solid sync, dashed async, dotted external, blue ring for Pedro's parts.",
-      "html": "<div class=\"ds-legend\"><span><svg width=\"26\" height=\"6\" aria-hidden=\"true\"><line x1=\"0\" y1=\"3\" x2=\"26\" y2=\"3\" stroke=\"currentColor\" stroke-width=\"1.25\"/></svg>síncrono</span><span><svg width=\"26\" height=\"6\" aria-hidden=\"true\"><line x1=\"0\" y1=\"3\" x2=\"26\" y2=\"3\" stroke=\"currentColor\" stroke-width=\"1.25\" stroke-dasharray=\"6 5\"/></svg>assíncrono</span><span><svg width=\"26\" height=\"6\" aria-hidden=\"true\"><line x1=\"1\" y1=\"3\" x2=\"26\" y2=\"3\" stroke=\"currentColor\" stroke-width=\"1.25\" stroke-dasharray=\"1.5 4.5\" stroke-linecap=\"round\"/></svg>integração externa</span><span><i></i>construído por mim</span></div>",
-      "css": ".ds-legend { display: flex; flex-wrap: wrap; gap: 8px 20px; color: #7c8aa0; font: 400 11px/1 var(--font-mono, 'Geist Mono', monospace); } .ds-legend svg { color: #4a78a0; } .ds-legend span { display: inline-flex; align-items: center; gap: 8px; } .ds-legend i { width: 10px; height: 10px; border-radius: 2px; border: 1.25px solid #5e9eff; background: #122039; }"
+      "name": "Document Mark",
+      "kind": "chip",
+      "description": "Status overprinted on a document: double-ruled Archivo caps, green when valid, muted ink when pending.",
+      "html": "<span class=\"ds-mark ds-mark-valid\">Publicado</span> <span class=\"ds-mark ds-mark-pending\">Em aprovação</span>",
+      "css": ".ds-mark { display: inline-flex; align-items: center; padding: 4px 8px; border: 1px solid currentColor; outline: 1px solid currentColor; outline-offset: 2px; font-family: var(--font-ui, Archivo, system-ui, sans-serif); font-weight: 650; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.2; white-space: nowrap; margin: 4px; } .ds-mark-valid { color: #1f6b5e; } .ds-mark-pending { color: #3c4750; }"
     }
   ],
   "narrative": {
-    "northStar": "The Control Room",
-    "overview": "The site is a flight control room for systems that are running in production. The page is a dark night field, and the work sits on it as consoles: flat hairline frames with blue registration ticks on their corners, a mono header strip naming what they read, and readouts printed from the real code. Structure is drawn in a muted structural blue (bezels, datum lines that run past their corners, rulers, graph edges). One luminous blue is the only light. It marks what is live, what is active, what can be acted on, and the line of the mission itself.\n\nThe whole page is one mission. A trajectory line runs through the gutter from station to station, drawn by the scroll. Each section opens like a title card: a ruler draws across from a station node on that line, then the statement cuts in line by line in wide Hubot Sans. A fixed index rail and a progress hairline under the header show where you are in the running order. Geist carries the reading. Geist Mono carries the machine: readouts, HUD labels, paths, code.\n\nDepth is architectural, not atmospheric. A drafting grid, datums and a ruler sit behind the front wall, and a crosshair follows the pointer. Only floating instruments (code windows, browser frames, the iPhone mockup, the operator portrait) cast a drop. Motion means something: the wall boots, lines draw, consoles power on, readouts land with a bloom. Reduced motion and no-JS show the finished state.",
+    "northStar": "Papel de segurança",
+    "overview": "The site is a security-printed document series. Pedro's identity document opens it (name, role, a portrait in a guilloché frame, printed fields and a two-line MRZ), and every case after it is a numbered, authenticated document. The page is security paper: a pale green-grey tint carrying a fine anti-copy ground of two interlaced waves, as on a certidão. Documents sit on it as flat paper plates with a printed ink hairline and bordô registration marks at their corners. Cédula green engraves the structure (guilloché rosettes, wave rules, graph edges). One intaglio bordô is the only ink that acts: primary actions, active state, serials, and the security thread.\n\nThe whole page is one series bound by a windowed security thread. From lg up it runs in the left gutter as a dashed bordô thread whose solid core is printed by the scroll, and each section header sets a bordô window on it beside the section's serial. From 1400px a fixed thread with one window per section indexes the page. Guilloché is generated from curves, never pasted: each rosette is a modulated ring repeated with a small rotation, seeded per document, so no two seals match. Rosettes draw themselves as their document enters, and hovering a document turns its latent image by half a lobe, like tilting a banknote. MRZ lines and microtext are real text.\n\nArchivo, opened on its width axis, sets titles, numerals, labels and controls, the sans of an official form. Source Serif 4 reads. Geist Mono prints what a machine prints: serials, readouts, paths, code and the MRZ. Corners are square (2px). Depth is paper, not light: only floating plates (code listings, browser frames, captures, devices) lift off the sheet. Motion is printing: plates open from a centre band and the ink takes, values land in bordô and settle to ink, lines draw. Reduced motion, print and no-JS show the finished document.",
     "keyCharacteristics": [
-      "Night field (#080b10) with console surfaces; structural-blue hairlines draw every edge, and no grey borders are used.",
-      "One light: luminous blue for live, active, primary action, the mission line and bloom. Green appears only as a success result inside code instruments.",
-      "Wide Hubot Sans for wall titles, Geist for reading, Geist Mono for readouts, HUD, indices and code.",
-      "Consoles with corner registration ticks are the signature container. Floating windows and devices are the only things with a drop shadow.",
-      "One mission line through every station, drawn by the scroll and mirrored by a fixed index rail."
+      "Security paper (`bg`) with an anti-copy wave ground; flat document plates (`surface`) with ink hairlines and bordô corner registration marks.",
+      "One ink that acts: intaglio bordô for primary action, active state, serials, thread and focus. Cédula green engraves structure.",
+      "Archivo wide for titles and controls, Source Serif 4 for reading, Geist Mono for serials, readouts, MRZ and code.",
+      "Guilloché rosettes, wave bands and wave rules drawn from curves, seeded per document; a windowed security thread binds the series.",
+      "Square 2px corners everywhere except the iPhone mockup; only floating plates cast a drop."
     ],
     "rules": [
-      { "name": "The One Light Rule", "body": "Luminous blue is the only light on the page. If something is not live, active, actionable or the mission line, it is ink or structure.", "section": "colors" },
-      { "name": "The Green Is a Result Rule", "body": "Green means \"this check passed\" inside a code instrument. It never means \"available\" or \"online\". Those states are blue.", "section": "colors" },
-      { "name": "The Blue Hairline Rule", "body": "Borders and dividers are structural-blue alphas, never neutral grey.", "section": "colors" },
-      { "name": "The Wide Wall Rule", "body": "Hubot Sans is only for titles (the `.display` role: 700 weight, -0.03em tracking, 0.08em word-spacing to return the gaps that negative tracking closes). Tune width per use with `--wdth`. Never set reading text in it.", "section": "typography" },
-      { "name": "The Mono Means Machine Rule", "body": "Mono is for things a machine reads or prints: code, paths, readouts, HUD, indices, coordinates. A label about content uses the sans label.", "section": "typography" },
-      { "name": "The Index Beside Rule", "body": "A section's index (`0N — LABEL`, number in blue) sits beside the statement on desktop and below it on phones. It never sits above the statement as an eyebrow.", "section": "typography" },
-      { "name": "The Floating Instrument Rule", "body": "Only windows, device frames and the operator portrait cast a drop. Consoles stay flat on the field.", "section": "elevation" }
+      { "name": "The One Ink Rule", "body": "Bordô is the only ink that acts. If something is not an action, the active state, a serial, the thread or focus, it is ink or green engraving. (On the advocacia route the headline and closing title are also bordô; on the portfolio titles stay ink.)", "section": "colors" },
+      { "name": "The Printed Hairline Rule", "body": "Borders and dividers are alphas of the ink colour, never neutral grey.", "section": "colors" },
+      { "name": "The Engraving Is Green Rule", "body": "Guilloché, wave rules and diagram structure are cédula green, with bordô as the interlaced second line. Green never fills a control.", "section": "colors" },
+      { "name": "The Form Sans Rule", "body": "Archivo sets titles, labels and controls; it never sets reading text. Tune width per use with `--wdth` (62 to 125).", "section": "typography" },
+      { "name": "The Mono Means Machine Rule", "body": "Mono is for things a machine reads or prints: serials, code, paths, readouts, MRZ, microtext. A label about content uses the Archivo label.", "section": "typography" },
+      { "name": "The Index Beside Rule", "body": "A section's serial (`0N — LABEL`, number in bordô) sits beside the statement on desktop and below it on phones, never above it as an eyebrow.", "section": "typography" },
+      { "name": "The Paper Lies Flat Rule", "body": "Only floating plates (listings, browser frames, captures, devices) and the primary button cast a drop. Document plates, readouts and lists stay flat on the sheet.", "section": "elevation" }
     ],
     "dos": [
-      "Do keep luminous blue as the only light: primary fill with on-blue ink, live dots, active states, station nodes, the mission line, focus rings and bloom.",
-      "Do draw every border in structural-blue hairlines, and separate surfaces with tonal steps rather than shadows.",
-      "Do frame instruments as consoles: hairline, 6px, blue corner ticks, a HUD head strip.",
-      "Do open every section with the title frame: station node on the mission line, ruler, statement in wide Hubot Sans, index and lead beside it.",
-      "Do print real values from the code as readouts, and let them land with a bloom.",
-      "Do draw graphs with solid, dashed and dotted edges, ring Pedro's parts in blue, isolate on hover and focus, and show the legend.",
-      "Do give every scroll effect one owner (CSS boot, GSAP via MotionRoot data attributes, or Motion for state) and timings from `lib/motion.ts`.",
-      "Do make the finished markup the default, so reduced motion, print and no-JS read the whole page."
+      "Do keep bordô as the one ink that acts: primary fill with paper-white text, secondary outline, active nav, serials, the thread and its windows, live dots, focus and the ink press.",
+      "Do draw every border as an ink-alpha hairline and separate plates with small tonal steps.",
+      "Do frame documents as flat plates: strong hairline, 2px corners, bordô registration marks, a HUD head strip.",
+      "Do generate guilloché from curves with a per-document seed; never reuse one seal image.",
+      "Do open every section with its window on the thread, the wave rule, the statement in wide Archivo and the serial beside it.",
+      "Do print real values (fields, MRZ, readouts, URLs, local time, commit) and let them land with the ink press.",
+      "Do make the finished markup the default, so reduced motion, print and no-JS read the whole document."
     ],
     "donts": [
-      "Don't use green for \"live\" or \"available\". Green is only a success result inside code instruments.",
+      "Don't round corners beyond 2px; the iPhone mockup is the only rounded object.",
+      "Don't give plates, readouts, lists or slates a drop shadow. Only floating plates and the primary button lift.",
+      "Don't use green for \"live\" or \"available\", or to fill a control. Live is bordô; green engraves and confirms a passed result.",
       "Don't use amber or syntax colours outside code.",
-      "Don't set reading text in Hubot Sans, or content labels in mono.",
-      "Don't put the section index or any tracked uppercase line above a heading as an eyebrow.",
-      "Don't give consoles, lists or readouts a drop shadow. Only windows, devices and the operator portrait float.",
-      "Don't use neutral grey borders. Hairlines are structural blue.",
-      "Don't retouch the portrait or stage captures. Grade only, and use real pages."
+      "Don't set reading text in Archivo, or content labels in mono.",
+      "Don't put the serial or any tracked uppercase line above a heading as an eyebrow.",
+      "Don't use neutral grey borders or glows. Hairlines are ink; depth is paper.",
+      "Don't retouch the portrait or stage captures."
     ]
   }
 }

@@ -11,10 +11,10 @@ import { landingPages, nichesByCount, pagesInNiche, shot, type LandingPage, type
 const host = (url: string) => url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
 const d = (ms: number) => ({ "--d": `${ms}ms` }) as React.CSSProperties;
 
-// Status chips: blue marks the niche's lead page; an approval preview is
+// Status chips: bordô marks the niche's lead page; an approval preview is
 // labelled in neutral ink (amber is reserved for code).
-const chip = "inline-flex items-center rounded-[4px] border px-1.5 py-px font-mono text-[0.6875rem] uppercase leading-4 tracking-[0.1em]";
-const featuredChip = `${chip} border-blue/50 text-blue`;
+const chip = "inline-flex items-center rounded-[2px] border px-1.5 py-px font-mono text-[0.6875rem] uppercase leading-4 tracking-[0.1em]";
+const featuredChip = `${chip} border-accent/50 text-accent`;
 const previewChip = `${chip} border-line-strong text-ink-muted`;
 
 type Crumb = { label: string; href?: string };
@@ -27,7 +27,6 @@ export function RouteHeader({ trail, children }: { trail: Crumb[]; children: Rea
     <section className="relative isolate overflow-hidden pt-24 sm:pt-32">
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="drafting-grid absolute inset-0 [mask-image:radial-gradient(ellipse_72%_66%_at_72%_0%,black_10%,transparent_76%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(900px_520px_at_80%_0%,rgb(94_158_255/0.1),transparent_62%)]" />
       </div>
       <div className="container-x">
         <div className="flex items-center gap-4">
@@ -75,7 +74,11 @@ export function LpShowcase({
   const facts = [lp.city, lp.language ? `site em ${lp.language === "en" ? "inglês" : "espanhol"}` : null].filter(Boolean);
   const visit = lp.preview ? "Ver prévia" : "Visitar site";
   return (
-    <article id={lp.slug} aria-labelledby={`${lp.slug}-title`} className="grid scroll-mt-24 grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
+    <article
+      id={lp.slug}
+      aria-labelledby={`${lp.slug}-title`}
+      className={`grid scroll-mt-24 grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12 ${Heading === "h1" ? "items-start" : "items-center"}`}
+    >
       <div data-reveal className={`relative pb-8 pr-8 sm:pb-10 sm:pr-14 lg:col-span-7 ${flip ? "lg:order-2" : ""}`}>
         <a href={lp.url} target="_blank" rel="noreferrer" tabIndex={-1} aria-hidden className="group block">
           <BrowserFrame url={host(lp.url)} className="edge-light transition-transform duration-700 ease-out group-hover:-translate-y-1">
@@ -109,7 +112,7 @@ export function LpShowcase({
         </p>
         <p className="mt-5 text-pretty text-[0.9375rem] leading-7 text-ink-muted">{lp.summary}</p>
         {lp.note ? (
-          <p className="mt-5 flex gap-2.5 rounded-[6px] border border-line bg-surface/70 px-3.5 py-3 text-[0.8125rem] leading-6 text-ink-muted">
+          <p className="mt-5 flex gap-2.5 rounded-[2px] border border-line bg-surface/70 px-3.5 py-3 text-[0.8125rem] leading-6 text-ink-muted">
             <Info aria-hidden className="mt-1 size-3.5 shrink-0 text-ink-faint" />
             {lp.note}
           </p>
@@ -118,7 +121,7 @@ export function LpShowcase({
         <ul className="mt-3 grid gap-2.5 border-t border-line pt-4">
           {lp.highlights.map((h) => (
             <li key={h} className="grid grid-cols-[1rem_1fr] gap-2 text-pretty text-[0.875rem] leading-6 text-ink">
-              <span aria-hidden className="mt-[0.55rem] size-[7px] rounded-[1px] border border-blue/70" />
+              <span aria-hidden className="mt-[0.55rem] size-[7px] rounded-[1px] border border-accent/70" />
               {h}
             </li>
           ))}
@@ -148,8 +151,8 @@ export function LpShowcase({
 // featured / approval chips (the index shows them; "more in this niche" doesn't).
 export function LpCard({ lp, sizes, flags = false }: { lp: LandingPage; sizes: string; flags?: boolean }) {
   return (
-    <Link href={`/landing-pages/${lp.niche}/${lp.slug}`} className="group block h-full rounded-[6px]">
-      <div className="edge-light flex h-full flex-col rounded-[6px] border border-line bg-surface/60 transition-colors duration-300 group-hover:border-line-strong">
+    <Link href={`/landing-pages/${lp.niche}/${lp.slug}`} className="group block h-full rounded-[2px]">
+      <div className="edge-light flex h-full flex-col rounded-[2px] border border-line bg-surface/60 transition-colors duration-300 group-hover:border-line-strong">
         <div className="overflow-hidden rounded-t-[5px] border-b border-line bg-bg">
           <Image
             src={shot(lp.slug, "desktop")}
@@ -176,7 +179,7 @@ export function LpCard({ lp, sizes, flags = false }: { lp: LandingPage; sizes: s
           </div>
           <ArrowRight
             aria-hidden
-            className="mt-0.5 size-4 shrink-0 text-ink-faint transition-[color,transform] duration-300 group-hover:translate-x-0.5 group-hover:text-blue"
+            className="mt-0.5 size-4 shrink-0 text-ink-faint transition-[color,transform] duration-300 group-hover:translate-x-0.5 group-hover:text-accent"
           />
         </div>
       </div>
@@ -185,12 +188,16 @@ export function LpCard({ lp, sizes, flags = false }: { lp: LandingPage; sizes: s
 }
 
 const tab = "relative flex min-h-11 items-center gap-2 px-3.5 text-[0.8125rem] transition-colors";
-const tabOn = "text-ink after:absolute after:inset-x-3 after:-bottom-px after:h-[2px] after:bg-blue after:shadow-[0_0_10px_rgb(94_158_255/0.8)]";
+const tabOn = "text-ink after:absolute after:inset-x-3 after:-bottom-px after:h-[2px] after:bg-accent after:";
 const tabCount = "font-mono text-[0.6875rem] tabular text-ink-faint";
 
+// The strip scrolls sideways; the fade on the right says there is more.
 export function NicheTabs({ current, exact = true }: { current?: string; exact?: boolean }) {
   return (
-    <nav aria-label="Nichos" className="-mx-4 overflow-x-auto px-4 py-1.5 [scrollbar-width:none] sm:-mx-1.5 sm:px-1.5">
+    <nav
+      aria-label="Nichos"
+      className="-mx-4 overflow-x-auto px-4 py-1.5 [mask-image:linear-gradient(to_right,black_calc(100%-3.5rem),transparent)] [scrollbar-width:none] sm:-mx-1.5 sm:px-1.5"
+    >
       <ul className="flex min-w-max gap-1 border-b border-line">
         <li>
           <Link href="/landing-pages" aria-current={!current ? "page" : undefined} className={`${tab} ${!current ? tabOn : "text-ink-muted hover:text-ink"}`}>

@@ -31,6 +31,8 @@ export const shotTones: Record<string, [string, string]> = {
   "/lps/euvendo-saude-mobile.jpg": ["#fefefe", "#454a55"],
   "/lps/euvendo-saude-white-label-mobile.jpg": ["#ffffff", "#dbedc9"],
   "/lps/farchi-advocacia-mobile.jpg": ["#0f0b07", "#020101"],
+  "/lps/ferraz-leao-mobile.jpg": ["#fafafb", "#e5e8e9"],
+  "/lps/couto-rosa-donega-advocacia-mobile.jpg": ["#fffefe", "#4e4f50"],
   "/lps/guilherme-pretto-advocacia-mobile.jpg": ["#f5efe8", "#323439"],
   "/lps/if-arquitetos-mobile.jpg": ["#f1efef", "#f0eced"],
   "/lps/invento-sistemas-mobile.jpg": ["#ffffff", "#18232f"],

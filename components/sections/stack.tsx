@@ -40,7 +40,7 @@ function Layer({
       <Console
         label={
           <span role="heading" aria-level={3}>
-            <span className="text-blue">{code}</span>{" "}
+            <span className="text-accent">{code}</span>{" "}
             <span aria-hidden className="text-line-strong">
               ·
             </span>{" "}
@@ -59,16 +59,16 @@ function Layer({
 
 // A connector, horizontal by default (callers rotate it). Solid = sync and is
 // drawn in by data-draw; dashed = async and fades in (a dash pattern can't be
-// stroke-drawn). The blue chevron is the line head. The packet only runs while
+// stroke-drawn). The bordô chevron is the line head. The packet only runs while
 // the map is on screen (data-loop on the map).
 function Wire({ len, async = false, className = "" }: { len: number; async?: boolean; className?: string }) {
   return (
     <span className={`relative block h-[9px] ${className}`} style={{ width: len }}>
       <svg width={len} height="9" viewBox={`0 0 ${len} 9`} fill="none" className="absolute inset-0 overflow-visible">
         <line x1="0" y1="4.5" x2={len - 1} y2="4.5" className={`stroke-line-strong ${async ? "edge-async fade-edge" : "draw"}`} />
-        <path d={`M${len - 5} 1.5 ${len - 1} 4.5 ${len - 5} 7.5`} className="fade-edge stroke-blue/80" />
+        <path d={`M${len - 5} 1.5 ${len - 1} 4.5 ${len - 5} 7.5`} className="fade-edge stroke-accent/80" />
       </svg>
-      <span className={`conn-dot conn-h absolute size-1 rounded-full bg-cyan ${async ? "[animation-duration:3.8s]" : ""}`} />
+      <span className={`conn-dot conn-h absolute size-1 rounded-full bg-accent ${async ? "[animation-duration:3.8s]" : ""}`} />
     </span>
   );
 }
@@ -107,12 +107,12 @@ function Legend({ className = "" }: { className?: string }) {
             {k.line === "base" ? (
               <>
                 <path d="M0 4.5h28" className="stroke-line-strong" />
-                <path d="M0.5 1v7M27.5 1v7" className="stroke-blue/70" />
+                <path d="M0.5 1v7M27.5 1v7" className="stroke-accent/70" />
               </>
             ) : (
               <>
                 <line x1="0" y1="4.5" x2="27" y2="4.5" className={`stroke-line-strong ${k.line === "async" ? "edge-async" : ""}`} />
-                <path d="M23 1.5 27 4.5 23 7.5" className="stroke-blue/80" />
+                <path d="M23 1.5 27 4.5 23 7.5" className="stroke-accent/80" />
               </>
             )}
           </svg>
@@ -175,8 +175,8 @@ export function Stack() {
           {/* datum: a construction line that overshoots the map; L0 sits under it */}
           <div aria-hidden className="relative h-12 lg:col-span-full lg:row-start-6 lg:h-14">
             <span data-reveal="rule" className="absolute -inset-x-3 top-1/2 h-px bg-line-strong sm:-inset-x-6" />
-            <span className="absolute -left-3 top-1/2 h-3 w-px -translate-y-1/2 bg-blue/70 sm:-left-6" />
-            <span className="absolute -right-3 top-1/2 h-3 w-px -translate-y-1/2 bg-blue/70 sm:-right-6" />
+            <span className="absolute -left-3 top-1/2 h-3 w-px -translate-y-1/2 bg-accent/70 sm:-left-6" />
+            <span className="absolute -right-3 top-1/2 h-3 w-px -translate-y-1/2 bg-accent/70 sm:-right-6" />
           </div>
           <Layer code="L0" domain={infra} cols="lg:grid-cols-6" place="lg:col-span-full lg:row-start-7" />
         </div>

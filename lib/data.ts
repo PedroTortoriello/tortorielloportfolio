@@ -321,7 +321,7 @@ export const method: MethodStep[] = [
   },
 ];
 
-// Principles ("flight rules"): decided before the pressure arrives. `where`
+// Principles (the document's rules): decided before the pressure arrives. `where`
 // names only a case (lib/projects.ts) or a CV entry above whose text shows the rule.
 export const principles = [
   { id: "camadas", title: "Separação de responsabilidades", rule: "Cada camada com um motivo para mudar.", where: "Núcleo: Repository → Service → Controller" },

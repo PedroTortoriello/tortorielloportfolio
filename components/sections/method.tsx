@@ -12,7 +12,7 @@ const phases = [...new Set(method.map((s) => s.phase))].map((name) => ({
 const range = (steps: { n: number }[]) =>
   steps.length > 1 ? `${pad(steps[0].n)}–${pad(steps[steps.length - 1].n)}` : pad(steps[0].n);
 
-// The track: a static hairline with the blue line drawn over it by the scroll
+// The track: a static hairline with the bordô line drawn over it by the scroll
 // (data-draw="scrub" on the parent). Non-uniform viewBox scaling keeps the
 // stroke at 1px because the line runs along the stretched axis only.
 function Track({ axis }: { axis: "x" | "y" }) {
@@ -23,9 +23,9 @@ function Track({ axis }: { axis: "x" | "y" }) {
     <svg viewBox={h ? "0 0 1000 3" : "0 0 3 1000"} preserveAspectRatio="none" className="block size-full">
       <defs>
         <linearGradient id={id} gradientUnits="userSpaceOnUse" x1="0" y1="0" x2={h ? 1000 : 0} y2={h ? 0 : 1000}>
-          <stop offset="0" className="[stop-color:var(--color-blue)]" />
-          <stop offset="0.8" className="[stop-color:var(--color-blue)]" stopOpacity="0.75" />
-          <stop offset="1" className="[stop-color:var(--color-blue)]" stopOpacity="0" />
+          <stop offset="0" className="[stop-color:var(--color-accent)]" />
+          <stop offset="0.8" className="[stop-color:var(--color-accent)]" stopOpacity="0.75" />
+          <stop offset="1" className="[stop-color:var(--color-accent)]" stopOpacity="0" />
         </linearGradient>
       </defs>
       <line {...line} stroke="currentColor" className="text-line" />
@@ -96,12 +96,12 @@ export function Method() {
                       {/* node: the phase gate is a decision diamond, the stages after it are stations */}
                       <span aria-hidden className="relative z-10 row-span-3 mt-1 grid size-[15px] place-items-center lg:row-span-1 lg:mt-6">
                         {i === 0 ? (
-                          <span className="grid size-[11px] rotate-45 place-items-center rounded-[1px] border border-blue/80 bg-bg shadow-[0_0_0_4px_var(--color-bg)]">
-                            <span className="size-1 bg-blue" />
+                          <span className="grid size-[11px] rotate-45 place-items-center rounded-[1px] border border-accent/80 bg-bg shadow-[0_0_0_4px_var(--color-bg)]">
+                            <span className="size-1 bg-accent" />
                           </span>
                         ) : (
-                          <span className="grid size-[15px] place-items-center rounded-full border border-blue/80 bg-bg shadow-[0_0_0_4px_var(--color-bg)]">
-                            <span className="size-[5px] rounded-full bg-blue" />
+                          <span className="grid size-[15px] place-items-center rounded-full border border-accent/80 bg-bg shadow-[0_0_0_4px_var(--color-bg)]">
+                            <span className="size-[5px] rounded-full bg-accent" />
                           </span>
                         )}
                       </span>
@@ -109,14 +109,14 @@ export function Method() {
                       <div className="col-start-2 lg:col-start-1 lg:mt-6">
                         <h4 className="display text-[clamp(1.5rem,2.1vw,1.9rem)] text-ink [--wdth:100]">{s.verb}</h4>
                         <p className="mt-2.5 font-mono text-[0.72rem] text-ink-faint tabular">
-                          <span className="text-blue">{pad(s.n)}</span> · <span lang="en">{s.title.toLowerCase()}</span>
+                          <span className="text-accent">{pad(s.n)}</span> · <span lang="en">{s.title.toLowerCase()}</span>
                         </p>
                       </div>
 
                       <p className="col-start-2 mt-3 text-pretty text-[0.9375rem] leading-7 text-ink-muted lg:col-start-1 lg:mt-4">{s.text}</p>
 
                       <div className="col-start-2 mt-6 border-t border-line pt-4 lg:col-start-1 lg:mt-8">
-                        <p className="font-mono text-[0.72rem] text-blue">
+                        <p className="font-mono text-[0.72rem] text-accent">
                           <span aria-hidden>↳ </span>
                           <span className="sr-only">Onde aparece: </span>
                           {s.evidence.project}
@@ -134,11 +134,11 @@ export function Method() {
         {/* legend: what the two node shapes on the track mean */}
         <p aria-hidden className="label mt-14 flex flex-wrap items-center gap-x-6 gap-y-2 lg:justify-end">
           <span className="inline-flex items-center gap-2.5">
-            <span className="size-[7px] rotate-45 border border-blue/80" />
+            <span className="size-[7px] rotate-45 border border-accent/80" />
             portão go / no-go
           </span>
           <span className="inline-flex items-center gap-2.5">
-            <span className="size-2 rounded-full border border-blue/80" />
+            <span className="size-2 rounded-full border border-accent/80" />
             estágio
           </span>
         </p>

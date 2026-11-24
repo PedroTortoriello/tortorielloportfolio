@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { EASE_OUT } from "@/lib/motion";
 
 // Copies the value and confirms in place: the label flips to "copiado" with a
-// blue check (success), and a polite live region says it aloud. The label
+// bordô check (success), and a polite live region says it aloud. The label
 // keeps a fixed width, so nothing beside it moves. Without clipboard access it
 // falls back to opening the mail client.
 export function CopyButton({ value, label }: { value: string; label: string }) {
@@ -29,8 +29,8 @@ export function CopyButton({ value, label }: { value: string; label: string }) {
           }
         }}
         aria-label={label}
-        className={`inline-flex h-10 shrink-0 items-center overflow-hidden rounded-[5px] border px-3.5 font-mono text-[0.72rem] uppercase tracking-[0.1em] transition-[border-color,background-color,color,transform] duration-200 ease-out active:scale-[0.98] ${
-          copied ? "border-blue/60 bg-surface text-ink" : "border-line-strong bg-surface/60 text-ink-muted hover:border-blue/70 hover:bg-elevated hover:text-ink"
+        className={`inline-flex h-10 shrink-0 items-center overflow-hidden rounded-[2px] border px-3.5 font-mono text-[0.72rem] uppercase tracking-[0.1em] transition-[border-color,background-color,color,transform] duration-200 ease-out active:scale-[0.98] ${
+          copied ? "border-accent/60 bg-surface text-ink" : "border-line-strong bg-surface/60 text-ink-muted hover:border-accent/70 hover:bg-elevated hover:text-ink"
         }`}
       >
         <AnimatePresence mode="wait" initial={false}>
@@ -43,7 +43,7 @@ export function CopyButton({ value, label }: { value: string; label: string }) {
             transition={{ duration: 0.18, ease: EASE_OUT }}
             className="inline-flex items-center gap-2"
           >
-            {copied ? <Check className="size-3.5 text-blue" strokeWidth={2} /> : <Copy className="size-3.5" strokeWidth={1.75} />}
+            {copied ? <Check className="size-3.5 text-accent" strokeWidth={2} /> : <Copy className="size-3.5" strokeWidth={1.75} />}
             {/* 7 mono chars + 0.1em tracking each = 8.2ch */}
             <span className="w-[8.2ch] text-left">{copied ? "copiado" : "copiar"}</span>
           </motion.span>

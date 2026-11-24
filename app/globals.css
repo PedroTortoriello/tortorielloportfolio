@@ -1,48 +1,50 @@
 @import "tailwindcss";
 
 /* ----------------------------------------------------------------------------
-   V2 · Control Room — tokens.
-   #080B10 field, #111925 consoles, #244561 structure, #5E9EFF the only light
-   (live states included), #E8EDF4 ink. Green only marks a success result
-   inside code instruments. See DESIGN.md.
+   V3 · Papel de segurança — tokens.
+   Security paper #E4EBE5, document plates #EEF3EF, ink #141A22. Bordô #7A1424
+   is the one ink for action, active state, serials and the thread; cédula
+   green #1F6B5E draws guilloché, rules and graph structure. See DESIGN.md and
+   .impeccable/surfaces/app-page-tsx.md.
 ---------------------------------------------------------------------------- */
 @theme {
-  --color-bg: #080b10;
-  --color-surface: #111925;
-  --color-elevated: #15202f;
-  --color-raised: #1b2939;
-  --color-structure: #244561;
+  --color-bg: #e4ebe5;
+  --color-surface: #eef3ef;
+  --color-elevated: #dfe7e1;
+  --color-raised: #d4ded6;
+  --color-structure: #1f6b5e;
 
-  /* hairlines are structural blue, not grey */
-  --color-line: rgb(53 92 126 / 0.42);
-  --color-line-strong: rgb(74 120 160 / 0.62);
-  --color-line-faint: rgb(36 69 97 / 0.34);
+  /* hairlines are printed ink, never neutral grey */
+  --color-line: rgb(20 26 34 / 0.16);
+  --color-line-strong: rgb(20 26 34 / 0.32);
+  --color-line-faint: rgb(20 26 34 / 0.09);
 
-  --color-ink: #e8edf4;
-  --color-ink-muted: #a3afbf;
-  --color-ink-faint: #7c8aa0;
+  --color-ink: #141a22;
+  --color-ink-muted: #3c4750;
+  --color-ink-faint: #5b6670;
 
-  --color-blue: #5e9eff;
-  --color-blue-bright: #8dbaff;
-  --color-on-blue: #06101f;
-  /* moving data used to be cyan; V2 keeps one light, so it is a lighter blue */
-  --color-cyan: #8dbaff;
-  --color-green: #6ee7b0;
-  --color-amber: #e6c07b;
+  /* the one ink: intaglio bordô (deeper on hover), paper-white on its fill */
+  --color-accent: #7a1424;
+  --color-accent-deep: #5c0e1a;
+  --color-on-accent: #f6f8f6;
+  --color-green: #1f6b5e;
+  --color-amber: #8a5a12;
 
-  /* syntax */
-  --color-sx-kw: #8db8ff;
-  --color-sx-fn: #7fc8ff;
-  --color-sx-str: #e6c07b;
-  --color-sx-num: #f0a988;
-  --color-sx-type: #b9d3ff;
-  --color-sx-com: #7484a0;
-  --color-sx-punct: #8a9ab0;
-  --color-sx-id: #d9e2ee;
+  /* syntax: a printed listing on paper */
+  --color-sx-kw: #7a1424;
+  --color-sx-fn: #1f6b5e;
+  --color-sx-str: #8a5a12;
+  --color-sx-num: #9b3d1f;
+  --color-sx-type: #1f4f7a;
+  --color-sx-com: #66717b;
+  --color-sx-punct: #4b5560;
+  --color-sx-id: #141a22;
 
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  /* Source Serif 4 reads; Archivo titles, labels and controls; Geist Mono prints data */
+  --font-sans: var(--font-doc), Georgia, ui-serif, serif;
+  --font-ui: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
-  --font-display: var(--font-hubot), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
@@ -59,28 +61,43 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    color-scheme: dark;
+    color-scheme: light;
     background: var(--color-bg);
-    scrollbar-color: rgb(74 120 160 / 0.5) var(--color-bg);
+    scrollbar-color: rgb(122 20 36 / 0.55) var(--color-bg);
     interpolate-size: allow-keywords;
   }
 
   body {
     min-height: 100vh;
-    background: var(--color-bg);
+    background-color: var(--color-bg);
+    /* Anti-copy ground: two interlaced fine waves, as on certidões. */
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='12'%3E%3Cpath d='M0 6Q12 1 24 6T48 6' fill='none' stroke='%23d3ddd6' stroke-width='.7'/%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='12'%3E%3Cpath d='M0 6Q12 11 24 6T48 6' fill='none' stroke='%23dae3dc' stroke-width='.6'/%3E%3C/svg%3E");
+    background-position:
+      0 0,
+      24px 6px;
     color: var(--color-ink);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01", "cv11";
+    font-optical-sizing: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     overflow-x: clip;
-    caret-color: var(--color-blue);
+    caret-color: var(--color-accent);
+  }
+
+  /* Controls speak Archivo, the official-form sans; reading stays serif. */
+  button,
+  input,
+  select,
+  textarea {
+    font-family: var(--font-ui);
   }
 
   ::selection {
-    background: rgb(94 158 255 / 0.32);
-    color: #fff;
+    background: rgb(122 20 36 / 0.16);
+    color: var(--color-ink);
   }
 
   ::-webkit-scrollbar {
@@ -91,12 +108,12 @@
     background: var(--color-bg);
   }
   ::-webkit-scrollbar-thumb {
-    background: rgb(53 92 126 / 0.55);
+    background: rgb(122 20 36 / 0.45);
     border: 2px solid var(--color-bg);
     border-radius: 999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgb(94 158 255 / 0.7);
+    background: rgb(122 20 36 / 0.7);
   }
 
   a {
@@ -111,7 +128,7 @@
 
 /* Deliberately unlayered: the focus ring must survive any outline-none utility. */
 :focus-visible {
-  outline: 2px solid var(--color-blue);
+  outline: 2px solid var(--color-accent);
   outline-offset: 3px;
   border-radius: 3px;
 }
@@ -128,25 +145,24 @@
     padding-block: clamp(6rem, 12vw, 10rem);
   }
 
-  /* Wall titles: Hubot Sans opened up. --wdth tunes the width per use. */
+  /* Titles: Archivo opened up on its width axis. --wdth tunes it per use (62–125). */
   .display {
     font-family: var(--font-display);
     font-variation-settings: "wdth" var(--wdth, 112);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    /* wide face + negative tracking closes word gaps; give them back */
-    word-spacing: 0.08em;
-    line-height: 0.94;
+    font-weight: 720;
+    letter-spacing: -0.028em;
+    word-spacing: 0.03em;
+    line-height: 0.97;
     text-wrap: balance;
   }
 
-  /* Content label (Problema, Decisão…): sans, small, tracked. */
+  /* Field label (Problema, Decisão…): the sans caps of an official form. */
   .label {
-    font-family: var(--font-sans);
+    font-family: var(--font-ui);
     font-size: 0.6875rem;
-    font-weight: 500;
+    font-weight: 640;
     line-height: 1.2;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--color-ink-faint);
   }
@@ -165,19 +181,20 @@
     font-variant-numeric: tabular-nums;
   }
 
-  /* Console: a hairline frame with blue registration ticks on its corners. */
+  /* Document plate: a flat sheet with a printed hairline edge. */
   .console {
     position: relative;
-    border: 1px solid var(--color-line);
-    border-radius: 6px;
-    background: rgb(17 25 37 / 0.72);
+    border: 1px solid var(--color-line-strong);
+    border-radius: 2px;
+    background: rgb(238 243 239 / 0.88);
   }
+  /* Registration marks in bordô at the corners, as a printer marks a sheet. */
   .ticks {
     position: relative;
   }
   .ticks::before {
-    --t: 11px;
-    --c: rgb(94 158 255 / 0.85);
+    --t: 12px;
+    --c: rgb(122 20 36 / 0.9);
     content: "";
     position: absolute;
     inset: -1px;
@@ -203,40 +220,40 @@
     padding-inline: 0.875rem;
   }
 
-  /* Drafting grid: minor 24px, major 120px, in structural blue. */
+  /* Guilloché ground: a denser engraved wave field for plates that carry it
+     (kept under its V2 class name, which every plate already uses). */
   .drafting-grid {
     background-image:
-      linear-gradient(to right, rgb(36 69 97 / 0.32) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(36 69 97 / 0.32) 1px, transparent 1px),
-      linear-gradient(to right, rgb(36 69 97 / 0.13) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(36 69 97 / 0.13) 1px, transparent 1px);
-    background-size:
-      120px 120px,
-      120px 120px,
-      24px 24px,
-      24px 24px;
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='9'%3E%3Cpath d='M0 4.5C7 0 7 0 14 4.5S21 9 28 4.5' fill='none' stroke='%231f6b5e' stroke-opacity='.16' stroke-width='.6'/%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='9'%3E%3Cpath d='M0 4.5C7 9 7 9 14 4.5S21 0 28 4.5' fill='none' stroke='%237a1424' stroke-opacity='.09' stroke-width='.6'/%3E%3C/svg%3E");
   }
-  /* A ruler: hairline with a tick every 24px and a major tick every 120px. */
+  /* An engraved frame: the same interlaced waves at full ink, tight, for the
+     border of a portrait or seal (pad the element to show it). */
+  .guilloche-frame {
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9'%3E%3Cpath d='M0 4.5C3.5 0 3.5 0 7 4.5S10.5 9 14 4.5' fill='none' stroke='%231f6b5e' stroke-width='1.1'/%3E%3Cpath d='M0 4.5C3.5 9 3.5 9 7 4.5S10.5 0 14 4.5' fill='none' stroke='%237a1424' stroke-width='1'/%3E%3C/svg%3E")
+      0 0 / 14px 9px,
+      var(--color-surface);
+  }
+
+  /* A wave rule: interlaced green and bordô waves, the edge of a certificate. */
   .ruler {
     height: 9px;
     background:
-      linear-gradient(var(--color-line), var(--color-line)) bottom / 100% 1px no-repeat,
-      repeating-linear-gradient(to right, rgb(74 120 160 / 0.55) 0 1px, transparent 1px 120px) bottom / 100% 9px no-repeat,
-      repeating-linear-gradient(to right, rgb(53 92 126 / 0.42) 0 1px, transparent 1px 24px) bottom / 100% 4px no-repeat;
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='9'%3E%3Cpath d='M0 4.5C7 0 7 0 14 4.5S21 9 28 4.5' fill='none' stroke='%231f6b5e' stroke-width='.8'/%3E%3Cpath d='M0 4.5C7 9 7 9 14 4.5S21 0 28 4.5' fill='none' stroke='%237a1424' stroke-width='.8'/%3E%3C/svg%3E")
+      left center / 28px 9px repeat-x;
   }
 
-  /* Floating instrument (windows, device frames): the only things with a drop. */
+  /* Floating plate (code listings, browser frames): printed paper that lifts. */
   .window {
     position: relative;
-    background:
-      linear-gradient(180deg, rgb(94 158 255 / 0.035), transparent 120px),
-      var(--color-surface);
-    border: 1px solid var(--color-line);
-    border-radius: 8px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-line-strong);
+    border-radius: 2px;
     box-shadow:
-      0 1px 0 rgb(255 255 255 / 0.04) inset,
-      0 24px 48px -16px rgb(0 0 0 / 0.65),
-      0 56px 110px -30px rgb(3 8 20 / 0.8);
+      0 1px 0 rgb(255 255 255 / 0.7) inset,
+      0 22px 44px -24px rgb(20 26 34 / 0.38),
+      0 48px 90px -40px rgb(20 26 34 / 0.3);
   }
 
   /* Pointer-tracked edge light (set --mx/--my from JS). */
@@ -250,7 +267,7 @@
     inset: -1px;
     border-radius: inherit;
     padding: 1px;
-    background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 0%), rgb(94 158 255 / 0.6), transparent 62%);
+    background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 0%), rgb(122 20 36 / 0.5), transparent 62%);
     -webkit-mask:
       linear-gradient(#000 0 0) content-box,
       linear-gradient(#000 0 0);
@@ -405,21 +422,21 @@
     transform: scaleX(0);
   }
 }
+/* A plate being printed: it opens from a centre band, pale until the ink takes. */
 @keyframes power-on {
   from {
     clip-path: inset(47% 0 47% 0);
-    filter: brightness(1.9) saturate(0.4);
+    filter: contrast(0.55) brightness(1.25) saturate(0.3);
   }
   60% {
-    filter: brightness(1.15);
+    filter: contrast(0.9) brightness(1.05);
   }
 }
+/* Ink press: a value lands in bordô, slightly spread, then settles into ink. */
 @keyframes bloom {
   from {
-    color: #fff;
-    text-shadow:
-      0 0 14px rgb(94 158 255 / 0.85),
-      0 0 2px rgb(141 186 255 / 0.9);
+    color: #7a1424;
+    filter: blur(0.6px);
   }
 }
 @keyframes flow {

@@ -154,7 +154,7 @@ export const landingPages: LandingPage[] = [
     niche: "advocacia",
     kind: "Site institucional",
     city: "São Paulo, SP",
-    url: "https://pesseti-advocacia.vercel.app/",
+    url: "https://pesseti-advocacia-portfolio.vercel.app/",
     summary:
       "Site da marca pessoal de uma advogada, em página única: em segundos o visitante entende quem ela é e em que atua, e fala com ela pelo WhatsApp.",
     highlights: [
@@ -240,7 +240,7 @@ export const landingPages: LandingPage[] = [
     niche: "advocacia",
     kind: "Site institucional",
     city: "Votorantim, SP",
-    url: "https://jorge-fernandes-advocacia.vercel.app/",
+    url: "https://jorge-fernandes-advocacia-portfolio.vercel.app/",
     summary:
       "Site e sistema do escritório de uma advogada, com o nome dela em destaque na primeira tela. O conteúdo saiu de fonte pública (Receita, OpenStreetMap e as 344 publicações do DJEN em nome dela), sem dado inventado.",
     highlights: [
@@ -259,7 +259,7 @@ export const landingPages: LandingPage[] = [
     niche: "advocacia",
     kind: "Site institucional",
     city: "Belo Horizonte, MG",
-    url: "https://helberte-sena-advocacia.vercel.app/",
+    url: "https://helberte-sena-advocacia-portfolio.vercel.app/",
     summary:
       "Site e sistema de um escritório de Direito Civil, Família e Penal. A direção de arte “Azulejo” vem dos painéis de azulejo e das abóbadas parabólicas do conjunto modernista da Pampulha.",
     highlights: [
@@ -278,7 +278,7 @@ export const landingPages: LandingPage[] = [
     niche: "advocacia",
     kind: "Redesign",
     city: "Belo Horizonte, MG",
-    url: "https://guimaraes-pereira-advocacia.vercel.app/",
+    url: "https://guimaraes-pereira-advocacia-portfolio.vercel.app/",
     summary:
       "Proposta de site e sistema para um escritório de Direito Empresarial e Internacional na Savassi. A direção “Meridiano” põe Belo Horizonte como um ponto no mapa: o retrato do advogado num círculo de latão, com o anel das coordenadas girando em volta.",
     highlights: [
@@ -297,7 +297,7 @@ export const landingPages: LandingPage[] = [
     niche: "advocacia",
     kind: "Site institucional",
     city: "Gurupi, TO",
-    url: "https://martins-domingos-advocacia.vercel.app/",
+    url: "https://martins-domingos-advocacia-portfolio.vercel.app/",
     summary:
       "Site e sistema de um escritório de Direito do Consumidor e Civil. A direção “Território” é o cerrado visto da chapada: céu claro, uma linha de horizonte e a terra de laterita, com o nome cortado pelo horizonte.",
     highlights: [
@@ -316,7 +316,7 @@ export const landingPages: LandingPage[] = [
     niche: "advocacia",
     kind: "Site institucional",
     city: "Suzano, SP",
-    url: "https://julio-lessa-advocacia.vercel.app/",
+    url: "https://julio-lessa-advocacia-portfolio.vercel.app/",
     summary:
       "Site e sistema de um advogado previdenciário, com pedidos no INSS e ações na Justiça Federal e atendimento online em todo o Brasil. O monograma JL foi redesenhado a partir do logo que o cliente já usava.",
     highlights: [
@@ -329,12 +329,50 @@ export const landingPages: LandingPage[] = [
     preview: true,
   },
   {
+    slug: "ferraz-leao",
+    name: "Ferraz Leão Advocacia Empresarial",
+    niche: "advocacia",
+    kind: "Site institucional",
+    city: "São Paulo, SP",
+    url: "https://ferraz-leao-portfolio.vercel.app/",
+    summary:
+      "Site institucional e editorial de uma boutique de advocacia tributária e societária fundada em 1999 em São Paulo, com o acervo de publicações do escritório migrado do WordPress e organizado por tema, norma citada e vigência.",
+    highlights: [
+      "45 publicações migradas do WordPress, com temas, normas citadas, vigência e relacionadas derivados do texto por regra",
+      "Redirecionamento permanente de cada URL antiga para a publicação migrada",
+      "Textos institucionais ajustados ao Provimento 205/2021, com cada ajuste comentado para o escritório validar",
+      "Setores atendidos sem nomes de clientes, como pede o Código de Ética da OAB",
+    ],
+    stack: "Next.js 15 · React 19 · TypeScript · Tailwind CSS 4",
+    note: "Novo site em aprovação; o domínio do escritório ainda serve o site antigo.",
+    preview: true,
+  },
+  {
+    slug: "couto-rosa-donega-advocacia",
+    name: "Couto Rosa Donega Advocacia",
+    niche: "advocacia",
+    kind: "Site institucional",
+    city: "Franca, SP",
+    url: "https://couto-rosa-donega-advocacia-portfolio.vercel.app/",
+    summary:
+      "Site de um advogado de Franca com a prática concentrada em Família e Sucessões. Tudo o que o site afirma tem fonte pública (Receita Federal e DJEN), e o contato fica a um toque no celular.",
+    highlights: [
+      "Nome, inscrição na OAB e CNPJ conferidos na Receita e nas publicações do DJEN",
+      "Áreas escolhidas pela classificação dos processos públicos do advogado; nenhum processo, parte ou caso aparece no site",
+      "Barra fixa no celular com WhatsApp, ligar e salvar contato (vCard)",
+      "Sem indexação no endereço de aprovação; passa a ser indexado sozinho no domínio próprio",
+    ],
+    stack: "Next.js 15 · React 19 · TypeScript · Tailwind CSS 4",
+    note: "Prévia enviada ao escritório para aprovação; ainda não está no domínio dele.",
+    preview: true,
+  },
+  {
     slug: "viviane-braga-advocacia",
     name: "Viviane Braga Advocacia",
     niche: "advocacia",
     kind: "Landing page",
     city: "Mesquita, RJ",
-    url: "https://viviane-braga-advocacia.vercel.app/",
+    url: "https://viviane-braga-advocacia-portfolio.vercel.app/",
     summary:
       "Landing page de uma advogada em estilo de revista: capa em azul-marinho com o retrato dela numa moldura em arco de contorno dourado e títulos em Bodoni Moda com palavras em itálico dourado.",
     highlights: [

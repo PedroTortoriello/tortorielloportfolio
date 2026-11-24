@@ -8,6 +8,9 @@ import { FileText, Menu, X } from "lucide-react";
 import { nav, profile } from "@/lib/data";
 import { EASE_OUT } from "@/lib/motion";
 import { useActiveStation } from "@/lib/stations";
+import { Rosette } from "@/components/security/guilloche";
+
+const navLabel = (id: string) => nav.find((n) => n.id === id)?.label ?? "Portfólio";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -68,13 +71,10 @@ export function SiteHeader() {
     >
       <div className="container-x flex h-16 items-center justify-between gap-6">
         <Link href="/" className="group flex min-w-0 items-center gap-3" aria-label={`${profile.name}, início`}>
-          <span className="relative grid size-8 shrink-0 place-items-center rounded-[5px] border border-line-strong bg-surface font-mono text-[0.6875rem] font-medium tracking-[0.04em] text-ink transition-colors group-hover:border-blue/70">
-            {profile.initials}
-            <span className="absolute -right-[3px] -top-[3px] size-[5px] rounded-full bg-blue shadow-[0_0_8px_rgb(94_158_255/0.9)]" aria-hidden />
-          </span>
+          <Rosette seed="marca" lat={-23.55} lon={-46.63} dense={false} className="size-8 shrink-0" />
           <span className="flex min-w-0 items-baseline gap-2.5">
-            <span className="text-sm font-medium tracking-[-0.01em] text-ink">{profile.name}</span>
-            <span className="hidden truncate font-mono text-[0.6875rem] text-ink-faint xl:inline">~/{crumb ?? "portfolio"}</span>
+            <span className="font-ui text-[0.9375rem] font-[660] tracking-[-0.01em] text-ink [font-variation-settings:'wdth'_106]">{profile.name}</span>
+            <span className="hidden truncate font-mono text-[0.6875rem] uppercase tracking-[0.1em] text-ink-faint xl:inline">{crumb ? navLabel(crumb) : "Portfólio"}</span>
           </span>
         </Link>
 
@@ -87,14 +87,14 @@ export function SiteHeader() {
                   <Link
                     href={item.href}
                     aria-current={isActive ? "location" : undefined}
-                    className={`relative block px-3 py-2 text-[0.8125rem] transition-colors duration-200 ${isActive ? "text-ink" : "text-ink-muted hover:text-ink"}`}
+                    className={`relative block px-3 py-2 font-ui text-[0.875rem] font-[560] transition-colors duration-200 ${isActive ? "text-accent" : "text-ink-muted hover:text-ink"}`}
                   >
                     {item.label}
                   </Link>
                   {isActive ? (
                     <motion.span
                       layoutId="nav-active"
-                      className="absolute inset-x-3 -bottom-[13px] h-[2px] bg-blue shadow-[0_0_10px_rgb(94_158_255/0.8)]"
+                      className="absolute inset-x-3 -bottom-[13px] h-[2px] bg-accent"
                       transition={{ duration: 0.45, ease: EASE_OUT }}
                     />
                   ) : null}
@@ -109,9 +109,9 @@ export function SiteHeader() {
             href={profile.cv}
             target="_blank"
             rel="noreferrer"
-            className="hidden h-9 items-center gap-2 rounded-[5px] border border-line-strong px-3.5 text-[0.8125rem] text-ink transition-colors hover:border-blue/70 hover:bg-elevated sm:inline-flex"
+            className="hidden h-9 items-center gap-2 rounded-[2px] border border-accent px-3.5 font-ui text-[0.8125rem] font-[620] text-accent transition-colors hover:bg-accent hover:text-on-accent sm:inline-flex"
           >
-            <FileText aria-hidden className="size-3.5 text-ink-muted" />
+            <FileText aria-hidden className="size-3.5" />
             Currículo
           </a>
           <button
@@ -121,7 +121,7 @@ export function SiteHeader() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Fechar menu" : "Abrir menu"}
-            className="grid size-9 place-items-center rounded-[5px] border border-line text-ink lg:hidden"
+            className="grid size-9 place-items-center rounded-[2px] border border-line-strong text-ink lg:hidden"
           >
             {open ? <X className="size-4" /> : <Menu className="size-4" />}
           </button>
@@ -166,7 +166,7 @@ export function SiteHeader() {
                   target="_blank"
                   rel="noreferrer"
                   onClick={() => setOpen(false)}
-                  className="flex h-12 items-center justify-center gap-2 rounded-[6px] bg-blue text-sm font-medium text-on-blue"
+                  className="flex h-12 items-center justify-center gap-2 rounded-[2px] bg-accent text-sm font-medium text-on-accent"
                 >
                   <FileText aria-hidden className="size-4" />
                   Ver currículo

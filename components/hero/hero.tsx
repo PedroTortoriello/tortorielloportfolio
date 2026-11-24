@@ -1,98 +1,48 @@
 import Image from "next/image";
 import { FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Mrz, Rosette, WaveBand } from "@/components/security/guilloche";
 import { profile, specialties } from "@/lib/data";
-import { FrontWall } from "./front-wall";
-import { HeroStage } from "./hero-stage";
 import { LocalTime } from "./local-time";
 
 const d = (ms: number) => ({ "--d": `${ms}ms` }) as React.CSSProperties;
 
 const commit = process.env.NEXT_PUBLIC_COMMIT ?? "local";
 
-// The launch: leaves the last station's node and rises to the top-right edge,
-// behind the operator console. Drawn after the track reaches the node; tick
-// marks every 24 units; a light rides the line once. Fixed aspect (no stretch).
-const LAUNCH = "M 7 593 C 150 588 280 540 360 440 S 520 150 680 -60";
+// MRZ text: uppercase A-Z, digits and "<" only, as on a passport.
+const mrz = (s: string) =>
+  s
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .toUpperCase()
+    .replace(/[^A-Z0-9]+/g, "<");
 
-function Launch() {
+// Printed fields of the identity document. Only real values: the CV's facts,
+// the local time in São Paulo and the commit of this build.
+function Field({ label, children, wide = false }: { label: string; children: React.ReactNode; wide?: boolean }) {
   return (
-    <svg
-      aria-hidden
-      viewBox="0 0 600 600"
-      className="pointer-events-none absolute left-0 -z-10 hidden aspect-square h-[min(600px,64svh)] overflow-visible lg:block"
-      // pins the path's first point (7, 593) on the node centre (7.5px, 7.5px)
-      style={{ top: "calc(7.5px - min(600px, 64svh) * 0.98833)" }}
-    >
-      <path d={LAUNCH} fill="none" stroke="#355c7e" strokeWidth="7" strokeDasharray="1 23" strokeOpacity="0.55" className="enter-fade" style={d(2700)} />
-      <path d={LAUNCH} pathLength={1} fill="none" stroke="url(#launch-grad)" strokeWidth="1.4" className="boot-draw" style={d(2150)} />
-      <defs>
-        <linearGradient id="launch-grad" x1="0" y1="600" x2="600" y2="0" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stopColor="#5e9eff" />
-          <stop offset="1" stopColor="#8dbaff" stopOpacity="0.9" />
-        </linearGradient>
-        <radialGradient id="launch-head">
-          <stop offset="0" stopColor="#cfe1ff" />
-          <stop offset="0.35" stopColor="#5e9eff" stopOpacity="0.8" />
-          <stop offset="1" stopColor="#5e9eff" stopOpacity="0" />
-        </radialGradient>
-      </defs>
-      <path id="launch-path" d={LAUNCH} fill="none" stroke="none" />
-      <circle r="9" fill="url(#launch-head)" className="motion-only" opacity="0">
-        <set attributeName="opacity" to="1" begin="2.15s" />
-        <animateMotion dur="1.6s" begin="2.15s" fill="freeze" calcMode="spline" keyPoints="0;1" keyTimes="0;1" keySplines="0.65 0 0.35 1">
-          <mpath href="#launch-path" />
-        </animateMotion>
-      </circle>
-    </svg>
+    <div className={wide ? "col-span-2" : ""}>
+      <dt className="label">{label}</dt>
+      <dd className="mt-1 text-[0.9375rem] leading-snug text-ink">{children}</dd>
+    </div>
   );
 }
 
-// The front wall. Boots in CSS (no JS needed to read it), then MotionRoot lifts
-// the copy and the console at different speeds as the section leaves the top.
+// The opening: Pedro's identity document. The name, role and proposal read
+// first; the document beside them carries the portrait, the fields and an MRZ.
 export function Hero() {
+  const [given, ...rest] = profile.fullName.split(" ");
   return (
-    <HeroStage className="relative isolate flex min-h-[100svh] flex-col overflow-hidden">
-      {/* wall: grid, light, construction lines, crosshair — three depths */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div data-parallax="-0.06" className="absolute inset-0">
-          <div className="drafting-grid enter-fade absolute -inset-10 [mask-image:radial-gradient(ellipse_72%_78%_at_70%_40%,black_12%,transparent_76%)] lg:transition-transform lg:duration-1000 lg:ease-out lg:[transform:translate3d(calc(var(--px,0)*-5px),calc(var(--py,0)*-5px),0)]" />
-        </div>
-        <div className="enter-fade absolute inset-0 bg-[radial-gradient(900px_640px_at_74%_42%,rgb(94_158_255/0.11),transparent_64%),radial-gradient(600px_420px_at_6%_96%,rgb(36_69_97/0.35),transparent_70%)]" />
-        <div data-parallax="-0.14" className="absolute inset-0">
-          <div className="absolute inset-0 lg:transition-transform lg:duration-700 lg:ease-out lg:[transform:translate3d(calc(var(--px,0)*-14px),calc(var(--py,0)*-10px),0)]">
-            <FrontWall className="size-full opacity-60 lg:opacity-100" />
-          </div>
-        </div>
-        <div className="motion-only absolute inset-0 hidden opacity-0 transition-opacity duration-500 group-data-[pointer]/stage:opacity-100 lg:block">
-          <span className="absolute inset-y-0 left-0 w-px bg-structure/80" style={{ transform: "translate3d(var(--cx,0),0,0)" }} />
-          <span className="absolute inset-x-0 top-0 h-px bg-structure/80" style={{ transform: "translate3d(0,var(--cy,0),0)" }} />
-          <span
-            className="absolute left-0 top-0 font-mono text-[0.625rem] tracking-[0.08em] text-ink-faint tabular"
-            style={{ transform: "translate3d(calc(var(--cx,0) + 12px),calc(var(--cy,0) + 10px),0)" }}
-          >
-            x <span data-cx>0000</span> · y <span data-cy>0000</span>
-          </span>
-        </div>
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-bg" />
-      </div>
-
-      {/* indicators: only real values */}
-      <div className="container-x hidden pt-[5.5rem] lg:block">
-        <p className="hud enter-fade flex flex-wrap items-center justify-end gap-x-5 gap-y-1" style={d(900)}>
-          <span>
-            São Paulo · <LocalTime /> BRT
-          </span>
-          <span className="hidden sm:inline">desde {profile.since}</span>
-          <span className="hidden sm:inline">
-            commit <span className="text-ink-muted">{commit}</span>
-          </span>
-        </p>
-      </div>
-
-      <div className="container-x grid flex-1 grid-cols-1 items-center gap-8 pb-12 pt-24 lg:grid-cols-12 lg:gap-8 lg:pt-6">
-        <div data-exit="0.08" className="lg:col-span-6 xl:col-span-7">
-          <h1 id="hero-title" className="display text-[clamp(2.9rem,6.3vw,5.6rem)] font-[760] tracking-[-0.035em] text-ink [--wdth:125]">
+    <section
+      id="top"
+      aria-labelledby="hero-title"
+      data-station="00"
+      data-station-label="Início"
+      className="relative isolate flex min-h-[100svh] flex-col overflow-hidden"
+    >
+      <div className="container-x grid flex-1 grid-cols-1 items-center gap-12 pt-28 pb-12 lg:grid-cols-12 lg:gap-10 lg:pt-24">
+        <div data-exit="0.08" className="lg:col-span-7">
+          <h1 id="hero-title" className="display text-[clamp(3rem,6.6vw,6rem)] text-ink [--wdth:125]">
             <span className="mask-line">
               <span style={d(120)}>Pedro</span>
             </span>
@@ -100,100 +50,93 @@ export function Hero() {
               <span style={d(230)}>Tortoriello</span>
             </span>
           </h1>
-          <p className="enter mt-7 text-[clamp(1.05rem,1.55vw,1.3rem)] font-medium tracking-[-0.012em] text-ink" style={d(420)}>
-            {profile.role} <span className="text-line-strong">/</span> <span className="text-blue-bright">{profile.focus}</span>
+          <p className="enter mt-8 font-ui text-[clamp(1.05rem,1.5vw,1.25rem)] font-[620] tracking-[-0.01em] text-ink [font-variation-settings:'wdth'_104]" style={d(420)}>
+            {profile.role} <span className="text-line-strong">/</span> <span className="text-accent">{profile.focus}</span>
           </p>
-          <p className="enter mt-4 max-w-[33rem] text-pretty text-[1.0625rem] leading-[1.6] text-ink-muted" style={d(520)}>
+          <p className="enter mt-4 max-w-[34rem] text-pretty text-[clamp(1.0625rem,1.35vw,1.1875rem)] leading-[1.6] text-ink-muted" style={d(520)}>
             {profile.description}
           </p>
-          <div className="enter mt-9 flex flex-col gap-3 sm:flex-row sm:items-center" style={d(640)}>
+          <div className="enter mt-10 flex flex-col gap-3 sm:flex-row sm:items-center" style={d(640)}>
             <Button href="#projetos" arrow="down">
               Explorar projetos
             </Button>
-            <Button href={profile.cv} external variant="secondary" icon={<FileText aria-hidden className="size-4 text-ink-muted" />}>
+            <Button href={profile.cv} external variant="secondary" icon={<FileText aria-hidden className="size-4" />}>
               Ver currículo
             </Button>
           </div>
-          <p className="enter mt-7 inline-flex items-center gap-2.5 text-[0.8125rem] text-ink-muted" style={d(760)}>
-            <span className="relative flex size-2">
-              <span className="motion-only absolute inset-0 rounded-full bg-blue/60 animate-[ping-soft_2.6s_ease-out_infinite]" />
-              <span className="relative size-2 rounded-full bg-blue shadow-[0_0_10px_rgb(94_158_255/0.9)]" />
-            </span>
-            {profile.availability}
-          </p>
         </div>
 
-        {/* the operator: a portrait console that powers on, floating at its own depth.
-            On phones it is a dossier strip right after the copy, still inside the fold. */}
-        <div data-exit="0.2" className="lg:col-span-6 lg:flex lg:justify-end xl:col-span-5">
-          <div className="enter-window w-full lg:w-[min(24rem,42svh)]" style={d(380)}>
-            <div className="lg:transition-transform lg:duration-700 lg:ease-out lg:[transform:translate3d(calc(var(--px,0)*9px),calc(var(--py,0)*7px),0)]">
-              <figure className="console ticks overflow-hidden shadow-[0_30px_70px_-24px_rgb(0_0_0/0.85),0_0_0_1px_rgb(94_158_255/0.04)_inset]">
-                <div className="console-head bg-elevated/60">
-                  <span className="hud">desenvolvedor</span>
-                  <span className="hud ml-auto">São Paulo</span>
-                </div>
-                <div className="flex lg:block">
-                <div className="power-on relative aspect-[4/5] w-[7.25rem] shrink-0 bg-surface sm:w-[8.5rem] lg:w-auto" style={d(520)}>
+        {/* the identity document */}
+        <div data-exit="0.2" className="lg:col-span-5 lg:flex lg:justify-end">
+          <figure aria-label={`Documento de identidade profissional de ${profile.name}`} className="console ticks enter-window w-full max-w-[30rem] overflow-hidden" style={d(380)}>
+            <WaveBand id="identidade-topo" />
+            <div className="flex items-center justify-between gap-4 border-b border-line px-4 py-2.5">
+              <span className="label text-ink-muted">Registro profissional</span>
+              <span className="hud text-accent">{profile.location}</span>
+            </div>
+
+            <div className="grid grid-cols-[minmax(0,8.5rem)_1fr] gap-5 p-4 sm:grid-cols-[minmax(0,10rem)_1fr] sm:p-5">
+              <div className="relative">
+                {/* the photo in a guilloché-framed plate */}
+                <div className="guilloche-frame border border-line-strong p-[9px]">
+                <div className="power-on relative aspect-[4/5] overflow-hidden border border-line-strong bg-raised" style={d(520)}>
                   <Image
                     src="/profile/pedro-tortoriello.jpg"
                     alt="Retrato de Pedro Tortoriello de braços cruzados, com um avião de pequeno porte ao fundo"
                     fill
                     priority
-                    sizes="(min-width: 1024px) 384px, 336px"
+                    sizes="(min-width: 640px) 160px, 136px"
                     className="object-cover"
                   />
-                  <span aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-bg/55 to-transparent" />
                 </div>
-                <dl className="flex min-w-0 flex-1 flex-col justify-center gap-3 px-4 lg:hidden">
-                  <div>
-                    <dt className="hud">hora local</dt>
-                    <dd className="mt-1 font-mono text-[0.8125rem] text-ink">
-                      <LocalTime /> BRT
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="hud">em operação</dt>
-                    <dd className="mt-1 font-mono text-[0.8125rem] text-ink">desde {profile.since}</dd>
-                  </div>
-                  <div>
-                    <dt className="hud">atuação</dt>
-                    <dd className="mt-1 font-mono text-[0.8125rem] text-ink">100% remota</dd>
-                  </div>
-                </dl>
                 </div>
-              </figure>
+                {/* the seal pressed over the photo's corner, as on an ID */}
+                <Rosette seed="identidade" lat={-23.5505} lon={-46.6333} draw="hero" dense={false} className="absolute -bottom-4 -left-4 size-16" />
+              </div>
+              <dl className="grid grid-cols-2 content-start gap-x-4 gap-y-3.5">
+                <Field label="Nome" wide>
+                  {profile.fullName}
+                </Field>
+                <Field label="Função" wide>
+                  {profile.role}
+                </Field>
+                <Field label="Desde">
+                  <span className="font-mono text-[0.875rem]">{profile.since}</span>
+                </Field>
+                <Field label="Hora local">
+                  <span className="font-mono text-[0.875rem]">
+                    <LocalTime /> BRT
+                  </span>
+                </Field>
+                <Field label="Atuação" wide>
+                  {profile.availability.replace("Disponível para atuação ", "")}
+                </Field>
+              </dl>
             </div>
-          </div>
+
+            <div className="border-t border-line px-4 py-3 sm:px-5">
+              {/* 44 characters a line, sized to fit the card from 320px up */}
+              <Mrz
+                lines={[`IDBRA${mrz(rest.join(" "))}<<${mrz(given)}`, `${mrz(profile.role)}<<SP<<${profile.since}<<${mrz(commit)}`]}
+                className="text-[clamp(0.5625rem,2.55vw,0.75rem)] tracking-[0.06em]"
+              />
+            </div>
+          </figure>
         </div>
       </div>
 
-      {/* stations: the four specialties on the track; the trajectory runs through
-          them left to right and launches from the last one, up behind the operator */}
-      <div className="container-x pb-9 lg:pb-11">
-        <ol aria-label="Especialidades" className="relative grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4 lg:gap-x-8">
-          <span aria-hidden className="absolute inset-x-0 top-[7px] hidden h-px bg-line lg:block" />
-          <span aria-hidden className="rail-draw absolute inset-x-0 top-[7px] hidden h-px bg-gradient-to-r from-blue via-blue/70 to-blue/10 lg:block" style={d(950)} />
+      {/* the four specialties, under the document's wave rule */}
+      <div className="container-x pb-10 lg:pb-12">
+        <span aria-hidden className="ruler rail-draw block" style={d(900)} />
+        <ol aria-label="Especialidades" className="mt-6 grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-4 lg:gap-x-8">
           {specialties.map((s, i) => (
-            <li key={s.title} className="relative">
-              {i === specialties.length - 1 ? <Launch /> : null}
-              <span
-                aria-hidden
-                className="enter-fade relative z-10 grid size-[15px] place-items-center rounded-full border border-blue/80 bg-bg shadow-[0_0_0_4px_var(--color-bg)]"
-                style={d(950 + i * 330)}
-              >
-                <span className="size-[5px] rounded-full bg-blue" />
-              </span>
-              <p className="enter mt-4 text-[0.9375rem] font-medium tracking-[-0.01em] text-ink" style={d(1000 + i * 330)}>
-                {s.title}
-              </p>
-              <p className="enter mt-1 text-[0.8125rem] leading-snug text-ink-muted" style={d(1060 + i * 330)}>
-                {s.note}
-              </p>
+            <li key={s.title} className="enter" style={d(1000 + i * 140)}>
+              <p className="font-ui text-[1rem] font-[640] tracking-[-0.01em] text-ink [font-variation-settings:'wdth'_104]">{s.title}</p>
+              <p className="mt-1 text-[0.9375rem] leading-snug text-ink-muted">{s.note}</p>
             </li>
           ))}
         </ol>
       </div>
-    </HeroStage>
+    </section>
   );
 }

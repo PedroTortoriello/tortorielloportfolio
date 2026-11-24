@@ -32,7 +32,7 @@ function Rail({ title, style, steps }: { title: string; style: "sync" | "async";
   return (
     <div className="min-w-0">
       <p className="hud flex items-center gap-2.5">
-        <svg width="24" height="6" aria-hidden className={`shrink-0 ${solid ? "text-blue" : "text-blue-bright"}`}>
+        <svg width="24" height="6" aria-hidden className={`shrink-0 ${solid ? "text-accent" : "text-accent-deep"}`}>
           <line x1="0" y1="3" x2="24" y2="3" stroke="currentColor" strokeWidth="1.5" className={`edge-${style}`} />
         </svg>
         {title}
@@ -41,12 +41,12 @@ function Rail({ title, style, steps }: { title: string; style: "sync" | "async";
       <div className="relative mt-5 pl-7">
         <span
           aria-hidden
-          className={`absolute bottom-3 left-[6px] top-2 border-l ${solid ? "border-blue/45" : "border-dashed border-blue-bright/40"}`}
+          className={`absolute bottom-3 left-[6px] top-2 border-l ${solid ? "border-accent/45" : "border-dashed border-accent-deep/40"}`}
         />
         <span
           aria-hidden
           className={`flow-pulse motion-only absolute left-[4px] size-[5px] rounded-full ${
-            solid ? "bg-blue shadow-[0_0_8px_rgb(94_158_255/0.75)]" : "bg-blue-bright shadow-[0_0_8px_rgb(141_186_255/0.75)]"
+            solid ? "bg-accent" : "bg-accent-deep"
           }`}
         />
         <ol>
@@ -55,7 +55,7 @@ function Rail({ title, style, steps }: { title: string; style: "sync" | "async";
               <span
                 aria-hidden
                 className={`absolute -left-[25px] top-[0.42rem] size-[7px] rounded-[1.5px] border ${
-                  s.ok ? "border-green bg-green/30" : i === 0 ? "border-blue bg-blue/30" : "border-line-strong bg-surface"
+                  s.ok ? "border-green bg-green/30" : i === 0 ? "border-accent bg-accent/30" : "border-line-strong bg-surface"
                 }`}
               />
               <p className="break-words font-mono text-[0.8125rem] leading-6">

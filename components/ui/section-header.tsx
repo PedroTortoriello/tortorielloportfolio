@@ -11,9 +11,9 @@ type SectionHeaderProps = {
 
 const d = (ms: number) => ({ "--d": `${ms}ms` }) as React.CSSProperties;
 
-// The title frame that opens every section. Its station node sits on the
-// mission line (the gutter line MissionLine draws from lg up; below lg a short
-// arrival line drawn by the scroll), the ruler draws across from the node, then
+// The title frame that opens every section. Its window sits on the security
+// thread (the gutter thread MissionLine draws from lg up; below lg a short
+// arrival line drawn by the scroll), the wave rule reveals from the window, then
 // the statement cuts in line by line (data-title).
 // The station index and label sit beside the statement, never above it.
 export function SectionHeader({ index, label, meta, statement, lead, id }: SectionHeaderProps) {
@@ -26,18 +26,16 @@ export function SectionHeader({ index, label, meta, statement, lead, id }: Secti
         data-end="top 52%"
         className="pointer-events-none absolute left-0 top-[9px] h-[clamp(6rem,12vw,10rem)] w-px -translate-y-full [mask-image:linear-gradient(to_bottom,transparent,black_70%)] lg:hidden"
       >
-        <svg viewBox="0 0 2 100" preserveAspectRatio="none" className="size-full overflow-visible text-blue">
+        <svg viewBox="0 0 2 100" preserveAspectRatio="none" className="size-full overflow-visible text-accent">
           <line x1="1" y1="0" x2="1" y2="100" className="draw" stroke="currentColor" strokeWidth="1.25" vectorEffect="non-scaling-stroke" />
         </svg>
       </div>
       <div className="flex items-end gap-4">
         <span className="relative min-w-6 flex-1">
           <span aria-hidden data-reveal="rule" className="ruler block" />
-          <span aria-hidden className="absolute -left-6 bottom-0 hidden h-px w-6 bg-blue/70 lg:block" />
-          <span
-            aria-hidden
-            className="absolute -bottom-[4px] -left-[4px] size-[9px] rounded-full border border-blue bg-bg shadow-[0_0_12px_rgb(94_158_255/0.75)] lg:-left-[calc(1.5rem+4px)]"
-          />
+          <span aria-hidden className="absolute -left-6 top-[4px] hidden h-px w-6 bg-accent/70 lg:block" />
+          {/* the thread's window at this section */}
+          <span aria-hidden className="absolute -top-[2px] -left-[4px] h-[13px] w-[9px] rounded-[1px] bg-accent lg:-left-[calc(1.5rem+4px)]" />
         </span>
         {meta ? <span className="hud hidden shrink-0 md:block">{meta}</span> : null}
       </div>
@@ -47,7 +45,7 @@ export function SectionHeader({ index, label, meta, statement, lead, id }: Secti
         </h2>
         <div data-reveal style={d(150)} className="max-w-md lg:justify-self-end lg:pb-1.5">
           <p className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-ink-muted">
-            <span className="text-blue tabular">{index}</span>
+            <span className="text-accent tabular">{index}</span>
             <span aria-hidden className="text-line-strong">
               {"  —  "}
             </span>

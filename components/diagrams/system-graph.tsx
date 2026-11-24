@@ -10,18 +10,19 @@ const W = 136; // default node width
 const SUB_CH = 0.6 * 9.5; // Geist Mono: every glyph is 0.6em; sub-labels are 9.5px
 const LABEL_CH = 7; // ≈ Geist Medium advance at 12.5px
 
-// V2 palette: structure for construction, one light (blue) and ink. No green here.
-const STRUCTURE = "#244561";
-const EDGE = "#4a78a0";
-const BLUE = "#5e9eff";
-const BLUE_BRIGHT = "#8dbaff";
+// V3 palette: cédula green draws the construction, bordô marks what is lit
+// (and what Pedro built), ink prints the labels.
+const STRUCTURE = "#1f6b5e";
+const EDGE = "#4f7f76";
+const INK_LIT = "#7a1424";
+const INK_SERVICE = "#a3243a";
 
 const tone: Record<NonNullable<GraphNode["tone"]>, string> = {
-  client: "#a3afbf",
-  core: BLUE,
-  service: BLUE_BRIGHT,
-  data: "#e8edf4",
-  external: "#7c8aa0",
+  client: "#5b6670",
+  core: INK_LIT,
+  service: INK_SERVICE,
+  data: "#141a22",
+  external: "#8a949c",
   job: EDGE,
 };
 
@@ -73,7 +74,7 @@ function Ring() {
   return (
     <span
       aria-hidden
-      className="size-3 shrink-0 rounded-[3px] border border-blue bg-blue/15 shadow-[0_0_0_2px_var(--color-bg),0_0_0_3px_rgb(94_158_255/0.5)]"
+      className="size-3 shrink-0 rounded-[3px] border border-accent bg-accent/15 shadow-[0_0_0_2px_var(--color-bg)]"
     />
   );
 }
@@ -114,8 +115,8 @@ type Props = {
 };
 
 // Architecture console. Hover, focus or tap a node: its direct edges light up
-// in blue, the rest of the system recedes and the caption says what the node
-// does. Blue ring = the part I built. Edges draw in (MotionRoot, data-draw)
+// in bordô, the rest of the system recedes and the caption says what the node
+// does. Bordô ring = the part I built. Edges draw in (MotionRoot, data-draw)
 // through a mask, so dashed and dotted lines keep their vocabulary; packets
 // travel only while the graph is on screen. Phones get the same system as a
 // pipeline of layers.
@@ -179,7 +180,7 @@ export function SystemGraph({ graph, title, tiers, hint = "Passe o cursor, toque
                 {(
                   [
                     ["a", EDGE],
-                    ["ah", BLUE],
+                    ["ah", INK_LIT],
                   ] as const
                 ).map(([k, c]) => (
                   <marker
@@ -234,13 +235,13 @@ export function SystemGraph({ graph, title, tiers, hint = "Passe o cursor, toque
                           id={`${uid}-e${i}`}
                           d={paths[i]}
                           fill="none"
-                          stroke={on ? BLUE : EDGE}
+                          stroke={on ? INK_LIT : EDGE}
                           strokeWidth={on ? 1.6 : 1.15}
                           className={`edge-${e.style} transition-[stroke] duration-300`}
                           markerEnd={`url(#${uid}-${on ? "ah" : "a"})`}
                         />
                         {motionOk ? (
-                          <circle className="motion-only" r={2.4} fill={e.style === "sync" ? BLUE : BLUE_BRIGHT} opacity={dim ? 0 : 1}>
+                          <circle className="motion-only" r={2.4} fill={e.style === "sync" ? INK_LIT : INK_SERVICE} opacity={dim ? 0 : 1}>
                             <animateMotion
                               dur={`${2.6 + (i % 4) * 0.5}s`}
                               begin={`${1.6 + ((i * 0.37) % 2.4)}s`}
@@ -285,9 +286,9 @@ export function SystemGraph({ graph, title, tiers, hint = "Passe o cursor, toque
                         y={b.y - 4}
                         width={b.w + 8}
                         height={H + 8}
-                        rx={9}
+                        rx={3}
                         fill="none"
-                        stroke={BLUE}
+                        stroke={INK_LIT}
                         strokeOpacity={on ? 0.85 : 0.4}
                         className="transition-[stroke-opacity] duration-300"
                       />
@@ -297,14 +298,14 @@ export function SystemGraph({ graph, title, tiers, hint = "Passe o cursor, toque
                       y={b.y}
                       width={b.w}
                       height={H}
-                      rx={6}
-                      fill={on ? "#1b2939" : n.mine ? "#122039" : "#111925"}
-                      stroke={n.mine ? BLUE : on ? BLUE_BRIGHT : STRUCTURE}
+                      rx={2}
+                      fill={on ? "#dfe7e1" : n.mine ? "#f4eae8" : "#eef3ef"}
+                      stroke={n.mine ? INK_LIT : on ? INK_SERVICE : STRUCTURE}
                       strokeWidth={n.mine ? 1.25 : 1}
                       className="transition-[fill,stroke] duration-300"
                     />
                     <rect x={b.x + 12} y={n.y - 11} width={5} height={5} rx={1} fill={tone[n.tone ?? "service"]} />
-                    <text x={b.x + 22} y={n.y - 4} className="fill-ink text-[12.5px] font-medium">
+                    <text x={b.x + 22} y={n.y - 4} className="fill-ink font-ui text-[12.5px] font-[620]">
                       {n.label}
                     </text>
                     {n.sub ? (
@@ -327,7 +328,7 @@ export function SystemGraph({ graph, title, tiers, hint = "Passe o cursor, toque
             {graph.nodes.map((n) => (
               <p key={n.id} className={active === n.id ? "" : "invisible"}>
                 <span className="font-medium text-ink">{n.label}</span>
-                {n.mine ? <span className="ml-2.5 font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-blue">construído por mim</span> : null}
+                {n.mine ? <span className="ml-2.5 font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-accent">construído por mim</span> : null}
                 <span className="block text-ink-muted">{n.detail}</span>
               </p>
             ))}
@@ -343,7 +344,7 @@ export function SystemGraph({ graph, title, tiers, hint = "Passe o cursor, toque
           <span aria-hidden className="absolute bottom-4 left-[7px] top-2 w-px bg-structure" />
           <span
             aria-hidden
-            className="flow-pulse motion-only absolute left-[5px] size-[5px] rounded-full bg-blue-bright shadow-[0_0_8px_rgb(141_186_255/0.75)]"
+            className="flow-pulse motion-only absolute left-[5px] size-[5px] rounded-full bg-accent-deep"
           />
           <ol aria-label={title}>
             {tiers.map((t, ti) => {
@@ -352,12 +353,12 @@ export function SystemGraph({ graph, title, tiers, hint = "Passe o cursor, toque
                 <li key={t.x} className="relative pb-8 pl-8 last:pb-0">
                   <span
                     aria-hidden
-                    className="absolute left-0 top-0 grid size-[15px] place-items-center rounded-[4px] border border-line-strong bg-bg"
+                    className="absolute left-0 top-0 grid size-[15px] place-items-center rounded-[2px] border border-line-strong bg-bg"
                   >
-                    <span className="size-[5px] rounded-full bg-blue" />
+                    <span className="size-[5px] rounded-full bg-accent" />
                   </span>
                   <p className="hud pt-0.5">
-                    <span className="text-blue tabular">{String(ti + 1).padStart(2, "0")}</span> · {t.name}
+                    <span className="text-accent tabular">{String(ti + 1).padStart(2, "0")}</span> · {t.name}
                   </p>
                   <ul className="mt-3.5 grid gap-2.5">
                     {items.map((n) => {
@@ -366,8 +367,8 @@ export function SystemGraph({ graph, title, tiers, hint = "Passe o cursor, toque
                       return (
                         <li
                           key={n.id}
-                          className={`rounded-[6px] border transition-colors duration-300 ${
-                            n.mine ? "border-blue/70 bg-blue/[0.06] shadow-[0_0_0_3px_rgb(94_158_255/0.12)]" : "border-line bg-surface"
+                          className={`rounded-[2px] border transition-colors duration-300 ${
+                            n.mine ? "border-accent/70 bg-accent/[0.06]" : "border-line bg-surface"
                           }`}
                         >
                           <button
@@ -375,14 +376,14 @@ export function SystemGraph({ graph, title, tiers, hint = "Passe o cursor, toque
                             aria-expanded={open}
                             aria-controls={n.detail ? detailId : undefined}
                             onClick={() => setActive(open ? null : n.id)}
-                            className="flex min-h-12 w-full items-start gap-3 rounded-[6px] px-3.5 py-3 text-left"
+                            className="flex min-h-12 w-full items-start gap-3 rounded-[2px] px-3.5 py-3 text-left"
                           >
                             <span className="min-w-0 flex-1">
                               <span className="block text-[0.9375rem] font-medium leading-5 text-ink">{n.label}</span>
                               {n.sub ? <span className="mt-1 block font-mono text-[0.8125rem] leading-5 text-ink-faint">{n.sub}</span> : null}
                             </span>
                             {n.mine ? (
-                              <span className="hud mt-1 text-blue">
+                              <span className="hud mt-1 text-accent">
                                 <span aria-hidden>meu</span>
                                 <span className="sr-only">construído por mim</span>
                               </span>
@@ -390,7 +391,7 @@ export function SystemGraph({ graph, title, tiers, hint = "Passe o cursor, toque
                             <Plus
                               aria-hidden
                               strokeWidth={1.75}
-                              className={`mt-0.5 size-4 shrink-0 transition-transform duration-300 ${open ? "rotate-45 text-blue" : "text-ink-faint"}`}
+                              className={`mt-0.5 size-4 shrink-0 transition-transform duration-300 ${open ? "rotate-45 text-accent" : "text-ink-faint"}`}
                             />
                           </button>
                           {n.detail ? (

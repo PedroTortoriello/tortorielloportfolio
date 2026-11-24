@@ -1,75 +1,81 @@
 ---
 name: Pedro Tortoriello
-description: A control room for the systems Pedro put into production.
+description: A security-printed document series for the systems Pedro put into production.
 colors:
-  field: "#080b10"
-  surface: "#111925"
-  elevated: "#15202f"
-  raised: "#1b2939"
-  structure: "#244561"
-  line: "rgb(53 92 126 / 0.42)"
-  line-strong: "rgb(74 120 160 / 0.62)"
-  line-faint: "rgb(36 69 97 / 0.34)"
-  ink: "#e8edf4"
-  ink-muted: "#a3afbf"
-  ink-faint: "#7c8aa0"
-  blue: "#5e9eff"
-  blue-bright: "#8dbaff"
-  on-blue: "#06101f"
-  green: "#6ee7b0"
-  amber: "#e6c07b"
-  sx-kw: "#8db8ff"
-  sx-fn: "#7fc8ff"
-  sx-str: "#e6c07b"
-  sx-num: "#f0a988"
-  sx-type: "#b9d3ff"
-  sx-com: "#7484a0"
-  sx-punct: "#8a9ab0"
-  sx-id: "#d9e2ee"
+  bg: "#e4ebe5"
+  surface: "#eef3ef"
+  elevated: "#dfe7e1"
+  raised: "#d4ded6"
+  structure: "#1f6b5e"
+  line: "rgb(20 26 34 / 0.16)"
+  line-strong: "rgb(20 26 34 / 0.32)"
+  line-faint: "rgb(20 26 34 / 0.09)"
+  ink: "#141a22"
+  ink-muted: "#3c4750"
+  ink-faint: "#5b6670"
+  accent: "#7a1424"
+  accent-deep: "#5c0e1a"
+  on-accent: "#f6f8f6"
+  green: "#1f6b5e"
+  amber: "#8a5a12"
+  sx-kw: "#7a1424"
+  sx-fn: "#1f6b5e"
+  sx-str: "#8a5a12"
+  sx-num: "#9b3d1f"
+  sx-type: "#1f4f7a"
+  sx-com: "#66717b"
+  sx-punct: "#4b5560"
+  sx-id: "#141a22"
 typography:
   display:
-    fontFamily: "Hubot Sans, Geist, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "clamp(2.9rem, 6.3vw, 5.6rem)"
-    fontWeight: 760
-    lineHeight: 0.94
-    letterSpacing: "-0.035em"
+    fontFamily: "Archivo, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "clamp(3rem, 6.6vw, 6rem)"
+    fontWeight: 720
+    lineHeight: 0.97
+    letterSpacing: "-0.028em"
     fontVariation: "'wdth' 125"
   headline:
-    fontFamily: "Hubot Sans, Geist, ui-sans-serif, system-ui, sans-serif"
+    fontFamily: "Archivo, ui-sans-serif, system-ui, sans-serif"
     fontSize: "clamp(2.25rem, 5vw, 4.4rem)"
-    fontWeight: 700
-    lineHeight: 0.94
-    letterSpacing: "-0.03em"
+    fontWeight: 720
+    lineHeight: 0.97
+    letterSpacing: "-0.028em"
     fontVariation: "'wdth' 104"
   title:
-    fontFamily: "Hubot Sans, Geist, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "clamp(1.5rem, 2.6vw, 2.4rem)"
-    fontWeight: 700
-    lineHeight: 0.94
-    letterSpacing: "-0.03em"
-    fontVariation: "'wdth' 100"
+    fontFamily: "Archivo, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "clamp(1.9rem, 3.6vw, 3rem)"
+    fontWeight: 720
+    lineHeight: 0.97
+    letterSpacing: "-0.028em"
+    fontVariation: "'wdth' 112"
+  ui:
+    fontFamily: "Archivo, ui-sans-serif, system-ui, sans-serif"
+    fontSize: "0.9375rem"
+    fontWeight: 620
+    lineHeight: 1.2
+    letterSpacing: "-0.01em"
+    fontVariation: "'wdth' 104"
   lead:
-    fontFamily: "Geist, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "1.0625rem"
+    fontFamily: "Source Serif 4, Georgia, ui-serif, serif"
+    fontSize: "clamp(1.0625rem, 1.35vw, 1.1875rem)"
     fontWeight: 400
     lineHeight: 1.6
   body:
-    fontFamily: "Geist, ui-sans-serif, system-ui, sans-serif"
+    fontFamily: "Source Serif 4, Georgia, ui-serif, serif"
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.75
-    fontFeature: "'ss01', 'cv11'"
   body-sm:
-    fontFamily: "Geist, ui-sans-serif, system-ui, sans-serif"
+    fontFamily: "Source Serif 4, Georgia, ui-serif, serif"
     fontSize: "0.9375rem"
     fontWeight: 400
     lineHeight: 1.75
   label:
-    fontFamily: "Geist, ui-sans-serif, system-ui, sans-serif"
+    fontFamily: "Archivo, ui-sans-serif, system-ui, sans-serif"
     fontSize: "0.6875rem"
-    fontWeight: 500
+    fontWeight: 640
     lineHeight: 1.2
-    letterSpacing: "0.1em"
+    letterSpacing: "0.12em"
   hud:
     fontFamily: "Geist Mono, ui-monospace, SFMono-Regular, Menlo, monospace"
     fontSize: "0.6875rem"
@@ -87,229 +93,234 @@ typography:
     fontWeight: 400
     lineHeight: 1.7
 rounded:
-  hairline: "4px"
-  chip: "5px"
-  console: "6px"
-  window: "8px"
-  node: "9999px"
+  plate: "2px"
+  window: "1px"
+  dot: "9999px"
 spacing:
   gutter: "clamp(1.25rem, 4vw, 3rem)"
   section: "clamp(6rem, 12vw, 10rem)"
   container: "1320px"
-  console-head: "2.5rem"
-  console-pad: "0.875rem"
-  grid-minor: "24px"
-  grid-major: "120px"
+  header: "64px"
+  plate-head: "2.5rem"
+  plate-pad: "0.875rem"
 components:
   button-primary:
-    backgroundColor: "{colors.blue}"
-    textColor: "{colors.on-blue}"
-    rounded: "{rounded.console}"
+    backgroundColor: "{colors.accent}"
+    textColor: "{colors.on-accent}"
+    typography: "{typography.ui}"
+    rounded: "{rounded.plate}"
     padding: "0 24px"
     height: "48px"
   button-primary-hover:
-    backgroundColor: "{colors.blue-bright}"
-    textColor: "{colors.on-blue}"
+    backgroundColor: "{colors.accent-deep}"
+    textColor: "{colors.on-accent}"
   button-secondary:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.console}"
+    textColor: "{colors.accent}"
+    typography: "{typography.ui}"
+    rounded: "{rounded.plate}"
     padding: "0 24px"
     height: "48px"
   button-secondary-hover:
-    backgroundColor: "{colors.elevated}"
+    backgroundColor: "{colors.accent}"
+    textColor: "{colors.on-accent}"
   button-ghost:
     textColor: "{colors.ink-muted}"
     padding: "0 4px"
     height: "36px"
-  console:
+  plate:
     backgroundColor: "{colors.surface}"
-    rounded: "{rounded.console}"
-  console-head:
+    rounded: "{rounded.plate}"
+  plate-head:
     textColor: "{colors.ink-faint}"
     typography: "{typography.hud}"
     padding: "0 14px"
-    height: "{spacing.console-head}"
+    height: "{spacing.plate-head}"
   window:
     backgroundColor: "{colors.surface}"
-    rounded: "{rounded.window}"
+    rounded: "{rounded.plate}"
   chip-role:
     backgroundColor: "{colors.surface}"
     textColor: "{colors.ink}"
-    rounded: "{rounded.chip}"
+    rounded: "{rounded.plate}"
     padding: "4px 10px"
   readout:
     textColor: "{colors.ink}"
     typography: "{typography.readout}"
     padding: "16px"
   nav-header:
-    backgroundColor: "{colors.field}"
+    backgroundColor: "{colors.bg}"
     textColor: "{colors.ink-muted}"
-    height: "64px"
+    height: "{spacing.header}"
 ---
 
 # Design System: Pedro Tortoriello
 
 ## Overview
 
-**Creative North Star: "The Control Room"**
+**Creative North Star: "Papel de segurança"**
 
-The site is a flight control room for systems that are running in production. The page is a dark night field, and the work sits on it as consoles: flat hairline frames with blue registration ticks on their corners, a mono header strip naming what they read, and readouts printed from the real code. Structure is drawn in a muted structural blue (bezels, datum lines that run past their corners, rulers, graph edges). One luminous blue is the only light. It marks what is live, what is active, what can be acted on, and the line of the mission itself.
+The site is a security-printed document series. Pedro's identity document opens it (name, role, a portrait in a guilloché frame, printed fields and a two-line MRZ), and every case after it is a numbered, authenticated document. The page is security paper: a pale green-grey tint carrying a fine anti-copy ground of two interlaced waves, as on a certidão. Documents sit on it as flat paper plates with a printed ink hairline and bordô registration marks at their corners. Cédula green engraves the structure (guilloché rosettes, wave rules, graph edges). One intaglio bordô is the only ink that acts: primary actions, active state, serials, and the security thread.
 
-The whole page is one mission. A trajectory line runs through the gutter from station to station, drawn by the scroll. Each section opens like a title card: a ruler draws across from a station node on that line, then the statement cuts in line by line in wide Hubot Sans. A fixed index rail and a progress hairline under the header show where you are in the running order. Geist carries the reading. Geist Mono carries the machine: readouts, HUD labels, paths, code.
+The whole page is one series bound by a windowed security thread. From lg up it runs in the left gutter as a dashed bordô thread whose solid core is printed by the scroll, and each section header sets a bordô window on it beside the section's serial. From 1400px a fixed thread with one window per section indexes the page. Guilloché is generated from curves, never pasted: each rosette is a modulated ring repeated with a small rotation, seeded per document, so no two seals match. Rosettes draw themselves as their document enters, and hovering a document turns its latent image by half a lobe, like tilting a banknote. MRZ lines and microtext are real text.
 
-Depth is architectural, not atmospheric. A drafting grid, datums and a ruler sit behind the front wall, and a crosshair follows the pointer. Only floating instruments (code windows, browser frames, the iPhone mockup, the operator portrait) cast a drop. Motion means something: the wall boots, lines draw, consoles power on, readouts land with a bloom. Reduced motion and no-JS show the finished state.
+Archivo, opened on its width axis, sets titles, numerals, labels and controls, the sans of an official form. Source Serif 4 reads. Geist Mono prints what a machine prints: serials, readouts, paths, code and the MRZ. Corners are square (2px). Depth is paper, not light: only floating plates (code listings, browser frames, captures, devices) lift off the sheet. Motion is printing: plates open from a centre band and the ink takes, values land in bordô and settle to ink, lines draw. Reduced motion, print and no-JS show the finished document.
 
 **Key Characteristics:**
-- Night field (#080b10) with console surfaces; structural-blue hairlines draw every edge, and no grey borders are used.
-- One light: luminous blue for live, active, primary action, the mission line and bloom. Green appears only as a success result inside code instruments.
-- Wide Hubot Sans for wall titles, Geist for reading, Geist Mono for readouts, HUD, indices and code.
-- Consoles with corner registration ticks are the signature container. Floating windows and devices are the only things with a drop shadow.
-- One mission line through every station, drawn by the scroll and mirrored by a fixed index rail.
+- Security paper (`bg`) with an anti-copy wave ground; flat document plates (`surface`) with ink hairlines and bordô corner registration marks.
+- One ink that acts: intaglio bordô for primary action, active state, serials, thread and focus. Cédula green engraves structure.
+- Archivo wide for titles and controls, Source Serif 4 for reading, Geist Mono for serials, readouts, MRZ and code.
+- Guilloché rosettes, wave bands and wave rules drawn from curves, seeded per document; a windowed security thread binds the series.
+- Square 2px corners everywhere except the iPhone mockup; only floating plates cast a drop.
 
 ## Colors
 
-A cold night palette: blue-black field, blue-tinted surfaces, structural-blue construction lines, and one luminous blue.
+A printed-paper palette: green-grey security paper, near-black ink, cédula green engraving, and one intaglio bordô.
 
 ### Primary
-- **Luminous Blue** (`blue`): The only light. Used for the primary button fill (with dark ink), live and availability dots, active nav and rail states, station nodes, the mission line and progress hairline, the section index number, focus rings, and the bloom on printed readouts. In graphs it rings the parts Pedro built.
-- **Bright Blue** (`blue-bright`): The hot end of the light. Used for primary hover, the specialty text in the hero role line, the far end of gradients on the trajectory, and moving packets on connectors. The `cyan` token is an alias of this value and survives only as the packet colour.
-- **On-Blue Ink** (`on-blue`): The dark ink set on any blue fill, so primary actions pass AA.
+- **Intaglio Bordô** (`accent`): The one ink that acts. Primary button fill, secondary button outline and text, active nav link and its 2px underline, the thread and its windows, section serials and case numbers, live dots, the scroll progress hairline, the focus ring, the caret, the selection tint (16%) and the scrollbar thumb. In graphs it marks the parts Pedro built.
+- **Deep Bordô** (`accent-deep`): Primary hover, the far end of the progress hairline, async packets, and the closing words of the contact statement.
+- **Paper White** (`on-accent`): Text on any bordô fill.
+
+### Secondary
+- **Cédula Green** (`structure`): Engraving. The outer weave and rings of every rosette, the green half of wave bands and wave rules, the guilloché ground on plates that carry it, microtext, and graph construction lines. On the advocacia route it also inks the "valid" document mark.
 
 ### Neutral
-- **Night Field** (`field`): Page background, theme colour, and the knockout ring around station nodes.
-- **Console Surface** (`surface`): Console bodies (at 72% opacity on consoles), windows, and unselected graph nodes.
-- **Elevated** (`elevated`) / **Raised** (`raised`): Header strips of windows and the portrait console, status bars, secondary button hover, and the hovered graph node.
-- **Structural Blue** (`structure`): Construction lines: datums, ruler ticks, the crosshair, graph node strokes and tracks.
-- **Hairline** (`line`), **Strong Hairline** (`line-strong`), **Faint Hairline** (`line-faint`): Every border and divider, in structural-blue alphas. Use strong for secondary buttons, chips and inactive rail nodes. Use faint for list rules and the dim track under the mission line.
-- **Ink** (`ink`), **Muted Ink** (`ink-muted`), **Faint Ink** (`ink-faint`): Headings and values; reading text; HUD and labels.
+- **Security Paper** (`bg`): Page background, `theme-color`, the knockout ring behind markers on rules, and the paper ground of the anti-copy waves.
+- **Plate** (`surface`): Document plates (at 88% on `.console`), floating windows, chips, guilloché frame fill.
+- **Elevated** (`elevated`) / **Raised** (`raised`): Head strips and status bars of windows and browser frames, hovered rows and channels, the empty photo well.
+- **Ink Hairline** (`line`), **Strong Hairline** (`line-strong`), **Faint Hairline** (`line-faint`): Every border and divider, as alphas of ink. Strong for plate edges, chips, inactive thread windows and the menu toggle; faint for list rules.
+- **Ink** (`ink`), **Muted Ink** (`ink-muted`), **Faint Ink** (`ink-faint`): Titles and values; reading text; labels, HUD and captions.
 
 ### Code-only
-- **Success Green** (`green`): Only inside code instruments, as a result (the PIX checksum that makes the payload valid, the request step that succeeds).
-- **Syntax set** (`amber`, `sx-*`): Only in code blocks. Amber is the string colour, so it is never used for labels outside code.
+- **Green** (`green`): A result that passed inside a code instrument (the request step that returns 200, the Pix CRC). It shares its value with `structure`.
+- **Syntax set** (`amber`, `sx-*`): Only in printed listings and the Pix anatomy. Keywords print in bordô, functions in green, strings in amber.
 
 ### Named Rules
-**The One Light Rule.** Luminous blue is the only light on the page. If something is not live, active, actionable or the mission line, it is ink or structure.
+**The One Ink Rule.** Bordô is the only ink that acts. If something is not an action, the active state, a serial, the thread or focus, it is ink or green engraving. (On the advocacia route the headline and closing title are also bordô; on the portfolio titles stay ink.)
 
-**The Green Is a Result Rule.** Green means "this check passed" inside a code instrument. It never means "available" or "online". Those states are blue.
+**The Printed Hairline Rule.** Borders and dividers are alphas of the ink colour, never neutral grey.
 
-**The Blue Hairline Rule.** Borders and dividers are structural-blue alphas, never neutral grey.
+**The Engraving Is Green Rule.** Guilloché, wave rules and diagram structure are cédula green, with bordô as the interlaced second line. Green never fills a control.
 
 ## Typography
 
-**Display Font:** Hubot Sans (next/font/google, width axis via `--wdth`), falling back to Geist
-**Body Font:** Geist (with `ss01`, `cv11`), falling back to system sans
-**Label/Mono Font:** Geist Mono, falling back to ui-monospace
+**Display Font:** Archivo (next/font/google, width axis via `--wdth`), falling back to system sans
+**Body Font:** Source Serif 4 (optical sizing on), falling back to Georgia
+**Label/Mono Font:** Archivo for field labels and controls; Geist Mono for serials, readouts, MRZ and code
 
-**Character:** GitHub's engineering face opened up on its width axis gives the walls an engineered, wide-stance voice. Geist reads quietly beneath it, and Geist Mono reads the instruments.
+**Character:** A wide grotesque that reads like the printed headings of an official form, over a bookish serif that carries the reading the way a document's body text does. Mono is reserved for what a machine prints.
 
 ### Hierarchy
-- **Display** (760, `clamp(2.9rem, 6.3vw, 5.6rem)`, 0.94, wdth 125): The hero name only, in two mask-revealed lines.
-- **Headline** (700, `clamp(2.25rem, 5vw, 4.4rem)`, 0.94, wdth 104): Section statements, max 19ch. Case titles go wider and larger (wdth 118 to 125, up to `clamp(2.4rem, 7.4vw, 5.25rem)`), and route titles use wdth 112.
-- **Title** (700, about 1.5 to 2.4rem clamps, wdth 100 to 112): Principle titles, landing-page niche titles, secondary case titles.
-- **Lead** (400, 17 to 18px, 1.6): Hero proposal (17px), route leads and case taglines (18px, 19.2px from sm).
-- **Body** (400, 16px, 28px leading): Section leads, problem/solution, journey summaries, max about 40rem. **Body small** (15px, 28px) for contribution lists and notes; 14px for stack readings, buttons and meta.
-- **Label** (Geist 500, 11px, 0.1em, uppercase, faint): Content labels such as "Problema", "Solução", "Autoria".
-- **HUD** (Geist Mono, 11px, 0.12em, uppercase, faint): Names a system part, path, place or value, such as console heads and readout keys.
-- **Readout** (Geist Mono, 13px): Values in readouts, dossier facts, years.
-- **Code** (Geist Mono, 11 to 12px, 1.6 to 1.7): Code blocks. Window titles use 11.5px and status bars 10px.
-
-The text scale in use is 10, 11, 11.5 (mono titles and numbering), 12, 13, 14, 15, 16, 17 and 18px, plus the display clamps. Graph SVG text uses 9.5, 10 and 12.5px.
+- **Display** (720, `clamp(3rem, 6.6vw, 6rem)`, 0.97, wdth 125): The hero name only, two mask-revealed lines. The contact statement is the second largest (`clamp(2.75rem, 6.2vw, 6rem)`, wdth 112).
+- **Headline** (720, `clamp(2.25rem, 5vw, 4.4rem)`, 0.97, wdth 104): Section statements, max 19ch. Case titles run wider: wdth 125 at `clamp(2.4rem, 7.4vw, 5.25rem)` for the first case, wdth 118 at `clamp(2.4rem, 6.2vw, 4.75rem)` for the rest.
+- **Title** (720, about 1.9 to 3rem clamps, wdth 106 to 112): Sub-section titles ("Também construí"), niche and document titles. The advocacia route's smaller title role is 680 at wdth 106.
+- **UI** (Archivo 620, 15px, wdth 104): Buttons, the hero role line (fluid 1.05 to 1.25rem), specialty names, the header name (660, wdth 106) and nav links (560, 14px).
+- **Lead** (Source Serif 400, 17 to 19px, 1.6): Hero proposal; case taglines at 18 to 19.2px.
+- **Body** (Source Serif 400, 16px, 28px leading): Section leads, problem/solution, journey summaries, max about 40rem. **Body small** (15px, 28px): contribution lists, field values, notes.
+- **Label** (Archivo 640, 11px, 0.12em, uppercase, faint): Field labels on documents and content labels ("Nome", "Função", "Problema", "Autoria", footer groups).
+- **HUD** (Geist Mono, 11px, 0.12em, uppercase, faint): Names a part, path, place or value: plate heads, readout keys, case slates.
+- **Readout** (Geist Mono, 13px): Values in readouts and steps in request flows.
+- **Code** (Geist Mono, 11 to 12px, 1.6 to 1.7): Listings. Window titles 11.5px, status bars 10px.
+- **MRZ** (Geist Mono, fluid, 0.06 to 0.18em tracking): Machine-readable lines, 44 characters, A-Z, 0-9 and `<` only.
 
 ### Named Rules
-**The Wide Wall Rule.** Hubot Sans is only for titles (the `.display` role: 700 weight, -0.03em tracking, 0.08em word-spacing to return the gaps that negative tracking closes). Tune width per use with `--wdth`. Never set reading text in it.
+**The Form Sans Rule.** Archivo sets titles, labels and controls; it never sets reading text. Tune width per use with `--wdth` (62 to 125).
 
-**The Mono Means Machine Rule.** Mono is for things a machine reads or prints: code, paths, readouts, HUD, indices, coordinates. A label about content uses the sans label.
+**The Mono Means Machine Rule.** Mono is for things a machine reads or prints: serials, code, paths, readouts, MRZ, microtext. A label about content uses the Archivo label.
 
-**The Index Beside Rule.** A section's index (`0N — LABEL`, number in blue) sits beside the statement on desktop and below it on phones. It never sits above the statement as an eyebrow.
+**The Index Beside Rule.** A section's serial (`0N — LABEL`, number in bordô) sits beside the statement on desktop and below it on phones, never above it as an eyebrow.
 
 ## Layout
 
-The page uses a 1320px container with a fluid gutter (`clamp(1.25rem, 4vw, 3rem)`) and fluid section padding (`clamp(6rem, 12vw, 10rem)`). The front wall is a full-viewport 12-column grid: copy on the left (6 or 7 columns), the operator portrait console on the right (6 or 5), the four specialty stations on a track at the base, and real indicators (local time, "desde", commit) top-right. On phones, the portrait becomes a dossier strip (portrait plus mono facts) right after the copy, so the face stays in the fold.
+A 1320px container with a fluid gutter (`clamp(1.25rem, 4vw, 3rem)`) and fluid section padding (`clamp(6rem, 12vw, 10rem)`). The hero is a full-viewport 12-column grid: name, role, proposal and actions in 7 columns, the identity document in 5 (max 30rem), and the four specialties under a wave rule at the base (2 columns on phones, 4 from lg). On phones the document follows the copy, portrait and fields side by side.
 
-From lg (1024px), the mission line runs in the left gutter, 1.5rem outside the content, and every section header's station node sits on it. Below lg, each header draws its own short arrival line. From 1400px, a fixed index rail with one node per station sits at the far left. The progress hairline under the 64px header shows at every width. Section headers use a 1.3fr / 0.7fr split (statement / index plus lead). Readouts reflow 1, 2 and 4 columns at sm and xl. The construction grid is 24px minor and 120px major, and rulers tick on the same steps.
+From lg (1024px) the security thread runs in the left gutter, 1.5rem outside the content, and each section header's window sits on it; below lg each header draws its own short bordô arrival line. From 1400px a fixed thread with one window per `[data-station]` section sits at the far left. A 1px progress hairline under the 64px header shows at every width. Section headers split 1.3fr / 0.7fr (statement / serial and lead). Cases recompose on 12 columns, each in its own layout, separated by a cut: generous space and a wave rule drawing across. Readouts reflow 1, 2 and 4 columns at sm and xl.
 
 ## Elevation & Depth
 
-The system is flat by default, with structural depth. Consoles, readouts and lists sit on the field, separated by hairlines and tonal surface steps. Depth on the front wall comes from three parallax layers (drafting grid, datums and ruler, crosshair) and a soft radial blue light behind the operator. Only floating instruments cast a shadow. Glow is light, not shadow: blue dots and nodes carry a small blue halo because they are lit.
+The sheet is flat. Plates, readouts, lists and slates lie on the paper, separated by ink hairlines and small tonal steps (`surface`, `elevated`, `raised`). Floating plates (code listings, browser frames, captures, the iPhone) lift with a soft ink-tinted drop and a white inset top edge, as printed paper laid over the sheet. The primary button carries a short bordô drop under its fill, as the one pressed ink. Markers on rules use a 4px `bg` ring (`0 0 0 4px var(--color-bg)`) as a knockout, not as elevation. Nothing glows.
 
 ### Shadow Vocabulary
-- **Window float** (`0 1px 0 rgb(255 255 255 / 0.04) inset, 0 24px 48px -16px rgb(0 0 0 / 0.65), 0 56px 110px -30px rgb(3 8 20 / 0.8)`): Code windows and browser frames.
-- **Operator float** (`0 30px 70px -24px rgb(0 0 0 / 0.85), 0 0 0 1px rgb(94 158 255 / 0.04) inset`): The portrait console on the front wall.
-- **Device float**: The iPhone band's titanium highlights and a deep drop, in container units.
-- **Primary lit** (`inset 0 1px 0 rgb(255 255 255 / 0.4), 0 0 0 1px rgb(141 186 255 / 0.5), 0 12px 32px -12px rgb(94 158 255 / 0.75)`): The primary button, which is lit from inside.
-- **Node glow** (`0 0 8px` to `0 0 12px` of luminous blue at 0.75 to 0.9): Live dots, active rail nodes, station nodes.
+- **Floating plate** (`box-shadow: 0 1px 0 rgb(255 255 255 / 0.7) inset, 0 22px 44px -24px rgb(20 26 34 / 0.38), 0 48px 90px -40px rgb(20 26 34 / 0.3)`): Code listings and browser frames.
+- **Capture plate** (`box-shadow: 0 1px 0 rgb(255 255 255 / 0.6) inset, 0 28px 56px -30px rgb(20 26 34 / 0.45)`): Advocacia document captures; lifts 3px on hover.
+- **Pressed ink** (`box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.12), 0 10px 24px -14px rgb(92 14 26 / 0.9)`): The primary button.
+- **Device**: The iPhone's titanium band, in container units (see sidecar).
 
 ### Named Rules
-**The Floating Instrument Rule.** Only windows, device frames and the operator portrait cast a drop. Consoles stay flat on the field.
+**The Paper Lies Flat Rule.** Only floating plates (listings, browser frames, captures, devices) and the primary button cast a drop. Document plates, readouts and lists stay flat on the sheet.
 
 ## Shapes
 
-Corners are tight and instrument-like: 6px for consoles and buttons, 8px for windows, 5px for chips, 4px for URL bars and tooltips. Nodes and dots are circles. Console corners carry 11px registration ticks in luminous blue (1px strokes at 85% opacity), drawn over the hairline frame. Construction lines overshoot their crossings and are marked with 14px registration crosses. Edges in graphs follow one vocabulary: solid for sync, dashed (6 5) for async, queue or cron, and dotted (1.5 4.5, round caps) for external integration.
+Square, printed corners: 2px on plates, windows, buttons, chips, URL bars and tooltips; 1px on the small square marks (thread windows, window head marks). The iPhone mockup is the only rounded object. Dots (live, packets, browser chrome) are circles; career and method markers use circles, 11px squares and 45° diamonds on rules. Plate corners carry 12px bordô registration marks (1px strokes at 90%), drawn over the hairline edge. Rosettes are concentric: two outer rings, a woven green outer band, a bordô inner weave and a bordô centre flower. Wave bands are 22px strips of interlaced green and bordô waves; the wave rule is the same at 9px. Graph edges use one vocabulary: solid for sync, dashed (6 5) for async, queue or cron, dotted (1.5 4.5, round caps) for external integration.
 
 ## Components
 
 ### Buttons
-- **Shape:** Tight corners (6px), 48px tall, 24px inline padding, 14px Geist medium. Press scales to 0.98.
-- **Primary:** Luminous blue fill with dark on-blue ink, lit from inside. On hover it goes to bright blue and a white sheen crosses it (the sheen is hidden under reduced motion).
-- **Secondary:** Strong hairline over translucent surface, ink text. On hover the border turns blue and the fill goes to elevated.
-- **Ghost:** Muted text, 36px, which goes to ink on hover.
-- **Text link:** Ink with a 1px underline that grows from the left and an arrow that turns blue.
+- **Shape:** Square (2px), 48px tall, 24px inline padding, Archivo 620 at 15px, wdth 104. Press scales to 0.98. Arrows nudge on hover.
+- **Primary:** Bordô fill, paper-white text, the pressed-ink drop; hover deepens to `accent-deep`.
+- **Secondary:** 1px bordô outline with bordô text; on hover it fills bordô with paper-white text.
+- **Ghost:** Muted ink, 36px, ink on hover.
+- **Text link:** Ink with a 1px underline that grows from the left; the arrow turns bordô.
 
 ### Chips
-- **Role chip:** Strong hairline, surface at 70%, 5px corners, 14px ink.
+- **Role chip:** Strong hairline, plate at 70%, 2px, 14px ink.
+- **Stack chip:** Hairline, plate at 60%, 2px, 11.5px mono in muted ink.
 
-### Consoles (signature)
-- **Frame:** Hairline border, 6px, surface at 72%, blue corner ticks.
-- **Head strip:** At least 2.5rem tall, a hairline under it, 14px inline padding, HUD label on the left and HUD status on the right.
-- **Use:** Case parameters, author notes, the portrait, landing-page groups. Consoles are flat.
-- **LiveDot:** A 6px luminous blue dot with a blue glow that reads "no ar" (on air). Live is always blue.
-- **Readouts:** A definition grid between hairlines. The key is in HUD, the value is a 13px mono readout in ink. When the grid enters, each value lands one by one with a bloom (white with a blue text-glow that settles in 1.1s).
+### Document plate (signature)
+- **Frame:** Strong ink hairline, 2px, plate at 88%, bordô registration marks.
+- **Head strip:** At least 2.5rem tall, hairline under it, 14px inline padding, HUD label left, HUD status right.
+- **Use:** Case slates, architecture and request-flow plates, author notes, the contact channels. Flat.
+- **Live dot:** A 6px bordô dot before "no ar". Live is bordô, never green.
+- **Readouts:** A definition grid between hairlines; HUD key, 13px mono value in ink. Values land one by one with an ink press (bordô, slightly spread, settling to ink in 1.1s).
+
+### Identity document
+A plate with a wave band across its top, a head strip ("Registro profissional" label, location in bordô HUD), a portrait inside a guilloché frame (9px of interlaced waves) with a rosette seal pressed over its corner, field rows (Archivo label over a serif value; dates and time in mono) and a two-line MRZ under a hairline. Only real values: CV facts, local time, build commit.
+
+### Guilloché set
+- **Rosette:** Generated per seed (FNV-1a hash mixed with a city's coordinates) from modulated rings; draws on load (hero) or with the scroll as it enters (`animation-timeline: view()`). Hovering or focusing its document turns the outer weave half a lobe. Used as the brand mark (32 to 36px), ID seal, contact seal and the advocacia denomination backdrop.
+- **Wave band / wave rule:** 22px and 9px strips of interlaced green and bordô waves; top and base of documents, the footer's top, section and case rules.
+- **Denomination:** A monumental Archivo numeral (820, wdth 118) filled with engraved bordô wave lines, pressed in from the bottom.
+- **Microtext:** 5.5px mono, uppercase, green, repeated as a rule.
+- **Mark:** A status overprint: Archivo 650 caps, 11px, 1px border plus an outline 2px outside it, in green (valid) or muted ink (pending).
 
 ### Windows and devices
-- **Window:** 8px, top sheen, the window float shadow, corner ticks. The head strip has a 7px blue square, an 11.5px mono file path and a meta value. The status bar is 28px with 10px mono text. Code lines highlight with a blue 8% band and a 2px blue left bar.
-- **BrowserFrame:** Window shell with a quiet chrome: three neutral dots and a mono URL bar with a lock that shows the real address.
-- **iPhone mockup:** Scales in container units, with a brushed-titanium band, side keys, a Dynamic Island, and status/Safari bars that take the capture's own colours.
+- **Window:** Plate on the floating-plate drop, registration marks, head strip in `elevated` with a 7px bordô-outlined square, 11.5px mono path and meta; 28px status bar in 10px mono. Highlighted lines carry an 8% bordô band and a 2px bordô left bar.
+- **Browser frame:** Window shell with three hairline dots and a mono URL bar (2px, lock icon) showing the real address.
+- **iPhone mockup:** Container-unit scaling, brushed-titanium band, side keys, Dynamic Island, status and Safari bars in the capture's own colours.
 
 ### Navigation
-- **Header:** 64px, fixed. It is transparent at the top, and once scrolled becomes field at 80% with a backdrop blur and a hairline. Links are muted and become ink when active, with a shared blue underline that moves between them (Motion `layoutId`). On mobile, a full menu lists the sections at 18px between hairlines.
-- **Mission rail:** A 1px progress hairline under the header that fills left to right with the scroll, using a blue gradient. From 1400px a fixed index rail shows 7px nodes with mono indices. The active node is filled blue with a glow, and the label shows as a mono tooltip on hover or focus.
+- **Header:** 64px, fixed; transparent at the top, then paper at 80% with a backdrop blur and a hairline once scrolled. A rosette mark and the name in Archivo 660; a mono crumb from xl. Links are Archivo 560 at 14px, muted, ink on hover; the active link is bordô with a 2px bordô underline that travels between links. A secondary-style "Currículo" button at 36px. On phones a full menu lists sections at 18px between hairlines, with mono indices.
+- **Security thread:** The progress hairline under the header fills left to right in a bordô gradient. From 1400px a fixed dashed thread with a printed core and 7 by 11px windows (bordô when active, hairline otherwise) and mono indices; the label shows as a mono tooltip plate on hover or focus.
 
-### Section header (title frame)
-A ruler draws across from a station node: a 9px ring in blue with a glow, sitting on the mission line. The statement then cuts in line by line behind a mask. The index (`0N — LABEL`, number in blue, dash in strong hairline) and the lead sit beside it.
-
-### Front wall
-A drafting grid masked to an ellipse, datum lines with registration crosses, a numbered vertical ruler, and a pointer crosshair with a mono x/y readout. The four specialty stations sit on a track that draws left to right, and a launch curve rises from the last station behind the operator portrait console, which powers on from a centre band.
+### Section header
+A wave rule reveals from the section's bordô window on the thread, then the statement cuts in line by line. The serial (`0N — LABEL`, number in bordô, dash in strong hairline) and the lead sit beside it.
 
 ### System graph
-An architecture console. Nodes are hairline boxes in structural blue, and the parts Pedro built get a 1.25px blue ring with "construído por mim" in blue. Hovering, focusing or tapping a node lights its direct edges and dims the rest. Edges use the sync/async/external vocabulary and carry a legend. Below the graph, a tiered list shows the same nodes.
-
-### Stack station map
-One layer per row: a toolbar of logo toggles (one Tab stop, arrow keys move inside it) and a readout of the item under the pointer or focus, otherwise the pinned item (name, use, `onde` in mono). The readout reserves the height of the tallest item, so switching never moves the page.
+An architecture plate. Nodes are hairline boxes on green construction; Pedro's parts get a bordô ring and "construído por mim". Hover, focus or tap isolates a node's direct edges. Edges follow the sync/async/external vocabulary with a legend; a tiered list below repeats the nodes.
 
 ### Motion
-One owner per effect. CSS keyframes own the front-wall boot (enter, enter-fade, enter-window, mask-line, boot-draw, rail-draw, power-on), staggered by `--d`. GSAP and ScrollTrigger load lazily after hydration. MotionRoot runs them from data attributes: `data-reveal` (or `="rule"`), `data-stagger`, `data-title`, `data-draw` (or `="scrub"`), `data-print`, `data-power`, `data-parallax`, `data-exit` (from 1024px only) and `data-loop`. Motion (motion/react) owns component state: the nav underline, the menu and copy feedback. Durations are 0.18, 0.32, 0.6, 0.9 and 1.2s. Easing is expo.out (`cubic-bezier(0.16, 1, 0.3, 1)`) for entrances and power3.inOut for travel. Anything already on screen when motion arms is left alone, loops run only in view, and reduced motion, print and no-JS show the finished markup.
+CSS keyframes own the hero boot (enter, enter-fade, enter-window, mask-line, rail-draw, power-on as a plate printing from a centre band), staggered by `--d`. GSAP and ScrollTrigger load lazily and run from data attributes via MotionRoot (`data-reveal`, `data-stagger`, `data-title`, `data-draw`, `data-print`, `data-power`, `data-exit`, `data-loop`). Rosette drawing and the latent image are CSS only. Motion (motion/react) owns component state: nav underline, menu, copy feedback. Easing is `cubic-bezier(0.16, 1, 0.3, 1)` for entrances and `cubic-bezier(0.65, 0, 0.35, 1)` for travel. Reduced motion, print and no-JS show the finished document.
 
 ### Imagery
-The portrait is Pedro's own photo, graded only and never retouched. Project captures are real public pages, framed in a BrowserFrame or iPhone.
+The portrait is Pedro's own photo, graded only. Project captures are real public pages in a browser frame or iPhone.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** keep luminous blue as the only light: primary fill with on-blue ink, live dots, active states, station nodes, the mission line, focus rings and bloom.
-- **Do** draw every border in structural-blue hairlines, and separate surfaces with tonal steps rather than shadows.
-- **Do** frame instruments as consoles: hairline, 6px, blue corner ticks, a HUD head strip.
-- **Do** open every section with the title frame: station node on the mission line, ruler, statement in wide Hubot Sans, index and lead beside it.
-- **Do** print real values from the code as readouts, and let them land with a bloom.
-- **Do** draw graphs with solid, dashed and dotted edges, ring Pedro's parts in blue, isolate on hover and focus, and show the legend.
-- **Do** give every scroll effect one owner (CSS boot, GSAP via MotionRoot data attributes, or Motion for state) and timings from `lib/motion.ts`.
-- **Do** make the finished markup the default, so reduced motion, print and no-JS read the whole page.
+- **Do** keep bordô as the one ink that acts: primary fill with paper-white text, secondary outline, active nav, serials, the thread and its windows, live dots, focus and the ink press.
+- **Do** draw every border as an ink-alpha hairline and separate plates with small tonal steps.
+- **Do** frame documents as flat plates: strong hairline, 2px corners, bordô registration marks, a HUD head strip.
+- **Do** generate guilloché from curves with a per-document seed; never reuse one seal image.
+- **Do** open every section with its window on the thread, the wave rule, the statement in wide Archivo and the serial beside it.
+- **Do** print real values (fields, MRZ, readouts, URLs, local time, commit) and let them land with the ink press.
+- **Do** make the finished markup the default, so reduced motion, print and no-JS read the whole document.
 
 ### Don't:
-- **Don't** use green for "live" or "available". Green is only a success result inside code instruments.
+- **Don't** round corners beyond 2px; the iPhone mockup is the only rounded object.
+- **Don't** give plates, readouts, lists or slates a drop shadow. Only floating plates and the primary button lift.
+- **Don't** use green for "live" or "available", or to fill a control. Live is bordô; green engraves and confirms a passed result.
 - **Don't** use amber or syntax colours outside code.
-- **Don't** set reading text in Hubot Sans, or content labels in mono.
-- **Don't** put the section index or any tracked uppercase line above a heading as an eyebrow.
-- **Don't** give consoles, lists or readouts a drop shadow. Only windows, devices and the operator portrait float.
-- **Don't** use neutral grey borders. Hairlines are structural blue.
-- **Don't** retouch the portrait or stage captures. Grade only, and use real pages.
+- **Don't** set reading text in Archivo, or content labels in mono.
+- **Don't** put the serial or any tracked uppercase line above a heading as an eyebrow.
+- **Don't** use neutral grey borders or glows. Hairlines are ink; depth is paper.
+- **Don't** retouch the portrait or stage captures.

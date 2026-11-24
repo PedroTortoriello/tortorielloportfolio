@@ -10,7 +10,7 @@ type ConsoleProps = {
   ariaLabel?: string;
 };
 
-// A control-room console: hairline frame, blue registration ticks on the
+// A document plate: printed hairline frame, bordô registration marks on the
 // corners, a mono header strip. Flat on the page; only floating instruments
 // (windows, devices) cast a shadow.
 export function Console({ label, status, children, className = "", bodyClassName = "", ariaLabel }: ConsoleProps) {
@@ -25,11 +25,11 @@ export function Console({ label, status, children, className = "", bodyClassName
   );
 }
 
-// "No ar": the product answers at this address. Live is lit in the one blue.
+// "No ar": the product answers at this address. Live is printed in the one bordô ink.
 export function LiveDot({ children }: { children: ReactNode }) {
   return (
     <span className="inline-flex items-center gap-2">
-      <span className="size-1.5 rounded-full bg-blue shadow-[0_0_8px_rgb(94_158_255/0.9)]" aria-hidden />
+      <span className="size-1.5 rounded-full bg-accent" aria-hidden />
       {children}
     </span>
   );

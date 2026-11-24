@@ -1,19 +1,24 @@
 import type { Metadata, Viewport } from "next";
-import { GeistSans } from "geist/font/sans";
+// First: Tailwind declares the cascade layer order (theme, base, components,
+// utilities). A component CSS module imported before it would declare
+// "components" first and let the base reset win over every component class.
+import "./globals.css";
 import { GeistMono } from "geist/font/mono";
-import { Hubot_Sans } from "next/font/google";
+import { Archivo, Source_Serif_4 } from "next/font/google";
 import { Providers } from "@/components/ui/providers";
 import { ClientEffects } from "@/components/ui/client-effects";
 import { MotionRoot } from "@/components/motion/motion-root";
 import { MissionRail } from "@/components/chrome/mission-rail";
+import { PortfolioOnly } from "@/components/chrome/portfolio-only";
 import { SiteHeader } from "@/components/sections/site-header";
 import { SiteFooter } from "@/components/sections/site-footer";
 import { profile } from "@/lib/data";
 import { SITE_URL } from "@/lib/site";
-import "./globals.css";
 
-// GitHub's engineering face, opened up on its width axis for the wall titles.
-const hubot = Hubot_Sans({ subsets: ["latin", "latin-ext"], axes: ["wdth"], variable: "--font-hubot", display: "swap" });
+// Archivo, opened up on its width axis, for titles, labels and controls;
+// Source Serif 4 for reading (the document's text); Geist Mono for data.
+const archivo = Archivo({ subsets: ["latin", "latin-ext"], axes: ["wdth"], variable: "--font-archivo", display: "swap" });
+const serif = Source_Serif_4({ subsets: ["latin", "latin-ext"], axes: ["opsz"], style: ["normal", "italic"], variable: "--font-doc", display: "swap" });
 
 const title = "Pedro Tortoriello | Software Engineer · Full Stack Development & Automation";
 const description =
@@ -47,8 +52,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#080b10",
-  colorScheme: "dark",
+  themeColor: "#e4ebe5",
+  colorScheme: "light",
 };
 
 const personJsonLd = {
@@ -67,7 +72,7 @@ const personJsonLd = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={`${GeistSans.variable} ${GeistMono.variable} ${hubot.variable}`} suppressHydrationWarning>
+    <html lang="pt-BR" className={`${GeistMono.variable} ${archivo.variable} ${serif.variable}`} suppressHydrationWarning>
       <head>
         {/* Opt into motion only when JS runs: without it, everything stays visible. */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
@@ -77,17 +82,21 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
         <a
           href="#conteudo"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-[6px] focus:bg-blue focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-on-blue"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-[2px] focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-on-accent"
         >
           Pular para o conteúdo
         </a>
         <Providers>
-          <SiteHeader />
-          <MissionRail />
+          <PortfolioOnly>
+            <SiteHeader />
+            <MissionRail />
+          </PortfolioOnly>
           <main id="conteudo" tabIndex={-1} className="outline-none">
             {children}
           </main>
-          <SiteFooter />
+          <PortfolioOnly>
+            <SiteFooter />
+          </PortfolioOnly>
         </Providers>
         <ClientEffects />
         <MotionRoot />

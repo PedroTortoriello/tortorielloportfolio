@@ -38,13 +38,13 @@ export default function LandingPagesIndex() {
               <div key={n.slug} className="grid grid-cols-1 gap-8 border-t border-line pt-8 lg:grid-cols-12 lg:pt-10">
                 <div data-reveal className="lg:sticky lg:top-24 lg:col-span-3 lg:self-start">
                   <h2 className="display text-[clamp(1.6rem,2.4vw,2rem)] text-ink [--wdth:104]">
-                    <Link href={`/landing-pages/${n.slug}`} className="transition-colors hover:text-blue">
+                    <Link href={`/landing-pages/${n.slug}`} className="transition-colors hover:text-accent">
                       {n.name}
                     </Link>
                   </h2>
                   {/* index under the title, not above it as an eyebrow */}
                   <p className="mt-3 font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-ink-muted">
-                    <span className="tabular text-blue">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="tabular text-accent">{String(i + 1).padStart(2, "0")}</span>
                     <span aria-hidden className="text-line-strong">
                       {"  —  "}
                     </span>
@@ -53,7 +53,7 @@ export default function LandingPagesIndex() {
                   <p className="mt-3 text-pretty text-sm leading-6 text-ink-muted">{n.description}</p>
                   <Link
                     href={`/landing-pages/${n.slug}`}
-                    className="group mt-3 inline-flex min-h-10 items-center gap-1.5 font-mono text-[0.75rem] text-blue transition-colors hover:text-blue-bright"
+                    className="group mt-3 inline-flex min-h-10 items-center gap-1.5 font-mono text-[0.75rem] text-accent transition-colors hover:text-accent-deep"
                   >
                     /landing-pages/{n.slug}
                     <ArrowRight aria-hidden className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />

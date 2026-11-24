@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowUp } from "lucide-react";
 import { nav, profile } from "@/lib/data";
 import { niches } from "@/lib/landing-pages";
+import { Microtext, Rosette, WaveBand } from "@/components/security/guilloche";
 
 // Links are 40px tall on touch layouts, compact from lg up.
 const link = "inline-flex min-h-10 items-center text-[0.875rem] text-ink-muted transition-colors hover:text-ink lg:min-h-0";
@@ -10,15 +11,13 @@ const link = "inline-flex min-h-10 items-center text-[0.875rem] text-ink-muted t
 // indices as the rail), the landing-page niches and the direct channels.
 export function SiteFooter() {
   return (
-    <footer className="border-t border-line">
+    <footer>
+      <WaveBand id="onda-rodape" />
       <div className="container-x grid grid-cols-1 gap-x-8 gap-y-12 py-16 sm:grid-cols-2 lg:grid-cols-12 lg:py-20">
         <div className="sm:col-span-2 lg:col-span-4">
           <Link href="/" className="group inline-flex items-center gap-3" aria-label={`${profile.name}, início`}>
-            <span className="relative grid size-8 shrink-0 place-items-center rounded-[5px] border border-line-strong bg-surface font-mono text-[0.6875rem] font-medium tracking-[0.04em] text-ink transition-colors group-hover:border-blue/70">
-              {profile.initials}
-              <span aria-hidden className="absolute -right-[3px] -top-[3px] size-[5px] rounded-full bg-blue shadow-[0_0_8px_rgb(94_158_255/0.9)]" />
-            </span>
-            <span className="text-sm font-medium tracking-[-0.01em] text-ink">{profile.name}</span>
+            <Rosette seed="marca" id="ros-marca-rodape" lat={-23.55} lon={-46.63} dense={false} className="size-9 shrink-0" />
+            <span className="font-ui text-[0.9375rem] font-[660] tracking-[-0.01em] text-ink [font-variation-settings:'wdth'_106]">{profile.name}</span>
           </Link>
           <p className="mt-5 max-w-xs text-pretty text-sm leading-6 text-ink-muted">
             {profile.role} · {profile.focus}. Aplicações web, APIs e automações em produção.
@@ -31,7 +30,7 @@ export function SiteFooter() {
             {nav.map((n, i) => (
               <li key={n.id}>
                 <Link href={n.href} className={`group gap-3 ${link}`}>
-                  <span className="font-mono text-[0.6875rem] tabular text-ink-faint transition-colors group-hover:text-blue">
+                  <span className="font-mono text-[0.6875rem] tabular text-ink-faint transition-colors group-hover:text-accent">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   {n.label}
@@ -92,6 +91,7 @@ export function SiteFooter() {
           </Link>
         </div>
       </div>
+      <Microtext text={`${profile.fullName} engenharia de software`} className="pb-3 text-center" />
     </footer>
   );
 }

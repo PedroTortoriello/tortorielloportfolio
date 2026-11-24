@@ -45,7 +45,7 @@ export function LandingPagesTeaser() {
             const named = big ? 4 : 2;
             return (
               <li key={n.slug} className={big ? "lg:col-span-2 lg:row-span-2" : wide ? "lg:col-span-2" : ""}>
-                <Link href={`/landing-pages/${n.slug}`} className="group block h-full rounded-[6px]">
+                <Link href={`/landing-pages/${n.slug}`} className="group block h-full rounded-[2px]">
                   <div className="console ticks edge-light flex h-full flex-col transition-colors duration-300 group-hover:border-line-strong">
                     <div className="console-head">
                       <span className="hud min-w-0 truncate normal-case tracking-[0.06em]">
@@ -68,7 +68,7 @@ export function LandingPagesTeaser() {
                       {pages.slice(0, 3).map((p, k) => (
                         <div
                           key={p.slug}
-                          className={`absolute overflow-hidden rounded-[4px] border border-line-strong shadow-[0_20px_40px_-16px_rgb(0_0_0/0.9)] transition-transform duration-700 ease-out ${fan[k]}`}
+                          className={`absolute overflow-hidden rounded-[2px] border border-line-strong shadow-[0_20px_40px_-20px_rgb(20_26_34/0.45)] transition-transform duration-700 ease-out ${fan[k]}`}
                           style={{ width: "78%", left: `${6 + k * 8}%`, top: `${10 + k * 12}%`, zIndex: k + 1 }}
                         >
                           <Image
@@ -97,7 +97,7 @@ export function LandingPagesTeaser() {
                         </h3>
                         <ArrowRight
                           aria-hidden
-                          className="mt-1 size-4 shrink-0 text-ink-faint transition-[color,transform] duration-300 group-hover:translate-x-1 group-hover:text-blue"
+                          className="mt-1 size-4 shrink-0 text-ink-faint transition-[color,transform] duration-300 group-hover:translate-x-1 group-hover:text-accent"
                         />
                       </div>
                       {big ? <p className="mt-3 max-w-md text-pretty text-sm leading-6 text-ink-muted">{n.description}</p> : null}
@@ -131,7 +131,7 @@ export function LandingPagesTeaser() {
                       <li key={n.slug}>
                         <Link
                           href={`/landing-pages/${n.slug}`}
-                          className="inline-flex min-h-10 items-center rounded-[5px] border border-line bg-bg/70 px-2.5 text-[0.8125rem] text-ink-muted transition-colors hover:border-blue/60 hover:text-ink sm:min-h-8"
+                          className="inline-flex min-h-10 items-center rounded-[2px] border border-line bg-bg/70 px-2.5 text-[0.8125rem] text-ink-muted transition-colors hover:border-accent/60 hover:text-ink sm:min-h-8"
                         >
                           {n.name}
                         </Link>
@@ -141,7 +141,7 @@ export function LandingPagesTeaser() {
                 ) : (
                   <p className="text-sm leading-6 text-ink-muted">Índice completo, com o que foi construído em cada uma.</p>
                 )}
-                <Link href="/landing-pages" className="group inline-flex min-h-10 items-center gap-2 self-start text-sm font-medium text-blue transition-colors hover:text-blue-bright">
+                <Link href="/landing-pages" className="group inline-flex min-h-10 items-center gap-2 self-start text-sm font-medium text-accent transition-colors hover:text-accent-deep">
                   Abrir índice
                   <ArrowRight aria-hidden className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>

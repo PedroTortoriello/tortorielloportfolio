@@ -87,7 +87,7 @@ export default async function LandingPageDetail({ params }: Props) {
               </h2>
               <Link
                 href={`/landing-pages/${niche.slug}`}
-                className="group inline-flex min-h-10 items-center gap-1.5 font-mono text-[0.75rem] text-blue transition-colors hover:text-blue-bright"
+                className="group inline-flex min-h-10 items-center gap-1.5 font-mono text-[0.75rem] text-accent transition-colors hover:text-accent-deep"
               >
                 /landing-pages/{niche.slug}
                 <ArrowRight aria-hidden className="size-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />

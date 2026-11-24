@@ -107,7 +107,7 @@ export function CodeLines({
           return (
             <span
               key={i}
-              className={`grid grid-cols-[2.75rem_1fr] pr-5 ${highlight.includes(n) ? "bg-blue/[0.08] shadow-[inset_2px_0_0_var(--color-blue)]" : ""}`}
+              className={`grid grid-cols-[2.75rem_1fr] pr-5 ${highlight.includes(n) ? "bg-accent/[0.08] shadow-[inset_2px_0_0_var(--color-accent)]" : ""}`}
             >
               <span aria-hidden className="select-none pr-4 text-right text-ink-faint/60 tabular">
                 {n}
