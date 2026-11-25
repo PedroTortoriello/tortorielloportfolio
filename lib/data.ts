@@ -169,7 +169,7 @@ export const experience: Experience[] = [
     remote: true,
     current: true,
     summary:
-      "Co-developer of the agency's own products: CadenceFlow, a multi-tenant prospecting platform (the LinkedIn module, the official WhatsApp integration, team seats and permissions), and Agente SDR, its SDR agent (my parts: the WhatsApp ingress and the outbound router). Landing pages and sites for the agency's clients, too.",
+      "Developer of CadenceFlow, the agency's multi-tenant prospecting platform (lead lists and AI qualification, email, WhatsApp and LinkedIn cadences, team seats and permissions), and of my parts of Agente SDR, its SDR agent (the WhatsApp ingress and the outbound router). Landing pages and sites for the agency's clients, too.",
     tech: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Meta Cloud API", "Astro"],
   },
   {

@@ -14,6 +14,7 @@ const COPY = {
     products: "Products",
     up: "up",
     avg: "avg",
+    contributions: "Contributions, last year",
     push: "Last public push",
     languages: "Top languages, by repo",
     repos: "Public repos",
@@ -26,6 +27,7 @@ const COPY = {
     products: "Produtos",
     up: "no ar",
     avg: "média",
+    contributions: "Contribuições no último ano",
     push: "Último push público",
     languages: "Principais linguagens, por repo",
     repos: "Repositórios públicos",
@@ -133,6 +135,9 @@ export function Telemetry({ className = "" }: { className?: string }) {
               </span>
             </>
           ) : null}
+        </Row>
+        <Row label={copy.contributions} loading={!d}>
+          {d?.contributions != null ? <span className="tabular">{d.contributions.toLocaleString(HTML_LANG[locale])}</span> : null}
         </Row>
         <Row label={copy.push} loading={!d}>
           {gh?.lastPush ? (

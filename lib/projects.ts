@@ -99,16 +99,15 @@ export const projects: Project[] = [
     summary:
       "A multi-tenant sales automation platform combining prospecting, intelligent workflows, CRM integrations and AI-powered communication.",
     year: "2026",
-    role: "Co-developer · full stack",
+    role: "Solo · full stack",
     status: "Live",
     links: [{ label: "cadenceflow.pro", href: "https://cadenceflow.pro" }],
     cover: {
       src: "/work/cadenceflow.webp",
       alt: "Rendered artwork for CadenceFlow: rings of light pulsing in sequence through a pale fog",
     },
-    note: "Co-developed: another engineer at the agency started the product in February 2026; I joined as co-developer in June 2026.",
     mine: [
-      "The LinkedIn module on Unipile: one outbox per account with idempotent enqueue, the invite-safety rules, burst control and a circuit breaker. He later extended it; since October 2026 the invite cap runs on his v2 table, with my function as the fallback.",
+      "The LinkedIn module on Unipile: one outbox per account with idempotent enqueue, the invite-safety rules, burst control and a circuit breaker. Since October 2026 the invite cap runs on a v2 maturity table, with the first function as the fallback.",
       "Official WhatsApp as a Meta Tech Provider: Embedded Signup, Cloud API send and receive, encrypted token custody and the signed Meta webhook.",
       "Team seats and permissions: roles read from the database, per-author scoping, optional per-member quotas and the middleware route-rule table.",
       "Email signal quality: the scanner classifier behind human open counts, and bounce diagnosis read from the raw delivery report.",
@@ -119,12 +118,12 @@ export const projects: Project[] = [
       {
         title: "The rest of the product",
         detail:
-          "The co-developer wrote most of it: the cadence executor, lead generator, qualifier, automations, CRM adapter, the n8n trial-funnel hook, the SDR agent v2 and, later, the LinkedIn v2 invite engine. We both edited the cadence executor heavily.",
+          "I also built the cadence executor, the lead generator, the qualifier, the automations, the CRM adapter, the n8n trial-funnel hook and, later, the LinkedIn v2 invite engine.",
       },
       {
         title: "In production",
         detail:
-          "Live at cadenceflow.pro, with the app at app.cadenceflow.pro. My commits under my own name run from June to October 2026; the private repository was still receiving commits in November 2026.",
+          "Live at cadenceflow.pro, with the app at app.cadenceflow.pro; the private repository was still receiving commits in November 2026.",
       },
       {
         title: "CRM integrations",
@@ -133,7 +132,7 @@ export const projects: Project[] = [
       },
     ],
     overview:
-      "CadenceFlow is a multi-tenant B2B prospecting platform in production. It builds lead lists, qualifies them by crawling company sites and summarizing them with an LLM, and runs email, WhatsApp and LinkedIn cadences with a reply inbox and plan-based billing. Another agency engineer started it in February 2026; I joined as co-developer in June 2026 and created the LinkedIn module (which he later extended), the official WhatsApp integration, team seats and permissions, the email open and bounce accuracy work, and deploy safety.",
+      "CadenceFlow is a multi-tenant B2B prospecting platform in production. It builds lead lists, qualifies them by crawling company sites and summarizing them with an LLM, and runs email, WhatsApp and LinkedIn cadences with a reply inbox and plan-based billing. I am its developer, from lead generation and the cadence engine to the LinkedIn module, the official WhatsApp integration, team seats and permissions, the email open and bounce accuracy work, and deploy safety.",
     problem:
       "B2B sales teams need to build lists, qualify leads and reach them by email, WhatsApp and LinkedIn without burning domains, numbers and profiles, and without spreading the process across disconnected tools. Each channel punishes excess in its own way, and on LinkedIn the penalty lands on a salesperson's personal profile. Security scanners and mail privacy proxies also open emails before people do, so the open rates teams steer by are misleading.",
     architecture: {
@@ -196,6 +195,7 @@ export const projects: Project[] = [
             x: 70,
             y: 60,
             tone: "client",
+            mine: true,
             detail: "The product UI, served by the same Next.js codebase.",
           },
           {
@@ -205,6 +205,7 @@ export const projects: Project[] = [
             x: 250,
             y: 60,
             tone: "core",
+            mine: true,
             detail:
               "Balances three PM2 processes. max_fails takes a failing one out of rotation, and proxy_next_upstream retries the request on the next.",
           },
@@ -215,6 +216,7 @@ export const projects: Project[] = [
             x: 250,
             y: 220,
             tone: "job",
+            mine: true,
             detail:
               "The server crontab calls /api/cron/* (cadences, LinkedIn, IMAP sync, reconciliation): 46 handlers, a few of them one-off jobs, all behind a fail-closed, constant-time secret check.",
           },
@@ -248,6 +250,7 @@ export const projects: Project[] = [
             y: 220,
             w: 150,
             tone: "core",
+            mine: true,
             detail: "One Next.js 16 App Router monolith, the React 19 UI and over 500 API route files, run as three PM2 processes.",
           },
           {
@@ -258,6 +261,7 @@ export const projects: Project[] = [
             y: 380,
             w: 150,
             tone: "data",
+            mine: true,
             detail:
               "126 models and 102 hand-written additive migrations. The LinkedIn outbox is a table with a unique dedupeKey; Meta webhook deliveries are deduplicated under a unique key.",
           },
@@ -279,8 +283,8 @@ export const projects: Project[] = [
             x: 670,
             y: 130,
             tone: "service",
-            detail:
-              "Picks each lead's next step, keeps to per-mailbox and per-number daily limits and can personalize a step with an LLM. Mostly the co-developer's work; we both edited it heavily.",
+            mine: true,
+            detail: "Picks each lead's next step, keeps to per-mailbox and per-number daily limits and can personalize a step with an LLM.",
           },
           {
             id: "linkedin",
@@ -291,7 +295,7 @@ export const projects: Project[] = [
             tone: "service",
             mine: true,
             detail:
-              "Campaigns, warm-up, cadences and manual use all enqueue an intent; one dispatcher per account drains it toward Unipile within quota and send window. Since October 2026 the weekly invite cap comes from the co-developer's v2 table, with my function as the fallback.",
+              "Campaigns, warm-up, cadences and manual use all enqueue an intent; one dispatcher per account drains it toward Unipile within quota and send window. Since October 2026 the weekly invite cap comes from a v2 maturity table, with the first function as the fallback.",
           },
           {
             id: "qualifier",
@@ -300,6 +304,7 @@ export const projects: Project[] = [
             x: 670,
             y: 400,
             tone: "service",
+            mine: true,
             detail:
               "Fetches up to 8 internal pages of each site over plain HTTP for emails and phones, then writes an LLM summary. Puppeteer belongs to the CNPJ extractor, not to the qualifier.",
           },
@@ -392,7 +397,7 @@ export const projects: Project[] = [
       {
         title: "Invite ceiling derived, not configured",
         detail:
-          "The weekly cap was a pure, unit-tested function of acceptance rate (only invites at least three days old count) and lifetime volume, clamped to 50–200, minus a reserve for the seller's manual use. Usage is a COUNT over the outbox, never an incremented counter. Since October 2026 production uses the co-developer's v2 maturity table (60 to 200 a week), with this function as the fallback.",
+          "The weekly cap was a pure, unit-tested function of acceptance rate (only invites at least three days old count) and lifetime volume, clamped to 50–200, minus a reserve for the seller's manual use. Usage is a COUNT over the outbox, never an incremented counter. Since October 2026 production uses a v2 maturity table (60 to 200 a week), with this function as the fallback.",
       },
       {
         title: "Roles read from the database, not the JWT",

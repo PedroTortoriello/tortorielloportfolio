@@ -22,6 +22,7 @@ export type Telemetry = {
     languages: { name: string; repos: number }[]; // primary language, counted by repo
   } | null;
   uptime: { title: string; up: boolean; status: number | null; ms: number | null }[];
+  contributions: number | null; // the profile's "N contributions in the last year"
 };
 
 type Repo = { name: string; fork: boolean; disabled?: boolean; language: string | null; pushed_at: string | null };
@@ -49,13 +50,28 @@ async function github(): Promise<Telemetry["github"]> {
   for (const r of own) if (r.language) count.set(r.language, (count.get(r.language) ?? 0) + 1);
   const last = own.find((r) => r.pushed_at); // sorted by push, newest first
   return {
-    repos: all.length,
+    repos: (all as Repo[]).filter((r) => !r.disabled).length,
     lastPush: last ? { repo: last.name, url: `https://github.com/${USER}/${encodeURIComponent(last.name)}`, at: last.pushed_at! } : null,
     languages: [...count]
       .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
       .slice(0, 3)
       .map(([name, repos]) => ({ name, repos })),
   };
+}
+
+// The figure GitHub prints on the profile ("1,456 contributions in the last year"), read from the
+// public calendar fragment the profile page itself loads: no token, and it matches the profile exactly.
+// If GitHub changes that markup the row shows a dash.
+async function contributions(): Promise<number | null> {
+  const res = await fetch(`https://github.com/users/${USER}/contributions`, {
+    headers: { "user-agent": UA },
+    next: { revalidate: 600 },
+    signal: AbortSignal.timeout(TIMEOUT),
+  });
+  if (!res.ok) return null;
+  const text = (await res.text()).replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  const m = text.match(/([\d.,]+)\s+contributions?\s+in the last year/i);
+  return m ? Number(m[1].replace(/[.,]/g, "")) : null;
 }
 
 // HEAD first (no body to download), GET when a server refuses HEAD. Redirects
@@ -79,9 +95,10 @@ async function probe(url: string) {
 
 export async function GET() {
   const live = projects.filter((p) => p.links[0]?.href.startsWith("https://"));
-  const [gh, uptime] = await Promise.all([
+  const [gh, uptime, total] = await Promise.all([
     github().catch(() => null),
     Promise.all(live.map(async (p) => ({ title: p.title, ...(await probe(p.links[0].href)) }))),
+    contributions().catch(() => null),
   ]);
-  return Response.json({ checkedAt: new Date().toISOString(), github: gh, uptime } satisfies Telemetry);
+  return Response.json({ checkedAt: new Date().toISOString(), github: gh, uptime, contributions: total } satisfies Telemetry);
 }
