@@ -1,6 +1,6 @@
 // Landing pages and institutional sites that are published, grouped by niche.
 // Only URLs that answered 200 and matched the client's brand are listed
-// (verified 2026-10-19, new entries 2026-11-10); paused deploys and personal
+// (verified 2026-10-19, new entries 2026-11-10 and 2026-11-23); paused deploys and personal
 // pages are left out, approval previews carry `preview`. Caveats go in `note`.
 
 export type Niche = {

@@ -14,15 +14,15 @@ type ButtonProps = {
 };
 
 const base =
-  "group relative inline-flex select-none items-center justify-center gap-2 whitespace-nowrap rounded-[2px] font-ui text-[0.9375rem] font-[620] [font-variation-settings:'wdth'_104] transition-[background-color,border-color,color,transform] duration-200 ease-out active:scale-[0.98]";
+  "group relative inline-flex select-none items-center justify-center gap-2.5 whitespace-nowrap font-mono text-[0.75rem] uppercase tracking-[0.14em] transition-[background-color,border-color,color,scale] duration-300 ease-[var(--ease-out)] active:scale-[0.98]";
 
-// Primary is the one ink: an intaglio bordô plate with paper-white text, a soft
-// printed drop under it. Secondary is the same ink as a hairline outline.
+// The work reference's action: a square lime plate with mono caps (lime is the
+// one colour that acts). Secondary is a hairline outline that turns lime on
+// hover; ghost is a bare mono link. Every variant is at least 44px tall.
 const variants = {
-  primary:
-    "h-12 px-6 bg-accent text-on-accent shadow-[inset_0_0_0_1px_rgb(255_255_255/0.12),0_10px_24px_-14px_rgb(92_14_26/0.9)] hover:bg-accent-deep",
-  secondary: "h-12 px-6 border border-accent text-accent hover:bg-accent hover:text-on-accent",
-  ghost: "h-9 px-1 text-ink-muted hover:text-ink",
+  primary: "h-12 px-6 bg-accent text-on-accent hover:bg-accent-deep",
+  secondary: "h-12 px-6 border border-line-strong text-ink hover:border-accent hover:text-accent",
+  ghost: "min-h-11 px-1 text-ink-muted hover:text-accent",
 };
 
 const arrows = {

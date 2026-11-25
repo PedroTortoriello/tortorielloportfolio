@@ -1,9 +1,16 @@
 "use client";
 
-import { MotionConfig } from "motion/react";
+import { LazyMotion, MotionConfig } from "motion/react";
 
-// Honors prefers-reduced-motion globally: Framer Motion drops transform/layout
-// animations and keeps simple opacity for users who ask for reduced motion.
+// The animation features load in their own chunk, after the page (lib/motion-features.ts);
+// components use the light `m` elements. MotionConfig honors prefers-reduced-motion:
+// transform and layout animations drop, simple opacity stays.
+const features = () => import("@/lib/motion-features").then((r) => r.domMax);
+
 export function Providers({ children }: { children: React.ReactNode }) {
-  return <MotionConfig reducedMotion="user">{children}</MotionConfig>;
+  return (
+    <LazyMotion features={features}>
+      <MotionConfig reducedMotion="user">{children}</MotionConfig>
+    </LazyMotion>
+  );
 }

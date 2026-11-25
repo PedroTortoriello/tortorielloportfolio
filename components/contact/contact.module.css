@@ -1,0 +1,103 @@
+/* The contact finale (ref4): what Tailwind utilities cannot say. */
+
+/* A dark-green bloom in the top-left corner, as in the reference. */
+.glow {
+  background-image: radial-gradient(
+    max(32vw, 16rem) max(22vw, 12rem) at 4% 0%,
+    rgb(43 53 31) 0%,
+    rgb(43 53 31 / 0.55) 42%,
+    rgb(43 53 31 / 0.18) 72%,
+    transparent 100%
+  );
+  background-repeat: no-repeat;
+}
+
+/* SplitText clips each headline line to its line box, and Anybody's ascenders
+   and descenders reach past a 0.95 line height, so the masks bleed a little.
+   Flex keeps those negative margins from collapsing: no jump when it splits.
+   Only the finished line masks match (MotionRoot names them), never the word
+   wrappers SplitText measures with first, or every word would become a line. */
+.headline:has(> :global(.split-line-mask)) {
+  display: flex;
+  flex-direction: column;
+}
+.headline > :global(.split-line-mask) {
+  margin: -0.08em -0.12em;
+  padding: 0.08em 0.12em;
+}
+
+/* The orbit: one 190×80 box shared by the ellipse and the star's path. */
+.orbit {
+  position: relative;
+  width: 190px;
+  height: 80px;
+  rotate: -18deg;
+  scale: 0.72;
+}
+@media (min-width: 40rem) {
+  .orbit {
+    scale: 1;
+  }
+}
+.star {
+  position: absolute;
+  left: 0;
+  top: 0;
+  offset-path: path("M 2 40 A 93 38 0 1 1 188 40 A 93 38 0 1 1 2 40 Z");
+  offset-rotate: auto;
+  /* the resting spot, also where reduced motion keeps it */
+  offset-distance: 28%;
+  filter: drop-shadow(0 0 6px rgb(194 245 92 / 0.6));
+}
+/* It travels only while the finale is on screen (MotionRoot sets .orbit-live on
+   #contact); paused, the -5.04s delay keeps it at its 28% resting spot. */
+@media (prefers-reduced-motion: no-preference) {
+  .star {
+    animation: orbit 18s linear -5.04s infinite paused;
+  }
+  :global(.orbit-live) .star {
+    animation-play-state: running;
+  }
+}
+@keyframes orbit {
+  from {
+    offset-distance: 0%;
+  }
+  to {
+    offset-distance: 100%;
+  }
+}
+
+/* Each ticket has its own spot: percent of the headline box, width in em of
+   the headline's size, so the scatter scales with the words. Phones have
+   their own spots (and only four tickets). */
+.slot {
+  position: absolute;
+  left: var(--px);
+  top: var(--py);
+  width: var(--pw);
+}
+.bob {
+  rotate: var(--pr, 0deg);
+  animation: bob var(--t) ease-in-out var(--delay) infinite;
+}
+@media (min-width: 40rem) {
+  .slot {
+    left: var(--x);
+    top: var(--y);
+    width: var(--w);
+  }
+  .bob {
+    rotate: var(--r);
+  }
+}
+@keyframes bob {
+  50% {
+    transform: translate3d(0, -7px, 0) rotate(var(--wobble));
+  }
+}
+
+/* The global focus ring squares every corner to 2px; a pill keeps its shape. */
+.pill:focus-visible {
+  border-radius: 999px;
+}

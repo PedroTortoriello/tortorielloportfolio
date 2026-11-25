@@ -6,34 +6,35 @@ brand
 
 ## Users
 
-Recruiters, tech leads and founders evaluating Pedro Tortoriello as a **Software Engineer — Full Stack Development & Automation** (positioning set by Pedro in October 2026). They scan fast and are skeptical of portfolio theatre; within one viewport they need to see that he builds real systems: web apps, APIs, integrations and automations. A second audience arrives through the landing-page area: businesses looking for a landing page in their niche.
+Recruiters, tech leads and founders, in Brazil and abroad, evaluating Pedro Tortoriello as a **Software Engineer — Full Stack Development & Automation** for remote work. They scan fast and are skeptical of portfolio theatre; within the first screens they need to feel the craft, then see that he builds real systems: web apps, APIs, integrations, automations and applied AI. A second audience arrives through the landing-page area (Portuguese): Brazilian businesses looking for a landing page in their niche.
 
-The job to be done: judge engineering depth and fit fast, then explore the cases, open the CV or reach out (e-mail, LinkedIn, GitHub first; WhatsApp secondary).
+The job to be done: be stopped by the first screen, judge engineering depth fast through four case studies, then open the CV or reach out (e-mail, LinkedIn, GitHub).
 
 ## Product Purpose
 
-A personal engineering portfolio that proves, rather than claims. Success = a qualified visitor opens a case, the CV or a contact channel. Every section shows real work: case studies with their actual architecture and code, a career log taken from the CV, a stack mapped to where each tool is used, a reasoning pipeline with evidence, and landing pages in production grouped by niche (`/landing-pages/[nicho]`).
+A cinematic personal portfolio that still proves rather than claims. The experience (V4, November 2026) is built from four reference screenshots Pedro chose: a holographic orb hero, a black exhibition panel on a fog wall for the work, an angular skills wall with a violet dock, and a wide-italic finale with lime tickets. Every case study is written from the project's own repository and checked claim by claim.
 
-Truth rule: nothing on the site may go beyond the CV or the project repositories. Co-authored work is labelled as such; no invented metrics, clients or results.
+Truth rule: nothing on the site may go beyond the CV, Pedro's own statements for this site (each source noted in lib/data.ts) or the project repositories. Co-authored work is labelled as such and only Pedro's part is credited to him; no invented metrics, clients or results. Where Pedro's own description of a project and the code disagree, the code wins and the difference is written down.
 
 ## Brand Personality
 
-Technical elegance: precise, calm, engineered. Voice is direct and specific (named systems, real mechanisms), never hype. Three words: **engineered, honest, modern.** It should feel like stepping into a working engineer's environment — terminal, editor, architecture graph — composed with editorial restraint.
+Cinematic, precise, honest. The voice is direct and specific (named systems, real mechanisms), never hype. It should feel like the closing credits of a well-made film about engineering: dark, confident, a little experimental in type, exact in content.
 
 ## Anti-references
 
-- The generic dark "AI startup" template: blue→purple gradient text, glassmorphism on every card, the hero-metric cliché, a tracked uppercase eyebrow above every section.
-- The generic developer portfolio (skill bars, "Hi I'm X", emoji, timeline of bootcamps).
-- Loud, over-animated agency sites where motion is decoration, not meaning.
+- Generic SaaS layouts, Bootstrap-like sections, rows of identical rounded cards.
+- Glassmorphism and decorative gradients; skill percentage bars; emoji.
+- The generic developer portfolio ("Hi, I'm X", bootcamp timelines).
+- Motion as decoration: every movement reveals, follows or answers something.
 
 ## Design Principles
 
-1. **Proof over claims.** Lead with real shipped products and concrete outcomes; let the work carry the credibility (inherited from the korbrasil reference's results-driven stance).
-2. **Restraint reads as senior.** Match the discipline of Linear/Vercel/Stripe: one signature color, precise type, surgical depth. Effects appear only where they earn it.
-3. **Engineering-first language.** Name the mechanism (outbox, RLS, webhook verification) and the problem it solves; recruiter clarity beats jargon.
-4. **Motion with intent.** Orchestrated entrance and scroll reveals that fit what they reveal; never a uniform fade on every block. Always a reduced-motion path.
-5. **Fast and legible.** Mobile-first, Lighthouse 95+, AA contrast. Premium is also performance.
+1. **Stop the scroll, then prove it.** The first screen earns attention; the case studies keep it with real mechanisms.
+2. **Each section speaks in its reference's voice.** Tokens, mono labels and motion keep them one system.
+3. **Truth over polish.** Co-authorship, limits and discrepancies are stated where they apply.
+4. **Motion with intent, and a still path.** Reduced motion, no-JS and print always show the finished page.
+5. **Fast anyway.** One WebGL canvas, paused off screen; fonts below the fold load lazily; imagery is rendered in-house and weighs kilobytes.
 
 ## Accessibility & Inclusion
 
-WCAG 2.1 AA. Body text ≥4.5:1 on the dark base, large text ≥3:1. Full keyboard navigation and visible focus rings. `prefers-reduced-motion` honored on every animation (crossfade/instant fallback). Portuguese (pt-BR) primary.
+WCAG 2.1 AA. Body text ≥4.5:1 on black, large text ≥3:1 (violet is reserved for large type). Full keyboard navigation, visible lime focus rings, a skip link. `prefers-reduced-motion` turns off smooth scroll, scrubbed motion and the orb's animation (it renders one still frame). English site; the landing-page area is marked `lang="pt-BR"`.

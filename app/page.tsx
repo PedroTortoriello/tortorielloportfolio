@@ -1,27 +1,27 @@
-import { Hero } from "@/components/hero/hero";
-import { Projects } from "@/components/sections/projects";
-import { Journey } from "@/components/sections/journey";
-import { Method } from "@/components/sections/method";
-import { Principles } from "@/components/sections/principles";
-import { Stack } from "@/components/sections/stack";
-import { LandingPagesTeaser } from "@/components/sections/landing-pages-teaser";
+import type { Metadata } from "next";
+import { Stage } from "@/components/hero/stage";
+import { Work } from "@/components/sections/work";
+import { Skills } from "@/components/sections/skills";
+import { Experience } from "@/components/sections/experience";
 import { Contact } from "@/components/sections/contact";
-import { MissionLine } from "@/components/chrome/mission-line";
+import { Recommendations } from "@/components/sections/recommendations";
 
+// The rest of the home page's metadata is the layout's; hreflang points at the Portuguese twin.
+export const metadata: Metadata = {
+  alternates: { canonical: "/", languages: { en: "/", "pt-BR": "/pt" } },
+};
+
+// Hero and intro share one stage (the orb stays while the intro arrives);
+// then the work wall, the skills wall, the journey and the finale.
+// app/pt/page.tsx renders the same sections with locale="pt": keep the two in step.
 export default function Home() {
   return (
     <>
-      <Hero />
-      {/* the stations the mission line runs through; Contact receives it */}
-      <div className="relative">
-        <MissionLine />
-        <Projects />
-        <Journey />
-        <Method />
-        <Principles />
-        <Stack />
-        <LandingPagesTeaser />
-      </div>
+      <Stage />
+      <Work />
+      <Skills />
+      <Experience />
+      <Recommendations />
       <Contact />
     </>
   );

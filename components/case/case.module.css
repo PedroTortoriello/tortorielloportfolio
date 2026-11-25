@@ -1,0 +1,50 @@
+/* First paint. MotionRoot leaves alone whatever is on screen at load, so the
+   hero opens with CSS: the cover rises from the bottom while it settles out of
+   a slow zoom. Reduced motion shortens both to nothing (globals.css); a cover
+   that arrives through the morph from a work card skips them (CoverMorph). */
+.open {
+  animation: open 1500ms var(--ease-in-out) both;
+}
+
+.settle {
+  animation: settle 2400ms var(--ease-out) both;
+}
+
+/* A display title sized to its longest word (--chars, a plain number) inside
+   an @container, so no word is ever wider than the column, capped at --max.
+   0.7em per uppercase glyph is a safe ceiling for Inter Tight 800 at -0.045em. */
+.fit {
+  font-size: min(var(--max), max(2rem, 100cqi / (var(--chars) * 0.7)));
+}
+
+/* A packet running down the data-flow rail (.motion-only hides it when motion is reduced). */
+.packet {
+  animation: packet 5.2s var(--ease-in-out) infinite;
+}
+
+@keyframes open {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+}
+
+@keyframes settle {
+  from {
+    transform: scale(1.16);
+  }
+}
+
+@keyframes packet {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  12%,
+  88% {
+    opacity: 1;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 0;
+  }
+}

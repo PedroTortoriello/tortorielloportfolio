@@ -11,7 +11,7 @@ import { shot } from "@/lib/landing-pages";
 import { SITE_URL } from "@/lib/site";
 
 // The site's world ("Papel de segurança") at its most direct: a page for law
-// offices, with its own focused header (components/chrome/portfolio-only.tsx
+// offices, with its own focused header (components/site/portfolio-only.tsx
 // hides the portfolio's recruiter navigation here).
 
 const total = documentos.length;

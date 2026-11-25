@@ -1,0 +1,95 @@
+/* ----------------------------------------------------------------------------
+   The advocacia route keeps its own world: the V3 "Papel de segurança" sheet.
+   Its tokens and the few shared class names it uses are re-declared here,
+   scoped to .paper, so the portfolio's dark system never reaches it.
+---------------------------------------------------------------------------- */
+.paper {
+  --color-bg: #e4ebe5;
+  --color-surface: #eef3ef;
+  --color-elevated: #dfe7e1;
+  --color-raised: #d4ded6;
+  --color-structure: #1f6b5e;
+  --color-line: rgb(20 26 34 / 0.16);
+  --color-line-strong: rgb(20 26 34 / 0.32);
+  --color-line-faint: rgb(20 26 34 / 0.09);
+  --color-ink: #141a22;
+  --color-ink-muted: #3c4750;
+  --color-ink-faint: #5b6670;
+  --color-accent: #7a1424;
+  --color-accent-deep: #5c0e1a;
+  --color-on-accent: #f6f8f6;
+  --color-green: #1f6b5e;
+  --color-amber: #8a5a12;
+  --font-sans: var(--font-doc), Georgia, ui-serif, serif;
+  --font-ui: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+
+  min-height: 100vh;
+  color-scheme: light;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-optical-sizing: auto;
+  background-color: var(--color-bg);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='12'%3E%3Cpath d='M0 6Q12 1 24 6T48 6' fill='none' stroke='%23d3ddd6' stroke-width='.7'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='12'%3E%3Cpath d='M0 6Q12 11 24 6T48 6' fill='none' stroke='%23dae3dc' stroke-width='.6'/%3E%3C/svg%3E");
+  background-position:
+    0 0,
+    24px 6px;
+}
+
+body:has(.paper) {
+  background: #e4ebe5;
+}
+
+.paper ::selection {
+  background: rgb(122 20 36 / 0.16);
+  color: #141a22;
+}
+
+.paper :focus-visible {
+  outline-color: #7a1424;
+}
+
+.paper button,
+.paper input,
+.paper select,
+.paper textarea {
+  font-family: var(--font-ui);
+}
+
+.paper .container-x {
+  max-width: 1320px;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+.paper .display {
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" var(--wdth, 112);
+  font-weight: 720;
+  letter-spacing: -0.028em;
+  word-spacing: 0.03em;
+  line-height: 0.97;
+  text-wrap: balance;
+}
+
+.paper .label {
+  font-family: var(--font-ui);
+  font-size: 0.6875rem;
+  font-weight: 640;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
+
+.paper .window {
+  position: relative;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line-strong);
+  border-radius: 2px;
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.7) inset,
+    0 22px 44px -24px rgb(20 26 34 / 0.38),
+    0 48px 90px -40px rgb(20 26 34 / 0.3);
+}

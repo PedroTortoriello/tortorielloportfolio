@@ -74,7 +74,10 @@ export function IPhone({ src, alt = "", url, sizes = "220px", className = "" }: 
             </div>
 
             {/* status bar: time in the left ear, icons in the right ear */}
-            <div className="absolute inset-x-0 top-[1.29%] flex h-[4.34%] items-center justify-between px-[9.5%]" style={{ color: statusInk }}>
+            <div
+              className="absolute inset-x-0 top-[1.29%] flex h-[4.34%] items-center justify-between px-[9.5%]"
+              style={{ color: statusInk }}
+            >
               <span className="w-[22%] text-center text-[3.95cqw] font-semibold tracking-[-0.01em] [font-family:-apple-system,BlinkMacSystemFont,'SF_Pro_Text',system-ui,sans-serif]">
                 9:41
               </span>
@@ -88,11 +91,16 @@ export function IPhone({ src, alt = "", url, sizes = "220px", className = "" }: 
             {host ? (
               <div
                 className="absolute inset-x-0 bottom-0 flex h-[10.4%] flex-col items-center pt-[1.1%] backdrop-blur-md"
-                style={{ background: lightBar ? "rgb(246 246 248 / 0.86)" : "rgb(28 28 30 / 0.86)" }}
+                style={{
+                  background: lightBar ? "rgb(246 246 248 / 0.86)" : "rgb(28 28 30 / 0.86)",
+                }}
               >
                 <div
                   className="flex h-[42%] w-[92%] items-center justify-center gap-[1.2cqw] rounded-[3cqw] px-[3cqw] text-[3.4cqw] [font-family:-apple-system,BlinkMacSystemFont,'SF_Pro_Text',system-ui,sans-serif]"
-                  style={{ background: lightBar ? "rgb(118 118 128 / 0.14)" : "rgb(118 118 128 / 0.3)", color: lightBar ? "#000" : "#fff" }}
+                  style={{
+                    background: lightBar ? "rgb(118 118 128 / 0.14)" : "rgb(118 118 128 / 0.3)",
+                    color: lightBar ? "#000" : "#fff",
+                  }}
                 >
                   <svg viewBox="0 0 10 13" className="h-[2.6cqw] w-auto shrink-0 opacity-60" fill="currentColor" aria-hidden>
                     <path d="M5 0a3.3 3.3 0 0 0-3.3 3.3V5H1.2C.5 5 0 5.5 0 6.2v5.6C0 12.5.5 13 1.2 13h7.6c.7 0 1.2-.5 1.2-1.2V6.2C10 5.5 9.5 5 8.8 5h-.5V3.3A3.3 3.3 0 0 0 5 0Zm2 5H3V3.3a2 2 0 0 1 4 0V5Z" />
@@ -105,7 +113,9 @@ export function IPhone({ src, alt = "", url, sizes = "220px", className = "" }: 
             {/* home indicator */}
             <span
               className="absolute bottom-[0.94%] left-1/2 h-[0.59%] w-[34%] -translate-x-1/2 rounded-full"
-              style={{ background: host ? (lightBar ? "#000" : "#fff") : luminance(bottom) > 0.4 ? "rgb(0 0 0 / 0.75)" : "rgb(255 255 255 / 0.8)" }}
+              style={{
+                background: host ? (lightBar ? "#000" : "#fff") : luminance(bottom) > 0.4 ? "rgb(0 0 0 / 0.75)" : "rgb(255 255 255 / 0.8)",
+              }}
             />
 
             {/* glass */}

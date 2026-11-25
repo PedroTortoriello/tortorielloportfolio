@@ -1,31 +1,20 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
-import { params, ring } from "@/components/security/guilloche";
+import { hero, profile } from "@/lib/data";
 
-export const alt = "Pedro Tortoriello — Software Engineer · Full Stack Development & Automation";
+export const alt = "Pedro Tortoriello — Software Engineer · Full Stack & Automation";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 const font = (file: string) => readFile(join(process.cwd(), "node_modules/geist/dist/fonts", file));
 
-// V3 palette: security paper, cédula green, the one bordô ink, ink.
-const C = { paper: "#E4EBE5", plate: "#EEF3EF", green: "#1F6B5E", bordo: "#7A1424", ink: "#141A22", muted: "#3C4750", faint: "#5B6670" };
-
-// The same rosette math as the site (components/security/guilloche.tsx),
-// written out as rotated copies because the OG renderer has no <use>.
-const p = params("identidade", -23.5505, -46.6333);
-const outer = ring(76, p.a1, p.n1);
-const inner = ring(47, p.a1 * 0.85, p.n2, Math.PI / 2);
-const wave = (y: number, flip: boolean) => {
-  let d = `M0 ${y}`;
-  for (let x = 0; x < 1200; x += 28) d += ` C${x + 7} ${y + (flip ? 9 : -9)} ${x + 7} ${y + (flip ? 9 : -9)} ${x + 14} ${y} S${x + 21} ${y + (flip ? -9 : 9)} ${x + 28} ${y}`;
-  return d;
-};
-
+// The first screen as a card: black, the orb's silhouette (its rim, halo and
+// two film ribbons, drawn with gradients since the OG renderer has no WebGL),
+// the headline over it, and the corner lines.
 export default async function OpengraphImage() {
-  const [bold, medium, mono] = await Promise.all([
-    font("geist-sans/Geist-Bold.ttf"),
+  const [light, medium, mono] = await Promise.all([
+    font("geist-sans/Geist-Light.ttf"),
     font("geist-sans/Geist-Medium.ttf"),
     font("geist-mono/GeistMono-Regular.ttf"),
   ]);
@@ -38,62 +27,80 @@ export default async function OpengraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          padding: "78px 80px 70px",
-          backgroundColor: C.paper,
-          color: C.ink,
+          padding: "44px 56px",
+          backgroundColor: "#000",
+          color: "#fff",
           fontFamily: "Geist",
           position: "relative",
         }}
       >
-        <svg width="1200" height="630" viewBox="0 0 1200 630" style={{ position: "absolute", top: 0, left: 0 }}>
-          {/* certificate borders: interlaced green and bordô waves */}
-          {[22, 608].map((y) => (
-            <g key={y}>
-              <path d={wave(y, false)} fill="none" stroke={C.green} strokeWidth="1.2" />
-              <path d={wave(y, true)} fill="none" stroke={C.bordo} strokeWidth="1.2" />
-            </g>
-          ))}
-          {/* the seal, at the right of the sheet */}
-          <g transform="translate(1048 300) scale(1.72)">
-            <circle r="95" fill="none" stroke={C.green} strokeWidth="0.5" />
-            <circle r="91.5" fill="none" stroke={C.green} strokeWidth="0.5" />
-            {Array.from({ length: p.k1 }, (_, i) => (
-              <path key={`o${i}`} d={outer} fill="none" stroke={C.green} strokeWidth="0.32" transform={`rotate(${(i * 360) / p.n1 / p.k1})`} />
-            ))}
-            {Array.from({ length: p.k2 }, (_, i) => (
-              <path key={`i${i}`} d={inner} fill="none" stroke={C.bordo} strokeWidth="0.32" transform={`rotate(${(i * 360) / p.n2 / p.k2})`} />
-            ))}
-            <path d={ring(14, 11, p.m)} fill="none" stroke={C.bordo} strokeWidth="0.5" />
-          </g>
-        </svg>
+        {/* halo, rim, film ribbons, glass */}
+        <div
+          style={{
+            position: "absolute",
+            left: 360,
+            top: 75,
+            width: 480,
+            height: 480,
+            borderRadius: 9999,
+            backgroundImage:
+              "radial-gradient(circle at 50% 50%, rgba(4,5,16,1) 0%, rgba(6,8,26,1) 58%, rgba(60,80,255,0.55) 68%, rgba(170,190,255,0.75) 70.5%, rgba(40,50,200,0.25) 72%, rgba(0,0,0,0) 74%)",
+            boxShadow: "0 0 120px 20px rgba(48,60,230,0.28)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            left: 500,
+            top: 120,
+            width: 300,
+            height: 120,
+            borderRadius: 9999,
+            backgroundImage: "radial-gradient(ellipse at 50% 50%, rgba(214,92,255,0.55) 0%, rgba(0,0,0,0) 70%)",
+            transform: "rotate(-24deg)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            left: 400,
+            top: 380,
+            width: 300,
+            height: 100,
+            borderRadius: 9999,
+            backgroundImage: "radial-gradient(ellipse at 50% 50%, rgba(70,230,255,0.45) 0%, rgba(0,0,0,0) 70%)",
+            transform: "rotate(-18deg)",
+          }}
+        />
 
-        <div style={{ display: "flex", alignItems: "center", gap: 16, fontFamily: "GeistMono", fontSize: 19, letterSpacing: "0.14em", color: C.bordo }}>
-          REGISTRO PROFISSIONAL · SÃO PAULO · BRASIL
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 18, fontWeight: 500, letterSpacing: "0.16em" }}>
+          <span>PT®</span>
+          <span style={{ display: "flex", gap: 34, fontSize: 14 }}>
+            <span>WORK</span>
+            <span>INTRO</span>
+            <span>SKILLS</span>
+            <span>CONTACT</span>
+          </span>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", maxWidth: 760 }}>
-          <div style={{ fontWeight: 700, fontSize: 68, letterSpacing: "-0.035em", lineHeight: 1 }}>Engenharia de software.</div>
-          <div style={{ fontWeight: 700, fontSize: 68, letterSpacing: "-0.035em", lineHeight: 1.02, color: C.bordo, marginTop: 6 }}>
-            Sistemas que resolvem problemas reais.
-          </div>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", fontWeight: 300, fontSize: 70, lineHeight: 1.08, letterSpacing: "-0.025em" }}>
+          <span>{hero.headline[0]}</span>
+          <span>{hero.headline[1]}</span>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-          <div style={{ display: "flex", alignItems: "baseline", gap: 18, fontSize: 24 }}>
-            <span style={{ fontWeight: 500, color: C.ink }}>Pedro Tortoriello</span>
-            <span style={{ color: C.green }}>/</span>
-            <span style={{ fontWeight: 500, color: C.muted }}>Software Engineer · Full Stack Development & Automation</span>
-          </div>
-          <div style={{ display: "flex", fontFamily: "GeistMono", fontSize: 17, letterSpacing: "0.12em", color: C.faint }}>
-            IDBRAGABRIEL&lt;DE&lt;FREITAS&lt;TORTORIELLO&lt;&lt;PEDRO&lt;&lt;
-          </div>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", fontFamily: "GeistMono", fontSize: 15, letterSpacing: "0.14em" }}>
+          <span>{profile.name.toUpperCase()} · FULL STACK ENGINEER</span>
+          <span style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <span style={{ width: 9, height: 9, borderRadius: 9999, backgroundColor: "#c2f55c" }} />
+            BRAZIL · WORKING WORLDWIDE
+          </span>
         </div>
       </div>
     ),
     {
       ...size,
       fonts: [
-        { name: "Geist", data: bold, weight: 700 },
+        { name: "Geist", data: light, weight: 300 },
         { name: "Geist", data: medium, weight: 500 },
         { name: "GeistMono", data: mono, weight: 400 },
       ],

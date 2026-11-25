@@ -1,5 +1,6 @@
-﻿// Everything on the page comes from Pedro's CV or from the project repositories.
-// Nothing here is a metric or claim that cannot be traced back to one of them.
+﻿// Everything on the page comes from Pedro's CV, his own words for this site, or
+// the project repositories. Nothing here is a metric or claim that cannot be
+// traced back to one of them.
 
 export const profile = {
   name: "Pedro Tortoriello",
@@ -7,328 +8,239 @@ export const profile = {
   initials: "PT",
   role: "Software Engineer",
   focus: "Full Stack Development & Automation",
-  location: "São Paulo · Brasil",
-  availability: "Disponível para atuação 100% remota",
+  country: "Brazil",
+  city: "São Paulo",
+  timeZone: "America/Sao_Paulo",
   since: 2021,
   email: "pedrooofreitas@gmail.com",
   linkedin: "https://www.linkedin.com/in/pedro-tortoriello/",
+  linkedinHandle: "in/pedro-tortoriello",
   github: "https://github.com/PedroTortoriello",
   githubHandle: "PedroTortoriello",
   whatsapp: "https://wa.me/5511942716215",
   whatsappLabel: "+55 11 94271-6215",
-  cv: "/cv-pedro-tortoriello.pdf",
-  headline: ["Engenharia de software.", "Sistemas que resolvem problemas reais."],
-  description:
-    "Desenvolvo aplicações web, APIs e automações que conectam tecnologia, processos e resultados.",
+  // The résumé is printed from /cv (scripts/cv-pdf.mjs), so it always matches this file.
+  // The older Portuguese PDF (no Bradesco or Maximum roles yet) is kept for the Portuguese site.
+  cv: "/cv-pedro-tortoriello-en.pdf",
+  cvLang: "EN",
+  cvPt: "/cv-pedro-tortoriello.pdf",
+  cvPtLang: "PT-BR",
+  // The CV's opening lines, built only from claims made elsewhere on the site (intro, experience).
+  summary:
+    "Software engineer building scalable applications, intelligent automation systems and high-performance digital experiences: web apps, APIs, integrations, automations and applied AI. Since 2021: client work and my own products, then teams in Brazil and remote roles with US-based teams, working in English.",
 } as const;
 
+export const hero = {
+  headline: ["The future doesn't happen", "to us. We engineer it."],
+  support: ["Building intelligent systems.", "Engineering digital experiences."],
+  left: ["Full Stack Engineer", "Software Architecture"],
+  right: "Brazil · Working worldwide",
+} as const;
+
+export const intro = {
+  statement: "I don't just build software. I engineer solutions that move businesses forward.",
+  body: "I'm Pedro Tortoriello, a software engineer focused on building scalable applications, intelligent automation systems and high-performance digital experiences.",
+} as const;
+
+// Header navigation (the reference's top-right links).
 export const nav = [
-  { id: "projetos", href: "/#projetos", label: "Projetos" },
-  { id: "jornada", href: "/#jornada", label: "Experiência" },
-  { id: "metodo", href: "/#metodo", label: "Processo" },
-  { id: "principios", href: "/#principios", label: "Princípios" },
-  { id: "stack", href: "/#stack", label: "Stack" },
-  { id: "landing-pages", href: "/#landing-pages", label: "LPs" },
-  { id: "contato", href: "/#contato", label: "Contato" },
+  { id: "work", href: "/#work", label: "Work" },
+  { id: "intro", href: "/#intro", label: "Intro" },
+  { id: "skills", href: "/#skills", label: "Skills" },
+  { id: "contact", href: "/#contact", label: "Contact" },
 ] as const;
 
-export const specialties = [
-  {
-    icon: "layers",
-    title: "Full Stack Development",
-    note: "Interface, API e banco no mesmo raciocínio",
-  },
-  {
-    icon: "plug",
-    title: "APIs & Integrations",
-    note: "Contratos, webhooks e serviços de terceiros",
-  },
-  {
-    icon: "workflow",
-    title: "Automation Engineering",
-    note: "Workers, crons, filas e agentes de IA",
-  },
-  {
-    icon: "boxes",
-    title: "SaaS Development",
-    note: "Multi-tenant, planos, cobrança e permissões",
-  },
+// The floating dock walks the whole page, in page order.
+export const dock = [
+  { id: "top", label: "Home", icon: "home" },
+  { id: "intro", label: "Intro", icon: "user" },
+  { id: "work", label: "Work", icon: "cubes" },
+  { id: "skills", label: "Skills", icon: "tools" },
+  { id: "experience", label: "Experience", icon: "path" },
+  { id: "contact", label: "Contact", icon: "signal" },
 ] as const;
+
+export type DockIcon = (typeof dock)[number]["icon"];
+
+export type SkillGroup = { index: string; title: string; items: string[] };
+
+export const skills: SkillGroup[] = [
+  // Pedro's English CV (Nov 2026) plus the Bradesco Private Bank stack he named (NestJS, Java, Spring Boot, microservices).
+  {
+    index: "01",
+    title: "Frontend",
+    items: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "JavaScript",
+      "React Native",
+      "Tailwind CSS",
+      "HTML / CSS",
+      "Design Systems",
+      "Jest · Cypress",
+    ],
+  },
+  {
+    index: "02",
+    title: "Backend",
+    items: [
+      "Node.js",
+      "NestJS",
+      "Java",
+      "Spring Boot",
+      "Python",
+      "REST · GraphQL",
+      "Microservices",
+      "PostgreSQL",
+      "MongoDB",
+      "Supabase",
+      "System Architecture",
+    ],
+  },
+  {
+    index: "03",
+    title: "Automation & AI",
+    items: ["n8n", "Make", "Zapier", "OpenAI API", "AI Agents", "AI Integrations", "Webhooks", "Workflow Engineering"],
+  },
+  {
+    index: "04",
+    title: "Infrastructure",
+    items: [
+      "AWS",
+      "Google Cloud",
+      "Docker",
+      "Kubernetes",
+      "Terraform",
+      "CI/CD · GitHub Actions",
+      "Vercel",
+      "Redis",
+      "Git",
+      "Database Design",
+    ],
+  },
+];
 
 export type Experience = {
   id: string;
-  lane: "products" | "company";
-  period: string;
   company: string;
   role: string;
+  period: string;
+  start: number;
   place: string;
-  summary: string;
-  details: string[];
-  systems: string[];
-  tech: string[];
+  remote: boolean;
+  usTeam?: boolean;
   current?: boolean;
+  // optional: a role with nothing verified to say yet shows only its title, place and dates
+  summary?: string;
+  tech?: string[];
 };
 
+// Dates and responsibilities from the CV; titles as Pedro states them for this site
+// (seniority updated by Pedro on 2026-11-24: Four intern, 1 Call Closers and Addon mid-level, Maximum senior; on 2026-11-25 Bradesco became the engineer title and Maximum the developer one).
+// Bradesco Private Bank and Maximum Marketing are newer than the CV: Pedro gave their
+// titles, start months (October and May 2026) and places on 2026-11-24. Maximum's
+// summary repeats only what the CadenceFlow and automation cases already verify.
+// Bradesco's summary and stack come from the role's job description, which Pedro
+// shared the same day (its key responsibilities and required tools, not the nice-to-haves),
+// plus Java, Spring Boot and microservices, which Pedro added.
 export const experience: Experience[] = [
   {
-    id: "freelance",
-    lane: "products",
-    period: "2021 — atual",
-    company: "Freelance e produtos próprios",
-    role: "Desenvolvedor Full Stack",
-    place: "Autônomo · Remoto",
+    id: "bradesco",
+    company: "Bradesco Private Bank",
+    role: "Senior Software Engineer",
+    period: "2026 — Now",
+    start: 2026,
+    place: "Remote · Miami, US",
+    remote: true,
+    usTeam: true,
     current: true,
     summary:
-      "Aplicações web sob demanda para clientes e produtos próprios, do levantamento de requisitos e do desenho da arquitetura até a publicação, a documentação e o suporte pós-entrega.",
-    details: [
-      "Produtos próprios em React, Next.js e TypeScript: backoffice e SaaS com controle de acesso por perfil na interface e na API, pagamentos (Pix, Stripe) e IA aplicada.",
-      "Biblioteca de componentes compartilhados em React e TypeScript (Tailwind CSS e Radix UI), reutilizada entre os produtos para padronizar a interface.",
-      "Testes automatizados dos fluxos críticos com Jest e React Testing Library (unidade e componentes) e Cypress (ponta a ponta).",
-      "Código e documentação técnica no GitHub, com escopo, estágio de maturidade e limitações de cada sistema descritos de forma explícita.",
-    ],
-    systems: ["SaaS multi-tenant", "Backoffice", "Pagamentos", "IA aplicada"],
-    tech: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Radix UI", "Jest", "Cypress"],
+      "The bank's middleware platform: designing and maintaining scalable microservices in Node.js (NestJS) and Java (Spring Boot), REST APIs secured with OAuth2, JWT and OIDC, and messaging between services, with code review and troubleshooting. Working in English with the bank's team.",
+    tech: ["Node.js", "NestJS", "Java", "Spring Boot", "Microservices", "TypeScript", "React", "Docker", "OAuth2 / OIDC"],
+  },
+  {
+    id: "maximum",
+    company: "Maximum Marketing",
+    role: "Senior Software Developer",
+    period: "2026 — Now",
+    start: 2026,
+    place: "Remote · Brazil",
+    remote: true,
+    current: true,
+    summary:
+      "Co-developer of the agency's own products: CadenceFlow, a multi-tenant prospecting platform (the LinkedIn module, the official WhatsApp integration, team seats and permissions), and Agente SDR, its SDR agent (my parts: the WhatsApp ingress and the outbound router). Landing pages and sites for the agency's clients, too.",
+    tech: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "Meta Cloud API", "Astro"],
   },
   {
     id: "addon",
-    lane: "company",
-    period: "set/2025 — fev/2026",
     company: "Addon Software",
-    role: "Desenvolvedor de Software",
-    place: "Remoto · Brasil",
+    role: "Mid-level Software Engineer",
+    period: "2025 — 2026",
+    start: 2025,
+    place: "Remote · Brazil",
+    remote: true,
     summary:
-      "Funcionalidades end-to-end da plataforma com TypeScript, Node.js e APIs REST, em um time altamente colaborativo.",
-    details: [
-      "Desenvolvi e mantive funcionalidades end-to-end da plataforma com TypeScript, Node.js e APIs REST.",
-      "Traduzi, com stakeholders e o time, requisitos de negócio e de produto em soluções técnicas, com documentação de escopo e das entregas.",
-      "Sustentei o produto em produção: análise de logs, troubleshooting e correção de incidentes, priorizados por criticidade e impacto no usuário.",
-      "Elevei a manutenibilidade da arquitetura com refatoração contínua e code review em Git/GitHub.",
-    ],
-    systems: ["Plataforma web", "Sustentação em produção"],
-    tech: ["TypeScript", "Node.js", "APIs REST", "Git"],
+      "End-to-end platform features in TypeScript, Node.js and REST APIs. Business and product requirements turned into technical scope with the team, production support through log analysis, troubleshooting and incident fixes, and continuous refactoring under code review.",
+    tech: ["TypeScript", "Node.js", "REST APIs", "Git"],
   },
   {
     id: "1callclosers",
-    lane: "company",
-    period: "jan/2025 — set/2025",
-    company: "1 Call Closers",
-    role: "Desenvolvedor de Software",
-    place: "Califórnia, EUA · Remoto",
+    company: "1 Call Closers / V Shred",
+    role: "Mid-level Software Engineer",
+    period: "2025",
+    start: 2025,
+    place: "Remote · California, US",
+    remote: true,
+    usTeam: true,
     summary:
-      "Aplicações web e automações entre plataformas para uma empresa da Califórnia, em time 100% remoto e distribuído.",
-    details: [
-      "Desenvolvi aplicações web com Next.js, React, TypeScript e Node.js, consumindo APIs REST integradas a sistemas de terceiros.",
-      "Projetei e implementei automações e integrações (n8n, Zapier e Make) via APIs REST, eliminando tarefas manuais em vendas, agendamento e apuração de métricas operacionais.",
-      "Comunicação escrita e reuniões em inglês, com rotina ágil de entregas.",
-    ],
-    systems: ["Aplicações web", "Automação de vendas e agenda"],
+      "Web applications in Next.js, React, TypeScript and Node.js on top of third-party REST APIs, and automations across platforms with n8n, Zapier and Make that removed manual work from sales, scheduling and operational reporting. A fully remote, distributed US team, working in English.",
     tech: ["Next.js", "React", "TypeScript", "Node.js", "n8n", "Zapier", "Make"],
   },
   {
     id: "four",
-    lane: "company",
-    period: "dez/2023 — dez/2024",
-    company: "Four Tecnologia",
-    role: "Estagiário de Desenvolvimento",
-    place: "Indaiatuba, SP",
+    company: "Four",
+    role: "Software Development Intern",
+    period: "2023 — 2024",
+    start: 2023,
+    place: "Indaiatuba · Brazil",
+    remote: false,
     summary:
-      "Interfaces web responsivas e serviços de back-end, com integrações entre sistemas corporativos.",
-    details: [
-      "Desenvolvi interfaces responsivas com React, Next.js e Tailwind CSS, e serviços de back-end com Node.js, MongoDB e APIs REST.",
-      "Implementei integrações entre sistemas corporativos, participando da validação, dos testes e da sustentação.",
-      "Cerimônias e fluxo ágil (Scrum/Kanban), com versionamento e code review no GitHub.",
-    ],
-    systems: ["Sistemas corporativos", "Integrações"],
+      "Responsive interfaces in React, Next.js and Tailwind CSS, back-end services in Node.js, MongoDB and REST APIs, and integrations between corporate systems, from validation and testing to support. Scrum and Kanban, with code review on GitHub.",
     tech: ["React", "Next.js", "Tailwind CSS", "Node.js", "MongoDB"],
+  },
+  {
+    id: "independent",
+    company: "Independent Engineering",
+    role: "Full Stack Development & Digital Products",
+    period: "2021 — Now",
+    start: 2021,
+    place: "Remote · Worldwide",
+    remote: true,
+    current: true,
+    summary:
+      "Web applications for clients and my own products, from requirements and architecture to release, documentation and post-launch support: SaaS and back-office interfaces, role-based access in the UI and the API, payments, applied AI and a shared component library.",
+    tech: ["React", "Next.js", "TypeScript", "Supabase", "Stripe", "AI"],
   },
 ];
 
 export const education = {
-  course: "Tecnólogo em Análise e Desenvolvimento de Sistemas",
-  school: "FACENS — Centro Universitário Facens",
-  place: "Sorocaba, SP",
-  status: "Concluído",
-  languages: "Português nativo · Inglês intermediário · Espanhol básico",
+  course: "Systems Analysis and Development",
+  school: "FACENS · Centro Universitário Facens",
+  place: "Sorocaba · Brazil",
 } as const;
 
-// Stack: grouped by the role each area plays in a running system.
-// `use` is only written when a project or the CV confirms it.
-export type Tech = {
+export type Recommendation = {
+  quote: string;
   name: string;
-  icon?: string; // simpleicons slug or local path
-  glyph?: "webhook" | "rest" | "cron" | "key" | "cloud" | "test";
-  use: string;
-  where: string[];
-};
-
-export type StackDomain = {
-  id: string;
-  title: string;
   role: string;
-  items: Tech[];
+  company: string;
+  relation: string; // as LinkedIn states it ("managed Pedro directly")
+  date?: string;
+  url?: string; // the recommendation or the recommender's profile
+  lang?: string; // the quote's language when it is not English ("pt-BR"); it is never translated
 };
 
-const si = (slug: string) => `https://cdn.simpleicons.org/${slug}/ffffff`;
-
-export const stack: StackDomain[] = [
-  {
-    id: "frontend",
-    title: "Frontend",
-    role: "onde a pessoa usa o sistema",
-    items: [
-      { name: "React", icon: si("react"), use: "Base das interfaces web dos projetos, próprios e em dupla.", where: ["Noivar", "Núcleo", "CadenceFlow"] },
-      { name: "Next.js", icon: si("nextdotjs"), use: "App Router com Server Components, Server Actions e render por slug com SEO.", where: ["Noivar", "CadenceFlow", "Agente SDR"] },
-      { name: "TypeScript", icon: si("typescript"), use: "Tipagem de ponta a ponta, do schema ao componente.", where: ["Todos os projetos"] },
-      { name: "Tailwind CSS", icon: si("tailwindcss"), use: "Design tokens e interfaces responsivas.", where: ["Noivar", "CadenceFlow", "Núcleo"] },
-      { name: "Radix UI", icon: si("radixui"), use: "Primitivos acessíveis da minha biblioteca de componentes.", where: ["Núcleo", "Freelance"] },
-      { name: "React Native", icon: si("expo"), use: "Um código-base Expo para iOS, Android e web.", where: ["My Grace Journey"] },
-    ],
-  },
-  {
-    id: "apis",
-    title: "APIs & Integrations",
-    role: "como os sistemas conversam",
-    items: [
-      { name: "REST APIs", glyph: "rest", use: "Rotas validadas por schema, com autenticação e papel por rota (Núcleo); funcionalidades end-to-end com Node.js e APIs REST (Addon).", where: ["Núcleo", "Addon Software"] },
-      { name: "Webhooks", glyph: "webhook", use: "Assinatura HMAC, comparação em tempo constante e idempotência.", where: ["Noivar", "Núcleo", "Agente SDR"] },
-      { name: "WhatsApp Cloud API", icon: si("whatsapp"), use: "Prova de origem no webhook de entrada da Meta (CadenceFlow), entrada via CadenceFlow com token interno (Agente SDR) e envio por organização (Núcleo).", where: ["CadenceFlow", "Agente SDR", "Núcleo"] },
-      { name: "Mercado Pago", icon: si("mercadopago"), use: "PIX, boleto e assinatura com reconciliação de pendentes (Núcleo); cartão via OAuth na conta do próprio casal (Noivar).", where: ["Núcleo", "Noivar"] },
-      { name: "Stripe", icon: si("stripe"), use: "Checkout e webhooks de assinatura verificados.", where: ["My Grace Journey", "CadenceFlow"] },
-      { name: "Pix BR Code", icon: si("pix"), use: "Payload EMV montado no próprio app, com CRC16.", where: ["Noivar"] },
-    ],
-  },
-  {
-    id: "backend",
-    title: "Backend",
-    role: "onde a regra de negócio vive",
-    items: [
-      { name: "Node.js", icon: si("nodedotjs"), use: "APIs, workers e rotas de cron.", where: ["Núcleo", "CadenceFlow", "Agente SDR"] },
-      { name: "Express", icon: si("express"), use: "API em camadas Repository → Service → Controller.", where: ["Núcleo"] },
-      { name: "Prisma", icon: si("prisma"), use: "ORM tipado com queries escopadas por tenant: organização no Núcleo, usuário no JobHunter AI.", where: ["Núcleo", "CadenceFlow", "JobHunter AI"] },
-      { name: "Zod", icon: si("zod"), use: "Contratos compartilhados entre API e front; validação da saída da IA.", where: ["Núcleo", "JobHunter AI"] },
-      { name: "JWT", icon: si("jsonwebtokens"), use: "Access token com papel e organização e refresh opaco rotacionado (Núcleo); JWT em cookie httpOnly (JobHunter AI).", where: ["Núcleo", "JobHunter AI"] },
-    ],
-  },
-  {
-    id: "data",
-    title: "Databases",
-    role: "onde o estado é garantido",
-    items: [
-      { name: "PostgreSQL", icon: si("postgresql"), use: "Constraints, triggers e filas com FOR UPDATE SKIP LOCKED.", where: ["Núcleo", "Noivar", "CadenceFlow"] },
-      { name: "Supabase", icon: si("supabase"), use: "Auth, Storage, RLS e Edge Functions.", where: ["Noivar", "My Grace Journey"] },
-      { name: "MongoDB", icon: si("mongodb"), use: "Serviços de back-end com Node.js.", where: ["Four Tecnologia"] },
-    ],
-  },
-  {
-    id: "automation",
-    title: "Automation",
-    role: "o que roda sem ninguém clicar",
-    items: [
-      { name: "Workers & crons", glyph: "cron", use: "Outbox transacional, pg_cron e trava de execução única.", where: ["Núcleo", "Agente SDR"] },
-      { name: "n8n", icon: si("n8n"), use: "Automações entre plataformas via APIs REST.", where: ["1 Call Closers"] },
-      { name: "Zapier · Make", icon: si("zapier"), use: "Integrações em vendas, agendamento e métricas operacionais.", where: ["1 Call Closers"] },
-      { name: "Claude API", icon: si("anthropic"), use: "Saída estruturada com JSON Schema e prompt caching.", where: ["Noivar", "JobHunter AI"] },
-      { name: "OpenAI", icon: "/logos/openai.svg", use: "Redação e revisão de cláusulas de contrato.", where: ["Núcleo"] },
-      { name: "Gemini", icon: si("googlegemini"), use: "Mentor e devocionais gerados em modo JSON.", where: ["My Grace Journey"] },
-    ],
-  },
-  {
-    id: "infra",
-    title: "Infrastructure & Deployment",
-    role: "onde tudo isso roda",
-    items: [
-      { name: "Vercel", icon: si("vercel"), use: "Deploy, Cron e funções serverless.", where: ["Noivar", "Núcleo", "My Grace Journey"] },
-      { name: "Nginx · PM2", icon: si("nginx"), use: "Três instâncias PM2 atrás do Nginx; deploy com rollback de build.", where: ["CadenceFlow"] },
-      { name: "Docker", icon: si("docker"), use: "Build multi-stage e compose com Postgres, app e worker.", where: ["JobHunter AI"] },
-      { name: "GitHub Actions", icon: si("githubactions"), use: "Typecheck, self-checks e build no CI.", where: ["Núcleo"] },
-      { name: "AWS · GCP", glyph: "cloud", use: "Execução em nuvem de serviços distribuídos.", where: ["Experiência (CV)"] },
-      { name: "Testes", glyph: "test", use: "Vitest, Jest, React Testing Library e Cypress nos fluxos críticos.", where: ["Noivar", "JobHunter AI", "Freelance"] },
-    ],
-  },
-];
-
-// Three phases over the five stages: the go / no-go points of the process.
-export type MethodStep = {
-  id: string;
-  phase: "Diagnóstico" | "Arquitetura" | "Entrega";
-  title: string;
-  verb: string;
-  text: string;
-  evidence: { project: string; text: string };
-  concepts: string[];
-};
-
-export const method: MethodStep[] = [
-  {
-    id: "understand",
-    phase: "Diagnóstico",
-    title: "Understand",
-    verb: "Entender",
-    text: "Começo pelo problema de negócio: quem usa, qual fluxo dói e o que precisa ser verdade em produção. Isso vira escopo e documentação que o time consegue adotar.",
-    evidence: {
-      project: "Addon Software",
-      text: "Requisitos de negócio e de produto traduzidos em soluções técnicas, com documentação de escopo e entregas.",
-    },
-    concepts: ["Requisitos → escopo", "Documentação técnica"],
-  },
-  {
-    id: "architect",
-    phase: "Arquitetura",
-    title: "Architect",
-    verb: "Arquitetar",
-    text: "Separo responsabilidades e fixo contratos antes de implementar: camadas claras, schemas compartilhados e fronteiras explícitas entre serviços.",
-    evidence: {
-      project: "Núcleo",
-      text: "Repository → Service → Controller, com schemas Zod compartilhados entre a API e o front.",
-    },
-    concepts: ["Separação de responsabilidades", "Contratos bem definidos"],
-  },
-  {
-    id: "build",
-    phase: "Entrega",
-    title: "Build",
-    verb: "Construir",
-    text: "Coloco as regras críticas onde ninguém consegue contorná-las: no servidor e no banco, não só na interface.",
-    evidence: {
-      project: "Noivar",
-      text: "Um trigger no Postgres impede publicar sem pagamento confirmado; RLS isola os dados de cada casal.",
-    },
-    concepts: ["Regras no servidor", "Manutenibilidade"],
-  },
-  {
-    id: "integrate",
-    phase: "Entrega",
-    title: "Integrate",
-    verb: "Integrar",
-    text: "Integração é onde sistemas quebram. Valido a origem, trato reentregas e falhas, e centralizo os pontos de saída.",
-    evidence: {
-      project: "Núcleo",
-      text: "Outbox transacional com backoff exponencial, dead letter queue e idempotência por evento e por passo.",
-    },
-    concepts: ["Integração entre serviços", "Tratamento de erros"],
-  },
-  {
-    id: "deliver",
-    phase: "Entrega",
-    title: "Deliver",
-    verb: "Entregar",
-    text: "Entrego com rede de segurança: typecheck e checks no CI, deploy reversível e sustentação guiada por logs.",
-    evidence: {
-      project: "CadenceFlow",
-      text: "Rollback do build em segundos e portão de saúde no staging.",
-    },
-    concepts: ["Automação de processos", "Performance e escala quando aplicável"],
-  },
-];
-
-// Principles (the document's rules): decided before the pressure arrives. `where`
-// names only a case (lib/projects.ts) or a CV entry above whose text shows the rule.
-export const principles = [
-  { id: "camadas", title: "Separação de responsabilidades", rule: "Cada camada com um motivo para mudar.", where: "Núcleo: Repository → Service → Controller" },
-  { id: "contratos", title: "APIs e contratos bem definidos", rule: "O mesmo schema para quem chama e para quem responde.", where: "Núcleo: contratos Zod entre API e front" },
-  { id: "integracao", title: "Integração entre serviços", rule: "Origem validada, reentrega tratada, saída centralizada.", where: "Agente SDR: token em tempo constante, dedup, roteador único" },
-  { id: "automacao", title: "Automação de processos", rule: "Workers, crons e eventos no lugar de tarefas manuais.", where: "Núcleo: pg_cron + outbox · 1 Call Closers: n8n, Zapier, Make" },
-  { id: "erros", title: "Tratamento de erros", rule: "Backoff, dead letter queue, idempotência. Nada de falso sucesso.", where: "Núcleo: DLQ após cinco tentativas" },
-  { id: "manutencao", title: "Manutenibilidade", rule: "Refatoração contínua, code review e limites documentados.", where: "Addon Software: refatoração contínua e code review" },
-  { id: "escala", title: "Performance e escala", rule: "Quando o problema pede: SKIP LOCKED, balanceamento, pré-renderização.", where: "Núcleo: claim com FOR UPDATE SKIP LOCKED · CadenceFlow: três instâncias atrás do Nginx" },
-] as const;
+// Recommendations, pasted word for word from Pedro's LinkedIn. Never invented, edited or
+// paraphrased. The section renders nothing while this is empty.
+export const recommendations: Recommendation[] = [];

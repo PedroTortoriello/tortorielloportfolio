@@ -1,6 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="4" fill="#E4EBE5"/>
-  <circle cx="32" cy="32" r="27" fill="none" stroke="#1F6B5E" stroke-width="2.5"/>
-  <circle cx="32" cy="32" r="22.5" fill="none" stroke="#1F6B5E" stroke-width="1"/>
-  <text x="32" y="40" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-size="21" font-weight="800" fill="#7A1424">PT</text>
+  <defs>
+    <!-- the glass: a dark core, the blue Fresnel rim brightest at the edge -->
+    <radialGradient id="glass" cx="50%" cy="50%" r="50%">
+      <stop offset="0.5" stop-color="#04051a"/>
+      <stop offset="0.8" stop-color="#151a86"/>
+      <stop offset="0.94" stop-color="#3f5cff"/>
+      <stop offset="1" stop-color="#a6c2ff"/>
+    </radialGradient>
+    <!-- the soap film: cyan, violet, magenta; never green or yellow -->
+    <linearGradient id="film" x1="0" y1="0.15" x2="1" y2="0.85">
+      <stop offset="0" stop-color="#55e6ff"/>
+      <stop offset="0.5" stop-color="#8a63ff"/>
+      <stop offset="1" stop-color="#ff58db"/>
+    </linearGradient>
+    <radialGradient id="spec" cx="0.36" cy="0.3" r="0.24">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0.72" stop-color="#2a3bff" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#2a3bff" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="ball"><circle cx="32" cy="32" r="23"/></clipPath>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#000"/>
+  <circle cx="32" cy="32" r="31" fill="url(#halo)"/>
+  <circle cx="32" cy="32" r="23" fill="url(#glass)"/>
+  <!-- two ribbons of film across the sphere -->
+  <g clip-path="url(#ball)" fill="none" stroke="url(#film)" stroke-linecap="round">
+    <path d="M6 31 C 20 20, 42 41, 58 26" stroke-width="5.5"/>
+    <path d="M8 45 C 24 37, 40 53, 58 41" stroke-width="2.5" opacity="0.55"/>
+  </g>
+  <circle cx="32" cy="32" r="23" fill="url(#spec)"/>
+  <circle cx="32" cy="32" r="22.6" fill="none" stroke="#b4ccff" stroke-opacity="0.75" stroke-width="0.9"/>
 </svg>

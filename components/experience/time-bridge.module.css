@@ -1,0 +1,22 @@
+/* The lime pulse on the São Paulo ←→ California wire. The runner is exactly
+   as wide as the wire, so moving it ±50% of its own width carries its centre
+   (where the pulse sits) from one city to the other and back. With reduced
+   motion it stays put: the pulse rests mid-wire. */
+.runner {
+  animation: cross 5.6s var(--ease-in-out) infinite alternate;
+}
+
+@keyframes cross {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .runner {
+    animation: none;
+  }
+}

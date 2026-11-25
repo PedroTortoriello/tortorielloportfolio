@@ -1,145 +1,207 @@
-import { ArrowUpRight, FileText, Mail, MessageCircle } from "lucide-react";
-import { LocalTime } from "@/components/hero/local-time";
-import { Button } from "@/components/ui/button";
-import { Console, LiveDot } from "@/components/ui/console";
+import type { CSSProperties } from "react";
+import { ArrowUpRight } from "lucide-react";
+import { Orbit } from "@/components/contact/orbit";
+import { Tickets } from "@/components/contact/tickets";
+import s from "@/components/contact/contact.module.css";
+import { AskLauncher } from "@/components/fx/ask-dialog";
 import { CopyButton } from "@/components/ui/copy-button";
-import { GithubIcon, LinkedinIcon } from "@/components/ui/icons";
-import { Rosette } from "@/components/security/guilloche";
-import { profile } from "@/lib/data";
+import { content, type Locale } from "@/lib/i18n";
+import { askEnabled } from "@/lib/knowledge";
 
-const d = (ms: number) => ({ "--d": `${ms}ms` }) as React.CSSProperties;
+const d = (ms: number) => ({ "--d": `${ms}ms` }) as CSSProperties;
 
-const bare = (url: string) => url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
+// The headline is one text node per line; the trailing spaces keep the accessible name whole.
+const COPY = {
+  en: {
+    kicker: "Get in touch",
+    headline: ["Let’s build ", "something ", "extraordinary."],
+    emailPedro: "Email Pedro",
+    move: "Your move:",
+    invite: "Have an ambitious idea, a complex problem or an interesting opportunity?",
+    inviteEnd: "Let’s make it happen.",
+    email: "Email",
+    cv: "Download résumé",
+    pdfLang: "EN", // the language code of a PDF in this page's language (profile.cvLang / cvPtLang)
+    pdfIn: (lang: string) => ` (PDF in ${lang === "PT-BR" ? "Portuguese" : lang})`,
+    newTab: " (opens in a new tab)",
+    copy: "Copy email address",
+    credit: "Built in Brazil, shipped worldwide.",
+  },
+  pt: {
+    kicker: "Entre em contato",
+    headline: ["Vamos construir ", "algo ", "extraordinário."],
+    emailPedro: "Enviar e-mail para o Pedro",
+    move: "Sua vez:",
+    invite: "Tem uma ideia ambiciosa, um problema complexo ou uma oportunidade interessante?",
+    inviteEnd: "Vamos fazer acontecer.",
+    email: "E-mail",
+    cv: "Baixar currículo",
+    pdfLang: "PT-BR",
+    pdfIn: (lang: string) => ` (PDF em ${lang === "EN" ? "inglês" : lang})`,
+    newTab: " (abre em nova aba)",
+    copy: "Copiar endereço de e-mail",
+    credit: "Construído no Brasil, entregue no mundo todo.",
+  },
+} as const;
 
-const channels = [
-  { name: "LinkedIn", value: bare(profile.linkedin), href: profile.linkedin, Icon: LinkedinIcon },
-  { name: "GitHub", value: bare(profile.github), href: profile.github, Icon: GithubIcon },
-  { name: "Currículo (PDF)", value: profile.cv.slice(1), href: profile.cv, Icon: FileText },
-  { name: "WhatsApp", value: profile.whatsappLabel, href: profile.whatsapp, Icon: MessageCircle },
-];
+// The finale (ref4): a charcoal stage lit green from the top-left corner, an
+// orbit, the widest words on the page with lime tickets tossed over them, a
+// large outline arrow that writes to Pedro, and the ways to reach him.
+export function Contact({ locale = "en" }: { locale?: Locale }) {
+  const { profile } = content(locale);
+  const t = COPY[locale];
+  const year = new Date().getFullYear();
+  // Where a visitor goes from here. On phones Email and the résumé take a full
+  // row, the two profiles share one. Each page offers the résumé in its own language
+  // (profile.cvPt on Portuguese), with a language badge only when the PDF's differs.
+  const cv = locale === "pt" ? { href: profile.cvPt, lang: profile.cvPtLang } : { href: profile.cv, lang: profile.cvLang };
+  const channels = [
+    { label: t.email, href: `mailto:${profile.email}`, wide: true },
+    { label: "LinkedIn", href: profile.linkedin, external: true },
+    { label: "GitHub", href: profile.github, external: true },
+    { label: t.cv, href: cv.href, download: true, lang: cv.lang === t.pdfLang ? undefined : cv.lang, wide: true },
+  ];
 
-// Station 07, the closing document: the security thread that ran the whole page
-// ends on a seal, "canal aberto", and the page's last word is an invitation.
-// Same furniture as SectionHeader (ruler, index), but the statement is the
-// largest on the page after the front wall.
-export function Contact() {
   return (
     <section
-      id="contato"
-      data-station="07"
-      data-station-label="Contato"
-      aria-labelledby="contato-title"
-      className="section-y relative isolate flex flex-col justify-center overflow-hidden border-t border-line-faint lg:min-h-[100svh]"
+      id="contact"
+      aria-labelledby="contact-title"
+      data-cursor-field
+      className={`grain relative overflow-clip bg-charcoal ${s.glow}`}
     >
-      {/* the guilloché ground returns behind the closing document */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="drafting-grid absolute inset-0 [mask-image:radial-gradient(ellipse_68%_62%_at_80%_34%,black_8%,transparent_74%)]" />
+      <div className="flex flex-col items-center px-[var(--gutter)] pb-[clamp(5.5rem,8vw,7.5rem)] pt-[clamp(4.5rem,8vw,7rem)] text-center">
+        <Orbit />
+        <p
+          data-reveal
+          className="mt-[clamp(1.75rem,4vw,3.5rem)] font-wide text-[0.8125rem] font-bold italic text-ink [font-variation-settings:'wdth'_125] sm:text-[0.875rem]"
+        >
+          {t.kicker}
+        </p>
+
+        <div className="relative mt-[clamp(1.5rem,3.5vw,3rem)] flex w-full justify-center">
+          {/* the headline's size lives here, so the tickets can be sized in its em */}
+          <div className="relative w-fit text-[9.4vw] sm:text-[length:min(6.6vw,7.75rem)]">
+            <h2
+              id="contact-title"
+              data-split="lines"
+              className={`${s.headline} whitespace-nowrap text-center font-wide font-extrabold italic leading-[0.95] tracking-[-0.02em] text-ink [font-variation-settings:'wdth'_110] sm:[font-variation-settings:'wdth'_140]`}
+            >
+              {t.headline[0]}
+              <br />
+              {t.headline[1]}
+              <br />
+              {t.headline[2]}
+            </h2>
+            <Tickets />
+          </div>
+
+          {/* beside the middle line, as in the reference; no room for it under lg */}
+          <div data-reveal style={d(400)} className="absolute inset-y-0 right-0 my-auto hidden h-fit lg:block">
+            <a href={`mailto:${profile.email}`} aria-label={t.emailPedro} data-magnetic="0.35" className="group block p-2 text-ink/85">
+              <svg
+                aria-hidden
+                viewBox="0 0 100 100"
+                fill="none"
+                stroke="currentColor"
+                className="w-[clamp(4rem,6.2vw,7rem)] transition-[translate,color] duration-500 ease-[var(--ease-out)] group-hover:translate-x-3 group-hover:text-accent group-focus-visible:translate-x-3 group-focus-visible:text-accent"
+              >
+                <path
+                  d="M2 45H78.9L50.9 17.1L58 10L98 50L58 90L50.9 82.9L78.9 55H2Z"
+                  strokeWidth="1.25"
+                  vectorEffect="non-scaling-stroke"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div
+          data-reveal
+          style={d(120)}
+          className="mt-[clamp(2.75rem,5vw,4rem)] flex flex-col items-center gap-2.5 sm:flex-row sm:items-baseline sm:gap-6 sm:text-left"
+        >
+          <p className="shrink-0 font-wide text-[0.75rem] font-bold italic text-ink [font-variation-settings:'wdth'_125] sm:text-[0.8125rem]">
+            {t.move}
+          </p>
+          <p className="max-w-[15em] text-balance font-serif text-[clamp(1.35rem,2vw,1.9rem)] italic leading-[1.12] text-ink">
+            {t.invite} <span className="block">{t.inviteEnd}</span>
+          </p>
+        </div>
+
+        <ul
+          data-stagger
+          style={d(200)}
+          className="mt-[clamp(2rem,3.5vw,3rem)] grid w-full max-w-[24rem] grid-cols-2 gap-2.5 sm:flex sm:w-auto sm:max-w-none sm:flex-wrap sm:justify-center"
+        >
+          {channels.map((c) => (
+            <li key={c.label} className={c.wide ? "col-span-2" : undefined}>
+              <a
+                href={c.href}
+                data-magnetic="0.25"
+                download={c.download}
+                {...(c.external ? { target: "_blank", rel: "noreferrer" } : {})}
+                className={`group ${s.pill} relative isolate flex h-11 items-center justify-center overflow-hidden rounded-full border border-accent px-5 font-wide text-[0.875rem] font-medium text-accent [font-variation-settings:'wdth'_110] sm:text-[0.9375rem]`}
+              >
+                {/* the fill rises from the bottom, its crown flattening as it lands */}
+                <span
+                  aria-hidden
+                  className="absolute inset-0 translate-y-[101%] rounded-[50%_50%_0_0/70%_70%_0_0] bg-accent transition-[translate,border-radius] duration-[600ms] ease-[var(--ease-out)] group-hover:translate-y-0 group-hover:rounded-none group-focus-visible:translate-y-0 group-focus-visible:rounded-none"
+                />
+                {/* shifted by half the arrow's slot, so the label sits centred until the arrow slides in */}
+                <span className="relative inline-flex translate-x-[0.675em] items-center gap-1.5 transition-[translate,color] duration-500 ease-[var(--ease-out)] group-hover:translate-x-0 group-hover:text-on-accent group-focus-visible:translate-x-0 group-focus-visible:text-on-accent">
+                  {c.label}
+                  {c.lang ? (
+                    <>
+                      <span
+                        aria-hidden
+                        className="rounded-full border border-current px-1.5 py-0.5 font-mono text-[0.5625rem] leading-none tracking-[0.08em]"
+                      >
+                        {c.lang}
+                      </span>
+                      <span className="sr-only">{t.pdfIn(c.lang)}</span>
+                    </>
+                  ) : null}
+                  {c.external ? <span className="sr-only">{t.newTab}</span> : null}
+                  <ArrowUpRight
+                    aria-hidden
+                    strokeWidth={1.75}
+                    className="size-[0.95em] -translate-x-1 opacity-0 transition-[translate,opacity] duration-500 ease-[var(--ease-out)] group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100"
+                  />
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div data-reveal style={d(260)} className="mt-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+          <p className="t-label">{profile.email}</p>
+          <CopyButton value={profile.email} label={t.copy} />
+        </div>
+
+        {/* "Ask the portfolio" (components/fx/ask-dialog.tsx), only where its key is configured */}
+        {askEnabled() ? (
+          <div data-reveal style={d(320)} className="mt-1">
+            <AskLauncher />
+          </div>
+        ) : null}
       </div>
 
-      <div className="container-x">
-        <div className="flex items-end gap-4">
-          <span aria-hidden data-reveal="rule" className="ruler min-w-6 flex-1" />
-          <span className="hud hidden shrink-0 md:block">pt-BR · en</span>
-        </div>
-        {/* arrival: the security thread ends on the series' closing seal */}
-        <div aria-hidden className="mt-6 flex items-center gap-4">
-          <span className="h-[3px] flex-1 bg-[repeating-linear-gradient(to_right,rgb(122_20_36/0.36)_0_18px,transparent_18px_34px)]" />
-          <Rosette seed="contato" lat={-23.5505} lon={-46.6333} draw="doc" className="size-24 shrink-0" />
-        </div>
-
-        <h2
-          id="contato-title"
-          data-title
-          className="display mt-8 text-[clamp(2.75rem,6.2vw,6rem)] text-ink [--wdth:112] lg:mt-10"
-        >
-          Vamos colocar o próximo sistema <span className="text-accent-deep">no ar.</span>
-        </h2>
-
-        <div className="mt-12 grid grid-cols-1 gap-12 lg:mt-16 lg:grid-cols-12 lg:gap-8">
-          <div data-reveal style={d(120)} className="lg:col-span-5 lg:pr-8">
-            {/* index beside the statement, never above it (same as SectionHeader) */}
-            <p className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-ink-muted">
-              <span className="tabular text-accent">07</span>
-              <span aria-hidden className="text-line-strong">
-                {"  —  "}
-              </span>
-              Contato
-            </p>
-            <p className="mt-4 max-w-md text-pretty text-[1.0625rem] leading-8 text-ink-muted">
-              Para vagas, projetos ou uma conversa técnica. E-mail, LinkedIn e GitHub são os caminhos mais rápidos.
-            </p>
-            <Button
-              href={`mailto:${profile.email}`}
-              arrow="right"
-              icon={<Mail aria-hidden className="size-4" strokeWidth={1.75} />}
-              className="mt-8 w-full sm:w-auto"
-            >
-              Enviar e-mail
-            </Button>
-            <dl className="mt-10 grid gap-3 border-t border-line pt-5 text-[0.875rem]">
-              <div className="grid grid-cols-[5.5rem_minmax(0,1fr)] items-baseline gap-3">
-                <dt className="hud">local</dt>
-                <dd className="text-ink-muted">{profile.location}</dd>
-              </div>
-              <div className="grid grid-cols-[5.5rem_minmax(0,1fr)] items-baseline gap-3">
-                <dt className="hud">atuação</dt>
-                <dd className="text-ink-muted">
-                  <LiveDot>{profile.availability}</LiveDot>
-                </dd>
-              </div>
-            </dl>
-          </div>
-
-          <div data-power className="lg:col-span-7">
-            <Console
-              label="canais diretos"
-              status={
-                <span className="text-ink-faint">
-                  hora local <LocalTime /> BRT
-                </span>
-              }
-            >
-              <div className="p-5 sm:p-6">
-                <p className="hud">E-mail</p>
-                <div className="mt-3 flex flex-wrap items-center justify-between gap-x-6 gap-y-4">
-                  <a
-                    href={`mailto:${profile.email}`}
-                    className="group inline-flex min-w-0 items-center gap-3 font-ui text-[clamp(1.25rem,5.4vw,2.4rem)] font-[680] leading-tight tracking-[-0.02em] text-ink transition-colors [font-variation-settings:'wdth'_106] hover:text-accent"
-                  >
-                    <span className="[overflow-wrap:anywhere]">{profile.email}</span>
-                    <ArrowUpRight
-                      aria-hidden
-                      className="hidden size-6 shrink-0 text-ink-faint transition-[color,transform] duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-accent sm:block"
-                    />
-                  </a>
-                  <CopyButton value={profile.email} label="Copiar e-mail" />
-                </div>
-              </div>
-              <ul className="grid grid-cols-1 border-t border-line sm:grid-cols-2">
-                {channels.map((c, i) => (
-                  <li key={c.name} className={`border-line ${i > 0 ? "border-t" : ""} ${i === 1 ? "sm:border-t-0" : ""} ${i % 2 ? "sm:border-l" : ""}`}>
-                    <a
-                      href={c.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="group flex min-h-[5.5rem] flex-col justify-between gap-3 p-5 transition-colors duration-200 hover:bg-elevated/60 sm:p-6"
-                    >
-                      <span className="flex items-center gap-2.5">
-                        <c.Icon aria-hidden className="size-4 shrink-0 text-ink-faint transition-colors group-hover:text-accent" />
-                        <span className="hud">{c.name}</span>
-                        <ArrowUpRight
-                          aria-hidden
-                          className="ml-auto size-4 shrink-0 text-ink-faint transition-[color,transform] duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
-                        />
-                      </span>
-                      <span className="truncate text-[0.9375rem] text-ink">{c.value}</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </Console>
-          </div>
-        </div>
+      {/* the reference's left edge: small print set sideways, a lime seal under it
+          (from lg, where the tickets off the left edge can't drift into it) */}
+      <div
+        data-reveal
+        style={d(200)}
+        className="absolute bottom-[clamp(5.5rem,8vw,7.5rem)] left-[var(--gutter)] hidden flex-col items-center gap-4 lg:flex"
+      >
+        <p className="rotate-180 font-wide text-[0.6875rem] font-bold leading-[1.5] text-ink [font-variation-settings:'wdth'_125] [writing-mode:vertical-rl]">
+          © {year} {profile.name}.
+          <br />
+          {t.credit}
+        </p>
+        <svg aria-hidden viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" className="size-6 text-accent">
+          <circle cx="12" cy="12" r="11.25" strokeWidth="1" />
+          <path d="M12 5.5v13M5.5 12h13M7.4 7.4l9.2 9.2M16.6 7.4l-9.2 9.2" strokeWidth="1" />
+        </svg>
       </div>
     </section>
   );

@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { LpContactCta, LpShowcase, NicheTabs, RouteHeader } from "@/components/landing-pages/showcase";
+import { Line, LpContactCta, LpShowcase, NicheTabs, RouteHeader, headline, lines, pad } from "@/components/landing-pages/showcase";
 import { profile } from "@/lib/data";
-import { nicheBySlug, niches, pagesInNiche, shot } from "@/lib/landing-pages";
+import { nicheBySlug, niches, nichesByCount, pagesInNiche, shot } from "@/lib/landing-pages";
 import { SITE_URL } from "@/lib/site";
 
 type Props = { params: Promise<{ nicho: string }> };
-
-const d = (ms: number) => ({ "--d": `${ms}ms` }) as React.CSSProperties;
 
 export const dynamicParams = false;
 
@@ -43,6 +41,10 @@ export default async function NichePage({ params }: Props) {
   if (!niche) notFound();
   const pages = pagesInNiche(nicho);
   const cities = [...new Set(pages.map((p) => p.city).filter(Boolean))];
+  const order = nichesByCount();
+  // Two tones, as in the work reference: "Sites e landing pages" in ink, "para eventos…" in grey.
+  const cut = niche.title.indexOf(" para ");
+  const [first, rest] = cut > 0 ? [niche.title.slice(0, cut), niche.title.slice(cut + 1)] : [niche.title, ""];
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -57,31 +59,41 @@ export default async function NichePage({ params }: Props) {
   };
 
   return (
-    <>
+    <div lang="pt-BR">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <RouteHeader trail={[{ label: "~", href: "/" }, { label: "landing-pages", href: "/landing-pages" }, { label: niche.slug }]}>
-        <h1 className="enter display mt-10 max-w-[20ch] text-[clamp(2.4rem,5.4vw,4.6rem)] text-ink [--wdth:110]">{niche.title}</h1>
-        <p className="enter mt-7 max-w-2xl text-pretty text-lg leading-8 text-ink-muted" style={d(120)}>
-          {niche.description}
-        </p>
-        <p className="enter hud mt-6 leading-5" style={d(200)}>
+      <RouteHeader
+        trail={[{ label: "~", href: "/" }, { label: "landing-pages", href: "/landing-pages" }, { label: niche.slug }]}
+        label={`Nicho ${pad(order.findIndex((n) => n.slug === nicho) + 1)} / ${pad(order.length)}`}
+        title={
+          <h1 className={`${headline} ${lines} text-[clamp(2.1rem,4vw,3.75rem)]`}>
+            <Line slash delay={80}>
+              {first}{" "}
+            </Line>
+            {rest ? (
+              <Line grey delay={170}>
+                {rest}
+              </Line>
+            ) : null}
+          </h1>
+        }
+        aside={<p className="text-pretty text-[0.9375rem] leading-7 text-ink-muted">{niche.description}</p>}
+      >
+        <p className="t-label leading-5">
           {pages.length} {pages.length === 1 ? "página publicada" : "páginas publicadas"}
           {cities.length ? ` · ${cities.join(" · ")}` : ""}
         </p>
-        <div className="mt-12">
+        <div className="mt-5">
           <NicheTabs current={niche.slug} />
         </div>
       </RouteHeader>
 
-      <section aria-label={`Projetos de ${niche.name}`} className="section-y">
-        <div className="container-x grid gap-24 lg:gap-32">
-          {pages.map((lp, i) => (
-            <LpShowcase key={lp.slug} lp={lp} flip={i % 2 === 1} />
-          ))}
-        </div>
+      <section aria-label={`Projetos de ${niche.name}`} className="container-x grid gap-28 pt-20 sm:pt-24 lg:gap-40 lg:pt-28">
+        {pages.map((lp, i) => (
+          <LpShowcase key={lp.slug} lp={lp} n={i + 1} flip={i % 2 === 1} />
+        ))}
       </section>
 
       <LpContactCta niche={niche} />
-    </>
+    </div>
   );
 }
